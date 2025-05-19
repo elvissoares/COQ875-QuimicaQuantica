@@ -18,14 +18,13 @@ como ASE, PySCF, GPAW e Quantum ESPRESSO.
 final de curso.
 
 ## Referências 
-- Vianna, D. M., Fazzio, A., Canuto, S. (2018). **Teoria Quântica de Moléculas e Sólidos:
-Simulação Computacional**. Livraria da Física.
-- Levine, I. N. (2013). **Quantum Chemistry**. International Edition.
-- McQuarrie, D. A. (2008). **Quantum chemistry**. University Science Books.
-- Teixeira-Dias, J. J. (2017). **Molecular Physical Chemistry**. Springer International Publishing AG.
-- Jensen, F. (2017). **Introduction to computational chemistry**. John wiley & sons.
-- Cramer, C. J. (2013). **Essentials of computational chemistry: theories and models.** John Wiley & Sons.
-- Martin, R. M. (2020). **Electronic structure: basic theory and practical methods.** Cambridge university press.
+- Vianna, D. M., Fazzio, A., Canuto, S. (2018). [**Teoria Quântica de Moléculas e Sólidos: Simulação Computacional**](https://www.livrariadafisica.com.br/detalhe_produto.aspx?id=23850). Livraria da Física.
+- Levine, I. N. (2013). [**Quantum Chemistry, 7th Edition**](https://www.amazon.com/Quantum-Chemistry-7th-Ira-Levine/dp/0321803450). Pearson
+- McQuarrie, D. A. (2008). [**Quantum chemistry, 2nd Edition**](https://www.amazon.com/Quantum-Chemistry-Donald-McQuarrie/dp/1891389505). University Science Books.
+- Teixeira-Dias, J. J. (2017). [**Molecular Physical Chemistry**](https://www.amazon.com/Molecular-Physical-Chemistry-Computer-based-Mathematica%C2%AE/dp/331941092X). Springer International Publishing AG.
+- Jensen, F. (2017). [**Introduction to computational chemistry, 3rd Edition**](https://www.amazon.com/Introduction-Computational-Chemistry-Frank-Jensen/dp/1118825993). John wiley & sons.
+- Cramer, C. J. (2013). [**Essentials of computational chemistry: theories and models, 2nd Edition**](https://www.amazon.com/Essentials-Computational-Chemistry-Theories-Models/dp/0470091827). John Wiley & Sons.
+- Martin, R. M. (2020). [**Electronic structure: basic theory and practical methods, 2nd Edition**](https://www.amazon.com/Electronic-Structure-Theory-Practical-Methods/dp/1108429904). Cambridge university press.
 
 ## Notas de aula e códigos
 
