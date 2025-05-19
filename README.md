@@ -1,6 +1,6 @@
 # COQ875 - Química Quântica de Moléculas e Sólidos
 
-Esse repositório contem as notas de aula e códigos de programação e notebooks para o curso COQ875 - Química Quântica de Moléculas e Sólidos do PEQ/COPPE na UFRJ.
+Esse repositório contem as notas de aula e códigos de programação e notebooks para o curso COQ875 - Química Quântica de Moléculas e Sólidos do [PEQ/COPPE](https://www.peq.coppe.ufrj.br/) na UFRJ.
 
 O curso é desenvolvido para estudantes de pós-graduação de Engenharia Química e áreas afins. 
 
@@ -8,7 +8,7 @@ O foco é no aprofundamento dos conceitos teóricos e métodos computacionais pa
 
 ## Ementa
 
-A ementa para a edição do curso em 2025/2 está disponível [aqui](Ementa-COQ875-Quimica_Quantica_de_Moleculas_e_Solidos.pdf)
+A ementa para a edição do curso em 2025/2 está disponível [aqui](Ementa-COQ875-Quimica_Quantica_de_Moleculas_e_Solidos.pdf).
 
 **MÉTODO DE TRABALHO:** aulas teórico-práticas em sala-de-aula e laboratório de computação com
 realização de exercícios em aula e listas de exercício extra-classe. Utilização de softwares livres
@@ -86,3 +86,7 @@ final de curso.
     - Adsorção e Catálise
     - Cálculo de Espectros
     - Dinâmica Molecular Car-Parrinello
+
+## Contato
+
+e-mail: [elvis@peq.coppe.ufrj.br](mailto:elvis@peq.coppe.ufrj.br)
