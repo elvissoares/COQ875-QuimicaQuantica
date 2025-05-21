@@ -6,6 +6,8 @@ O curso é desenvolvido para estudantes de pós-graduação de Engenharia Quími
 
 O foco é no aprofundamento dos conceitos teóricos e métodos computacionais para a resolução de problemas envolvendo química quântica e suas aplicações em sistemas moleculares, sólidos e interfaces como em fenômenos interfaciais e catalíticos. 
 
+**PROPOSTA DE HORÁRIO:** Ter-Qui 13-15hs
+
 ## Ementa
 
 A ementa para a edição do curso em 2025/2 está disponível [aqui](Ementa-COQ875-Quimica_Quantica_de_Moleculas_e_Solidos.pdf).
