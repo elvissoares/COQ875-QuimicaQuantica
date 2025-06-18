@@ -24,6 +24,7 @@ final de curso.
 - Levine, I. N. (2013). [**Quantum Chemistry, 7th Edition**](https://www.amazon.com/Quantum-Chemistry-7th-Ira-Levine/dp/0321803450). Pearson
 - McQuarrie, D. A. (2008). [**Quantum chemistry, 2nd Edition**](https://www.amazon.com/Quantum-Chemistry-Donald-McQuarrie/dp/1891389505). University Science Books.
 - Teixeira-Dias, J. J. (2017). [**Molecular Physical Chemistry**](https://www.amazon.com/Molecular-Physical-Chemistry-Computer-based-Mathematica%C2%AE/dp/331941092X). Springer International Publishing AG.
+- Szabo, A., & Ostlund, N. S. (1996). [**Modern quantum chemistry: introduction to advanced electronic structure theory**](https://www.amazon.com.br/Modern-Quantum-Chemistry-Introduction-Electronic/dp/0486691861). Courier Corporation.
 - Jensen, F. (2017). [**Introduction to computational chemistry, 3rd Edition**](https://www.amazon.com/Introduction-Computational-Chemistry-Frank-Jensen/dp/1118825993). John wiley & sons.
 - Cramer, C. J. (2013). [**Essentials of computational chemistry: theories and models, 2nd Edition**](https://www.amazon.com/Essentials-Computational-Chemistry-Theories-Models/dp/0470091827). John Wiley & Sons.
 - Martin, R. M. (2020). [**Electronic structure: basic theory and practical methods, 2nd Edition**](https://www.amazon.com/Electronic-Structure-Theory-Practical-Methods/dp/1108429904). Cambridge university press.
@@ -45,14 +46,16 @@ final de curso.
     - Átomo de Hidrogênio
 
 2. Estrutura Eletrônica de Átomos e Moléculas
-    - Teorema Variacional: aplicação no Átomo de He
-    - Aproximação de Born-Oppenheimer: aplicação na Molécula de H2
+    - O problema eletrônico 
+    - Aproximação de Born-Oppenheimer
+    - Teorema Variacional: aplicação no Átomo de He e na Molécula de H2
     - Determinante de Slater
     - Método de Hartree-Fock
     - Conjunto de Base
     - Equações de Roothan e método auto-consistente
     - Discussão de métodos pós-HF e semi-empíricos
     - Cálculos computacionais usando ASE e PySCF
+    - Teorias de perturbação
     - Densidade eletrônica, momento de dipolo elétrico e polarizabilidade
     - Interação da radiação com moléculas
     - Espectro micro-ondas e a rotação molecular
@@ -66,8 +69,8 @@ final de curso.
     - Cálculo Variacional
     - Orbitais Kohn-Sham
     - Funcionais de troca e correlação
-    - Discussão sobre TDDFT
-    - Cálculos computacionais usando Quantum Espresso e GPAW
+    - Discussão sobre outras formulações de DFT
+    - Cálculos computacionais usando Quantum Espresso, GPAW e VASP
 
 4. Estrutura Eletrônica de Sólidos
     - Redes Cristalinas
@@ -81,13 +84,14 @@ final de curso.
     - Vibrações da rede e fônons
     - Espectro Raman de sólidos
     - Calor específico de sólidos
-    - Cálculos computacionais usando Quantum Espresso e GPAW
+    - Cálculos computacionais usando Quantum Espresso, GPAW e VASP
 
 5. Aplicações Computacionais na Engenharia Química
     - Reação química
-    - Adsorção e Catálise
+    - Adsorção 
+    - Catálise
     - Cálculo de Espectros
-    - Dinâmica Molecular Car-Parrinello
+    - Dinâmica Molecular Ab Initio
 
 ## Contato
 
