@@ -6,7 +6,9 @@ O curso é desenvolvido para estudantes de pós-graduação de Engenharia Quími
 
 O foco é no aprofundamento dos conceitos teóricos e métodos computacionais para a resolução de problemas envolvendo química quântica e suas aplicações em sistemas moleculares, sólidos e interfaces como em fenômenos interfaciais e catalíticos. 
 
-**PROPOSTA DE HORÁRIO:** Ter-Qui 13-15hs
+**PROPOSTA DE HORÁRIO:** Ter 13hs às 15hs / Qui 13:15 às 15hs
+
+**SALA DE AULA:** G121/G127
 
 ## Ementa
 
@@ -37,7 +39,7 @@ final de curso.
 ## Programação
 
 1. Fundamentos da Mecânica Quântica
-    - Experimentos fundadores
+    - Experimentos fundadores  
     - Postulados da Mec. Quântica
     - Auto-valores, auto-vetores, mudança de base, comutadores
     - Operadores: posição, momento linear, momento angular e spin
