@@ -34,7 +34,7 @@ final de curso.
 ## Notas de aula e códigos
 
 - Notas de aula: pasta [``lectures``](lectures/)
-- Programas e Notebooks: pasta  [``codes``](codes/)
+- Programas e Notebooks: pasta  [``notebooks``](notebooks/)
 
 ## Programação
 
