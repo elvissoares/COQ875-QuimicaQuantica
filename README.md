@@ -34,6 +34,7 @@ final de curso.
 ## Notas de aula e códigos
 
 - Notas de aula: pasta [``lectures``](lectures/)
+- Listas de Exercícios: pasta [``listas``](listas/)
 - Programas e Notebooks: pasta  [``notebooks``](notebooks/)
 
 ## Programação
@@ -41,16 +42,20 @@ final de curso.
 1. Fundamentos da Mecânica Quântica
     - Experimentos fundadores  
     - Postulados da Mec. Quântica
-    - Auto-valores, auto-vetores, mudança de base, comutadores
-    - Operadores: posição, momento linear, momento angular e spin
+    - Bases Matemáticas: Auto-valores, auto-vetores, mudança de base, comutadores
+    - Operadores: posição e momento linear
     - Eq. De Schroedinger
-    - Aplicações: Poço Quadrado, Tunelamento, Rotor rígido, Oscilador harmônico
+    - Aplicações: Oscilador harmônico e Rotor rígido
+    - Momento Angular
     - Átomo de Hidrogênio
+    - Spin
 
 2. Estrutura Eletrônica de Átomos e Moléculas
-    - O problema eletrônico 
+    - Átomo de He 
+    - Teorema Variacional
+    - Molécula de H2
     - Aproximação de Born-Oppenheimer
-    - Teorema Variacional: aplicação no Átomo de He e na Molécula de H2
+    - O problema de muitos elétrons 
     - Determinante de Slater
     - Método de Hartree-Fock
     - Conjunto de Base
