@@ -49,27 +49,23 @@ final de curso.
 	 7. Aplicações: Oscilador harmônico e Rotor rígido
 	 8. Operador de Momento Angular
 	 9. Átomo de Hidrogênio
-	 10. Spin
+	 10. [Spin](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap1/11-Spin.pdf)
  2. Estrutura Eletrônica de Átomos e Moléculas
-	 1. Princípio de Pauli
-	 2. Átomo de Hélio e Molécula de H2
-	 3. Teorema Variacional
+	 1. [Átomo de Hélio](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/1-Atomo_de_He.pdf): Teorema Variacional
+	 2. [Molécula de H2](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/2-Molecula_de_H2.pdf): Aproximação de Born-Oppenheimer e Determinante de Slater 
 	 4. O problema de muitos elétrons
-	 5. Aproximação de Born-Oppenheimer
-	 6. Determinante de Slater 
-	 7. Método de Hartree-Fock
-	 8. Conjunto de Base
-	 9. Equações de Roothan e método auto-consistente
-	 10. Discussão de métodos pós-HF
-	 11. Teoria do Funcional da Densidade
-	 12. Modelo de Thomas-Fermi
-	 13. Teoremas de Kohn - Hohenberg
-	 14. Cálculo Variacional
-	 15. Orbitais de Kohn-Sham
-	 16. Funcionais de troca e correlação
-	 17.  Discussão sobre TDDF
+	 5. Método de Hartree-Fock
+	 6. Conjunto de Base
+	 7. Equações de Roothan e método auto-consistente
+	 8. Discussão de métodos pós-HF
+	 9. Teoria do Funcional da Densidade
+	 10. Teoremas de Kohn - Hohenberg
+	 11. Cálculo Variacional
+	 12. Orbitais de Kohn-Sham
+	 13. Funcionais de troca e correlação
+	 14. Discussão sobre TDDF
  3. Estrutura Eletrônica de Sólidos
-	 1. Redes de Bravais, Estruturas Cristalinas
+	 1. Estruturas Cristalinas e Redes de Bravais
 	 2. Transformada de Fourier 
 	 3. Rede Recíproca: 1ª zona de Brillouin, Índices de Miller
 	 4. Difração de raios-X por cristais
