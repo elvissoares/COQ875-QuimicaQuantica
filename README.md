@@ -39,66 +39,60 @@ final de curso.
 
 ## Programação
 
-1. Fundamentos da Mecânica Quântica
-    - Experimentos fundadores  
-    - Postulados da Mec. Quântica
-    - Bases Matemáticas: Auto-valores, auto-vetores, mudança de base, comutadores
-    - Operadores: posição e momento linear
-    - Eq. De Schroedinger
-    - Aplicações: Oscilador harmônico e Rotor rígido
-    - Momento Angular
-    - Átomo de Hidrogênio
-    - Spin
-
-2. Estrutura Eletrônica de Átomos e Moléculas
-    - Átomo de He 
-    - Teorema Variacional
-    - Molécula de H2
-    - Aproximação de Born-Oppenheimer
-    - O problema de muitos elétrons 
-    - Determinante de Slater
-    - Método de Hartree-Fock
-    - Conjunto de Base
-    - Equações de Roothan e método auto-consistente
-    - Discussão de métodos pós-HF e semi-empíricos
-    - Cálculos computacionais usando ASE e PySCF
-    - Teorias de perturbação
-    - Densidade eletrônica, momento de dipolo elétrico e polarizabilidade
-    - Interação da radiação com moléculas
-    - Espectro micro-ondas e a rotação molecular
-    - Espectro IR e Raman e a vibração molecular
-    - Calor específico de gases
-    - Ressonância magnética nuclear e de spin eletrônico
-
-3. Teoria do Funcional da Densidade
-    - Modelo de Thomas-Fermi
-    - Teoremas de Kohn - Hohenberg
-    - Cálculo Variacional
-    - Orbitais Kohn-Sham
-    - Funcionais de troca e correlação
-    - Discussão sobre outras formulações de DFT
-    - Cálculos computacionais usando Quantum Espresso, GPAW e VASP
-
-4. Estrutura Eletrônica de Sólidos
-    - Redes Cristalinas
-    - Rede Recíproca: 1ª zona de Brillouin, Índices de Miller
-    - Difração de raios-X por cristais
-    - Teorema de Bloch
-    - Densidade de Estados
-    - Estrutura de Bandas
-    - Discussão de métodos avançados: tight binding, projetor de onda aumentada, pseudopotenciais
-    - Propriedades óticas de sólidos
-    - Vibrações da rede e fônons
-    - Espectro Raman de sólidos
-    - Calor específico de sólidos
-    - Cálculos computacionais usando Quantum Espresso, GPAW e VASP
-
-5. Aplicações Computacionais na Engenharia Química
-    - Reação química
-    - Adsorção 
-    - Catálise
-    - Cálculo de Espectros
-    - Dinâmica Molecular Ab Initio
+ 1. Fundamentos da Mecânica Quântica
+	 1. Bases Experimentais e Teóricas da Mecânica Quântica
+	 2. Postulados da Mecânica Quântica
+	 3. Bases Matemáticas da Mecânica Quântica: Auto-valores, auto-vetores, mudança de base, comutadores
+	 4. Operadores na Mecânica Quântica posição e momento linear
+	 5. Equação de Schroedinger 
+	 6. Interpretação Probabilística da função de onda
+	 7. Aplicações: Oscilador harmônico e Rotor rígido
+	 8. Operador de Momento Angular
+	 9. Átomo de Hidrogênio
+	 10. Spin
+ 2. Estrutura Eletrônica de Átomos e Moléculas
+	 1. Princípio de Pauli
+	 2. Átomo de Hélio e Molécula de H2
+	 3. Teorema Variacional
+	 4. O problema de muitos elétrons
+	 5. Aproximação de Born-Oppenheimer
+	 6. Determinante de Slater 
+	 7. Método de Hartree-Fock
+	 8. Conjunto de Base
+	 9. Equações de Roothan e método auto-consistente
+	 10. Discussão de métodos pós-HF
+	 11. Teoria do Funcional da Densidade
+	 12. Modelo de Thomas-Fermi
+	 13. Teoremas de Kohn - Hohenberg
+	 14. Cálculo Variacional
+	 15. Orbitais de Kohn-Sham
+	 16. Funcionais de troca e correlação
+	 17.  Discussão sobre TDDF
+ 3. Estrutura Eletrônica de Sólidos
+	 1. Redes de Bravais, Estruturas Cristalinas
+	 2. Transformada de Fourier 
+	 3. Rede Recíproca: 1ª zona de Brillouin, Índices de Miller
+	 4. Difração de raios-X por cristais
+	 5. Teorema de Bloch
+	 6. Densidade de Estados
+	 7. Estrutura de Bandas
+	 8. Projetor de onda aumentada e pseudopotenciais
+	 9. Vibrações cristalinas e fônons
+ 4. Aplicações na Engenharia Química
+	 1. Otimização de Geometria
+	 2. Reação química
+	 3. Adsorção 
+	 4. Catálise
+	 5. Métodos de Estados Intermediários: Método de banda elástica, Método da Nudged Elastic Band (NEB)
+	 6. Métodos de Dinâmica Ab-Initio
+5. Caracterização de Materiais e Espectroscopia
+	 1. Densidade eletrônica, momento de dipolo elétrico e polarizabilidade
+	 2. Interação da radiação com a matéria 
+	 3. Espectro micro-ondas e a rotação
+	 4. Espectro IR e Raman e a vibração 
+	 5. Espectro UV/Vis
+	 6. Calor específico de gases e sólidos 
+	 7. Ressonância magnética nuclear e de spin eletrônico
 
 ## Contato
 
