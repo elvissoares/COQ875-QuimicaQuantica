@@ -53,17 +53,10 @@ final de curso.
  2. Estrutura Eletrônica de Átomos e Moléculas
 	 1. [Átomo de Hélio](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/1-Atomo_de_He.pdf): Teorema Variacional
 	 2. [Molécula de H2](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/2-Molecula_de_H2.pdf): Aproximação de Born-Oppenheimer e Determinante de Slater 
-	 4. O problema de muitos elétrons
-	 5. Método de Hartree-Fock
-	 6. Conjunto de Base
-	 7. Equações de Roothan e método auto-consistente
+	 4. [O problema de muitos elétrons](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/3-Problema_de_Muitos_Eletrons.pdf)
+	 5. [Método de Hartree-Fock](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/4-Hartree-Fock.pdf): Conjunto de Base, Equações de Roothan e método auto-consistente
 	 8. Discussão de métodos pós-HF
-	 9. Teoria do Funcional da Densidade
-	 10. Teoremas de Kohn - Hohenberg
-	 11. Cálculo Variacional
-	 12. Orbitais de Kohn-Sham
-	 13. Funcionais de troca e correlação
-	 14. Discussão sobre TDDF
+	 9. Teoria do Funcional da Densidade: Teoremas de Kohn - Hohenberg, Cálculo Variacional, Orbitais de Kohn-Sham, Funcionais de troca e correlação, Discussão sobre TDDF
  3. Estrutura Eletrônica de Sólidos
 	 1. Estruturas Cristalinas e Redes de Bravais
 	 2. Transformada de Fourier 
