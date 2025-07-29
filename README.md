@@ -43,7 +43,7 @@ final de curso.
 	 1. Bases Experimentais e Teóricas da Mecânica Quântica
 	 2. Postulados da Mecânica Quântica
 	 3. Bases Matemáticas da Mecânica Quântica: Auto-valores, auto-vetores, mudança de base, comutadores
-	 4. Operadores na Mecânica Quântica posição e momento linear
+	 4. Operadores na Mecânica Quântica: posição e momento linear
 	 5. Equação de Schroedinger 
 	 6. Interpretação Probabilística da função de onda
 	 7. Aplicações: Oscilador harmônico e Rotor rígido
@@ -53,20 +53,18 @@ final de curso.
  2. Estrutura Eletrônica de Átomos e Moléculas
 	 1. [Átomo de Hélio](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/1-Atomo_de_He.pdf): Teorema Variacional
 	 2. [Molécula de H2](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/2-Molecula_de_H2.pdf): Aproximação de Born-Oppenheimer e Determinante de Slater 
-	 4. [O problema de muitos elétrons](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/3-Problema_de_Muitos_Eletrons.pdf)
-	 5. [Método de Hartree-Fock](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/4-Hartree-Fock.pdf): Conjunto de Base, Equações de Roothan e método auto-consistente
-	 8. Discussão de métodos pós-HF
-	 9. Teoria do Funcional da Densidade: Teoremas de Kohn - Hohenberg, Cálculo Variacional, Orbitais de Kohn-Sham, Funcionais de troca e correlação, Discussão sobre TDDF
+	 3. [O problema de muitos elétrons](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/3-Problema_de_Muitos_Eletrons.pdf)
+	 4. [Método de Hartree-Fock](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/lectures/Cap2/4-Hartree-Fock.pdf): Conjunto de Base, Equações de Roothan e método auto-consistente
+	 5. Discussão de métodos pós-HF
+	 6. Teoria do Funcional da Densidade: Teoremas de Kohn - Hohenberg, Cálculo Variacional, Orbitais de Kohn-Sham, Funcionais de troca e correlação, Discussão sobre TDDF
  3. Estrutura Eletrônica de Sólidos
 	 1. Estruturas Cristalinas e Redes de Bravais
-	 2. Transformada de Fourier 
-	 3. Rede Recíproca: 1ª zona de Brillouin, Índices de Miller
-	 4. Difração de raios-X por cristais
-	 5. Teorema de Bloch
-	 6. Densidade de Estados
-	 7. Estrutura de Bandas
-	 8. Projetor de onda aumentada e pseudopotenciais
-	 9. Vibrações cristalinas e fônons
+	 2. Difração de raios-X por cristais
+	 3. Rede Recíproca: Transformada de Fourier, 1ª zona de Brillouin, Índices de Miller
+	 4. Teorema de Bloch
+	 5. Densidade de Estados e Estrutura de Bandas
+	 6. Projetor de onda aumentada e pseudopotenciais
+	 7. Vibrações cristalinas e fônons
  4. Aplicações na Engenharia Química
 	 1. Otimização de Geometria
 	 2. Reação química
