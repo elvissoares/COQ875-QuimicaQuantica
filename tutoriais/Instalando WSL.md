@@ -2,7 +2,8 @@
 ## 1. Comando de Instalação do WSL
 
 - Abra o Windows PowerShell como **administrador**
-![[img/Pasted image 20250820100458.png]]
+
+![img/Pasted image 20250820100458.png](img/Pasted%20image%2020250820100458.png)
 - No Poweshell escreva  o comando e pressione a tecla `Enter` para rodar o comando
 ```powershell
 wsl --install
@@ -18,7 +19,7 @@ Agora que você já está com o WSL instalado, podemos instalar uma disto Linux 
 ```powershell
 wsl.exe --list --online
 ```
-![[Pasted image 20250820100958.png]]
+![img/Pasted image 20250820100958.png](img/Pasted%20image%2020250820100958.png)
 - Vamos instalar o Ubuntu 24.04 LTS. Para isso use o comando
 ```powershell
 wls.exe --install Ubuntu-24.04
@@ -29,9 +30,9 @@ Você deverá criar um username.
 
 - Após a instalação do Ubuntu você pode fechar o PowerShell.
 - Sempre que você quiser abrir o Ubuntu no WSL você pode abrir o PowerShell e escolher a distribuição Linux Ubuntu na setinha `v` da barra superior, como na Figura abaixo
-![[img/Pasted image 20250820101917.png]]
+![img/Pasted image 20250820101917.png](img/Pasted%20image%2020250820101917.png)
 
-## 3. Instalando Pacotes
+## 3. Instalando Pacotes 
 
 - Para fazer update dos programas no Ubuntu você deve usar o comando
 ```bash
