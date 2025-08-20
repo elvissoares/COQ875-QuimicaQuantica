@@ -46,7 +46,7 @@ sudo apt full-upgrade
 
 - Instale o `build-essential` que possui o gcc e outros pacotes importantes
 ```bash
-sudo apt install build-essential
+sudo apt -y install cmake pkg-config build-essential
 ```
 
 - Você pode checar as versões do python e do gcc com os comandos 
