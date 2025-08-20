@@ -99,7 +99,7 @@ conda activate [nome_do_ambiente]
 conda install python numpy matplotlib
 ```
 
-## 4. Instalando driver NVIDIA (Opcional: deve ter GPU Nvidia)
+## 5. Instalando driver NVIDIA (Opcional: deve ter GPU Nvidia)
 
 No caso de seu computador ter uma GPU Nvidia, podemos instalar os drives da NVIDIA a partir do site oficial https://www.nvidia.com/pt-br/drivers/
 ![img/Pasted image 20250820104905.png](img/Pasted%20image%2020250820104905.png)
