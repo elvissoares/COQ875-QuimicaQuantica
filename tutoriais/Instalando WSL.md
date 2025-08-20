@@ -2,7 +2,7 @@
 ## 1. Comando de Instalação do WSL
 
 - Abra o Windows PowerShell como **administrador**
-![[Pasted image 20250820100458.png]]
+![[img/Pasted image 20250820100458.png]]
 - No Poweshell escreva  o comando e pressione a tecla `Enter` para rodar o comando
 ```powershell
 wsl --install
@@ -29,7 +29,7 @@ Você deverá criar um username.
 
 - Após a instalação do Ubuntu você pode fechar o PowerShell.
 - Sempre que você quiser abrir o Ubuntu no WSL você pode abrir o PowerShell e escolher a distribuição Linux Ubuntu na setinha `v` da barra superior, como na Figura abaixo
-![[Pasted image 20250820101917.png]]
+![[img/Pasted image 20250820101917.png]]
 
 ## 3. Instalando Pacotes
 
@@ -102,7 +102,7 @@ conda install python numpy matplotlib
 
 No caso de seu computador ter uma GPU Nvidia, podemos instalar os drives da NVIDIA a partir do site oficial https://www.nvidia.com/pt-br/drivers/
 
-![[Pasted image 20250820104905.png]]
+![[img/Pasted image 20250820104905.png]]
 
 - Instale o programa que você baixou e isso permitirá que use o driver mais recente da NVIDIA no Windows. 
 - Reinicie seu computador
