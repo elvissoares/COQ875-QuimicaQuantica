@@ -1,6 +1,50 @@
-Certifique-se que você já seguiu o protocolo [[Instalando_VASP_Intel]]
+Para seguir esse tutorial você deve ter baixado os arquivos:
+- `vasp-6.5.1.tar.gz` -> Instalador do vasp
+- `potpaw_LDA.64.tgz` -> Arquivos de Pseudo-potenciais LDA
+- `potpaw_PBE.64.tgz` -> Arquivos de Pseudo-potenciais PBE
 
-## 1. Instalar NVHPC da Nvidia
+Em seguida, abra um *terminal do Ubuntu* e siga os comandos a seguir. 
+
+--- 
+## 1. Instalar oneAPI base e HPC Toolkit da Intel 
+
+Os comandos a seguir foram obtidos do website oficial: https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html#base-kit
+
+- Instalando pacote a partir do repositório oficial
+```bash
+sudo apt install intel-oneapi-base-toolkit intel-oneapi-hpc-toolkit
+```
+
+- Como padrão, os pacotes devem ter sido instalados em `/opt/intel`. Teste a instalação usando o comando
+```bash
+ls /opt/intel
+```
+
+- Abra o arquivo `.bashrc` usando o comando 
+```bash
+nano .bashrc
+```
+
+- Escreva os novos PATHs usando as seguintes linhas no arquivo `.bashrc`
+```bash
+# oneAPI MKL
+export PATH=/opt/intel/oneapi/mkl/2025.2:$PATH
+export LD_LIBRARY_PATH=/opt/intel/oneapi/mkl/2025.2/lib/intel64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2025.2/lib:$LD_LIBRARY_PATH
+```
+**OBS:** Para salvar o arquivo no `nano` use `Ctrl+S` e para fechar o arquivo use `Ctrl+X`
+
+- Ative a nova configuração do arquivo `.bashrc`
+```bash
+source .bashrc
+```
+
+- E ative as configurações do `oneapi` com o comando
+```bash
+source /opt/intel/oneapi/setvars.sh
+```
+
+## 2. Instalar NVHPC da Nvidia
 
 Aqui estaremos seguindo os comandos apresentados no site oficial: https://developer.nvidia.com/hpc-sdk-downloads
 
@@ -42,7 +86,7 @@ export LD_LIBRARY_PATH=$NVHPCSDKPATH/math_libs/12.9/targets/x86_64-linux/lib:$LD
 
 
 --- 
-## 2. Instalar HDF5 para GPU
+## 3. Instalar HDF5 para GPU
 
 - Baixar o instalador `hdf5-1.14.6.tar.gz` do site oficial: [https://www.hdfgroup.org/downloads/hdf5/source-code/#](https://www.hdfgroup.org/downloads/hdf5/source-code/)
 
@@ -101,13 +145,7 @@ export PATH=/opt/intel/oneapi/mkl/2025.2:$PATH
 export LD_LIBRARY_PATH=/opt/intel/oneapi/mkl/2025.2/lib/intel64:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2025.2/lib:$LD_LIBRARY_PATH
 
-# OpenMPI
-export PATH=/home/elvis/Programs/openmpi-5.0.8/build/bin:$PATH  
-export LD_LIBRARY_PATH=/home/elvis/Programs/openmpi-5.0.8/build/lib:$LD_LIBRARY_PATH
-
 # HDF5
-export PATH=$HOME/Programs/hdf5-1.14.6-intel/build/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/Programs/hdf5-1.14.6-intel/build/lib:$LD_LIBRARY_PATH
 export PATH=$HOME/Programs/hdf5-1.14.6-gpu/build/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/Programs/hdf5-1.14.6-gpu/build/lib:$LD_LIBRARY_PATH
 
@@ -131,21 +169,26 @@ export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
 ```
 
 ---
-## 3. Compilando o VASP para GPU 
+## 4. Compilando o VASP para GPU 
+
+- Copie o arquivo `vasp-6.5.1.tar.gz` para a pasta Programs
+```bash
+cp [caminho]/Downloads/vasp-6.5.1.tar.gz ~/Programs/. && cd ~/Programs/
+```
+
+- Descompacte o arquivo usando o comando 
+```bash
+tar -xzvf vasp-6.5.1.tar.gz
+```
 
 - Entre na pasta `vasp-6.5.1` criada
 ```bash
 cd vasp-6.5.1/
 ```
 
-- Certifique-se de limpar o ambiente com 
-```
-make veryclean
-```
-
-- Copie o arquivo `makefile.include.nvhpc_ompi_mkl_omp` e depois faça uma cópia com o nome `makefile.include` 
+- Copie o arquivo `makefile.include.nvhpc_ompi_mkl_omp_acc` e depois faça uma cópia com o nome `makefile.include` 
 ```bash
-cp [caminho]/Downloads/makefile.include.nvhpc_ompi_mkl_omp ~/Programs/. && cp makefile.include.nvhpc_ompi_mkl_omp makefile.include
+cp [caminho]/Downloads/makefile.include.nvhpc_ompi_mkl_omp_acc ~/Programs/. && cp makefile.include.nvhpc_ompi_mkl_omp makefile.include
 ```
 
 - Em seguida, modifique as seguintes linhas do arquivo `makefile.include`
@@ -259,8 +302,8 @@ INCS       += -I$(MKLROOT)/include/fftw
 # HDF5-support (optional but strongly recommended, and mandatory for some features)
 CPP_OPTIONS+= -DVASP_HDF5
 HDF5_ROOT  ?= /home/elvis/Programs/hdf5-1.14.6-gpu/build
-INCS      += -I$(HDF5_ROOT)/include
-LLIBS     += -L$(HDF5_ROOT)/lib -lhdf5_fortran -lhdf5hl_fortran -lhdf5 -lhdf5_hl -lz -ldl -lm -Wl,-rpath,$(HDF5_ROOT)/lib
+LLIBS      += -L$(HDF5_ROOT)/lib -lhdf5_fortran
+INCS       += -I$(HDF5_ROOT)/include
 
 # For the VASP-2-Wannier90 interface (optional)
 #CPP_OPTIONS    += -DVASP2WANNIER90
@@ -316,3 +359,188 @@ mv bin/vasp_ncl bin/vasp_ncl_gpu
 ```bash
 mpirun -np 1 vasp_std_gpu
 ```
+
+## 5. Compilando o VASP para CPU usando OpenMPI da NVIDIA
+
+- Certifique-se de limpar o ambiente com 
+```
+make veryclean
+```
+
+- Copie o arquivo `makefile.include.nvhpc_ompi_mkl_omp` e depois faça uma cópia com o nome `makefile.include` 
+```bash
+cp [caminho]/Downloads/makefile.include.nvhpc_ompi_mkl_omp ~/Programs/. && cp makefile.include.nvhpc_ompi_mkl_omp makefile.include
+```
+
+- Em seguida, modifique as seguintes linhas do arquivo `makefile.include`
+```bash
+HDF5_ROOT  ?= /home/elvis/Programs/hdf5-1.14.6-gpu/build
+```
+**OBS**: Cuidado novamente com os caminhos!
+
+- No final, seu arquivo `makefile.include` deve se parecer com
+
+```bash
+# Default precompiler options
+CPP_OPTIONS = -DHOST=\"LinuxNV\" \
+              -DMPI -DMPI_BLOCK=8000 -Duse_collective \
+              -DscaLAPACK \
+              -DCACHE_SIZE=4000 \
+              -Davoidalloc \
+              -Dvasp6 \
+              -Dtbdyn \
+              -Dqd_emulate \
+              -Dfock_dblbuf \
+              -D_OPENMP
+
+CPP         = nvfortran -Mpreprocess -Mfree -Mextend -E $(CPP_OPTIONS) $*$(FUFFIX)  > $*$(SUFFIX)
+
+FC          = mpif90 -mp
+FCL         = mpif90 -mp -c++libs
+
+FREE        = -Mfree
+
+FFLAGS      = -Mbackslash -Mlarge_arrays
+
+OFLAG       = -fast
+
+DEBUG       = -Mfree -O0 -traceback
+
+# Redefine the standard list of O1 and O2 objects
+SOURCE_O1  := pade_fit.o minimax_dependence.o
+SOURCE_O2  := pead.o
+
+# For what used to be vasp.5.lib
+CPP_LIB     = $(CPP)
+FC_LIB      = nvfortran
+CC_LIB      = nvc -w
+CFLAGS_LIB  = -O
+FFLAGS_LIB  = -O1 -Mfixed
+FREE_LIB    = $(FREE)
+
+OBJECTS_LIB = linpack_double.o
+
+# For the parser library
+CXX_PARS    = nvc++ --no_warnings
+
+##
+## Customize as of this point! Of course you may change the preceding
+## part of this file as well if you like, but it should rarely be
+## necessary ...
+##
+# When compiling on the target machine itself , change this to the
+# relevant target when cross-compiling for another architecture
+VASP_TARGET_CPU ?= -tp host
+FFLAGS     += $(VASP_TARGET_CPU)
+
+# Specify your NV HPC-SDK installation (mandatory)
+#... first try to set it automatically
+NVROOT      =$(shell which nvfortran | awk -F /compilers/bin/nvfortran '{ print $$1 }')
+
+# If the above fails, then NVROOT needs to be set manually
+#NVHPC      ?= /opt/nvidia/hpc_sdk
+#NVVERSION   = 21.11
+#NVROOT      = $(NVHPC)/Linux_x86_64/$(NVVERSION)
+
+# Software emulation of quadruple precsion (mandatory)
+QD         ?= $(NVROOT)/compilers/extras/qd
+LLIBS      += -L$(QD)/lib -lqdmod -lqd
+INCS       += -I$(QD)/include/qd
+
+# Intel MKL for FFTW, BLAS, LAPACK, and scaLAPACK
+MKLROOT    ?= /opt/intel/oneapi/mkl/2025.2
+#MKLLIBS     = -Mmkl
+MKLLIBS     = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -pgf90libs -mp -lpthread -lm -ldl
+
+# If you want to use scaLAPACK from MKL
+LLIBS_MKL   = -L$(MKLROOT)/lib -lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64 $(MKLLIBS)
+
+# Use a separate scaLAPACK installation (optional but recommended in combination with OpenMPI)
+# Comment out the two lines below if you want to use scaLAPACK from MKL instead
+#SCALAPACK_ROOT ?= /path/to/your/scalapack/installation
+#LLIBS_MKL   = -L$(SCALAPACK_ROOT)/lib -lscalapack $(MKLLIBS)
+
+LLIBS      += $(LLIBS_MKL)
+
+INCS       += -I$(MKLROOT)/include/fftw
+
+# HDF5-support (optional but strongly recommended, and mandatory for some features)
+CPP_OPTIONS+= -DVASP_HDF5
+HDF5_ROOT  ?= /home/elvis/Programs/hdf5-1.14.6-gpu/build
+LLIBS      += -L$(HDF5_ROOT)/lib -lhdf5_fortran
+INCS       += -I$(HDF5_ROOT)/include
+
+# For the VASP-2-Wannier90 interface (optional)
+#CPP_OPTIONS    += -DVASP2WANNIER90
+#WANNIER90_ROOT ?= /path/to/your/wannier90/installation
+#LLIBS          += -L$(WANNIER90_ROOT)/lib -lwannier
+
+# For the fftlib library (hardly any benefit in combination with MKL's FFTs)
+#CPP_OPTIONS+= -Dsysv
+#FCL        += fftlib.o
+#CXX_FFTLIB  = nvc++ -mp --no_warnings -std=c++11 -DFFTLIB_USE_MKL -DFFTLIB_THREADSAFE
+#INCS_FFTLIB = -I./include -I$(MKLROOT)/include/fftw
+#LIBS       += fftlib
+#LLIBS      += -ldl
+
+# For machine learning library vaspml (experimental)
+#CPP_OPTIONS += -Dlibvaspml
+#CPP_OPTIONS += -DVASPML_USE_CBLAS
+#CPP_OPTIONS += -DVASPML_DEBUG_LEVEL=3
+#CXX_ML      = mpic++ -mp
+#CXXFLAGS_ML = -O3 -std=c++17 -Wall -Wextra
+#INCLUDE_ML  =
+```
+
+- Compile usando
+```bash
+make DEPS=1 -j6
+```
+
+- Temos então os programas `vasp_std`,`vasp_gam`e `vasp_ncl` na pasta `/bin`. Modifique os nomes dos executáveis do VASP que usarão CPU
+```bash
+mv bin/vasp_std bin/vasp_std_cpu
+```
+
+```bash
+mv bin/vasp_gam bin/vasp_gam_cpu
+```
+
+```bash
+mv bin/vasp_ncl bin/vasp_ncl_cpu
+```
+
+- Para rodar qualquer programa do VASP usando CPU você deve usar o comando
+```bash
+mpirun -np 4 vasp_std_cpu
+```
+
+- Para rodar com todos os processadores e threads use o comando 
+```bash
+mpirun --use-hwthread -np N vasp_std_cpu
+```
+
+Pronto! Agora está pronto para rodar seus problemas usando o VASP com GPU ou CPU.
+
+## 5. Instalando PseudoPotenciais
+
+- Para os pseudopotenciais, crie um pasta `pp` dentro das pasta `vasp.6.5.1`
+```bash
+mkdir -p pp
+```
+
+- Copie os arquivos de pseudopotenciais para essa pasta
+```bash
+cp [caminho]/Downloads/potpaw_LDA.64.tgz pp/. && cp [caminho]/Downloads/potpaw_PBE.64.tgz pp/.
+```
+
+- Agora descompacte o arquivo `potpaw_LDA.64.tgz` e renomeie a pasta criada
+```bash
+tar -xvzf potpaw_LDA.64.tgz && mv potpaw_LDA potpaw
+```
+
+- E o arquivo `potpaw_PBE.64.tgz` 
+```bash
+tar -xvzf potpaw_PBE.64.tgz
+```
+
