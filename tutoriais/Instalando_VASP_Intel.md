@@ -47,6 +47,11 @@ source /opt/intel/oneapi/setvars.sh
 
 ## 2. Instalando OpenMPI com oneAPI
 
+- Crie uma pasta `Programs` no diretório raiz com o comando
+```bash
+mkdir ~/Programs && cd ~/Programs
+```
+
 - Faça o download do OpenMPI diretamente do site oficial
 ```bash
 wget https://download.open-mpi.org/release/open-mpi/v5.0/openmpi-5.0.8.tar.gz
@@ -106,14 +111,9 @@ sudo apt install zlib1g
 
 - Baixar o instalador `hdf5-1.14.6.tar.gz` do site oficial: [https://www.hdfgroup.org/downloads/hdf5/source-code/#](https://www.hdfgroup.org/downloads/hdf5/source-code/)
 
-- Crie uma pasta `Programs` no diretório raiz com o comando
+- Copie o arquivo baixado para o interior da pasta `Programs`
 ```bash
-mkdir ~/Programs
-```
-
-- Copie o arquivo baixado para o interior dessa pasta
-```bash
-cp ~/Downloads/hdf5-1.14.6.tar.gz ~/Programs/.
+cp [caminho]/Downloads/hdf5-1.14.6.tar.gz ~/Programs/.
 ```
 
 - Em seguida entre na pasta `Programs` com o comando
