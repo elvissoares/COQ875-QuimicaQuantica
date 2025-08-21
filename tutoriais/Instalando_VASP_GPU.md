@@ -10,7 +10,17 @@ Em seguida, abra um *terminal do Ubuntu* e siga os comandos a seguir.
 
 Os comandos a seguir foram obtidos do website oficial: https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html#base-kit
 
-- Instalando pacote a partir do repositório oficial
+- Vamos instalar o keyring do repositório
+```bash
+wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+| gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
+```
+
+```bash
+echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+```
+
+- Agora instale os pacotes a partir do repositório oficial
 ```bash
 sudo apt install intel-oneapi-base-toolkit intel-oneapi-hpc-toolkit
 ```
@@ -52,6 +62,7 @@ Aqui estaremos seguindo os comandos apresentados no site oficial: https://develo
 ```bash
 curl https://developer.download.nvidia.com/hpc-sdk/ubuntu/DEB-GPG-KEY-NVIDIA-HPC-SDK | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-hpcsdk-archive-keyring.gpg
 ```
+Ele pedirá uma senha de `sudo` 
 
 ```bash
 echo 'deb [signed-by=/usr/share/keyrings/nvidia-hpcsdk-archive-keyring.gpg] https://developer.download.nvidia.com/hpc-sdk/ubuntu/amd64 /' | sudo tee /etc/apt/sources.list.d/nvhpc.list
@@ -127,7 +138,7 @@ mkdir build
 
 - Comando para a instalação
 ```bash
-make -j && make install 
+make -j4 && make install 
 ```
 
 - Pronto! Agora só precisamos atualizar o arquivo `.bashrc` 
@@ -338,7 +349,7 @@ endif
 ```
 
 - Em seguida, compile com o comando
-```
+```bash
 make DEPS=1 -j
 ```
 
