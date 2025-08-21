@@ -274,8 +274,8 @@ INCS        =-I$(MKLROOT)/include/fftw
 # HDF5-support (optional but strongly recommended, and mandatory for some features)
 CPP_OPTIONS+= -DVASP_HDF5
 HDF5_ROOT  ?= /home/elvis/Programs/hdf5-1.14.6-intel/build
-LLIBS      += -L$(HDF5_ROOT)/lib -lhdf5_fortran
-INCS       += -I$(HDF5_ROOT)/include
+INCS      += -I$(HDF5_ROOT)/include
+LLIBS     += -L$(HDF5_ROOT)/lib -lhdf5_fortran -lhdf5 -Wl,-rpath,$(HDF5_ROOT)/lib
 
 # For the VASP-2-Wannier90 interface (optional)
 #CPP_OPTIONS    += -DVASP2WANNIER90
