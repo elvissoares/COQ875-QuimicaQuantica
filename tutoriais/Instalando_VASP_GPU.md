@@ -95,7 +95,6 @@ export CUDA_PATH=$NVHPCSDKPATH/cuda/12.9
 export LD_LIBRARY_PATH=$NVHPCSDKPATH/math_libs/12.9/targets/x86_64-linux/lib:$LD_LIBRARY_PATH
 ```
 
-
 --- 
 ## 3. Instalar HDF5 para GPU
 
@@ -174,9 +173,6 @@ export LD_LIBRARY_PATH=$NVHPCSDKPATH/cuda/12.9/targets/x86_64-linux/lib:$LD_LIBR
 export LD_LIBRARY_PATH=$NVHPCSDKPATH/math_libs/12.9/targets/x86_64-linux/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$NVHPCSDKPATH/comm_libs/12.9/openmpi4/openmpi-4.1.5/lib:$LD_LIBRARY_PATH
 export PATH=$NVHPCSDKPATH/comm_libs/12.9/openmpi4/openmpi-4.1.5/bin:$PATH
-
-# VASP
-export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
 ```
 
 ---
@@ -351,6 +347,47 @@ endif
 - Em seguida, compile com o comando
 ```bash
 make DEPS=1 -j
+```
+
+- Atualize o `.bashrc` com o PATH do VASP
+```bash
+# VASP
+export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
+``` 
+
+- No final, seu `.bashrc` deve estar assim 
+```bash
+# oneAPI MKL
+export PATH=/opt/intel/oneapi/mkl/2025.2:$PATH
+export LD_LIBRARY_PATH=/opt/intel/oneapi/mkl/2025.2/lib/intel64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2025.2/lib:$LD_LIBRARY_PATH
+
+# HDF5
+export PATH=$HOME/Programs/hdf5-1.14.6-gpu/build/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/Programs/hdf5-1.14.6-gpu/build/lib:$LD_LIBRARY_PATH
+
+# NVIDIA-HPC SDK
+NVCOMPILERS=/opt/nvidia/hpc_sdk; export NVCOMPILERS
+export NVHPCSDKPATH=$NVCOMPILERS/Linux_x86_64/25.7
+export PATH=$NVHPCSDKPATH/comm_libs/mpi/bin:$PATH
+export MANPATH=$NVHPCSDKPATH/comm_libs/mpi/man:$MANPATH
+export MANPATH=$NVHPCSDKPATH/compilers/man:$MANPATH
+export PATH=$NVHPCSDKPATH/compilers/bin:$PATH
+export PATH=$NVHPCSDKPATH/compilers/extras:$PATH
+export CUDA_PATH=$NVHPCSDKPATH/cuda/12.9
+export LD_LIBRARY_PATH=$NVHPCSDKPATH/compilers/extras/qd/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$NVHPCSDKPATH/cuda/12.9/targets/x86_64-linux/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$NVHPCSDKPATH/math_libs/12.9/targets/x86_64-linux/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$NVHPCSDKPATH/comm_libs/12.9/openmpi4/openmpi-4.1.5/lib:$LD_LIBRARY_PATH
+export PATH=$NVHPCSDKPATH/comm_libs/12.9/openmpi4/openmpi-4.1.5/bin:$PATH
+
+# VASP
+export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
+```
+
+- Pode usar essa nova configuração através do comando 
+```bash
+source ~/.bashrc
 ```
 
 - Temos então os programas `vasp_std`,`vasp_gam`e `vasp_ncl` na pasta `/bin`. Modifique os nomes dos executáveis do VASP que usarão GPU
