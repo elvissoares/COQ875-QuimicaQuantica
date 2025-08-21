@@ -290,7 +290,7 @@ MKLROOT    ?= /opt/intel/oneapi/mkl/2025.2
 MKLLIBS     = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -pgf90libs -mp -lpthread -lm -ldl
 
 # If you want to use scaLAPACK from MKL
-LLIBS_MKL   = -L$(MKLROOT)/lib -lmkl_scalapack_lp64 -lmkl_blacs_intelmpi_lp64 $(MKLLIBS)
+LLIBS_MKL   = -L$(MKLROOT)/lib -lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64 $(MKLLIBS)
 
 # Use a separate scaLAPACK installation (optional but recommended in combination with OpenMPI)
 # Comment out the two lines below if you want to use scaLAPACK from MKL instead
@@ -427,7 +427,6 @@ HDF5_ROOT  ?= /home/elvis/Programs/hdf5-1.14.6-gpu/build
 **OBS**: Cuidado novamente com os caminhos!
 
 - No final, seu arquivo `makefile.include` deve se parecer com
-
 ```bash
 # Default precompiler options
 CPP_OPTIONS = -DHOST=\"LinuxNV\" \
