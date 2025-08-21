@@ -134,6 +134,7 @@ mkdir build
 ```bash
 ./configure CC=nvc CXX=nvc++ FC=nvfortran --prefix=/home/elvis/Programs/hdf5-1.14.6-gpu/build --enable-fortran --enable-cxx --enable-shared
 ```
+**OBS**: Cuidado com o caminho da pasta `build`. No meu caso foi `/home/elvis/Programs/hdf5-1.14.6-gpu/build`
 
 - Comando para a instalação
 ```bash
@@ -195,8 +196,14 @@ cd vasp-6.5.1/
 
 - Copie o arquivo `makefile.include.nvhpc_ompi_mkl_omp_acc` e depois faça uma cópia com o nome `makefile.include` 
 ```bash
-cp [caminho]/Downloads/makefile.include.nvhpc_ompi_mkl_omp_acc ~/Programs/. && cp makefile.include.nvhpc_ompi_mkl_omp makefile.include
+cp [caminho]/Downloads/makefile.include.nvhpc_ompi_mkl_omp_acc ~/Programs/. && cp makefile.include.nvhpc_ompi_mkl_omp_acc makefile.include
 ```
+
+- Descubra a arquitetura da GPU
+```bash
+nvidia-smi --query-gpu=compute_cap --format=csv
+```
+Ela deve estar entre 6.0, 7.0, 8.0 com correções na primeira casa decimal.
 
 - Em seguida, modifique as seguintes linhas do arquivo `makefile.include`
 ```bash
