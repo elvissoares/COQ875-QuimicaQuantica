@@ -167,6 +167,7 @@ export LD_LIBRARY_PATH=/home/elvis/Programs/hdf5-1.14.6-intel/build/lib:$LD_LIBR
 # oneAPI MKL
 export PATH=/opt/intel/oneapi/mkl/2025.2:$PATH
 export LD_LIBRARY_PATH=/opt/intel/oneapi/mkl/2025.2/lib/intel64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2025.2/lib:$LD_LIBRARY_PATH
 
 # OpenMPI
 export PATH=/home/elvis/Programs/openmpi-5.0.8/build/bin:$PATH  
@@ -185,9 +186,27 @@ source ~/.bashrc
 ---
 ## 4. Compilando o VASP com CPU Intel
 
-- Crie um arquivo `makefile.include` e copie o conteúdo do arquivo `makefile.include.intel_ompi_mkl_omp` na pasta `arch` para esse arquivo.
+- Copie o arquivo `vasp-6.5.1.tar.gz` para a pasta Programs
+```bash
+cp [caminho]/Downloads/vasp-6.5.1.tar.gz ~/Programs/. && cd ~/Programs/
+```
 
-- Em seguida, modifique as linhas a seguir do arquivo `makefile.include`
+- Descompacte o arquivo usando o comando 
+```bash
+tar -xzvf vasp-6.5.1.tar.gz
+```
+
+- Entre na pasta `vasp-6.5.1` criada
+```bash
+cd vasp-6.5.1/
+```
+
+- Copie o arquivo `makefile.include.intel_ompi_mkl_omp` e renomeie-o para um arquivo `makefile.include` 
+```bash
+cp [caminho]/Downloads/makefile.include.intel_ompi_mkl_omp ~/Programs/. && cp makefile.include.intel_ompi_mkl_omp makefile.include
+```
+
+- Em seguida, modifique as seguintes linhas do arquivo `makefile.include`
 ```bash
 CC_LIB      = icx
 CXX_PARS    = icpx
