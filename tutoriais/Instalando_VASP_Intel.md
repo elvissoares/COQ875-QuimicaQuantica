@@ -143,10 +143,6 @@ mkdir build
 
 - Em seguida podemos compilar o instalador linkando os compiladores Intel usando o comando 
 ```bash
-./configure CC=icx CXX=icpx FC=ifx --prefix=/home/elvis/Programs/hdf5-1.14.6-intel/build --enable-fortran --enable-cxx --enable-shared
-```
-
-```bash
 ./configure CC=mpiicx CXX=mpiicpx FC=mpiifx --prefix=/home/elvis/Programs/hdf5-1.14.6-intel/build --enable-parallel --enable-fortran --enable-shared
 ```
 
@@ -208,21 +204,9 @@ cp [caminho]/Downloads/makefile.include.intel_ompi_mkl_omp ~/Programs/. && cp ma
 
 - Em seguida, modifique as seguintes linhas do arquivo `makefile.include`
 ```bash
-CC_LIB      = icx
-CXX_PARS    = icpx
-
-MKLROOT    ?= /opt/intel/oneapi/mkl/2025.2
-LLIBS      += -L$(MKLROOT)/lib/intel64 -lmkl_scalapack_lp64 -lmkl_blacs_intelmpi_lp64
-
 HDF5_ROOT  ?= /home/elvis/Programs/hdf5-1.14.6-intel/build
 ```
 **OBS**: Cuidado novamente com os caminhos!
-
-- Comente as seguintes linhas do arquivo `makefile.include`:
-```bash
-# SCALAPACK_ROOT ?= /path/to/your/scalapack/installation
-# LLIBS      += -L${SCALAPACK_ROOT}/lib -lscalapack
-```
 
 - No final, seu arquivo `makefile.include` deve estar assim. 
 ```bash
@@ -344,7 +328,7 @@ export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
 source ~/.bashrc
 ```
 
-- Para rodar qualquer programa usando o vasp você deve usar o comando
+- Para rodar qualquer programa do VASP usando CPU Intel você deve usar o comando
 ```bash
 mpirun -np 4 vasp_std_intel
 ```
@@ -358,18 +342,23 @@ Pronto! Agora está pronto para rodar seus problemas usando o VASP com compilado
 
 ## 5. Instalando PseudoPotenciais
 
-- Para os pseudopotenciais, crie duas pastas `pp/potpaw` e `pp/potpaw_PBE` dentro das pasta `vasp.6.5.1`
+- Para os pseudopotenciais, crie um pasta `pp` dentro das pasta `vasp.6.5.1`
 ```bash
-mkdir -p pp/potpaw && mkdir -p pp/potpaw_PBE
+mkdir -p pp
 ```
 
-- Agora descompacte o arquivo `potpaw_LDA.64.tgz`
+- Copie os arquivos de pseudopotenciais para essa pasta
 ```bash
-tar -xvzf potpaw_LDA.64.tgz -C pp/potpaw
+cp [caminho]/Downloads/potpaw_LDA.64.tgz pp/. && cp [caminho]/Downloads/potpaw_PBE.64.tgz pp/.
+```
+
+- Agora descompacte o arquivo `potpaw_LDA.64.tgz` e renomeie a pasta criada
+```bash
+tar -xvzf potpaw_LDA.64.tgz && mv potpaw_LDA potpaw
 ```
 
 - E o arquivo `potpaw_PBE.64.tgz` 
 ```bash
-tar -xvzf potpaw_PBE.64.tgz -C pp/potpaw_PBE
+tar -xvzf potpaw_PBE.64.tgz
 ```
 
