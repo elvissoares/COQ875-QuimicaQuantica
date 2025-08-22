@@ -1,3 +1,4 @@
+Esse tutorial deve ser seguido por quem possui uma CPU Intel e não tem disponível uma GPU Nvidia. Caso você possua uma GPU Nvidia, recomendo fortemente que você siga o tutorial [Instalando_VASP_GPU](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/main/tutoriais/Instalando_VASP_GPU.md).
 
 Para seguir esse tutorial você deve ter baixado os arquivos:
 - `vasp-6.5.1.tar.gz` -> Instalador do vasp
@@ -11,7 +12,17 @@ Em seguida, abra um *terminal do Ubuntu* e siga os comandos a seguir.
 
 Os comandos a seguir foram obtidos do website oficial: https://www.intel.com/content/www/us/en/developer/tools/oneapi/toolkits.html#base-kit
 
-- Instalando pacote a partir do repositório oficial
+- Vamos instalar o keyring do repositório
+```bash
+wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
+| gpg --dearmor | sudo tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
+```
+
+```bash
+echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
+```
+
+- Agora instale os pacotes a partir do repositório oficial
 ```bash
 sudo apt install intel-oneapi-base-toolkit intel-oneapi-hpc-toolkit
 ```
@@ -21,12 +32,12 @@ sudo apt install intel-oneapi-base-toolkit intel-oneapi-hpc-toolkit
 ls /opt/intel
 ```
 
-- Abra o arquivo `.bashrc` usando o comando 
+- Abra o arquivo  `~/.bashrc`usando o comando 
 ```bash
-nano .bashrc
+nano ~/.bashrc
 ```
 
-- Escreva os novos PATHs usando as seguintes linhas no arquivo `.bashrc`
+- Escreva os novos PATHs usando as seguintes linhas no arquivo `~/.bashrc`
 ```bash
 # oneAPI MKL
 export PATH=/opt/intel/oneapi/mkl/2025.2:$PATH
@@ -35,9 +46,9 @@ export LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2025.2/lib:$LD_LIBRARY_PATH
 ```
 **OBS:** Para salvar o arquivo no `nano` use `Ctrl+S` e para fechar o arquivo use `Ctrl+X`
 
-- Ative a nova configuração do arquivo `.bashrc`
+- Ative a nova configuração do arquivo  `~/.bashrc`
 ```bash
-source .bashrc
+source ~/.bashrc
 ```
 
 - E ative as configurações do `oneapi` com o comando
@@ -145,13 +156,14 @@ mkdir build
 ```bash
 ./configure CC=mpiicx CXX=mpiicpx FC=mpiifx --prefix=/home/elvis/Programs/hdf5-1.14.6-intel/build --enable-parallel --enable-fortran --enable-shared
 ```
+**OBS**: Cuidado com o caminho da pasta `hdf5-1.14.6-intel`. No meu caso foi `/home/elvis/Programs/hdf5-1.14.6-intel`
 
 - Comando para a instalação
 ```bash
 make -j4 && make install
 ```
 
-- Pronto! Agora só precisamos atualizar o arquivo `.bashrc` (Cuidado com o caminho da pasta `hdf5-1.14.6-intel`. No meu caso foi `/home/elvis/Programs/hdf5-1.14.6-intel`)
+- Pronto! Agora só precisamos atualizar o arquivo `~/.bashrc` (Cuidado com o caminho da pasta `hdf5-1.14.6-intel`. No meu caso foi `/home/elvis/Programs/hdf5-1.14.6-intel`)
 ```bash
 # HDF5
 export PATH=/home/elvis/Programs/hdf5-1.14.6-intel/build/bin:$PATH
@@ -170,8 +182,8 @@ export PATH=/home/elvis/Programs/openmpi-5.0.8/build/bin:$PATH
 export LD_LIBRARY_PATH=/home/elvis/Programs/openmpi-5.0.8/build/lib:$LD_LIBRARY_PATH
 
 # HDF5
-export PATH=$HOME/Programs/hdf5-1.14.6-intel/build/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/Programs/hdf5-1.14.6-intel/build/lib:$LD_LIBRARY_PATH
+export PATH=/home/elvis/Programs/hdf5-1.14.6-intel/build/bin:$PATH
+export LD_LIBRARY_PATH=/home/elvis/Programs/hdf5-1.14.6-intel/build/lib:$LD_LIBRARY_PATH
 ```
 
 - Pode fazer nova configuração funcionar com o comando
@@ -199,7 +211,7 @@ cd vasp-6.5.1/
 
 - Copie o arquivo `makefile.include.intel_ompi_mkl_omp` e renomeie-o para um arquivo `makefile.include` 
 ```bash
-cp [caminho]/Downloads/makefile.include.intel_ompi_mkl_omp ~/Programs/. && cp makefile.include.intel_ompi_mkl_omp makefile.include
+cp [caminho]/Downloads/makefile.include.intel_ompi_mkl_omp . && cp makefile.include.intel_ompi_mkl_omp makefile.include
 ```
 
 - Em seguida, modifique as seguintes linhas do arquivo `makefile.include`
@@ -317,7 +329,7 @@ mv bin/vasp_gam bin/vasp_gam_intel
 mv bin/vasp_ncl bin/vasp_ncl_intel
 ```
 
-- Devemos adicionar um PATH ao `.bashrc` modificando o arquivo e adicionando as linhas abaixo
+- Devemos adicionar um PATH ao `~/.bashrc` modificando o arquivo e adicionando as linhas abaixo
 ```bash
 # VASP
 export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
@@ -352,13 +364,24 @@ mkdir -p pp
 cp [caminho]/Downloads/potpaw_LDA.64.tgz pp/. && cp [caminho]/Downloads/potpaw_PBE.64.tgz pp/.
 ```
 
-- Agora descompacte o arquivo `potpaw_LDA.64.tgz` e renomeie a pasta criada
+- Entre na pasta `pp`
 ```bash
-tar -xvzf potpaw_LDA.64.tgz && mv potpaw_LDA potpaw
+cd pp
 ```
 
-- E o arquivo `potpaw_PBE.64.tgz` 
+- Crie as seguintes pastas
 ```bash
-tar -xvzf potpaw_PBE.64.tgz
+mkdir potpaw potpaw_PBE
 ```
 
+- Descompacte o arquivo `potpaw_LDA.64.tgz` para dentro da pasta `potpaw`
+```bash
+tar -xvzf potpaw_LDA.64.tgz -C potpaw
+```
+
+- Descompacte o arquivo `potpaw_PBE.64.tgz` para dentro da pasta `potpaw_PBE`
+```bash
+tar -xvzf potpaw_PBE.64.tgz -C potpaw_PBE
+```
+
+Agora você possui os arquivos de pseudopotenciais instalados nessas pastas. Você pode usá-los manualmente ou com plataformas como o ASE. 
