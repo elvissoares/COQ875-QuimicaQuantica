@@ -363,10 +363,6 @@ export PATH=/opt/intel/oneapi/mkl/2025.2:$PATH
 export LD_LIBRARY_PATH=/opt/intel/oneapi/mkl/2025.2/lib/intel64:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2025.2/lib:$LD_LIBRARY_PATH
 
-# HDF5
-export PATH=$HOME/Programs/hdf5-1.14.6-gpu/build/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/Programs/hdf5-1.14.6-gpu/build/lib:$LD_LIBRARY_PATH
-
 # NVIDIA-HPC SDK
 NVCOMPILERS=/opt/nvidia/hpc_sdk; export NVCOMPILERS
 export NVHPCSDKPATH=$NVCOMPILERS/Linux_x86_64/25.7
@@ -381,6 +377,10 @@ export LD_LIBRARY_PATH=$NVHPCSDKPATH/cuda/12.9/targets/x86_64-linux/lib:$LD_LIBR
 export LD_LIBRARY_PATH=$NVHPCSDKPATH/math_libs/12.9/targets/x86_64-linux/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$NVHPCSDKPATH/comm_libs/12.9/openmpi4/openmpi-4.1.5/lib:$LD_LIBRARY_PATH
 export PATH=$NVHPCSDKPATH/comm_libs/12.9/openmpi4/openmpi-4.1.5/bin:$PATH
+
+# HDF5
+export PATH=/home/elvis/Programs/hdf5-1.14.6-gpu/build/bin:$PATH
+export LD_LIBRARY_PATH=/home/elvis/Programs/hdf5-1.14.6-gpu/build/lib:$LD_LIBRARY_PATH
 
 # VASP
 export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
