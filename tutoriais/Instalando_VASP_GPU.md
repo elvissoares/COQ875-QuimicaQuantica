@@ -353,7 +353,7 @@ make DEPS=1 -j
 - Atualize o `~/.bashrc` com o PATH do VASP
 ```bash
 # VASP
-export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
+export PATH=/home/elvis/Programs/vasp-6.5.1/bin:$PATH
 ``` 
 
 - No final, seu arquivo `~/.bashrc` deve estar assim 
@@ -383,7 +383,7 @@ export PATH=/home/elvis/Programs/hdf5-1.14.6-gpu/build/bin:$PATH
 export LD_LIBRARY_PATH=/home/elvis/Programs/hdf5-1.14.6-gpu/build/lib:$LD_LIBRARY_PATH
 
 # VASP
-export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
+export PATH=/home/elvis/Programs/vasp-6.5.1/bin:$PATH
 ```
 
 - Pode usar essa nova configuração através do comando 
