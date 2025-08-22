@@ -601,3 +601,5 @@ tar -xvzf potpaw_LDA.64.tgz -C potpaw
 ```bash
 tar -xvzf potpaw_PBE.64.tgz -C potpaw_PBE
 ```
+
+Agora você possui os arquivos de pseudopotenciais instalados nessas pastas. Você pode usá-los manualmente ou com plataformas como o ASE. 
