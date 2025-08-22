@@ -30,12 +30,12 @@ sudo apt install intel-oneapi-base-toolkit intel-oneapi-hpc-toolkit
 ls /opt/intel
 ```
 
-- Abra o arquivo `.bashrc` usando o comando 
+- Abra o arquivo `~/.bashrc` usando o comando 
 ```bash
-nano .bashrc
+nano ~/.bashrc
 ```
 
-- Escreva os novos PATHs usando as seguintes linhas no arquivo `.bashrc`
+- Escreva os novos PATHs usando as seguintes linhas no arquivo `~/.bashrc`
 ```bash
 # oneAPI MKL
 export PATH=/opt/intel/oneapi/mkl/2025.2:$PATH
@@ -44,9 +44,9 @@ export LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2025.2/lib:$LD_LIBRARY_PATH
 ```
 **OBS:** Para salvar o arquivo no `nano` use `Ctrl+S` e para fechar o arquivo use `Ctrl+X`
 
-- Ative a nova configuração do arquivo `.bashrc`
+- Ative a nova configuração do arquivo `~/.bashrc`
 ```bash
-source .bashrc
+source ~/.bashrc
 ```
 
 - E ative as configurações do `oneapi` com o comando
@@ -77,7 +77,7 @@ sudo apt-get install -y nvhpc-25-7-cuda-multi
 ```
 que deve ter sido instalado em `/opt/nvidia/`
 
-- Adiciona as seguintes linhas ao arquivo `.bashrc`
+- Adiciona as seguintes linhas ao arquivo `~/.bashrc`
 ```bash
 # NVIDIA-HPC SDK
 NVCOMPILERS=/opt/nvidia/hpc_sdk; export NVCOMPILERS
@@ -141,7 +141,7 @@ mkdir build
 make -j4 && make install 
 ```
 
-- Pronto! Agora só precisamos atualizar o arquivo `.bashrc` 
+- Pronto! Agora só precisamos atualizar o arquivo `~/.bashrc`
 ```bash
 # HDF5
 export PATH=/home/elvis/Programs/hdf5-1.14.6-gpu/build/bin:$PATH
@@ -149,16 +149,12 @@ export LD_LIBRARY_PATH=/home/elvis/Programs/hdf5-1.14.6-gpu/build/lib:$LD_LIBRAR
 ```
 **OBS**: Cuidado com o caminho da pasta `hdf5-1.14.6-gpu`. No meu caso foi `/home/elvis/Programs/hdf5-1.14.6-gpu`
 
-- No final, seu arquivo `.bashrc` deve ter os seguintes PATHs
+- No final, seu arquivo `~/.bashrc` deve ter os seguintes PATHs
 ```bash
 # oneAPI MKL
 export PATH=/opt/intel/oneapi/mkl/2025.2:$PATH
 export LD_LIBRARY_PATH=/opt/intel/oneapi/mkl/2025.2/lib/intel64:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/2025.2/lib:$LD_LIBRARY_PATH
-
-# HDF5
-export PATH=$HOME/Programs/hdf5-1.14.6-gpu/build/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/Programs/hdf5-1.14.6-gpu/build/lib:$LD_LIBRARY_PATH
 
 # NVIDIA-HPC SDK
 NVCOMPILERS=/opt/nvidia/hpc_sdk; export NVCOMPILERS
@@ -174,6 +170,10 @@ export LD_LIBRARY_PATH=$NVHPCSDKPATH/cuda/12.9/targets/x86_64-linux/lib:$LD_LIBR
 export LD_LIBRARY_PATH=$NVHPCSDKPATH/math_libs/12.9/targets/x86_64-linux/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$NVHPCSDKPATH/comm_libs/12.9/openmpi4/openmpi-4.1.5/lib:$LD_LIBRARY_PATH
 export PATH=$NVHPCSDKPATH/comm_libs/12.9/openmpi4/openmpi-4.1.5/bin:$PATH
+
+# HDF5
+export PATH=/home/elvis/Programs/hdf5-1.14.6-gpu/build/bin:$PATH
+export LD_LIBRARY_PATH=/home/elvis/Programs/hdf5-1.14.6-gpu/build/lib:$LD_LIBRARY_PATH
 ```
 
 ---
@@ -196,14 +196,8 @@ cd vasp-6.5.1/
 
 - Copie o arquivo `makefile.include.nvhpc_ompi_mkl_omp_acc` e depois faça uma cópia com o nome `makefile.include` 
 ```bash
-cp [caminho]/Downloads/makefile.include.nvhpc_ompi_mkl_omp_acc ~/Programs/. && cp makefile.include.nvhpc_ompi_mkl_omp_acc makefile.include
+cp [caminho]/Downloads/makefile.include.nvhpc_ompi_mkl_omp_acc . && cp makefile.include.nvhpc_ompi_mkl_omp_acc makefile.include
 ```
-
-- Descubra a arquitetura da GPU
-```bash
-nvidia-smi --query-gpu=compute_cap --format=csv
-```
-Ela deve estar entre 6.0, 7.0, 8.0 com correções na primeira casa decimal.
 
 - Em seguida, modifique as seguintes linhas do arquivo `makefile.include`
 ```bash
@@ -356,13 +350,13 @@ endif
 make DEPS=1 -j
 ```
 
-- Atualize o `.bashrc` com o PATH do VASP
+- Atualize o `~/.bashrc` com o PATH do VASP
 ```bash
 # VASP
 export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
 ``` 
 
-- No final, seu `.bashrc` deve estar assim 
+- No final, seu arquivo `~/.bashrc` deve estar assim 
 ```bash
 # oneAPI MKL
 export PATH=/opt/intel/oneapi/mkl/2025.2:$PATH
@@ -424,7 +418,7 @@ make veryclean
 
 - Copie o arquivo `makefile.include.nvhpc_ompi_mkl_omp` e depois faça uma cópia com o nome `makefile.include` 
 ```bash
-cp [caminho]/Downloads/makefile.include.nvhpc_ompi_mkl_omp ~/Programs/. && cp makefile.include.nvhpc_ompi_mkl_omp makefile.include
+cp [caminho]/Downloads/makefile.include.nvhpc_ompi_mkl_omp . && cp makefile.include.nvhpc_ompi_mkl_omp makefile.include
 ```
 
 - Em seguida, modifique as seguintes linhas do arquivo `makefile.include`
@@ -588,13 +582,22 @@ mkdir -p pp
 cp [caminho]/Downloads/potpaw_LDA.64.tgz pp/. && cp [caminho]/Downloads/potpaw_PBE.64.tgz pp/.
 ```
 
-- Agora descompacte o arquivo `potpaw_LDA.64.tgz` e renomeie a pasta criada
+- Entre na pasta `pp`
 ```bash
-tar -xvzf potpaw_LDA.64.tgz && mv potpaw_LDA potpaw
+cd pp
 ```
 
-- E o arquivo `potpaw_PBE.64.tgz` 
+- Crie as seguintes pastas
 ```bash
-tar -xvzf potpaw_PBE.64.tgz
+mkdir potpaw potpaw_PBE
 ```
 
+- Descompacte o arquivo `potpaw_LDA.64.tgz` para dentro da pasta `potpaw`
+```bash
+tar -xvzf potpaw_LDA.64.tgz -C potpaw
+```
+
+- Descompacte o arquivo `potpaw_PBE.64.tgz` para dentro da pasta `potpaw_PBE`
+```bash
+tar -xvzf potpaw_PBE.64.tgz -C potpaw_PBE
+```
