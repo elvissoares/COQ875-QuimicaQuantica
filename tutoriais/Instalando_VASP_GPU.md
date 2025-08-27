@@ -199,8 +199,18 @@ cd vasp-6.5.1/
 cp [caminho]/Downloads/makefile.include.nvhpc_ompi_mkl_omp_acc . && cp makefile.include.nvhpc_ompi_mkl_omp_acc makefile.include
 ```
 
+- Descubra a arquitetura da GPU
+```bash
+nvidia-smi --query-gpu=compute_cap --format=csv
+```
+No meu caso foi 8.6 que equivale a `cc86` no `makefile.include`
+
 - Em seguida, modifique as seguintes linhas do arquivo `makefile.include`
 ```bash
+CC          = mpicc  -acc -gpu=cc86,cuda12.9 -mp
+FC          = mpif90 -acc -gpu=cc86,cuda12.9 -mp
+FCL         = mpif90 -acc -gpu=cc86,cuda12.9 -mp -c++libs
+
 HDF5_ROOT  ?= /home/elvis/Programs/hdf5-1.14.6-gpu/build
 ```
 **OBS**: Cuidado novamente com os caminhos!
@@ -226,9 +236,9 @@ CPP         = nvfortran -Mpreprocess -Mfree -Mextend -E $(CPP_OPTIONS) $*$(FUFFI
 
 # N.B.: you might need to change the cuda-version here
 #       to one that comes with your NVIDIA-HPC SDK
-CC          = mpicc  -acc -gpu=cc60,cc70,cc80,cuda12.9 -mp
-FC          = mpif90 -acc -gpu=cc60,cc70,cc80,cuda12.9 -mp
-FCL         = mpif90 -acc -gpu=cc60,cc70,cc80,cuda12.9 -mp -c++libs
+CC          = mpicc  -acc -gpu=cc86,cuda12.9 -mp
+FC          = mpif90 -acc -gpu=cc86,cuda12.9 -mp
+FCL         = mpif90 -acc -gpu=cc86,cuda12.9 -mp -c++libs
 
 FREE        = -Mfree
 
@@ -288,7 +298,7 @@ INCS       += -I$(QD)/include/qd
 # Intel MKL for FFTW, BLAS, LAPACK, and scaLAPACK
 MKLROOT    ?= /opt/intel/oneapi/mkl/2025.2
 #MKLLIBS     = -Mmkl
-MKLLIBS     = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -pgf90libs -mp -lpthread -lm -ldl
+MKLLIBS     = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -pgf90libs -mp -lpthread -lm -ldl
 
 # If you want to use scaLAPACK from MKL
 LLIBS_MKL   = -L$(MKLROOT)/lib -lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64 $(MKLLIBS)
@@ -498,7 +508,7 @@ INCS       += -I$(QD)/include/qd
 # Intel MKL for FFTW, BLAS, LAPACK, and scaLAPACK
 MKLROOT    ?= /opt/intel/oneapi/mkl/2025.2
 #MKLLIBS     = -Mmkl
-MKLLIBS     = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -pgf90libs -mp -lpthread -lm -ldl
+MKLLIBS     = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -pgf90libs -mp -lpthread -lm -ldl
 
 # If you want to use scaLAPACK from MKL
 LLIBS_MKL   = -L$(MKLROOT)/lib -lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64 $(MKLLIBS)
