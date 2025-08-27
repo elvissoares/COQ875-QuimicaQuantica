@@ -22,6 +22,11 @@ wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCT
 echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
 ```
 
+- Faça update dos repositórios
+```bash
+sudo apt update
+```
+
 - Agora instale os pacotes a partir do repositório oficial
 ```bash
 sudo apt install intel-oneapi-base-toolkit intel-oneapi-hpc-toolkit
@@ -91,10 +96,10 @@ OBS: cuidado com o caminho `/home/elvis/Programs/openmpi-5.0.8/build`
 
 - Comando para instalação
 ```bash
-make -j && make install  
+make -j4 && make install  
 ```
 
-- Exporte o PATH para o arquivo `.bashrc`
+- Exporte o PATH para o arquivo `~/.bashrc`
 ```bash
 # OpenMPI
 export PATH=/home/elvis/Programs/openmpi-5.0.8/build/bin:$PATH  
@@ -332,7 +337,7 @@ mv bin/vasp_ncl bin/vasp_ncl_intel
 - Devemos adicionar um PATH ao `~/.bashrc` modificando o arquivo e adicionando as linhas abaixo
 ```bash
 # VASP
-export PATH=/home/elvis/Programs/vasp.6.5.1/bin:$PATH
+export PATH=/home/elvis/Programs/vasp-6.5.1/bin:$PATH
 ```
 
 - Atualize sue ambiente 
