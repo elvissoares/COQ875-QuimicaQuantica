@@ -17,9 +17,9 @@ CPP         = nvfortran -Mpreprocess -Mfree -Mextend -E $(CPP_OPTIONS) $*$(FUFFI
 
 # N.B.: you might need to change the cuda-version here
 #       to one that comes with your NVIDIA-HPC SDK
-CC          = mpicc  -acc -gpu=cc60,cc70,cc80,cuda12.9 -mp
-FC          = mpif90 -acc -gpu=cc60,cc70,cc80,cuda12.9 -mp
-FCL         = mpif90 -acc -gpu=cc60,cc70,cc80,cuda12.9 -mp -c++libs
+CC          = mpicc  -acc -gpu=cc86,cuda12.9 -mp
+FC          = mpif90 -acc -gpu=cc86,cuda12.9 -mp
+FCL         = mpif90 -acc -gpu=cc86,cuda12.9 -mp -c++libs
 
 FREE        = -Mfree
 
@@ -79,7 +79,7 @@ INCS       += -I$(QD)/include/qd
 # Intel MKL for FFTW, BLAS, LAPACK, and scaLAPACK
 MKLROOT    ?= /opt/intel/oneapi/mkl/2025.2
 #MKLLIBS     = -Mmkl
-MKLLIBS     = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -pgf90libs -mp -lpthread -lm -ldl
+MKLLIBS     = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -pgf90libs -mp -lpthread -lm -ldl
 
 # If you want to use scaLAPACK from MKL
 LLIBS_MKL   = -L$(MKLROOT)/lib -lmkl_scalapack_lp64 -lmkl_blacs_intelmpi_lp64 $(MKLLIBS)

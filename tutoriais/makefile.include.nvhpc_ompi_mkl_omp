@@ -67,7 +67,7 @@ INCS       += -I$(QD)/include/qd
 # Intel MKL for FFTW, BLAS, LAPACK, and scaLAPACK
 MKLROOT    ?= /opt/intel/oneapi/mkl/2025.2
 #MKLLIBS     = -Mmkl
-MKLLIBS     = -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -pgf90libs -mp -lpthread -lm -ldl
+MKLLIBS     = -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -pgf90libs -mp -lpthread -lm -ldl
 
 # If you want to use scaLAPACK from MKL
 LLIBS_MKL   = -L$(MKLROOT)/lib -lmkl_scalapack_lp64 -lmkl_blacs_openmpi_lp64 $(MKLLIBS)
