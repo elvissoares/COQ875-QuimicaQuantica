@@ -9,7 +9,11 @@ book:
   chapters:
     - index.qmd
     - prefacio.qmd
-    - capitulos/1-bases_experimentais.qmd
+    - part: "Fundamentos da Mecânica Quântica"
+      chapters:
+        - capitulos/1-bases_experimentais.qmd
+    - part: "Estrutura Eletrônica de Átomos e Moléculas"
+
   downloads: [pdf, epub]
   repo-url: https://github.com/elvissoares/COQ875-QuimicaQuantica
   repo-branch: livro-quarto
