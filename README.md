@@ -6,6 +6,7 @@ O curso é desenvolvido para estudantes de pós-graduação de Engenharia Quími
 
 O foco é no aprofundamento dos conceitos teóricos e métodos computacionais para a resolução de problemas envolvendo química quântica e suas aplicações em sistemas moleculares, sólidos e interfaces como em fenômenos interfaciais e catalíticos. 
 
+
 **PROPOSTA DE HORÁRIO:** Seg e Qua de 10:00 às 12:00
 
 **SALA DE AULA:** G121/G127
@@ -19,6 +20,10 @@ A ementa para a edição do curso em 2026/2 está disponível [aqui](Ementa-COQ8
 **CRITÉRIOS DE AVALIAÇÃO:** avaliação baseada em listas de exercícios extra-classe e projetos de final de curso.
 
 ## Referências 
+
+Para visualizar o livro que venho escrevendo online acesse [https://elvissoares.github.io/COQ875-QuimicaQuantica/](https://elvissoares.github.io/COQ875-QuimicaQuantica/)
+
+Algumas outras referências são: 
 - Vianna, D. M., Fazzio, A., Canuto, S. (2018). [**Teoria Quântica de Moléculas e Sólidos: Simulação Computacional**](https://www.livrariadafisica.com.br/detalhe_produto.aspx?id=23850). Livraria da Física.
 - Levine, I. N. (2013). [**Quantum Chemistry, 7th Edition**](https://www.amazon.com/Quantum-Chemistry-7th-Ira-Levine/dp/0321803450). Pearson
 - McQuarrie, D. A. (2008). [**Quantum chemistry, 2nd Edition**](https://www.amazon.com/Quantum-Chemistry-Donald-McQuarrie/dp/1891389505). University Science Books.
