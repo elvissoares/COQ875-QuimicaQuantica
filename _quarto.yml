@@ -9,6 +9,11 @@ book:
   chapters:
     - index.qmd
     - prefacio.qmd
+    - capitulos/1-bases_experimentais.qmd
+  downloads: [pdf, epub]
+  repo-url: https://github.com/elvissoares/COQ875-QuimicaQuantica
+  repo-branch: livro-quarto
+  repo-actions: [source, issue]
 
 bibliography: referencias/referencias.bib
 
@@ -24,6 +29,10 @@ format:
   pdf:
     documentclass: scrreprt
     number-sections: true
+    toc: true
+
+  epub:
+    toc: true
 
 execute:
   freeze: auto
