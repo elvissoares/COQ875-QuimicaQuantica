@@ -1,4 +1,4 @@
-# Prefácio
+# Prefácio  {.unnumbered}
 
 Estas notas estão em desenvolvimento contínuo.
 

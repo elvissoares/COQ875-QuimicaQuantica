@@ -14,7 +14,10 @@ bibliography: referencias/referencias.bib
 
 format:
   html:
-    theme: cosmo
+    theme:
+      dark: darkly
+      light: flatly
+    respect-user-color-scheme: true
     toc: true
     number-sections: true
     code-fold: false

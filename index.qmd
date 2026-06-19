@@ -1,4 +1,4 @@
-# Apresentação
+# Apresentação  {.unnumbered}
 
 Este livro reúne notas de aula, exemplos computacionais e materiais de apoio para o curso de COQ875 - Química Quântica de Moléculas e Sólidos do PEQ/COPPE/UFRJ.
 
