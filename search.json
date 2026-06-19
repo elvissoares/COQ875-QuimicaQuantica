@@ -1,0 +1,22 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Química Quântica para Moléculas e Sólidos",
+    "section": "",
+    "text": "Apresentação\nEste livro reúne notas de aula, exemplos computacionais e materiais de apoio para o curso de COQ875 - Química Quântica de Moléculas e Sólidos do PEQ/COPPE/UFRJ.\nO objetivo é apresentar os fundamentos da mecânica quântica aplicada a átomos, moléculas e sólidos, combinando teoria, exercícios e exemplos computacionais em Python.",
+    "crumbs": [
+      "Apresentação"
+    ]
+  },
+  {
+    "objectID": "prefacio.html",
+    "href": "prefacio.html",
+    "title": "Prefácio",
+    "section": "",
+    "text": "Estas notas estão em desenvolvimento contínuo.\nO material será expandido gradualmente com capítulos teóricos, notebooks computacionais, exercícios e aplicações em estrutura eletrônica.",
+    "crumbs": [
+      "Prefácio"
+    ]
+  }
+]
