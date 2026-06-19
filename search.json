@@ -18,5 +18,95 @@
     "crumbs": [
       "Prefácio"
     ]
+  },
+  {
+    "objectID": "capitulos/1-bases_experimentais.html",
+    "href": "capitulos/1-bases_experimentais.html",
+    "title": "1  Bases experimentais da Química Quântica",
+    "section": "",
+    "text": "1.1 Radiação de Corpo Negro e Max Planck\nUma série de experimentos que revolucionaram os conceitos da física através do entendimento da interação entre radiação e matéria na escala microscópica de comprimento.\nA ideia é que em um corpo negro toda a radiação incidente é absorvida e a radiação emitida por esse corpo deve ser uma função apenas da temperatura do corpo, tal que, \\(\\frac{d\\epsilon}{d\\nu}=\\frac{d\\epsilon}{d\\nu}(\\nu,T)\\) é a densidade de energia numa dada faixa de frequência ao redor de \\(\\nu\\) para um corpo a uma dada temperatura.\nO trabalho de Lord Rayleigh and J.H. Jeans introduziu a partir da teoria eletromagnética clássica a lei dada por \\[\\rho(\\nu,T) = \\frac{8\\pi }{c^{3}} \\nu^{2} \\bar{\\epsilon}_\\text{osc}\\] onde \\(c\\) é a velocidade da luz e \\(k_B\\) a constante de Boltzmann. A lei de Rayleigh-Jeans reproduz os dados experimentais em baixas frequências. Porém, em altas frequências a lei de Rayleigh-Jeans prevê que a densidade de energia irradiada diverge com \\(\\nu^2\\), um fenômeno conhecido como catástrofe do ultra-violeta. Não há nenhum erro na derivação da lei de Rayleigh-Jeans de acordo com a física da época, faltavam novos ingredientes físicos no problema!\nA lei do deslocamento de Wien(Wien 1894), proposta empiricamente em 1894, estabelecia que o comprimento de onda \\(\\lambda_\\text{max}\\) na qual a emissividade era máxima é dado por \\[\\lambda_\\text{max} T = 2.9 \\times 10^{-3}\\ \\text{m.K}\\]\nBaseado nessa ideia, Planck em 1901(Planck 1901) introduziu a lei de estados dada por \\[\\frac{d\\epsilon}{d\\nu}(\\nu,T) = \\frac{8 \\pi h }{c^{3}} \\frac{\\nu^3}{e^{h \\nu/k_B T}-1},\\] onde \\(h\\) é a constante de Planck.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases experimentais da Química Quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/1-bases_experimentais.html#radiação-de-corpo-negro-e-max-planck",
+    "href": "capitulos/1-bases_experimentais.html#radiação-de-corpo-negro-e-max-planck",
+    "title": "1  Bases experimentais da Química Quântica",
+    "section": "",
+    "text": "Figure 1.1: Representação conceitual de um corpo negro.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases experimentais da Química Quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/1-bases_experimentais.html#efeito-fotoelétrico-e-albert-einstein",
+    "href": "capitulos/1-bases_experimentais.html#efeito-fotoelétrico-e-albert-einstein",
+    "title": "1  Bases experimentais da Química Quântica",
+    "section": "1.2 Efeito Fotoelétrico e Albert Einstein",
+    "text": "1.2 Efeito Fotoelétrico e Albert Einstein\n1905",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases experimentais da Química Quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/1-bases_experimentais.html#descoberta-do-núcleo-atômico-e-rutheford",
+    "href": "capitulos/1-bases_experimentais.html#descoberta-do-núcleo-atômico-e-rutheford",
+    "title": "1  Bases experimentais da Química Quântica",
+    "section": "1.3 Descoberta do Núcleo Atômico e Rutheford",
+    "text": "1.3 Descoberta do Núcleo Atômico e Rutheford",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases experimentais da Química Quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/1-bases_experimentais.html#espectro-atômico-e-niels-bohr",
+    "href": "capitulos/1-bases_experimentais.html#espectro-atômico-e-niels-bohr",
+    "title": "1  Bases experimentais da Química Quântica",
+    "section": "1.4 Espectro Atômico e Niels Bohr",
+    "text": "1.4 Espectro Atômico e Niels Bohr\nEm 1915, Niels Bohr propos um modelo atômico em que os elétrons orbitam o núcleo atômico sem emitir radiação pois existem estados estacionários em que a energia do átomo é constante.\nBohr explicou que os elétrons podem ser deslocados para níveis mais altos de energia com a absorção de quantum de energia na forma de um fóton. Quando um elétron retorna a um nível mais baixo de energia, o átomo emite um fóton com novo quantum de energia.\n1913",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases experimentais da Química Quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/1-bases_experimentais.html#dualidade-onda-partícula-e-louis-de-broglie",
+    "href": "capitulos/1-bases_experimentais.html#dualidade-onda-partícula-e-louis-de-broglie",
+    "title": "1  Bases experimentais da Química Quântica",
+    "section": "2.1 Dualidade Onda-Partícula e Louis de Broglie",
+    "text": "2.1 Dualidade Onda-Partícula e Louis de Broglie\nAs ideias de Planck e Einstein trouxeram uma visão dual da luz, ora como onda, ora como partícula. Entre 1923 e 1924, Louis de Broglie23 formulou uma hipótese que a matéria poderia ter uma dualidade onda-partícula também, ou seja, um elétron poderia se comportar como onda também.\nde Broglie deduziu a partir da relação de Planck, \\(E=h \\nu\\), e da relatividade de Einstein que o momentum de uma partícula está relacionado ao seu comprimento de onda pela relação \\[p=\\frac{h}{\\lambda}\\] onde \\(h\\) é a constante de Planck.\nEm 1927, experimentos45 envolvendo difração de elétrons em sólidos comprovaram que a matéria pode ter um comportamento ondulatório assim como o raio-X e outros fenômenos eletromagnéticos. A Figure 2.1 mostra a comparação entre padrões de difração de elétrons e de raios-X em níquel sólido.\n\n\n\n\n\n\nFigure 2.1: Padrões de difração produzidos por Ni sólido. (a) Difração de elétrons, com \\(\\lambda = 0.0037\\ \\mathrm{nm}\\); (b) difração de raios-X, com \\(\\lambda = 0.154\\ \\mathrm{nm}\\).\n\n\n\nEm 1929, de Broglie é agraciado com o prêmio Nobel após a descoberta experimental do comportamento ondulatório da matéria.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases experimentais da Química Quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/1-bases_experimentais.html#princípio-da-incerteza-e-werner-heinsenberg",
+    "href": "capitulos/1-bases_experimentais.html#princípio-da-incerteza-e-werner-heinsenberg",
+    "title": "1  Bases experimentais da Química Quântica",
+    "section": "2.2 Princípio da Incerteza e Werner Heinsenberg",
+    "text": "2.2 Princípio da Incerteza e Werner Heinsenberg\n1925",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases experimentais da Química Quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/1-bases_experimentais.html#função-de-onda-e-erwin-schroedinger",
+    "href": "capitulos/1-bases_experimentais.html#função-de-onda-e-erwin-schroedinger",
+    "title": "1  Bases experimentais da Química Quântica",
+    "section": "2.3 Função de onda e Erwin Schroedinger",
+    "text": "2.3 Função de onda e Erwin Schroedinger\n1926\n\n\n\n\nPlanck, Max. 1901. “Ueber Das Gesetz Der Energieverteilung Im Normalspectrum.” Annalen Der Physik 309 (3): 553–63. https://doi.org/10.1002/andp.19013090310.\n\n\nWien, Wilhelm. 1894. “Temperatur Und Entropie Der Strahlung.” Annalen Der Physik 288 (5): 132–65. https://doi.org/10.1002/andp.18942880511.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases experimentais da Química Quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/1-bases_experimentais.html#footnotes",
+    "href": "capitulos/1-bases_experimentais.html#footnotes",
+    "title": "1  Bases experimentais da Química Quântica",
+    "section": "",
+    "text": "Falsamento atribuída a Lord Kelvin.↩︎\nDe Broglie, L. (1923). Waves and Quanta. Nature, 112(2815), 540–540. https://doi.org/10.1038/112540a0↩︎\nDe Broglie, L. (1924). Recherches sur la théorie des quanta [Doctoral dissertation]. University of Paris.↩︎\nThomson, G. P., & Reid, A. (1927). Diffraction of Cathode Rays by a Thin Film. Nature, 119(3007), 890–890. https://doi.org/10.1038/119890a0↩︎\nDavisson, C., & Germer, L. H. (1927). Diffraction of Electrons by a Crystal of Nickel. Physical Review, 30(6), 705–740. https://doi.org/10.1103/PhysRev.30.705↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Bases experimentais da Química Quântica</span>"
+    ]
   }
 ]
