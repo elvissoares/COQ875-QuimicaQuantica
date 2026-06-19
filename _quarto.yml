@@ -2,10 +2,24 @@ project:
   type: book
   output-dir: _book
 
+license: "CC BY-NC-SA"
+
+copyright:
+  holder: "Prof. Elvis do A. Soares"
+  year: 2026
+
 book:
   title: "Química Quântica para Moléculas e Sólidos"
   subtitle: "Notas de aula e aplicações computacionais"
   author: "Prof. Elvis do A. Soares"
+  output-file: quimica-quantica
+
+  page-footer:
+    left: |
+      Química Quântica © 2026 Elvis do Amaral Soares.
+    right: |
+      Licenciado sob [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
   chapters:
     - index.qmd
     - prefacio.qmd

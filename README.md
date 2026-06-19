@@ -85,3 +85,12 @@ Algumas outras referências são:
 ## Contato
 
 e-mail: [elvis@peq.coppe.ufrj.br](mailto:elvis@peq.coppe.ufrj.br)
+
+
+## Licença
+
+Este livro é disponibilizado sob a licença **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International — CC BY-NC-SA 4.0**.
+
+Você pode compartilhar e adaptar o material, desde que atribua o devido crédito, não utilize para fins comerciais e distribua derivados sob a mesma licença.
+
+Ver o arquivo [LICENSE.md](LICENSE.md).
