@@ -1,0 +1,5 @@
+# Apresentação
+
+Este livro reúne notas de aula, exemplos computacionais e materiais de apoio para o curso de COQ875 - Química Quântica de Moléculas e Sólidos do PEQ/COPPE/UFRJ.
+
+O objetivo é apresentar os fundamentos da mecânica quântica aplicada a átomos, moléculas e sólidos, combinando teoria, exercícios e exemplos computacionais em Python.

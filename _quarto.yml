@@ -1,0 +1,26 @@
+project:
+  type: book
+  output-dir: _book
+
+book:
+  title: "Química Quântica para Moléculas e Sólidos"
+  subtitle: "Notas de aula e aplicações computacionais"
+  author: "Prof. Elvis do A. Soares"
+  chapters:
+    - index.qmd
+    - prefacio.qmd
+
+bibliography: referencias/referencias.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    code-fold: false
+  pdf:
+    documentclass: scrreprt
+    number-sections: true
+
+execute:
+  freeze: auto

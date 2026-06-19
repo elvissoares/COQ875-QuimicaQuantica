@@ -1,0 +1,5 @@
+# Prefácio
+
+Estas notas estão em desenvolvimento contínuo.
+
+O material será expandido gradualmente com capítulos teóricos, notebooks computacionais, exercícios e aplicações em estrutura eletrônica.
