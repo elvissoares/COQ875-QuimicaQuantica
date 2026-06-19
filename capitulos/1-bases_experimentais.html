@@ -325,13 +325,13 @@ window.Quarto = {
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="../Química-Quântica-para-Moléculas-e-Sólidos.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="../quimica-quantica.pdf">
               <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="../Química-Quântica-para-Moléculas-e-Sólidos.epub">
+            <a class="dropdown-item sidebar-tools-main-item" href="../quimica-quantica.epub">
               <i class="bi bi-journal pe-1"></i>
             Download ePub
             </a>
@@ -432,7 +432,9 @@ window.Quarto = {
 <p>Uma série de experimentos realizados entre o final do século XIX e o início do século XX modificou profundamente os conceitos fundamentais da física. Esses experimentos revelaram limitações da física clássica na descrição da interação entre radiação e matéria em escalas microscópicas, abrindo caminho para o desenvolvimento da mecânica quântica.</p>
 <section id="radiação-de-corpo-negro-e-max-planck" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="radiação-de-corpo-negro-e-max-planck"><span class="header-section-number">1.1</span> Radiação de Corpo Negro e Max Planck</h2>
-<p>A ideia é que em um corpo negro toda a radiação incidente é absorvida e a radiação emitida por esse corpo deve ser uma função apenas da temperatura do corpo, tal que, <span class="math inline">\(\frac{d\epsilon}{d\nu}=\frac{d\epsilon}{d\nu}(\nu,T)\)</span> é a densidade de energia numa dada faixa de frequência ao redor de <span class="math inline">\(\nu\)</span> para um corpo a uma dada temperatura.</p>
+<p>A ideia é que em um corpo negro toda a radiação incidente é absorvida e a radiação emitida por esse corpo deve ser uma função apenas da temperatura do corpo, tal que,</p>
+<p><span class="math display">\[\frac{d\epsilon}{d\nu}=\frac{d\epsilon}{d\nu}(\nu,T)\]</span></p>
+<p>é a densidade de energia numa dada faixa de frequência ao redor de <span class="math inline">\(\nu\)</span> para um corpo a uma dada temperatura.</p>
 <div id="fig-blackbody" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-blackbody-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -443,8 +445,14 @@ Figure&nbsp;1.1: Representação conceitual de um corpo negro.
 </figcaption>
 </figure>
 </div>
-<p>O trabalho de Lord Rayleigh and J.H. Jeans introduziu a partir da teoria eletromagnética clássica a lei dada por <span class="math display">\[\rho(\nu,T) = \frac{8\pi }{c^{3}} \nu^{2} \bar{\epsilon}_\text{osc}\]</span> onde <span class="math inline">\(c\)</span> é a velocidade da luz e <span class="math inline">\(k_B\)</span> a constante de Boltzmann. A lei de Rayleigh-Jeans reproduz os dados experimentais em baixas frequências. Porém, em altas frequências a lei de Rayleigh-Jeans prevê que a densidade de energia irradiada diverge com <span class="math inline">\(\nu^2\)</span>, um fenômeno conhecido como catástrofe do ultra-violeta. Não há nenhum erro na derivação da lei de Rayleigh-Jeans de acordo com a física da época, faltavam novos ingredientes físicos no problema!</p>
-<p>A lei do deslocamento de Wien<span class="citation" data-cites="Wien1894">(<a href="#ref-Wien1894" role="doc-biblioref">Wien 1894</a>)</span>, proposta empiricamente em 1894, estabelecia que o comprimento de onda <span class="math inline">\(\lambda_\text{max}\)</span> na qual a emissividade era máxima é dado por <span class="math display">\[\lambda_\text{max} T = 2.9 \times 10^{-3}\ \text{m.K}\]</span></p>
+<p>O trabalho de Lord Rayleigh and J.H. Jeans introduziu a partir da teoria eletromagnética clássica a lei dada por <span id="eq-rayleigh-jeans"><span class="math display">\[
+\rho(\nu,T) =
+\frac{8\pi \nu^2}{c^3} k_B T .
+\tag{1.1}\]</span></span> onde <span class="math inline">\(c\)</span> é a velocidade da luz e <span class="math inline">\(k_B\)</span> a constante de Boltzmann. A <a href="#eq-rayleigh-jeans" class="quarto-xref">Equation&nbsp;<span>1.1</span></a> reproduz os dados experimentais em baixas frequências, mas diverge no limite de altas frequências. A lei de Rayleigh-Jeans prevê que a densidade de energia irradiada diverge com <span class="math inline">\(\nu^2\)</span>, um fenômeno conhecido como <strong>catástrofe do ultra-violeta</strong>.</p>
+<blockquote class="blockquote">
+<p>Não há nenhum erro na derivação da lei de Rayleigh-Jeans de acordo com a física da época, faltavam novos ingredientes físicos no problema!</p>
+</blockquote>
+<p>A lei do deslocamento de Wien <span class="citation" data-cites="Wien1894">(<a href="#ref-Wien1894" role="doc-biblioref">Wien 1894</a>)</span>, proposta empiricamente em 1894, estabelecia que o comprimento de onda <span class="math inline">\(\lambda_\text{max}\)</span> na qual a emissividade era máxima é dado por <span class="math display">\[\lambda_\text{max} T = 2.9 \times 10^{-3}\ \text{m.K}\]</span></p>
 <p>Baseado nessa ideia, Planck em 1901<span class="citation" data-cites="Planck1901">(<a href="#ref-Planck1901" role="doc-biblioref">Planck 1901</a>)</span> introduziu a lei de estados dada por <span class="math display">\[\frac{d\epsilon}{d\nu}(\nu,T) = \frac{8 \pi h }{c^{3}} \frac{\nu^3}{e^{h \nu/k_B T}-1},\]</span> onde <span class="math inline">\(h\)</span> é a constante de Planck.</p>
 </section>
 <section id="efeito-fotoelétrico-e-albert-einstein" class="level2" data-number="1.2">
@@ -938,8 +946,21 @@ Wien, Wilhelm. 1894. <span>“Temperatur Und Entropie Der Strahlung.”</span> <
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Química Quântica © 2026 Elvis do Amaral Soares.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/livro-quarto/capitulos/1-bases_experimentais.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+</div>
+  </div>
+</footer>
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/livro-quarto/capitulos/1-bases_experimentais.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+</body></html>
