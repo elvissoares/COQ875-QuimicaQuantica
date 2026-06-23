@@ -1,0 +1,133 @@
+# Postulados da mecânica quântica
+
+A formulação matemática da mecânica quântica é baseada em um conjunto de postulados que definem como representar o estado de um sistema físico, como descrever grandezas observáveis, quais resultados podem ser obtidos em uma medida e como o sistema evolui no tempo.
+
+A seguir, apresentamos uma forma simplificada dos postulados, considerando principalmente sistemas descritos por estados normalizados e observáveis com espectro discreto não degenerado.
+
+**I. Estado quântico.**  
+Em um instante de tempo $t$, o estado físico de um sistema quântico é representado por um vetor de estado
+
+$$
+\ket{\psi(t)}
+$$
+
+pertencente a um espaço de Hilbert complexo, denotado por $\mathcal{H}$.
+
+O vetor $\ket{\psi(t)}$ contém toda a informação acessível sobre o sistema. Em geral, considera-se que o estado está normalizado, isto é,
+
+$$
+\braket{\psi(t)|\psi(t)} = 1 .
+$$ {#eq-normalizacao-ket}
+
+Na representação de posição, esse mesmo estado pode ser descrito por uma função de onda $\psi(\mathbf{r},t)$, cuja normalização é dada por
+
+$$
+\int |\psi(\mathbf{r},t)|^2 \, d\tau = 1 .
+$$ {#eq-normalizacao-posicao}
+
+**II. Observáveis.**  
+Toda quantidade física mensurável $A$ é descrita por um operador hermitiano $\hat{A}$ atuando no espaço de Hilbert $\mathcal{H}$.
+
+Esse operador é chamado de **observável**. A condição de hermiticidade,
+
+$$
+\hat{A}^{\dagger} = \hat{A},
+$$ {#eq-operador-hermitiano}
+
+garante que os resultados possíveis de uma medida sejam números reais.
+
+Exemplos importantes de observáveis são o operador posição $\hat{x}$, o operador momento linear $\hat{p}_x$ e o operador energia, ou Hamiltoniano, $\hat{H}$.
+
+Na representação de posição, os operadores posição e momento linear são escritos como
+
+$$
+\hat{x}=x
+$$
+
+e
+
+$$
+\hat{p}_x = -i\hbar\frac{\partial}{\partial x}.
+$$ {#eq-operador-momento}
+
+**III. Resultados possíveis de uma medida.**  
+As únicas medidas possíveis da quantidade física $A$ são os autovalores $a_n$ do operador associado $\hat{A}$.
+
+Os autovalores e autovetores de $\hat{A}$ são definidos pela equação de autovalores
+
+$$
+\hat{A}\ket{a_n}=a_n\ket{a_n},
+$$ {#eq-autovalor-observavel}
+
+onde $\ket{a_n}$ é o autovetor associado ao autovalor $a_n$.
+
+Assim, ao medir a grandeza $A$, o resultado obtido deve necessariamente ser um dos valores permitidos $a_n$.
+
+**IV. Probabilidade de uma medida.**  
+Quando medimos a quantidade física $A$ em um sistema preparado no estado $\ket{\psi}$, a probabilidade de obter o autovalor $a_n$ é dada por
+
+$$
+P(a_n)=|\braket{a_n|\psi}|^2 .
+$$ {#eq-regra-born}
+
+Essa expressão é conhecida como **regra de Born**.
+
+O termo $\braket{a_n|\psi}$ representa a amplitude de probabilidade de encontrar o sistema no autoestado $\ket{a_n}$. O módulo ao quadrado dessa amplitude fornece a probabilidade associada ao resultado $a_n$.
+
+Se o estado $\ket{\psi}$ for escrito como uma superposição dos autoestados de $\hat{A}$,
+
+$$
+\ket{\psi} = \sum_n c_n \ket{a_n},
+$$ {#eq-superposicao-autoestados}
+
+então os coeficientes $c_n$ são dados por
+
+$$
+c_n = \braket{a_n|\psi},
+$$
+
+e a probabilidade de medir $a_n$ é
+
+$$
+P(a_n)=|c_n|^2.
+$$ {#eq-probabilidade-coeficiente}
+
+**V. Estado após a medida.**  
+Se uma medida da quantidade $A$ for realizada e o autovalor $a_n$ for obtido, o estado do sistema imediatamente após a medida passa a ser o autoestado correspondente a esse autovalor.
+
+Para um espectro discreto não degenerado, essa mudança pode ser escrita como
+
+$$
+\ket{\psi}
+\longrightarrow
+\frac{\braket{a_n|\psi}}{\sqrt{|\braket{a_n|\psi}|^2}}\ket{a_n}.
+$$ {#eq-colapso-nao-degenerado}
+
+O fator
+
+$$
+\frac{\braket{a_n|\psi}}{\sqrt{|\braket{a_n|\psi}|^2}}
+$$
+
+é apenas uma fase global. Como fases globais não alteram o estado físico, frequentemente escrevemos simplesmente
+
+$$
+\ket{\psi} \longrightarrow \ket{a_n}.
+$$ {#eq-colapso-simplificado}
+
+Esse postulado expressa a chamada **redução do estado** ou **colapso da função de onda**. Ele indica que, após a medida, uma nova medida imediata da mesma grandeza $A$ produzirá novamente o mesmo autovalor $a_n$, desde que o sistema não tenha evoluído significativamente entre as duas medidas.
+
+No caso de autovalores degenerados, o estado não colapsa necessariamente para um único autovetor, mas para a projeção de $\ket{\psi}$ no subespaço associado ao autovalor medido.
+
+**VI. Evolução temporal.**  
+Na ausência de medidas, a evolução temporal do vetor de estado $\ket{\psi(t)}$ é governada pela equação de Schrödinger dependente do tempo:
+
+$$
+i\hbar \frac{\partial}{\partial t}\ket{\psi(t)}
+=
+\hat{H}\ket{\psi(t)} ,
+$$ {#eq-schrodinger-ket}
+
+onde $\hat{H}$ é o operador Hamiltoniano, associado à energia total do sistema.
+
+Esses postulados fornecem a estrutura conceitual e matemática da mecânica quântica. A partir deles, é possível descrever fenômenos como a quantização da energia, a dualidade onda-partícula, o princípio da incerteza, a estrutura eletrônica dos átomos e as ligações químicas.

@@ -26,6 +26,7 @@ book:
     - part: "Fundamentos da Mecânica Quântica"
       chapters:
         - capitulos/1-bases_experimentais.qmd
+        - capitulos/2-postulados.qmd
     - part: "Estrutura Eletrônica de Átomos e Moléculas"
 
   downloads: [pdf, epub]
