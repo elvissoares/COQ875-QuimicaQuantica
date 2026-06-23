@@ -45,13 +45,30 @@ format:
     toc: true
     number-sections: true
     code-fold: false
+    html-math-method: mathjax
+    include-in-header:
+      text: |
+        <script>
+        MathJax = {
+          tex: {
+            macros: {
+              ket: ["\\left|#1\\right\\rangle", 1],
+              bra: ["\\left\\langle#1\\right|", 1],
+              braket: ["\\left\\langle#1\\right\\rangle", 1]
+            }
+          }
+        };
+        </script>
   pdf:
     documentclass: scrreprt
     number-sections: true
     toc: true
-
-  epub:
-    toc: true
+    pdf-engine: lualatex
+    include-in-header:
+      text: |
+        \newcommand{\ket}[1]{\left|#1\right\rangle}
+        \newcommand{\bra}[1]{\left\langle#1\right|}
+        \newcommand{\braket}[1]{\left\langle#1\right\rangle}
 
 execute:
   freeze: auto
