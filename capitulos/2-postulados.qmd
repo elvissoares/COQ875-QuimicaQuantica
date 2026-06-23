@@ -4,7 +4,7 @@ A formulação matemática da mecânica quântica é baseada em um conjunto de p
 
 A seguir, apresentamos uma forma simplificada dos postulados, considerando principalmente sistemas descritos por estados normalizados e observáveis com espectro discreto não degenerado.
 
-**I. Estado quântico.**  
+## **I. Estado quântico.**  {.unnumbered}
 Em um instante de tempo $t$, o estado físico de um sistema quântico é representado por um vetor de estado
 
 $$
@@ -25,7 +25,7 @@ $$
 \int |\psi(\mathbf{r},t)|^2 \, d\tau = 1 .
 $$ {#eq-normalizacao-posicao}
 
-**II. Observáveis.**  
+## **II. Observáveis.**  {.unnumbered}
 Toda quantidade física mensurável $A$ é descrita por um operador hermitiano $\hat{A}$ atuando no espaço de Hilbert $\mathcal{H}$.
 
 Esse operador é chamado de **observável**. A condição de hermiticidade,
@@ -50,7 +50,7 @@ $$
 \hat{p}_x = -i\hbar\frac{\partial}{\partial x}.
 $$ {#eq-operador-momento}
 
-**III. Resultados possíveis de uma medida.**  
+## **III. Resultados possíveis de uma medida.**  {.unnumbered}
 As únicas medidas possíveis da quantidade física $A$ são os autovalores $a_n$ do operador associado $\hat{A}$.
 
 Os autovalores e autovetores de $\hat{A}$ são definidos pela equação de autovalores
@@ -63,7 +63,7 @@ onde $\ket{a_n}$ é o autovetor associado ao autovalor $a_n$.
 
 Assim, ao medir a grandeza $A$, o resultado obtido deve necessariamente ser um dos valores permitidos $a_n$.
 
-**IV. Probabilidade de uma medida.**  
+## **IV. Probabilidade de uma medida.**  {.unnumbered}
 Quando medimos a quantidade física $A$ em um sistema preparado no estado $\ket{\psi}$, a probabilidade de obter o autovalor $a_n$ é dada por
 
 $$
@@ -92,7 +92,7 @@ $$
 P(a_n)=|c_n|^2.
 $$ {#eq-probabilidade-coeficiente}
 
-**V. Estado após a medida.**  
+## **V. Estado após a medida.**  {.unnumbered}
 Se uma medida da quantidade $A$ for realizada e o autovalor $a_n$ for obtido, o estado do sistema imediatamente após a medida passa a ser o autoestado correspondente a esse autovalor.
 
 Para um espectro discreto não degenerado, essa mudança pode ser escrita como
@@ -119,7 +119,7 @@ Esse postulado expressa a chamada **redução do estado** ou **colapso da funç�
 
 No caso de autovalores degenerados, o estado não colapsa necessariamente para um único autovetor, mas para a projeção de $\ket{\psi}$ no subespaço associado ao autovalor medido.
 
-**VI. Evolução temporal.**  
+## **VI. Evolução temporal.**  {.unnumbered}
 Na ausência de medidas, a evolução temporal do vetor de estado $\ket{\psi(t)}$ é governada pela equação de Schrödinger dependente do tempo:
 
 $$
