@@ -123,7 +123,62 @@
     "href": "capitulos/2-postulados.html",
     "title": "2  Postulados da mecânica quântica",
     "section": "",
-    "text": "A formulação matemática da mecânica quântica é baseada em um conjunto de postulados que definem como representar o estado de um sistema físico, como descrever grandezas observáveis, quais resultados podem ser obtidos em uma medida e como o sistema evolui no tempo.\nA seguir, apresentamos uma forma simplificada dos postulados, considerando principalmente sistemas descritos por estados normalizados e observáveis com espectro discreto não degenerado.\nI. Estado quântico.\nEm um instante de tempo \\(t\\), o estado físico de um sistema quântico é representado por um vetor de estado\n\\[\n\\ket{\\psi(t)}\n\\]\npertencente a um espaço de Hilbert complexo, denotado por \\(\\mathcal{H}\\).\nO vetor \\(\\ket{\\psi(t)}\\) contém toda a informação acessível sobre o sistema. Em geral, considera-se que o estado está normalizado, isto é,\n\\[\n\\braket{\\psi(t)|\\psi(t)} = 1 .\n\\tag{2.1}\\]\nNa representação de posição, esse mesmo estado pode ser descrito por uma função de onda \\(\\psi(\\mathbf{r},t)\\), cuja normalização é dada por\n\\[\n\\int |\\psi(\\mathbf{r},t)|^2 \\, d\\tau = 1 .\n\\tag{2.2}\\]\nII. Observáveis.\nToda quantidade física mensurável \\(A\\) é descrita por um operador hermitiano \\(\\hat{A}\\) atuando no espaço de Hilbert \\(\\mathcal{H}\\).\nEsse operador é chamado de observável. A condição de hermiticidade,\n\\[\n\\hat{A}^{\\dagger} = \\hat{A},\n\\tag{2.3}\\]\ngarante que os resultados possíveis de uma medida sejam números reais.\nExemplos importantes de observáveis são o operador posição \\(\\hat{x}\\), o operador momento linear \\(\\hat{p}_x\\) e o operador energia, ou Hamiltoniano, \\(\\hat{H}\\).\nNa representação de posição, os operadores posição e momento linear são escritos como\n\\[\n\\hat{x}=x\n\\]\ne\n\\[\n\\hat{p}_x = -i\\hbar\\frac{\\partial}{\\partial x}.\n\\tag{2.4}\\]\nIII. Resultados possíveis de uma medida.\nAs únicas medidas possíveis da quantidade física \\(A\\) são os autovalores \\(a_n\\) do operador associado \\(\\hat{A}\\).\nOs autovalores e autovetores de \\(\\hat{A}\\) são definidos pela equação de autovalores\n\\[\n\\hat{A}\\ket{a_n}=a_n\\ket{a_n},\n\\tag{2.5}\\]\nonde \\(\\ket{a_n}\\) é o autovetor associado ao autovalor \\(a_n\\).\nAssim, ao medir a grandeza \\(A\\), o resultado obtido deve necessariamente ser um dos valores permitidos \\(a_n\\).\nIV. Probabilidade de uma medida.\nQuando medimos a quantidade física \\(A\\) em um sistema preparado no estado \\(\\ket{\\psi}\\), a probabilidade de obter o autovalor \\(a_n\\) é dada por\n\\[\nP(a_n)=|\\braket{a_n|\\psi}|^2 .\n\\tag{2.6}\\]\nEssa expressão é conhecida como regra de Born.\nO termo \\(\\braket{a_n|\\psi}\\) representa a amplitude de probabilidade de encontrar o sistema no autoestado \\(\\ket{a_n}\\). O módulo ao quadrado dessa amplitude fornece a probabilidade associada ao resultado \\(a_n\\).\nSe o estado \\(\\ket{\\psi}\\) for escrito como uma superposição dos autoestados de \\(\\hat{A}\\),\n\\[\n\\ket{\\psi} = \\sum_n c_n \\ket{a_n},\n\\tag{2.7}\\]\nentão os coeficientes \\(c_n\\) são dados por\n\\[\nc_n = \\braket{a_n|\\psi},\n\\]\ne a probabilidade de medir \\(a_n\\) é\n\\[\nP(a_n)=|c_n|^2.\n\\tag{2.8}\\]\nV. Estado após a medida.\nSe uma medida da quantidade \\(A\\) for realizada e o autovalor \\(a_n\\) for obtido, o estado do sistema imediatamente após a medida passa a ser o autoestado correspondente a esse autovalor.\nPara um espectro discreto não degenerado, essa mudança pode ser escrita como\n\\[\n\\ket{\\psi}\n\\longrightarrow\n\\frac{\\braket{a_n|\\psi}}{\\sqrt{|\\braket{a_n|\\psi}|^2}}\\ket{a_n}.\n\\tag{2.9}\\]\nO fator\n\\[\n\\frac{\\braket{a_n|\\psi}}{\\sqrt{|\\braket{a_n|\\psi}|^2}}\n\\]\né apenas uma fase global. Como fases globais não alteram o estado físico, frequentemente escrevemos simplesmente\n\\[\n\\ket{\\psi} \\longrightarrow \\ket{a_n}.\n\\tag{2.10}\\]\nEsse postulado expressa a chamada redução do estado ou colapso da função de onda. Ele indica que, após a medida, uma nova medida imediata da mesma grandeza \\(A\\) produzirá novamente o mesmo autovalor \\(a_n\\), desde que o sistema não tenha evoluído significativamente entre as duas medidas.\nNo caso de autovalores degenerados, o estado não colapsa necessariamente para um único autovetor, mas para a projeção de \\(\\ket{\\psi}\\) no subespaço associado ao autovalor medido.\nVI. Evolução temporal.\nNa ausência de medidas, a evolução temporal do vetor de estado \\(\\ket{\\psi(t)}\\) é governada pela equação de Schrödinger dependente do tempo:\n\\[\ni\\hbar \\frac{\\partial}{\\partial t}\\ket{\\psi(t)}\n=\n\\hat{H}\\ket{\\psi(t)} ,\n\\tag{2.11}\\]\nonde \\(\\hat{H}\\) é o operador Hamiltoniano, associado à energia total do sistema.\nEsses postulados fornecem a estrutura conceitual e matemática da mecânica quântica. A partir deles, é possível descrever fenômenos como a quantização da energia, a dualidade onda-partícula, o princípio da incerteza, a estrutura eletrônica dos átomos e as ligações químicas.",
+    "text": "I. Estado quântico.\nA formulação matemática da mecânica quântica é baseada em um conjunto de postulados que definem como representar o estado de um sistema físico, como descrever grandezas observáveis, quais resultados podem ser obtidos em uma medida e como o sistema evolui no tempo.\nA seguir, apresentamos uma forma simplificada dos postulados, considerando principalmente sistemas descritos por estados normalizados e observáveis com espectro discreto não degenerado.\nEm um instante de tempo \\(t\\), o estado físico de um sistema quântico é representado por um vetor de estado\n\\[\n\\ket{\\psi(t)}\n\\]\npertencente a um espaço de Hilbert complexo, denotado por \\(\\mathcal{H}\\).\nO vetor \\(\\ket{\\psi(t)}\\) contém toda a informação acessível sobre o sistema. Em geral, considera-se que o estado está normalizado, isto é,\n\\[\n\\braket{\\psi(t)|\\psi(t)} = 1 .\n\\tag{2.1}\\]\nNa representação de posição, esse mesmo estado pode ser descrito por uma função de onda \\(\\psi(\\mathbf{r},t)\\), cuja normalização é dada por\n\\[\n\\int |\\psi(\\mathbf{r},t)|^2 \\, d\\tau = 1 .\n\\tag{2.2}\\]",
+    "crumbs": [
+      "Fundamentos da Mecânica Quântica",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Postulados da mecânica quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/2-postulados.html#ii.-observáveis.",
+    "href": "capitulos/2-postulados.html#ii.-observáveis.",
+    "title": "2  Postulados da mecânica quântica",
+    "section": "II. Observáveis.",
+    "text": "II. Observáveis.\nToda quantidade física mensurável \\(A\\) é descrita por um operador hermitiano \\(\\hat{A}\\) atuando no espaço de Hilbert \\(\\mathcal{H}\\).\nEsse operador é chamado de observável. A condição de hermiticidade,\n\\[\n\\hat{A}^{\\dagger} = \\hat{A},\n\\tag{2.3}\\]\ngarante que os resultados possíveis de uma medida sejam números reais.\nExemplos importantes de observáveis são o operador posição \\(\\hat{x}\\), o operador momento linear \\(\\hat{p}_x\\) e o operador energia, ou Hamiltoniano, \\(\\hat{H}\\).\nNa representação de posição, os operadores posição e momento linear são escritos como\n\\[\n\\hat{x}=x\n\\]\ne\n\\[\n\\hat{p}_x = -i\\hbar\\frac{\\partial}{\\partial x}.\n\\tag{2.4}\\]",
+    "crumbs": [
+      "Fundamentos da Mecânica Quântica",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Postulados da mecânica quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/2-postulados.html#iii.-resultados-possíveis-de-uma-medida.",
+    "href": "capitulos/2-postulados.html#iii.-resultados-possíveis-de-uma-medida.",
+    "title": "2  Postulados da mecânica quântica",
+    "section": "III. Resultados possíveis de uma medida.",
+    "text": "III. Resultados possíveis de uma medida.\nAs únicas medidas possíveis da quantidade física \\(A\\) são os autovalores \\(a_n\\) do operador associado \\(\\hat{A}\\).\nOs autovalores e autovetores de \\(\\hat{A}\\) são definidos pela equação de autovalores\n\\[\n\\hat{A}\\ket{a_n}=a_n\\ket{a_n},\n\\tag{2.5}\\]\nonde \\(\\ket{a_n}\\) é o autovetor associado ao autovalor \\(a_n\\).\nAssim, ao medir a grandeza \\(A\\), o resultado obtido deve necessariamente ser um dos valores permitidos \\(a_n\\).",
+    "crumbs": [
+      "Fundamentos da Mecânica Quântica",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Postulados da mecânica quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/2-postulados.html#iv.-probabilidade-de-uma-medida.",
+    "href": "capitulos/2-postulados.html#iv.-probabilidade-de-uma-medida.",
+    "title": "2  Postulados da mecânica quântica",
+    "section": "IV. Probabilidade de uma medida.",
+    "text": "IV. Probabilidade de uma medida.\nQuando medimos a quantidade física \\(A\\) em um sistema preparado no estado \\(\\ket{\\psi}\\), a probabilidade de obter o autovalor \\(a_n\\) é dada por\n\\[\nP(a_n)=|\\braket{a_n|\\psi}|^2 .\n\\tag{2.6}\\]\nEssa expressão é conhecida como regra de Born.\nO termo \\(\\braket{a_n|\\psi}\\) representa a amplitude de probabilidade de encontrar o sistema no autoestado \\(\\ket{a_n}\\). O módulo ao quadrado dessa amplitude fornece a probabilidade associada ao resultado \\(a_n\\).\nSe o estado \\(\\ket{\\psi}\\) for escrito como uma superposição dos autoestados de \\(\\hat{A}\\),\n\\[\n\\ket{\\psi} = \\sum_n c_n \\ket{a_n},\n\\tag{2.7}\\]\nentão os coeficientes \\(c_n\\) são dados por\n\\[\nc_n = \\braket{a_n|\\psi},\n\\]\ne a probabilidade de medir \\(a_n\\) é\n\\[\nP(a_n)=|c_n|^2.\n\\tag{2.8}\\]",
+    "crumbs": [
+      "Fundamentos da Mecânica Quântica",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Postulados da mecânica quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/2-postulados.html#v.-estado-após-a-medida.",
+    "href": "capitulos/2-postulados.html#v.-estado-após-a-medida.",
+    "title": "2  Postulados da mecânica quântica",
+    "section": "V. Estado após a medida.",
+    "text": "V. Estado após a medida.\nSe uma medida da quantidade \\(A\\) for realizada e o autovalor \\(a_n\\) for obtido, o estado do sistema imediatamente após a medida passa a ser o autoestado correspondente a esse autovalor.\nPara um espectro discreto não degenerado, essa mudança pode ser escrita como\n\\[\n\\ket{\\psi}\n\\longrightarrow\n\\frac{\\braket{a_n|\\psi}}{\\sqrt{|\\braket{a_n|\\psi}|^2}}\\ket{a_n}.\n\\tag{2.9}\\]\nO fator\n\\[\n\\frac{\\braket{a_n|\\psi}}{\\sqrt{|\\braket{a_n|\\psi}|^2}}\n\\]\né apenas uma fase global. Como fases globais não alteram o estado físico, frequentemente escrevemos simplesmente\n\\[\n\\ket{\\psi} \\longrightarrow \\ket{a_n}.\n\\tag{2.10}\\]\nEsse postulado expressa a chamada redução do estado ou colapso da função de onda. Ele indica que, após a medida, uma nova medida imediata da mesma grandeza \\(A\\) produzirá novamente o mesmo autovalor \\(a_n\\), desde que o sistema não tenha evoluído significativamente entre as duas medidas.\nNo caso de autovalores degenerados, o estado não colapsa necessariamente para um único autovetor, mas para a projeção de \\(\\ket{\\psi}\\) no subespaço associado ao autovalor medido.",
+    "crumbs": [
+      "Fundamentos da Mecânica Quântica",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Postulados da mecânica quântica</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/2-postulados.html#vi.-evolução-temporal.",
+    "href": "capitulos/2-postulados.html#vi.-evolução-temporal.",
+    "title": "2  Postulados da mecânica quântica",
+    "section": "VI. Evolução temporal.",
+    "text": "VI. Evolução temporal.\nNa ausência de medidas, a evolução temporal do vetor de estado \\(\\ket{\\psi(t)}\\) é governada pela equação de Schrödinger dependente do tempo:\n\\[\ni\\hbar \\frac{\\partial}{\\partial t}\\ket{\\psi(t)}\n=\n\\hat{H}\\ket{\\psi(t)} ,\n\\tag{2.11}\\]\nonde \\(\\hat{H}\\) é o operador Hamiltoniano, associado à energia total do sistema.\nEsses postulados fornecem a estrutura conceitual e matemática da mecânica quântica. A partir deles, é possível descrever fenômenos como a quantização da energia, a dualidade onda-partícula, o princípio da incerteza, a estrutura eletrônica dos átomos e as ligações químicas.",
     "crumbs": [
       "Fundamentos da Mecânica Quântica",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Postulados da mecânica quântica</span>"
