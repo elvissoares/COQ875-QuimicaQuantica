@@ -1,0 +1,239 @@
+# Átomo de Hélio
+
+O átomo de hélio é constituído por um núcleo de carga $+2e$ e dois elétrons. Considerando explicitamente o movimento do núcleo, as interações elétron--núcleo e a interação entre os dois elétrons, a equação de Schrödinger independente do tempo pode ser escrita como
+
+$$\begin{align}
+&\left[ \frac{\hat{\boldsymbol{P}}^2}{2M} + \frac{\hat{\boldsymbol{p}}_1^2}{2m_e} +\frac{\hat{\boldsymbol{p}}_2^2}{2m_e} \right. \nonumber \\
+&\left. - \frac{2e^2}{4\pi\epsilon_0|\boldsymbol{r}_1-\boldsymbol{R}|} - \frac{2e^2}{4\pi\epsilon_0|\boldsymbol{r}_2-\boldsymbol{R}|} + \frac{e^2}{4\pi\epsilon_0|\boldsymbol{r}_1-\boldsymbol{r}_2|}\right]\ket{\Psi} = E_T\ket{\Psi}.
+\end{align}$$
+
+Nessa expressão, $\hat{\boldsymbol{R}}$ e $\hat{\boldsymbol{P}}$ representam, respectivamente, a posição e o operador momento linear do núcleo. Analogamente, $\hat{\boldsymbol{r}}_i$ e $\hat{\boldsymbol{p}}_i$ representam a posição e o momento linear do elétron $i$.
+
+O primeiro termo corresponde à energia cinética do núcleo, enquanto os dois termos seguintes representam as energias cinéticas dos elétrons. Os dois termos atrativos correspondem às interações eletrostáticas entre o núcleo e cada elétron, e o último termo descreve a repulsão eletrostática entre os elétrons.
+
+Para o átomo de hélio, o número atômico é $Z=2$, e $M$ representa a massa do núcleo.
+
+O estado do sistema é descrito por uma função de onda 
+$$
+\begin{aligned}
+\Psi(\boldsymbol{r}_1,\boldsymbol{r}_2,\boldsymbol{R}) &=
+\braket{\boldsymbol{r}_1,\boldsymbol{r}_2,\boldsymbol{R}|\Psi}
+\end{aligned}
+$$
+ que depende das coordenadas espaciais dos dois elétrons e do núcleo. A energia total do sistema é representada por $E_T$.
+
+## Hamiltoniano eletrônico 
+
+Podemos introduzir um sistema de coordenadas relativas ao núcleo por meio das transformações
+
+$$
+\begin{align}
+\boldsymbol{R}' &= \boldsymbol{R}-\boldsymbol{R}=0,\\
+\boldsymbol{r}_i' &= \boldsymbol{r}_i-\boldsymbol{R}.
+\end{align}
+$$
+
+Essa escolha corresponde a utilizar o núcleo como origem do sistema de coordenadas. Desprezando, por enquanto, as correções associadas à massa finita do núcleo, podemos separar o movimento translacional global do movimento eletrônico e escrever a função de onda total na forma
+
+$$
+\begin{aligned}
+\Psi(\boldsymbol{r}_1,\boldsymbol{r}_2,\boldsymbol{R}) &=
+\braket{\boldsymbol{r}_1,\boldsymbol{r}_2,\boldsymbol{R}|\Psi}\\
+&=
+C e^{i\boldsymbol{P}\cdot\boldsymbol{R}/\hbar}
+\Psi(\boldsymbol{r}_1',\boldsymbol{r}_2').
+\end{aligned}
+$$
+
+A partir deste ponto, omitiremos as linhas que identificam as coordenadas relativas. Nesse sistema de coordenadas, a equação de Schrödinger eletrônica assume a forma
+$$\begin{align}
+&\left[ -\frac{\hbar^2}{2m_e}\nabla_1^2 -\frac{\hbar^2}{2m_e}\nabla_2^2 -\frac{2e^2}{4\pi\epsilon_0r_1} -\frac{2e^2}{4\pi\epsilon_0r_2} \right.\\
+&\left.+\frac{e^2}{4\pi\epsilon_0|\boldsymbol{r}_1-\boldsymbol{r}_2|} \right] \Psi(\boldsymbol{r}_1,\boldsymbol{r}_2) = E\Psi(\boldsymbol{r}_1,\boldsymbol{r}_2),
+\end{align}
+$$
+onde
+$$
+E=E_T-\frac{P^2}{2M}
+$$
+é a energia interna do átomo, isto é, a energia total sem a contribuição associada à translação global.
+
+O raio de Bohr é definido por
+$$
+a_0=\frac{4\pi\epsilon_0\hbar^2}{m_e e^2} \approx 0{,}5292\ \overset{\circ}{\text{A}},
+$$
+enquanto a energia de Hartree é dada por
+$$
+1\ \mathrm{Ha}=\frac{e^2}{4\pi\epsilon_0a_0} \approx 27{,}2114\ \mathrm{eV}.
+$$
+
+Nas chamadas **unidades atômicas**, adotamos
+$$
+\hbar=m_e=e=4\pi\epsilon_0=1.
+$$
+
+Consequentemente, as distâncias são medidas em unidades de $a_0$, e as energias são medidas em Hartree. O Hamiltoniano eletrônico do átomo de hélio pode, então, ser escrito como
+$$
+\hat{H}=-\frac{1}{2}\nabla_1^2 -\frac{1}{2}\nabla_2^2 -\frac{2}{r_1} -\frac{2}{r_2}
++\frac{1}{|\boldsymbol{r}_1-\boldsymbol{r}_2|},
+$$ {#eq-hamiltoniano-helio}
+e pode ser decomposto na forma
+$$
+\hat{H}=\hat{h}_1+\hat{h}_2+\hat{w}_{12},
+$$
+onde
+$$
+\hat{h}_i=-\frac{1}{2}\nabla_i^2-\frac{2}{r_i}
+$$ {#eq-hamiltoniano-helio-um-eletron}
+e
+$$
+\hat{w}_{12}= \frac{1}{|\boldsymbol{r}_1-\boldsymbol{r}_2|}.
+$$ {#eq-interacao-eletron-eletron}
+
+Os operadores $\hat{h}_i$ são Hamiltonianos de um elétron sujeito ao campo eletrostático do núcleo, enquanto $\hat{w}_{12}$ descreve a interação entre os dois elétrons.
+
+O termo de interação elétron--elétron depende simultaneamente das coordenadas $\boldsymbol{r}_1$ e $\boldsymbol{r}_2$. Por esse motivo, a equação de Schrödinger do átomo de hélio não é separável em duas equações independentes de um elétron e não possui solução analítica exata simples.
+
+## Aproximação de elétrons independentes 
+
+Uma primeira aproximação consiste em supor que a função de onda espacial dos dois elétrons possa ser escrita como um produto de funções de onda de um elétron:
+
+$$
+\Psi(\boldsymbol{r}_1,\boldsymbol{r}_2)= \psi(\boldsymbol{r}_1)\psi(\boldsymbol{r}_2).
+$$ {#eq-aproximacao-produto-helio}
+
+Para um átomo hidrogenoide com carga nuclear $Z$, a função de onda normalizada do orbital $1s$, em unidades atômicas, é
+
+$$
+\psi_{1s}(\boldsymbol{r})= \left(\frac{Z^3}{\pi}\right)^{1/2}
+e^{-Zr}.
+$$ {#eq-orbital-hidrogenoide-1s}
+
+Para $Z=2$, essa seria a solução exata para cada elétron do átomo de hélio caso a interação $\hat{w}_{12}$ fosse desprezada. Entretanto, como os elétrons interagem entre si, o produto definido na @eq-aproximacao-produto-helio constitui apenas uma aproximação para a função de onda eletrônica.
+
+Como veremos adiante, os elétrons são férmions e, portanto, a função de onda eletrônica total deve ser antissimétrica com relação à troca das coordenadas completas dos dois elétrons. No estado fundamental do átomo de hélio, a função de onda de spin é um estado singleto antissimétrico. Consequentemente, a parte espacial da função de onda é simétrica e pode ser representada pelo produto da @eq-aproximacao-produto-helio.
+
+### Primeira tentativa de solução 
+
+Na primeira aproximação, empregamos diretamente orbitais hidrogenoides com carga nuclear $Z=2$. A função de onda espacial tentativa é, portanto,
+
+$$
+\Psi^{(1)}(\boldsymbol{r}_1,\boldsymbol{r}_2)= \frac{8}{\pi} e^{-2(r_1+r_2)}.
+$$ {#eq-funcao-tentativa-helio-primeira}
+
+Essa função está normalizada, pois é construída como o produto de dois orbitais $1s$ normalizados:
+$$
+\braket{\Psi^{(1)}|\Psi^{(1)}}=1.
+$$
+
+Como cada orbital é um autoestado do Hamiltoniano hidrogenoide com $Z=2$, o valor esperado de cada Hamiltoniano de um elétron é
+
+$$
+\begin{aligned}
+\braket{\hat{h}_i} &= \braket{\Psi^{(1)}|\hat{h}_i|\Psi^{(1)}}\\
+&= \iint \Psi^{(1)*}(\boldsymbol{r}_1,\boldsymbol{r}_2) \left( -\frac{1}{2}\nabla_i^2-\frac{2}{r_i} \right) \Psi^{(1)}(\boldsymbol{r}_1,\boldsymbol{r}_2) \mathrm{d}\boldsymbol{r}_1 \mathrm{d}\boldsymbol{r}_2\\
+&= -2\ \mathrm{Ha}.
+\end{aligned}
+$$
+
+O valor esperado da interação entre os elétrons é
+$$
+\begin{aligned}
+\braket{\hat{w}_{12}} &= \braket{\Psi^{(1)}|\hat{w}_{12}|\Psi^{(1)}}\\
+&= \iint \Psi^{(1)*}(\boldsymbol{r}_1,\boldsymbol{r}_2) \frac{1}{|\boldsymbol{r}_1-\boldsymbol{r}_2|}  \Psi^{(1)}(\boldsymbol{r}_1,\boldsymbol{r}_2)
+\mathrm{d}\boldsymbol{r}_1 \mathrm{d}\boldsymbol{r}_2\\
+&=\frac{5}{4}\ \mathrm{Ha}.
+\end{aligned}
+$$
+
+Dessa forma, a energia eletrônica aproximada é
+
+$$
+\begin{aligned}
+E^{(1)} &= \braket{\Psi^{(1)}|\hat{H}|\Psi^{(1)}}\\
+&= \braket{\hat{h}_1} + \braket{\hat{h}_2} + \braket{\hat{w}_{12}}\\
+&= -2-2+\frac{5}{4}\\
+&= -\frac{11}{4}\ \mathrm{Ha}.
+\end{aligned}
+$$
+
+Em elétron-volts,
+$$
+E^{(1)}=-2{,}75\ \mathrm{Ha}= -74{,}8314\ \mathrm{eV}.
+$$
+
+Esse resultado apresenta um erro de aproximadamente 5\% em relação à energia experimental do estado fundamental. O resultado é menos negativo porque a função de onda tentativa não descreve adequadamente a reorganização da densidade eletrônica provocada pela repulsão entre os elétrons.
+
+::: {.callout-note title="Princípio variacional"}
+
+Seja $\ket{\Psi_0}$ o estado fundamental de um Hamiltoniano $\hat{H}$, com energia $E_0$, de modo que
+$$
+\hat{H}\ket{\Psi_0} = E_0\ket{\Psi_0}.
+$$
+
+Para qualquer função de onda tentativa normalizável $\ket{\psi}$, vale a desigualdade
+$$
+\frac{\braket{\psi|\hat{H}|\psi}}{\braket{\psi|\psi}}\geq E_0.
+$$ {#eq-principio-variacional}
+
+A igualdade é satisfeita quando $\ket{\psi}$ pertence ao subespaço associado ao estado fundamental. Para um estado fundamental não degenerado, isso significa que $\ket{\psi}$ deve ser proporcional a $\ket{\Psi_0}$.
+
+**Demonstração**
+
+Consideremos conhecido o conjunto completo de autoestados ortonormais de $\hat{H}$, tal que
+$$
+\hat{H}\ket{\Psi_n} = E_n\ket{\Psi_n},
+$$
+com 
+$$
+\braket{\Psi_n|\Psi_m} = \delta_{nm},\quad \text{e}\quad \sum_{n=0}^{\infty} \ket{\Psi_n}\bra{\Psi_n} = \mathbb{I}.
+$$
+
+Podemos expandir uma função de onda tentativa arbitrária $\ket{\psi}$ nessa base como
+$$
+s\ket{\psi}= \sum_{n=0}^{\infty} c_n\ket{\Psi_n},\quad \text{onde}\quad c_n=\braket{\Psi_n|\psi}.
+$$
+são os coeficientes de expansão. O valor esperado da energia é, então,
+$$ \frac{\braket{\psi|\hat{H}|\psi}}{\braket{\psi|\psi}} = \frac{ \displaystyle \sum_{n=0}^{\infty}|c_n|^2E_n}{\displaystyle\sum_{n=0}^{\infty}|c_n|^2}.
+$$ {#eq-energia-expansao-autoestados}
+
+Subtraindo $E_0$, obtemos
+$$
+\frac{\braket{\psi|\hat{H}|\psi}} {\braket{\psi|\psi}} - E_0 = \frac{\displaystyle \sum_{n=0}^{\infty} |c_n|^2(E_n-E_0)}{\displaystyle \sum_{n=0}^{\infty} |c_n|^2}.
+$$
+
+Como $E_n-E_0\geq 0$ para todo $n$, o lado direito é não negativo. Logo,
+
+$$
+\frac{\braket{\psi|\hat{H}|\psi}}
+{\braket{\psi|\psi}}
+\geq E_0.
+$$
+
+Para um estado fundamental não degenerado, a igualdade $\langle \hat{H} \rangle = E_0$ somente ocorrerá quando $c_n=0$, para todo $n\neq 0$. Isto é, $\ket{\psi} \propto \ket{\Psi_0}$, ou seja, a função de onda tentativa é proporcional ao estado fundamental exato.
+
+Se a função de onda tentativa depender de um ou mais parâmetros variacionais, representados genericamente por $\lambda$, podemos escrever
+$$
+\ket{\psi}=\ket{\psi(\lambda)}.
+$$
+
+A energia variacional correspondente é
+$$
+E(\lambda)=\frac{\braket{\psi(\lambda)|\hat{H}|\psi(\lambda)}}{\braket{\psi(\lambda)|\psi(\lambda)}}.
+$$
+
+O melhor valor do parâmetro dentro da família de funções considerada é obtido minimizando-se $E(\lambda)$:
+$$
+\left.\frac{\mathrm{d}E(\lambda)}{\mathrm{d}\lambda}\right|_{\lambda=\lambda_*}=
+0,
+$$
+com a condição adicional
+$$
+\left.\frac{\mathrm{d}^2E(\lambda)}{\mathrm{d}\lambda^2}\right|_{\lambda=\lambda_*}
+>
+0.
+$$
+
+Mesmo após a otimização, o princípio variacional continua garantindo que
+$$
+E(\lambda_*)\geq E_0.
+$$

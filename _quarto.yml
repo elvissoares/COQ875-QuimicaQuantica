@@ -28,6 +28,8 @@ book:
         - capitulos/1-bases_experimentais.qmd
         - capitulos/2-postulados.qmd
     - part: "Estrutura Eletrônica de Átomos e Moléculas"
+      chapters:
+        - capitulos/5-atomo_de_helio.qmd
 
   downloads: [pdf, epub]
   repo-url: https://github.com/elvissoares/COQ875-QuimicaQuantica
