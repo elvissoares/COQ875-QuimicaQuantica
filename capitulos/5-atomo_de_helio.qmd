@@ -112,7 +112,7 @@ Para $Z=2$, essa seria a solução exata para cada elétron do átomo de hélio 
 
 Como veremos adiante, os elétrons são férmions e, portanto, a função de onda eletrônica total deve ser antissimétrica com relação à troca das coordenadas completas dos dois elétrons. No estado fundamental do átomo de hélio, a função de onda de spin é um estado singleto antissimétrico. Consequentemente, a parte espacial da função de onda é simétrica e pode ser representada pelo produto da @eq-aproximacao-produto-helio.
 
-### Primeira tentativa de solução 
+### 1ª tentativa de solução 
 
 Na primeira aproximação, empregamos diretamente orbitais hidrogenoides com carga nuclear $Z=2$. A função de onda espacial tentativa é, portanto,
 
@@ -163,7 +163,8 @@ $$
 
 Esse resultado apresenta um erro de aproximadamente 5\% em relação à energia experimental do estado fundamental. O resultado é menos negativo porque a função de onda tentativa não descreve adequadamente a reorganização da densidade eletrônica provocada pela repulsão entre os elétrons.
 
-::: {.callout-note title="Princípio variacional"}
+::: {.callout-important}
+## Princípio variacional
 
 Seja $\ket{\Psi_0}$ o estado fundamental de um Hamiltoniano $\hat{H}$, com energia $E_0$, de modo que
 $$
@@ -177,7 +178,10 @@ $$ {#eq-principio-variacional}
 
 A igualdade é satisfeita quando $\ket{\psi}$ pertence ao subespaço associado ao estado fundamental. Para um estado fundamental não degenerado, isso significa que $\ket{\psi}$ deve ser proporcional a $\ket{\Psi_0}$.
 
-**Demonstração**
+:::
+
+::: {.callout-note collapse="true"}
+## Demonstração do princípio variacional
 
 Consideremos conhecido o conjunto completo de autoestados ortonormais de $\hat{H}$, tal que
 $$
@@ -194,7 +198,7 @@ s\ket{\psi}= \sum_{n=0}^{\infty} c_n\ket{\Psi_n},\quad \text{onde}\quad c_n=\bra
 $$
 são os coeficientes de expansão. O valor esperado da energia é, então,
 $$ \frac{\braket{\psi|\hat{H}|\psi}}{\braket{\psi|\psi}} = \frac{ \displaystyle \sum_{n=0}^{\infty}|c_n|^2E_n}{\displaystyle\sum_{n=0}^{\infty}|c_n|^2}.
-$$ {#eq-energia-expansao-autoestados}
+$$
 
 Subtraindo $E_0$, obtemos
 $$
@@ -210,6 +214,12 @@ $$
 $$
 
 Para um estado fundamental não degenerado, a igualdade $\langle \hat{H} \rangle = E_0$ somente ocorrerá quando $c_n=0$, para todo $n\neq 0$. Isto é, $\ket{\psi} \propto \ket{\Psi_0}$, ou seja, a função de onda tentativa é proporcional ao estado fundamental exato.
+
+:::
+
+::: {.callout-tip}
+
+## Princípio variacional com parâmetros variacionais
 
 Se a função de onda tentativa depender de um ou mais parâmetros variacionais, representados genericamente por $\lambda$, podemos escrever
 $$
@@ -237,3 +247,23 @@ Mesmo após a otimização, o princípio variacional continua garantindo que
 $$
 E(\lambda_*)\geq E_0.
 $$
+
+:::
+
+### 2ª tentativa de solução:
+
+Desta forma, usando o teorema variacional podemos escrever uma função de onda tentativa baseada na @eq-orbital-hidrogenoide-1s mas usando uma função de 1 elétron generalizado da forma
+$$\begin{align}
+    \psi(\boldsymbol{r}) = \left(\frac{\lambda^3}{\pi}\right)^{1/2} e^{-\lambda r}.
+\end{align}$$ {#eq-variational-He}
+sendo $\lambda$ o parâmetro variacional. Com essa função de onda temos que  
+$$\begin{align}
+    \braket{\hat{h}_i} = \frac{1}{2}( \lambda^2 - 4\lambda) \qquad \text{e} \qquad \braket{\hat{w}_{12}}= \frac{5}{8}\lambda,
+\end{align}$$
+e o valor esperado do Hamiltoniano total será 
+$$\begin{align}
+    \braket{\hat{H}} = \braket{\hat{h}_1} + \braket{\hat{h}_2} + \braket{\hat{w}_{12}} = \lambda^2-\frac{27}{8}\lambda
+\end{align}$$
+cujo valor ótimo do parâmetro será $\lambda_*=27/16=1.6875$. Lembrando que $\lambda$ tem caráter de carga do núcleo no caso de um átomo hidrogenóide, podemos dizer que esse valor de $\lambda$ representa uma carga blindada do núcleo do átomo de He que os elétrons interagem. Nesse caso temos como valor esperado da energia $\braket{\hat{H}}_*=-2.84766\ \text{Ha}=-77.4887$ eV, que agora nos fornece 1,8\% de erro em relação ao valor experimental.
+
+Veremos mais adiante que uma escolha melhor para a função de onda do átomo de He pode ser uma combinação de diversas funções de onda de Slater com parâmetros $\lambda_i$ distintos. 
