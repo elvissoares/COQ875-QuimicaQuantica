@@ -12,7 +12,6 @@ book:
   title: "Química Quântica para Moléculas e Sólidos"
   subtitle: "Notas de aula e aplicações computacionais"
   author: "Prof. Elvis do A. Soares"
-  output-file: quimica-quantica
   site-url: https://elvissoares.github.io/COQ875-QuimicaQuantica/
 
   page-footer:

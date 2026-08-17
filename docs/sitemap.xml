@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/index.html</loc>
+    <lastmod>2026-06-19T13:18:02.268Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/prefacio.html</loc>
+    <lastmod>2026-06-19T13:18:02.268Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/1-bases_experimentais.html</loc>
+    <lastmod>2026-06-23T17:55:23.494Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/2-postulados.html</loc>
+    <lastmod>2026-06-23T18:39:58.608Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/3-matematica.html</loc>
+    <lastmod>2026-08-17T17:58:28.383Z</lastmod>
+  </url>
+  <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/4-schroedinger.html</loc>
-    <lastmod>2026-08-17T18:24:51.846Z</lastmod>
+    <lastmod>2026-08-17T18:32:51.311Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/5-atomo_de_helio.html</loc>
+    <lastmod>2026-08-17T18:17:18.524Z</lastmod>
   </url>
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/6-molecula_de_hidrogenio.html</loc>
@@ -13,11 +37,11 @@
     <lastmod>2026-08-17T17:43:21.264Z</lastmod>
   </url>
   <url>
-    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/1-bases_experimentais.html</loc>
-    <lastmod>2026-06-23T17:55:23.494Z</lastmod>
-  </url>
-  <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/8-hartree_fock.html</loc>
     <lastmod>2026-08-17T18:26:28.434Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/Química-Quântica-para-Moléculas-e-Sólidos.pdf</loc>
+    <lastmod>2026-08-17T18:33:52.983Z</lastmod>
   </url>
 </urlset>
