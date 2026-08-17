@@ -13,6 +13,7 @@ book:
   subtitle: "Notas de aula e aplicações computacionais"
   author: "Prof. Elvis do A. Soares"
   output-file: quimica-quantica
+  site-url: https://elvissoares.github.io/COQ875-QuimicaQuantica/
 
   page-footer:
     left: |
@@ -38,7 +39,7 @@ book:
 
   downloads: [pdf, epub]
   repo-url: https://github.com/elvissoares/COQ875-QuimicaQuantica
-  repo-branch: 2026_2
+  repo-branch: "2026_2"
   repo-actions: [source, issue]
 
 bibliography: referencias/referencias.bib

@@ -13,6 +13,8 @@ $$
     \hat{h}_i=-\frac{1}{2}\nabla_i^2 - \sum_{A=1}^M \frac{Z_A}{|\boldsymbol{r}_i-\boldsymbol{R}_A|}, 
 $$
 
+## Determinante de Slater
+
 A função de onda eletrônica de muitos elétrons $\ket{\Psi_e}$ na base de posições e spins deve ser escrita como $\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N)$ onde $\boldsymbol{x}_i=\boldsymbol{r}_i,\sigma_i$ é uma variável que representa a posição $\boldsymbol{r}_i$ e o spin $\sigma_i$ do elétron $i$. Sabemos que tal função de onda pode ser escrita em termos do produto de funções de onda para 1 elétron, $\psi_j(\boldsymbol{x}_i)$, onde $i$ representa o elétron e $j$ o estado de 1 elétron, e com a condição que $\braket{\psi_i|\psi_j} = \delta_{ij}$. É comum denominarmos o conjunto $\psi_j(\boldsymbol{x}_i)$ como **conjunto de spin-orbitais molecular**.
 
 Para satisfazer o **princípio de exclusão de Pauli** devemos construir uma função de onda que seja totalmente anti-simétrica sobre permutações de 2 elétrons, tal que $\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N) = - \Psi_e(\boldsymbol{x}_2,\boldsymbol{x}_1,\ldots,\boldsymbol{x}_N)$. Para resolver esse problema, Slater propôs que a função de onda de $N$ elétrons seja escrita na forma de um determinante de funções de onda de 1 elétrons. O **determinante de Slater** é escrito como 
@@ -25,6 +27,8 @@ $$\begin{aligned}
     \end{vmatrix}
 \end{aligned}$${#eq-determinante_Slater}
 onde a 1ª linha representa os $N$ estados possíveis para o elétron $i=1$, a 2ª linha representa os $N$ estados possíveis para o elétron $i=2$, e assim por diante. O termo $\frac{1}{\sqrt{N!}}$ vem da condição de normalização da função de onda $\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N)$ dos $N$ elétrons ($N!$ é o número de permutações possíveis de $N$ elétrons). 
+
+## Regras de Slater-Condon
 
 Usando o determinante de Slater, podemos mostrar as chamadas **regras de Slater-Condon** tal que para o operador de 1 elétron temos que 
 $$\begin{aligned}
@@ -41,6 +45,8 @@ $$\begin{aligned}
 \left\langle \psi_i \psi_j \left| \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \right| \psi_k \psi_l \right\rangle = \iint \psi_i^*(\boldsymbol{x}_1) \psi_j^*(\boldsymbol{x}_2) \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \psi_k(\boldsymbol{x}_1) \psi_l(\boldsymbol{x}_2) \ \text{d}\boldsymbol{x}_1 \text{d}\boldsymbol{x}_2,
 \end{aligned}$$
 de modo que o primeiro termo da @eq-eletron-eletron-HF é a interação direta de Coulomb e o segundo termo é a interação de troca. Essa interação de troca não possui análogo na física clássica e tem sua origem na indistinguibilidade dos elétrons. 
+
+## Equações de Hartree-Fock
 
 Afim de encontrar os melhores spin-orbitais para determinar a energia do estado fundamental do nosso sistema, devemos utilizar o teorema variacional novamente. Podemos construir uma Lagrangeana na seguinte forma 
 $$\begin{aligned}

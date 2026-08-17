@@ -428,8 +428,16 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#determinante-de-slater" id="toc-determinante-de-slater" class="nav-link active" data-scroll-target="#determinante-de-slater"><span class="header-section-number">8.1</span> Determinante de Slater</a></li>
+  <li><a href="#regras-de-slater-condon" id="toc-regras-de-slater-condon" class="nav-link" data-scroll-target="#regras-de-slater-condon"><span class="header-section-number">8.2</span> Regras de Slater-Condon</a></li>
+  <li><a href="#equações-de-hartree-fock" id="toc-equações-de-hartree-fock" class="nav-link" data-scroll-target="#equações-de-hartree-fock"><span class="header-section-number">8.3</span> Equações de Hartree-Fock</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/8-hartree_fock.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -461,6 +469,8 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
 \]</span> onde <span class="math inline">\(\hat{h}_i\)</span> é o operador de 1 elétron que inclui a energia cinética do elétron e a interação coulombiana elétron-núcleo, escrito na forma <span class="math display">\[
     \hat{h}_i=-\frac{1}{2}\nabla_i^2 - \sum_{A=1}^M \frac{Z_A}{|\boldsymbol{r}_i-\boldsymbol{R}_A|},
 \]</span></p>
+<section id="determinante-de-slater" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="determinante-de-slater"><span class="header-section-number">8.1</span> Determinante de Slater</h2>
 <p>A função de onda eletrônica de muitos elétrons <span class="math inline">\(\ket{\Psi_e}\)</span> na base de posições e spins deve ser escrita como <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N)\)</span> onde <span class="math inline">\(\boldsymbol{x}_i=\boldsymbol{r}_i,\sigma_i\)</span> é uma variável que representa a posição <span class="math inline">\(\boldsymbol{r}_i\)</span> e o spin <span class="math inline">\(\sigma_i\)</span> do elétron <span class="math inline">\(i\)</span>. Sabemos que tal função de onda pode ser escrita em termos do produto de funções de onda para 1 elétron, <span class="math inline">\(\psi_j(\boldsymbol{x}_i)\)</span>, onde <span class="math inline">\(i\)</span> representa o elétron e <span class="math inline">\(j\)</span> o estado de 1 elétron, e com a condição que <span class="math inline">\(\braket{\psi_i|\psi_j} = \delta_{ij}\)</span>. É comum denominarmos o conjunto <span class="math inline">\(\psi_j(\boldsymbol{x}_i)\)</span> como <strong>conjunto de spin-orbitais molecular</strong>.</p>
 <p>Para satisfazer o <strong>princípio de exclusão de Pauli</strong> devemos construir uma função de onda que seja totalmente anti-simétrica sobre permutações de 2 elétrons, tal que <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N) = - \Psi_e(\boldsymbol{x}_2,\boldsymbol{x}_1,\ldots,\boldsymbol{x}_N)\)</span>. Para resolver esse problema, Slater propôs que a função de onda de <span class="math inline">\(N\)</span> elétrons seja escrita na forma de um determinante de funções de onda de 1 elétrons. O <strong>determinante de Slater</strong> é escrito como <span id="eq-determinante_Slater"><span class="math display">\[\begin{aligned}
     \Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N) = \frac{1}{\sqrt{N!}} \begin{vmatrix}
@@ -470,6 +480,9 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
         \psi_1(\boldsymbol{x}_N) &amp; \psi_2(\boldsymbol{x}_N) &amp; \dots &amp; \psi_N(\boldsymbol{x}_N)
     \end{vmatrix}
 \end{aligned} \tag{8.1}\]</span></span> onde a 1ª linha representa os <span class="math inline">\(N\)</span> estados possíveis para o elétron <span class="math inline">\(i=1\)</span>, a 2ª linha representa os <span class="math inline">\(N\)</span> estados possíveis para o elétron <span class="math inline">\(i=2\)</span>, e assim por diante. O termo <span class="math inline">\(\frac{1}{\sqrt{N!}}\)</span> vem da condição de normalização da função de onda <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N)\)</span> dos <span class="math inline">\(N\)</span> elétrons (<span class="math inline">\(N!\)</span> é o número de permutações possíveis de <span class="math inline">\(N\)</span> elétrons).</p>
+</section>
+<section id="regras-de-slater-condon" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="regras-de-slater-condon"><span class="header-section-number">8.2</span> Regras de Slater-Condon</h2>
 <p>Usando o determinante de Slater, podemos mostrar as chamadas <strong>regras de Slater-Condon</strong> tal que para o operador de 1 elétron temos que <span class="math display">\[\begin{aligned}
 \left\langle \Psi_e \left| \sum_{i=1}^{N} \hat{h}_i \right| \Psi_e \right\rangle &amp;= \sum_{i=1}^{N} \langle \psi_i | \hat{h}_1 | \psi_i \rangle \\
 &amp;= \sum_{i=1}^{N}\int \psi_i^*(\boldsymbol{x}_1) \hat{h}_1 \psi_i (\boldsymbol{x}_1)\ \text{d}\boldsymbol{x}_1,
@@ -479,6 +492,9 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
 \end{aligned} \tag{8.2}\]</span></span> onde <span class="math display">\[\begin{aligned}
 \left\langle \psi_i \psi_j \left| \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \right| \psi_k \psi_l \right\rangle = \iint \psi_i^*(\boldsymbol{x}_1) \psi_j^*(\boldsymbol{x}_2) \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \psi_k(\boldsymbol{x}_1) \psi_l(\boldsymbol{x}_2) \ \text{d}\boldsymbol{x}_1 \text{d}\boldsymbol{x}_2,
 \end{aligned}\]</span> de modo que o primeiro termo da <a href="#eq-eletron-eletron-HF" class="quarto-xref">Equation&nbsp;<span>8.2</span></a> é a interação direta de Coulomb e o segundo termo é a interação de troca. Essa interação de troca não possui análogo na física clássica e tem sua origem na indistinguibilidade dos elétrons.</p>
+</section>
+<section id="equações-de-hartree-fock" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="equações-de-hartree-fock"><span class="header-section-number">8.3</span> Equações de Hartree-Fock</h2>
 <p>Afim de encontrar os melhores spin-orbitais para determinar a energia do estado fundamental do nosso sistema, devemos utilizar o teorema variacional novamente. Podemos construir uma Lagrangeana na seguinte forma <span class="math display">\[\begin{aligned}
     \mathcal{L}(\{\psi_i\}) = \braket{\Psi_e|\hat{H}_e|\Psi_e} - \sum_{ij} \epsilon_{ij} (\braket{\psi_i|\psi_j}-\delta_{ij})
 \end{aligned}\]</span> onde o primeiro termo é o valor esperado do Hamiltoniano eletrônico molecular sem a interação núcleo-núcleo e o segundo termo aparece como um multiplicador de Lagrange <span class="math inline">\(\epsilon_{ij}\)</span> afim de satisfazer a condição de orto-normalização dos spin-orbitais. Efetuando a derivada variacional do tipo <span class="math display">\[
@@ -493,6 +509,7 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
 <p>As soluções <span class="math inline">\(\ket{\psi_k}\)</span> e <span class="math inline">\(\epsilon_k\)</span> são os spin-orbitais moleculares e as energias orbitais, respectivamente. Embora as equações de Hartree-Fock apareçam na forma de um problema de autovalor, devemos notar que o operador de Fock depende das próprias soluções <span class="math inline">\(\ket{\psi_k}\)</span>. Assim, tal problema deve ser resolvido por outras técnicas.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -581,7 +598,7 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/elvissoares\.github\.io\/COQ875-QuimicaQuantica\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -925,7 +942,7 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/livro-quarto/capitulos/8-hartree_fock.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/8-hartree_fock.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>
