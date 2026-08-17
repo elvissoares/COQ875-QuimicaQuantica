@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Método de Hartree-Fock – Química Quântica para Moléculas e Sólidos</title>
+<title>9&nbsp; Conjuntos de bases – Química Quântica para Moléculas e Sólidos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../capitulos/9-bases.html" rel="next">
-<link href="../capitulos/7-problema_de_muitos_eletrons.html" rel="prev">
+<link href="../capitulos/8-hartree_fock.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -296,7 +295,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/8-hartree_fock.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/9-bases.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -418,13 +417,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/8-hartree_fock.html" class="sidebar-item-text sidebar-link active">
+  <a href="../capitulos/8-hartree_fock.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/9-bases.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/9-bases.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
   </div>
 </li>
@@ -440,19 +439,24 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#determinante-de-slater" id="toc-determinante-de-slater" class="nav-link active" data-scroll-target="#determinante-de-slater"><span class="header-section-number">8.1</span> Determinante de Slater</a></li>
-  <li><a href="#regras-de-slater-condon" id="toc-regras-de-slater-condon" class="nav-link" data-scroll-target="#regras-de-slater-condon"><span class="header-section-number">8.2</span> Regras de Slater-Condon</a></li>
-  <li><a href="#equações-de-hartree-fock" id="toc-equações-de-hartree-fock" class="nav-link" data-scroll-target="#equações-de-hartree-fock"><span class="header-section-number">8.3</span> Equações de Hartree-Fock</a></li>
+  <li><a href="#base-de-orbitais-de-slater-sto" id="toc-base-de-orbitais-de-slater-sto" class="nav-link active" data-scroll-target="#base-de-orbitais-de-slater-sto"><span class="header-section-number">9.1</span> Base de orbitais de Slater (STO)</a></li>
+  <li><a href="#base-de-orbitais-gaussianos-gto" id="toc-base-de-orbitais-gaussianos-gto" class="nav-link" data-scroll-target="#base-de-orbitais-gaussianos-gto"><span class="header-section-number">9.2</span> Base de orbitais gaussianos (GTO)</a></li>
+  <li><a href="#base-de-orbitais-gaussianos-contraídos-cgf" id="toc-base-de-orbitais-gaussianos-contraídos-cgf" class="nav-link" data-scroll-target="#base-de-orbitais-gaussianos-contraídos-cgf"><span class="header-section-number">9.3</span> Base de orbitais gaussianos contraídos (CGF)</a></li>
+  <li><a href="#base-de-orbitais-estilo-pople-sto-ng" id="toc-base-de-orbitais-estilo-pople-sto-ng" class="nav-link" data-scroll-target="#base-de-orbitais-estilo-pople-sto-ng"><span class="header-section-number">9.4</span> Base de orbitais estilo Pople (STO-<span class="math inline">\(n\)</span>G)</a></li>
+  <li><a href="#base-de-orbitais-split-valence" id="toc-base-de-orbitais-split-valence" class="nav-link" data-scroll-target="#base-de-orbitais-split-valence"><span class="header-section-number">9.5</span> Base de orbitais split valence</a></li>
+  <li><a href="#bases-polarizadas-e-difusas" id="toc-bases-polarizadas-e-difusas" class="nav-link" data-scroll-target="#bases-polarizadas-e-difusas"><span class="header-section-number">9.6</span> Bases polarizadas e difusas</a></li>
+  <li><a href="#bases-consistentes-com-correlação" id="toc-bases-consistentes-com-correlação" class="nav-link" data-scroll-target="#bases-consistentes-com-correlação"><span class="header-section-number">9.7</span> Bases consistentes com correlação</a></li>
+  <li><a href="#equações-de-roothan-hartree-fock" id="toc-equações-de-roothan-hartree-fock" class="nav-link" data-scroll-target="#equações-de-roothan-hartree-fock"><span class="header-section-number">9.8</span> Equações de Roothan-Hartree-Fock</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/8-hartree_fock.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/9-bases.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/8-hartree_fock.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/9-bases.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></h1>
 </div>
 
 
@@ -469,51 +473,157 @@ window.Quarto = {
 </header>
 
 
-<p>Usando o <a href="5-atomo_de_helio.html#eq-principio-variacional" class="quarto-xref">Equation&nbsp;<span>5.7</span></a>, podemos escolher uma função de onda eletrônica tentativa <span class="math inline">\(\ket{\Psi_e}\)</span> tal que o valor esperado para o Hamiltoniano eletrônico molecular <span class="math inline">\(\hat{H}_e\)</span> possa ser calculado como <span class="math display">\[
-E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
-\]</span> onde <span class="math inline">\(E_0\)</span> é a energia do estado fundamental eletrônico e <span class="math inline">\(\hat{H}_e\)</span> é o Hamiltoniano eletrônico molecular definido, a partir da <a href="7-problema_de_muitos_eletrons.html#eq-problema_eletronico" class="quarto-xref">Equation&nbsp;<span>7.1</span></a>, como <span class="math display">\[
-\hat{H}_e =  \sum_{i=1}^N \hat{h}_i + \frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|}+ \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}
-\]</span> onde <span class="math inline">\(\hat{h}_i\)</span> é o operador de 1 elétron que inclui a energia cinética do elétron e a interação coulombiana elétron-núcleo, escrito na forma <span class="math display">\[
-    \hat{h}_i=-\frac{1}{2}\nabla_i^2 - \sum_{A=1}^M \frac{Z_A}{|\boldsymbol{r}_i-\boldsymbol{R}_A|},
-\]</span></p>
-<section id="determinante-de-slater" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="determinante-de-slater"><span class="header-section-number">8.1</span> Determinante de Slater</h2>
-<p>A função de onda eletrônica de muitos elétrons <span class="math inline">\(\ket{\Psi_e}\)</span> na base de posições e spins deve ser escrita como <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N)\)</span> onde <span class="math inline">\(\boldsymbol{x}_i=\boldsymbol{r}_i,\sigma_i\)</span> é uma variável que representa a posição <span class="math inline">\(\boldsymbol{r}_i\)</span> e o spin <span class="math inline">\(\sigma_i\)</span> do elétron <span class="math inline">\(i\)</span>. Sabemos que tal função de onda pode ser escrita em termos do produto de funções de onda para 1 elétron, <span class="math inline">\(\psi_j(\boldsymbol{x}_i)\)</span>, onde <span class="math inline">\(i\)</span> representa o elétron e <span class="math inline">\(j\)</span> o estado de 1 elétron, e com a condição que <span class="math inline">\(\braket{\psi_i|\psi_j} = \delta_{ij}\)</span>. É comum denominarmos o conjunto <span class="math inline">\(\psi_j(\boldsymbol{x}_i)\)</span> como <strong>conjunto de spin-orbitais molecular</strong>.</p>
-<p>Para satisfazer o <strong>princípio de exclusão de Pauli</strong> devemos construir uma função de onda que seja totalmente anti-simétrica sobre permutações de 2 elétrons, tal que <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N) = - \Psi_e(\boldsymbol{x}_2,\boldsymbol{x}_1,\ldots,\boldsymbol{x}_N)\)</span>. Para resolver esse problema, Slater propôs que a função de onda de <span class="math inline">\(N\)</span> elétrons seja escrita na forma de um determinante de funções de onda de 1 elétrons. O <strong>determinante de Slater</strong> é escrito como <span id="eq-determinante_Slater"><span class="math display">\[\begin{aligned}
-    \Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N) = \frac{1}{\sqrt{N!}} \begin{vmatrix}
-        \psi_1(\boldsymbol{x}_1) &amp; \psi_2(\boldsymbol{x}_1) &amp; \dots &amp; \psi_N(\boldsymbol{x}_1) \\
-        \psi_1(\boldsymbol{x}_2) &amp; \psi_2(\boldsymbol{x}_2) &amp; \dots &amp; \psi_N(\boldsymbol{x}_2) \\
-        \vdots &amp; \vdots &amp; &amp; \vdots \\
-        \psi_1(\boldsymbol{x}_N) &amp; \psi_2(\boldsymbol{x}_N) &amp; \dots &amp; \psi_N(\boldsymbol{x}_N)
-    \end{vmatrix}
-\end{aligned} \tag{8.1}\]</span></span> onde a 1ª linha representa os <span class="math inline">\(N\)</span> estados possíveis para o elétron <span class="math inline">\(i=1\)</span>, a 2ª linha representa os <span class="math inline">\(N\)</span> estados possíveis para o elétron <span class="math inline">\(i=2\)</span>, e assim por diante. O termo <span class="math inline">\(\frac{1}{\sqrt{N!}}\)</span> vem da condição de normalização da função de onda <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N)\)</span> dos <span class="math inline">\(N\)</span> elétrons (<span class="math inline">\(N!\)</span> é o número de permutações possíveis de <span class="math inline">\(N\)</span> elétrons).</p>
+<p>Podemos escrever os spin-orbitais de 1 elétron em termos de um conjunto de base <span class="math inline">\(\phi_\mu\)</span> tal que <span id="eq-conjunto_de_base"><span class="math display">\[
+\psi_k(\boldsymbol{r}) = \sum_{\mu=1}^B c_{\mu k} \phi_\mu(\boldsymbol{r})
+\tag{9.1}\]</span></span> sendo <span class="math inline">\(B\)</span> o número de elementos do conjunto de base. Embora os spin-orbitais sejam ortonormais, tal que <span class="math inline">\(\braket{\psi_i|\psi_j} = \delta_{ij}\)</span>, as funções da base podem não ser. De fato, podemos escolher elementos da base como sendo normalizados, i.e.&nbsp;<span class="math inline">\(\braket{\phi_\mu|\phi_\mu} = 1\)</span>, porém dois elementos distintos do conjunto de base não precisam ser ortogonais entre si, levando a um dado por <span class="math inline">\(\braket{\phi_\mu|\phi_\nu} = S_{\mu\nu}\)</span>.</p>
+<p>Em geral, procuramos escrever as funções de base centradas nos núcleos atômicos, tal que <span class="math inline">\(\phi_\mu(\boldsymbol{r}-\boldsymbol{R}_A)\)</span> seja a função de base <span class="math inline">\(\mu\)</span> centrada no núcleo <span class="math inline">\(\boldsymbol{R}_A\)</span>. Como exemplo, no caso do LCAO, usamos <span class="math inline">\(\phi_\mu\)</span> como sendo os orbitais atômicos.</p>
+<section id="base-de-orbitais-de-slater-sto" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="base-de-orbitais-de-slater-sto"><span class="header-section-number">9.1</span> Base de orbitais de Slater (STO)</h2>
+<p>Os orbitais de Slater (STO, do inglês, <strong>S</strong>later <strong>T</strong>ype <strong>O</strong>rbitals) são baseados nos orbitais do átomo de Hidrogênio mas sem levar em conta os polinômios de Laguerre. De fato, podemos escrever os orbitais de Slater como sendo <span class="math display">\[\begin{align}
+    \phi^{\text{STO}, nlm}(\boldsymbol{r}) = \mathcal{N} r^{n-1} e^{-\zeta r} Y_{lm}(\theta,\phi)
+\end{align}\]</span> sendo <span class="math inline">\(\mathcal{N}\)</span> uma constante de normalização, <span class="math inline">\(\zeta\)</span> o parâmetro variacional e <span class="math inline">\(n\)</span>, <span class="math inline">\(l\)</span> e <span class="math inline">\(m\)</span> sendo os números quânticos. Os orbitais de Slater primitivos para os orbitais 1s, 2p e 3d são <span class="math display">\[\begin{align}
+    \phi^{\text{STO}, 1s}(\boldsymbol{r}) &amp;= \left(\frac{\zeta^3}{\pi}\right)^{1/2}e^{-\zeta r} \\
+    \phi^{\text{STO}, 2p_x}(\boldsymbol{r}) &amp;= \left(\frac{\zeta^5}{\pi}\right)^{1/2} x e^{-\zeta r} \\
+    \phi^{\text{STO}, 3d_{xy}}(\boldsymbol{r}) &amp;= \left(\frac{2\zeta^7}{3\pi}\right)^{1/2}  xy e^{-\zeta r}
+\end{align}\]</span></p>
 </section>
-<section id="regras-de-slater-condon" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="regras-de-slater-condon"><span class="header-section-number">8.2</span> Regras de Slater-Condon</h2>
-<p>Usando o determinante de Slater, podemos mostrar as chamadas <strong>regras de Slater-Condon</strong> tal que para o operador de 1 elétron temos que <span class="math display">\[\begin{aligned}
-\left\langle \Psi_e \left| \sum_{i=1}^{N} \hat{h}_i \right| \Psi_e \right\rangle &amp;= \sum_{i=1}^{N} \langle \psi_i | \hat{h}_1 | \psi_i \rangle \\
-&amp;= \sum_{i=1}^{N}\int \psi_i^*(\boldsymbol{x}_1) \hat{h}_1 \psi_i (\boldsymbol{x}_1)\ \text{d}\boldsymbol{x}_1,
-\end{aligned}\]</span> enquanto que para o operador de interação elétron-elétron, que é um operador de 2 elétrons, temos que <span id="eq-eletron-eletron-HF"><span class="math display">\[\begin{aligned}
-\left\langle \Psi_e \left| \frac{1}{2} \sum_{i=1}^{N} \sum_{j \neq i}^{N} \frac{1}{|\boldsymbol{r}_i - \boldsymbol{r}_j|} \right| \Psi_e \right\rangle =\ &amp; \frac{1}{2} \sum_{i=1}^{N} \sum_{j \neq i}^{N} \left\langle \psi_i \psi_j \left| \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \right| \psi_i \psi_j \right\rangle \nonumber \\
-&amp; - \frac{1}{2} \sum_{i=1}^{N} \sum_{j \neq i}^{N} \left\langle \psi_i \psi_j \left| \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \right| \psi_j \psi_i \right\rangle
-\end{aligned} \tag{8.2}\]</span></span> onde <span class="math display">\[\begin{aligned}
-\left\langle \psi_i \psi_j \left| \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \right| \psi_k \psi_l \right\rangle = \iint \psi_i^*(\boldsymbol{x}_1) \psi_j^*(\boldsymbol{x}_2) \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \psi_k(\boldsymbol{x}_1) \psi_l(\boldsymbol{x}_2) \ \text{d}\boldsymbol{x}_1 \text{d}\boldsymbol{x}_2,
-\end{aligned}\]</span> de modo que o primeiro termo da <a href="#eq-eletron-eletron-HF" class="quarto-xref">Equation&nbsp;<span>8.2</span></a> é a interação direta de Coulomb e o segundo termo é a interação de troca. Essa interação de troca não possui análogo na física clássica e tem sua origem na indistinguibilidade dos elétrons.</p>
-</section>
-<section id="equações-de-hartree-fock" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="equações-de-hartree-fock"><span class="header-section-number">8.3</span> Equações de Hartree-Fock</h2>
-<p>Afim de encontrar os melhores spin-orbitais para determinar a energia do estado fundamental do nosso sistema, devemos utilizar o teorema variacional novamente. Podemos construir uma Lagrangeana na seguinte forma <span class="math display">\[\begin{aligned}
-    \mathcal{L}(\{\psi_i\}) = \braket{\Psi_e|\hat{H}_e|\Psi_e} - \sum_{ij} \epsilon_{ij} (\braket{\psi_i|\psi_j}-\delta_{ij})
-\end{aligned}\]</span> onde o primeiro termo é o valor esperado do Hamiltoniano eletrônico molecular sem a interação núcleo-núcleo e o segundo termo aparece como um multiplicador de Lagrange <span class="math inline">\(\epsilon_{ij}\)</span> afim de satisfazer a condição de orto-normalização dos spin-orbitais. Efetuando a derivada variacional do tipo <span class="math display">\[
-\frac{\delta \mathcal{L}(\{\psi_i\})}{\delta \bra{\psi_k}} = 0
-\]</span> chegamos a <span id="eq-HF"><span class="math display">\[\begin{aligned}
-    \hat{F} \ket{\psi_k} = \left[\hat{h} + \hat{J} - \hat{K} \right] \ket{\psi_k} = \epsilon_k \ket{\psi_k},
-\end{aligned} \tag{8.3}\]</span></span> que são as <strong>equações de Hartree-Fock</strong> para os <span class="math inline">\(N\)</span> spin-orbitais. O operador <span class="math inline">\(\hat{F}\)</span> é denominado operador de Fock, e pode ser escrito em termo de <span class="math inline">\(\hat{h}\)</span> e de dois novos operadores <span class="math inline">\(\hat{J}\)</span> e <span class="math inline">\(\hat{K}\)</span>. O operador de Coulomb <span class="math inline">\(\hat{J}\)</span> é definido como sendo <span class="math display">\[\begin{aligned}
-\hat{J} = \sum_{i=1}^N \left \langle \psi_i(\boldsymbol{x}') \left|\frac{1}{|\boldsymbol{r} - \boldsymbol{r}'|}\right|\psi_i(\boldsymbol{x}') \right \rangle = \sum_{i=1}^N \int \frac{|\psi_i(\boldsymbol{x}')|^2}{|\boldsymbol{r} - \boldsymbol{r}'|} \ \text{d}\boldsymbol{x}',
-\end{aligned}\]</span> enquanto o operador de troca <span class="math inline">\(\hat{K}\)</span> é escrito como <span class="math display">\[\begin{aligned}
-\hat{K}\ket{\psi_k}= \sum_{i=1}^N \left \langle \psi_i(\boldsymbol{x}') \left|\frac{1}{|\boldsymbol{r} - \boldsymbol{r}'|}\right|\psi_k(\boldsymbol{x}') \right \rangle \ket{\psi_i} = \sum_{i=1}^N \left[ \int  \frac{\psi_i^*(\boldsymbol{x}') \psi_k(\boldsymbol{x}')}{|\boldsymbol{r} - \boldsymbol{r}'|}\ \text{d}\boldsymbol{x}'\right] \psi_i(\boldsymbol{x}).
+<section id="base-de-orbitais-gaussianos-gto" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="base-de-orbitais-gaussianos-gto"><span class="header-section-number">9.2</span> Base de orbitais gaussianos (GTO)</h2>
+<p>Os orbitais gaussianos (GTO, do inglês, <strong>G</strong>aussian <strong>T</strong>ype <strong>O</strong>rbitals) são baseados na função gaussiano, podendo ser escritos como <span class="math display">\[\begin{align}
+    \phi^{\text{GTO}}_{nlm}(\boldsymbol{r}) = \mathcal{N} r^{n-1} e^{-\alpha r^2} Y_{lm}(\theta,\phi)
+\end{align}\]</span> sendo <span class="math inline">\(\mathcal{N}\)</span> uma constante de normalização, <span class="math inline">\(\alpha\)</span> o parâmetro variacional e <span class="math inline">\(n\)</span>, <span class="math inline">\(l\)</span> e <span class="math inline">\(m\)</span> sendo os números quânticos. Uma das vantagens de orbitais 1s gaussianos é a simplificação do produto de duas gaussianas com centradas em átomos distintos ter como resultado uma nova gaussiana. De fato, temos que <span class="math display">\[\phi^{\text{GTO}}_{1s}(\alpha,\boldsymbol{r}-\boldsymbol{R}_A)\phi^{\text{GTO}}_{1s}(\beta,\boldsymbol{r}-\boldsymbol{R}_B) = K_{AB} \phi^{\text{GTO}}_{1s}(p,\boldsymbol{r}-\boldsymbol{R}_P)\]</span> onde <span class="math display">\[K_{AB} = \left(\frac{2 \alpha \beta}{\pi p}\right)^{3/4} e^{-\frac{\alpha \beta}{p} |\boldsymbol{R}_A-\boldsymbol{R}_B| }\]</span> com <span class="math inline">\(p = \alpha + \beta\)</span> e o novo centro sendo <span class="math display">\[\begin{align}
+    \boldsymbol{R}_P = (\alpha \boldsymbol{R}_A + \beta \boldsymbol{R}_B)/p.
+\end{align}\]</span> Assim, qualquer integral de par de gaussianas pode ser efetuada como uma integral de gaussiano única.</p>
+<p>Os orbitais gaussianos primitivos para os orbitais 1s, 2p e 3d são <span class="math display">\[\begin{aligned}
+    \phi_\text{1s}(\boldsymbol{r}) &amp;= \left(\frac{2 \alpha}{\pi}\right)^{3/4}e^{-\alpha r^2}  \\
+    \phi_{\text{2p}_x}(\boldsymbol{r}) &amp;= \left(\frac{128\alpha^5}{\pi^3}\right)^{1/4} x e^{-\alpha r^2}  \\
+    \phi_{\text{3d}_{xy}}(\boldsymbol{r}) &amp;= \left(\frac{2048\alpha^7}{\pi^3}\right)^{1/4}  xy e^{-\alpha r^2}
 \end{aligned}\]</span></p>
-<p>As soluções <span class="math inline">\(\ket{\psi_k}\)</span> e <span class="math inline">\(\epsilon_k\)</span> são os spin-orbitais moleculares e as energias orbitais, respectivamente. Embora as equações de Hartree-Fock apareçam na forma de um problema de autovalor, devemos notar que o operador de Fock depende das próprias soluções <span class="math inline">\(\ket{\psi_k}\)</span>. Assim, tal problema deve ser resolvido por outras técnicas.</p>
+</section>
+<section id="base-de-orbitais-gaussianos-contraídos-cgf" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="base-de-orbitais-gaussianos-contraídos-cgf"><span class="header-section-number">9.3</span> Base de orbitais gaussianos contraídos (CGF)</h2>
+<p>Nesse caso procuramos escrever os orbitais como soma de <span class="math inline">\(n\)</span> orbitais gaussianos tal que <span class="math display">\[\begin{align}
+    \phi^{\text{CGF},nlm}(\zeta,\boldsymbol{r}) = \sum_{i=1}^n d_{i\mu} \phi^{\text{GTO},nlm}_i(\zeta^2\alpha_{i\mu},\boldsymbol{r})
+\end{align}\]</span> tal que a diferença entre as duas distribuições, dada por <span class="math display">\[\begin{align}
+    \varepsilon = \int [\phi^{nlm}(\boldsymbol{r})-\phi^{\text{CGF},nlm}(\boldsymbol{r})]^2\ \text{d}\boldsymbol{r}
+\end{align}\]</span> seja mínima.</p>
+</section>
+<section id="base-de-orbitais-estilo-pople-sto-ng" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="base-de-orbitais-estilo-pople-sto-ng"><span class="header-section-number">9.4</span> Base de orbitais estilo Pople (STO-<span class="math inline">\(n\)</span>G)</h2>
+<p>Esse conjunto de base consiste em CGF onde as funções <span class="math inline">\(\phi^{\text{CGF},nlm}(\boldsymbol{r})\)</span> tentam reproduzir a base de Slater (dai o STO) com <span class="math inline">\(n\)</span> gaussianas (dai o <span class="math inline">\(n\)</span>G). A <a href="#fig-sto_vs_gto" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> apresenta a comparação do orbital de slater 1s com os primeiros orbitais de Pople STO-<span class="math inline">\(n\)</span>G.</p>
+<div id="fig-sto_vs_gto" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sto_vs_gto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/sto_vs_gto.svg" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sto_vs_gto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: Comparação do orbital de Slater 1s com as funções gaussianas de Pople (STO-<span class="math inline">\(n\)</span>G).
+</figcaption>
+</figure>
+</div>
+<p>A mais famosa delas é a <strong>base primitiva STO-3G</strong> onde são utilizadas 3 gaussianas afim de representar os orbitais 1s de Slater que pode ser representada por <span class="math display">\[\begin{aligned}
+    \phi^{\text{STO-3G},1s}(\zeta=1,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},1s}_i(\alpha_{i},\boldsymbol{r}) \\
+    \phi^{\text{STO-3G},2s}(\zeta=1,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},2s}_i(\alpha_{i},\boldsymbol{r}) \\
+    \phi^{\text{STO-3G},2p}(\zeta=1,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},2p}_i(\alpha_{i},\boldsymbol{r})
+\end{aligned}\]</span> e como exemplo temos que <span class="math display">\[\begin{aligned}
+    \phi^{\text{STO-3G},1s}(\zeta=1,\boldsymbol{r}) =\ &amp; 0.444635\phi^{\text{GTO},1s}(\alpha=0.109818,\boldsymbol{r})\nonumber \\
+    &amp; + 0.535328\phi^{\text{GTO},1s}(\alpha=0.405771,\boldsymbol{r}) \nonumber \\
+    &amp;+0.154329\phi^{\text{GTO},1s}(\alpha=2.22766,\boldsymbol{r})
+\end{aligned}\]</span></p>
+<p>Essa base é bem estabelecida para elementos da 1ª linha da tabela periódica (Li a F), mas pode ser estendida para elementos da 2ª linha (Na a Cl) também.</p>
+</section>
+<section id="base-de-orbitais-split-valence" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="base-de-orbitais-split-valence"><span class="header-section-number">9.5</span> Base de orbitais split valence</h2>
+<p>Nesse conjunto de bases introduzimos mais funções afim de separar a parte mais interna dos orbitais e a parte mais externa dos orbitais.</p>
+<p>Um exemplo é dobrar o conjunto de funções tal que teremos dois parâmetros, <span class="math inline">\(\zeta\)</span> e <span class="math inline">\(\zeta'\)</span> para descrever cada orbital. Esse conjunto de base é denominado <strong>double zeta</strong>, e um exemplo desse conjunto é o <strong>6-31G</strong> onde as 6 primeiras funções representam o orbital mais interno (1s), enquanto que os orbitais de valência são representados com 3 gaussianas para um parâmetro <span class="math inline">\(\zeta\)</span> e 1 gaussiana para outro parâmetro <span class="math inline">\(\zeta'&gt; \zeta\)</span>. Para os átomos da 1ª linha da tabela períodica (Li a F) teremos <span class="math display">\[\begin{aligned}
+    \phi_{1s}(\zeta,\boldsymbol{r}) &amp;= \sum_{i=1}^6 d_{i} \phi^{\text{GTO},1s}_i(\zeta^2\alpha_{i},\boldsymbol{r}) \\
+    \phi_{2s}(\zeta,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},1s}_i(\zeta^2\alpha_{i},\boldsymbol{r}) \\
+    \phi'_{2s}(\zeta',\boldsymbol{r}) &amp;= d_{1}' \phi^{\text{GTO},1s}_i(\zeta'^2\alpha_{i},\boldsymbol{r}) \\
+    \phi_{2p}(\zeta,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},2p}_i(\zeta^2\alpha_{i},\boldsymbol{r}) \\
+    \phi'_{2p}(\zeta',\boldsymbol{r}) &amp;= d_{1}' \phi^{\text{GTO},2p}_i(\zeta'^2\alpha_{i},\boldsymbol{r})
+\end{aligned}\]</span> e para o H temos <span class="math display">\[\begin{aligned}
+    \phi_{1s}(\zeta,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},1s}_i(\zeta^2\alpha_{i},\boldsymbol{r}) \\
+    \phi'_{1s}(\zeta',\boldsymbol{r}) &amp;= d_{1}' \phi^{\text{GTO},1s}_i(\zeta'^2\alpha_{i},\boldsymbol{r})
+\end{aligned}\]</span></p>
+<p>Existem também orbitais <strong>triple zeta</strong> como o <strong>6-311G</strong>, orbitais <strong>quadruple zeta</strong>, orbitais <strong>5 zeta</strong> e assim por diante.</p>
+</section>
+<section id="bases-polarizadas-e-difusas" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="bases-polarizadas-e-difusas"><span class="header-section-number">9.6</span> Bases polarizadas e difusas</h2>
+<p>Até aqui usamos somente orbitais do tipo-s ou tipo-p para construir as bases.</p>
+<ul>
+<li><p><strong>polarizados:</strong> adição de orbitais tipo-d em átomos da 1ª linha Li-F e orbitais tipo-p para H. Como exemplo, temos <strong>6-31G</strong>* que adiciona orbitais do tipo-d para os elementos pesados. Adicionando os orbitais do tipo-p para o H teremos o conjunto <strong>6-31G</strong>**.</p></li>
+<li><p><strong>difusos:</strong> adição de orbitais tipo-s e tipo-p com <span class="math inline">\(\zeta \gg 1\)</span> em átomos não-H tal que tenha um decaimento lento, como exemplo temos o <strong>6-31+G</strong>. Se adicionarmos orbitais difusos tipo-s em átomos de H teremos <strong>6-31++G</strong>.</p></li>
+<li><p><strong>polarizados e difusos:</strong> combinação dos dois anteriores. Exemplo, <strong>6-31+G</strong>* com funções polarizadas e difusas apenas em átomos pesados, e <strong>6-31+G</strong>** com funções polarizadas em átomos pesados e hidrogênio, bem como funções difusas em átomos pesados.</p></li>
+</ul>
+</section>
+<section id="bases-consistentes-com-correlação" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="bases-consistentes-com-correlação"><span class="header-section-number">9.7</span> Bases consistentes com correlação</h2>
+<p>A ordem da inclusão de bases polarizadas deve seguir a ordem da energia de correlação. Assim, primeiro 1d, depois 2d 1f, depois 3d 2f 1g, e assim por diante.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Base</th>
+<th><strong>H</strong></th>
+<th><strong>Li–F</strong></th>
+<th><strong>Na–Cl</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>cc-pVDZ</strong></td>
+<td>[2s 1p] → 5 funções</td>
+<td>[3s 2p 1d] → 14 funções</td>
+<td>[4s 3p 1d] → 18 funções</td>
+</tr>
+<tr class="even">
+<td><strong>cc-pVTZ</strong></td>
+<td>[3s 2p 1d] → 14 funções</td>
+<td>[4s 3p 2d 1f] → 30 funções</td>
+<td>[5s 4p 2d 1f] → 34 funções</td>
+</tr>
+<tr class="odd">
+<td><strong>cc-pVQZ</strong></td>
+<td>[4s 3p 2d 1f] → 30 funções</td>
+<td>[5s 4p 3d 2f 1g] → 55 funções</td>
+<td>[6s 5p 3d 2f 1g] → 59 funções</td>
+</tr>
+<tr class="even">
+<td><strong>aug-cc-pVDZ</strong></td>
+<td>[3s 2p] → 9 funções</td>
+<td>[4s 3p 2d] → 23 funções</td>
+<td>[5s 4p 2d] → 27 funções</td>
+</tr>
+<tr class="odd">
+<td><strong>aug-cc-pVTZ</strong></td>
+<td>[4s 3p 2d] → 23 funções</td>
+<td>[5s 4p 3d 2f] → 46 funções</td>
+<td>[6s 5p 3d 2f] → 50 funções</td>
+</tr>
+<tr class="even">
+<td><strong>aug-cc-pVQZ</strong></td>
+<td>[5s 4p 3d 2f] → 46 funções</td>
+<td>[6s 5p 4d 3f 2g] → 80 funções</td>
+<td>[7s 6p 4d 3f 2g] → 84 funções</td>
+</tr>
+</tbody>
+</table>
+<p>O conjunto aumentado caracterizado pelo prefixo <strong>aug-</strong> inclui as funções difusas.</p>
+</section>
+<section id="equações-de-roothan-hartree-fock" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="equações-de-roothan-hartree-fock"><span class="header-section-number">9.8</span> Equações de Roothan-Hartree-Fock</h2>
+<p>Usando a representação dos orbitais moleculares no conjunto de base, <a href="#eq-conjunto_de_base" class="quarto-xref">Equation&nbsp;<span>9.1</span></a>, podemos escrever as equações de HF, <a href="8-hartree_fock.html#eq-HF" class="quarto-xref">Equation&nbsp;<span>8.3</span></a>, em termos de <span class="math display">\[\hat{F} \sum_{\nu=1}^B c_{\nu k} \ket{\phi_\nu} = \epsilon_k \sum_{\nu=1}^B c_{\nu k} \ket{\phi_\nu}
+\]</span> e efetuando o produto interno com <span class="math inline">\(\ket{\phi_\mu}\)</span>, chegamos a <span id="eq-Rothaan_FH_equations"><span class="math display">\[
+F_{\mu\nu} c_{\nu k} = \epsilon_k S_{\mu \nu} c_{\nu k}
+\tag{9.2}\]</span></span> onde <span class="math inline">\(S_{\mu\nu}\)</span> são os elementos de matriz da integral de overlap, e os elementos de matriz do operador de Fock são <span class="math display">\[
+F_{\mu\nu} = \braket{\phi_\mu|\hat{F}|\phi_\nu}.
+\]</span></p>
+<p>As <a href="#eq-Rothaan_FH_equations" class="quarto-xref">Equation&nbsp;<span>9.2</span></a> são denominadas de <strong>equações de Roothan-Hartree-Fock</strong> e são equivalentes as equações de HF mas agora utilizando um conjunto de base específico.</p>
 
 
 </section>
@@ -934,14 +1044,11 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../capitulos/7-problema_de_muitos_eletrons.html" class="pagination-link" aria-label="Problema Geral de Muitos Elétrons">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Problema Geral de Muitos Elétrons</span></span>
+      <a href="../capitulos/8-hartree_fock.html" class="pagination-link" aria-label="Método de Hartree-Fock">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../capitulos/9-bases.html" class="pagination-link" aria-label="Conjuntos de bases">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
@@ -952,7 +1059,7 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/8-hartree_fock.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/9-bases.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>

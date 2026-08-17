@@ -35,6 +35,7 @@ book:
         - capitulos/6-molecula_de_hidrogenio.qmd
         - capitulos/7-problema_de_muitos_eletrons.qmd
         - capitulos/8-hartree_fock.qmd
+        - capitulos/9-bases.qmd
 
   downloads: [pdf, epub]
   repo-url: https://github.com/elvissoares/COQ875-QuimicaQuantica
