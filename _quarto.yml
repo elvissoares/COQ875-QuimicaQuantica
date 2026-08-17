@@ -27,9 +27,14 @@ book:
       chapters:
         - capitulos/1-bases_experimentais.qmd
         - capitulos/2-postulados.qmd
+        - capitulos/3-matematica.qmd
+        - capitulos/4-schroedinger.qmd
     - part: "Estrutura Eletrônica de Átomos e Moléculas"
       chapters:
         - capitulos/5-atomo_de_helio.qmd
+        - capitulos/6-molecula_de_hidrogenio.qmd
+        - capitulos/7-problema_de_muitos_eletrons.qmd
+        - capitulos/8-hartree_fock.qmd
 
   downloads: [pdf, epub]
   repo-url: https://github.com/elvissoares/COQ875-QuimicaQuantica
