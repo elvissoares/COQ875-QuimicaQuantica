@@ -60,7 +60,7 @@ seja mínima.
 
 Esse conjunto de base consiste em CGF onde as funções $\phi^{\text{CGF},nlm}(\boldsymbol{r})$ tentam reproduzir a base de Slater (dai o STO) com $n$ gaussianas (dai o $n$G). A @fig-sto_vs_gto apresenta a comparação do orbital de slater 1s com os primeiros orbitais de Pople STO-$n$G.
 
-![Comparação do orbital de Slater 1s com as funções gaussianas de Pople (STO-$n$G).](../figuras/sto_vs_gto.svg){#fig-sto_vs_gto width=80%}
+![Comparação do orbital de Slater 1s com as funções gaussianas de Pople (STO-$n$G).](../figuras/sto_vs_gto.png){#fig-sto_vs_gto width=80%}
 
 A mais famosa delas é a **base primitiva STO-3G** onde são utilizadas 3 gaussianas afim de representar os orbitais 1s de Slater que pode ser representada por 
 $$\begin{aligned}
