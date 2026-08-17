@@ -36,6 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../capitulos/9-bases.html" rel="next">
 <link href="../capitulos/7-problema_de_muitos_eletrons.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -424,6 +425,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/9-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -439,6 +446,9 @@ window.Quarto = {
   <li><a href="#determinante-de-slater" id="toc-determinante-de-slater" class="nav-link active" data-scroll-target="#determinante-de-slater"><span class="header-section-number">8.1</span> Determinante de Slater</a></li>
   <li><a href="#regras-de-slater-condon" id="toc-regras-de-slater-condon" class="nav-link" data-scroll-target="#regras-de-slater-condon"><span class="header-section-number">8.2</span> Regras de Slater-Condon</a></li>
   <li><a href="#equações-de-hartree-fock" id="toc-equações-de-hartree-fock" class="nav-link" data-scroll-target="#equações-de-hartree-fock"><span class="header-section-number">8.3</span> Equações de Hartree-Fock</a></li>
+  <li><a href="#método-auto-consistente" id="toc-método-auto-consistente" class="nav-link" data-scroll-target="#método-auto-consistente"><span class="header-section-number">8.4</span> Método auto-consistente</a></li>
+  <li><a href="#energia-total" id="toc-energia-total" class="nav-link" data-scroll-target="#energia-total"><span class="header-section-number">8.5</span> Energia Total</a></li>
+  <li><a href="#densidade-eletrônica" id="toc-densidade-eletrônica" class="nav-link" data-scroll-target="#densidade-eletrônica"><span class="header-section-number">8.6</span> Densidade Eletrônica</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/8-hartree_fock.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -510,6 +520,101 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
 \hat{K}\ket{\psi_k}= \sum_{i=1}^N \left \langle \psi_i(\boldsymbol{x}') \left|\frac{1}{|\boldsymbol{r} - \boldsymbol{r}'|}\right|\psi_k(\boldsymbol{x}') \right \rangle \ket{\psi_i} = \sum_{i=1}^N \left[ \int  \frac{\psi_i^*(\boldsymbol{x}') \psi_k(\boldsymbol{x}')}{|\boldsymbol{r} - \boldsymbol{r}'|}\ \text{d}\boldsymbol{x}'\right] \psi_i(\boldsymbol{x}).
 \end{aligned}\]</span></p>
 <p>As soluções <span class="math inline">\(\ket{\psi_k}\)</span> e <span class="math inline">\(\epsilon_k\)</span> são os spin-orbitais moleculares e as energias orbitais, respectivamente. Embora as equações de Hartree-Fock apareçam na forma de um problema de autovalor, devemos notar que o operador de Fock depende das próprias soluções <span class="math inline">\(\ket{\psi_k}\)</span>. Assim, tal problema deve ser resolvido por outras técnicas.</p>
+</section>
+<section id="método-auto-consistente" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="método-auto-consistente"><span class="header-section-number">8.4</span> Método auto-consistente</h2>
+<p>No procedimento auto-consistente (SCF, do inglês <strong>S</strong>elf <strong>C</strong>onsistent <strong>F</strong>ield) é necessário decidir a forma dos orbitais e inseri-los.</p>
+<p>Para uma molécula de camada fechada, mantém-se o mesmo orbital molecular <span class="math inline">\(\psi_i\)</span> para os dois elétrons emparelhados, e isso é chamado de <strong>RHF</strong> (Hartree-Fock Restrito). Por exemplo, no caso do átomo de Be (berílio com <span class="math inline">\(Z=4\)</span>), a função de onda no RHF é escrita da seguinte forma <span class="math display">\[\begin{aligned}
+    \Psi_\text{RHF}^{(\text{Be})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3,\boldsymbol{x}_4) = \frac{1}{\sqrt{4!}} \begin{vmatrix}
+        \psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow} &amp; \psi_{2s}(\boldsymbol{r}_1)\ket{\uparrow} &amp; \psi_{2s}(\boldsymbol{r}_1)\ket{\downarrow} \\
+         \psi_{1s}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_2)\ket{\downarrow}  &amp; \psi_{2s}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \psi_{2s}(\boldsymbol{r}_2)\ket{\downarrow}  \\
+         \psi_{1s}(\boldsymbol{r}_3)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_3)\ket{\downarrow}  &amp; \psi_{2s}(\boldsymbol{r}_3)\ket{\uparrow} &amp; \psi_{2s}(\boldsymbol{r}_3)\ket{\downarrow}  \\
+         \psi_{1s}(\boldsymbol{r}_4)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_4)\ket{\downarrow}  &amp; \psi_{2s}(\boldsymbol{r}_4)\ket{\uparrow} &amp; \psi_{2s}(\boldsymbol{r}_4)\ket{\downarrow}
+    \end{vmatrix},
+\end{aligned}\]</span> com uma redução dimensional do problema pela metade. Note que embora tenhamos 4 elétrons, temos apenas dois orbitais moleculares a serem otimizados, o 1s e o 2s.</p>
+<p>No caso de moléculas de camada aberta, o método acima não pode ser usado, sendo necessário outro método. No caso do <strong>ROHF</strong> (Hartree-Fock Restrito de Camada Aberta), utiliza-se o mesmo método do RHF para elétrons emparelhados, atribuindo um orbital molecular <span class="math inline">\(\psi_i\)</span> fixo, enquanto o elétron desemparelhado recebe uma função de onda diferente. Tomando o átomo de Li (lítio com <span class="math inline">\(Z=3\)</span>) como exemplo podemos escrever <span class="math display">\[\begin{aligned}
+    \Psi_\text{ROHF}^{(\text{Li})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3) = \frac{1}{\sqrt{3!}} \begin{vmatrix}
+        \psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow} &amp; \psi_{2s}(\boldsymbol{r}_1)\ket{\uparrow} \\
+         \psi_{1s}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_2)\ket{\downarrow}  &amp; \psi_{2s}(\boldsymbol{r}_2)\ket{\uparrow}  \\
+         \psi_{1s}(\boldsymbol{r}_3)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_3)\ket{\downarrow}  &amp; \psi_{2s}(\boldsymbol{r}_3)\ket{\uparrow}  
+    \end{vmatrix},
+\end{aligned}\]</span> No entanto, há um problema com esse método. No caso de <span class="math inline">\(\psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow}\)</span> e <span class="math inline">\(\psi_{2s}(\boldsymbol{r}_1)\ket{\uparrow}\)</span>, os spins são paralelos, havendo interação por meio do potencial de troca. Isso não ocorre para <span class="math inline">\(\psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow}\)</span>. Em outras palavras, as energias de <span class="math inline">\(\psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow}\)</span> e <span class="math inline">\(\psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow}\)</span> tendem a ser diferentes, mas, no caso do ROHF, essas energias são forçadas a serem iguais, gerando erros. Tal fenômeno se chama <strong>contaminação de spin</strong>.</p>
+<p>Para resolver esse problema, no (Hartree-Fock Não Restrito de Camada Aberta), todos os orbitais podem ter formas diferentes. No caso do átomo de Li, usado no exemplo anterior, a função de onda no UHF é definida como <span class="math display">\[\begin{aligned}
+    \Psi_\text{UHF}^{(\text{Li})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3) = \frac{1}{\sqrt{3!}} \begin{vmatrix}
+        \psi_{a}(\boldsymbol{r}_1)\ket{\uparrow} &amp; \psi_{b}(\boldsymbol{r}_1)\ket{\downarrow} &amp; \psi_{c}(\boldsymbol{r}_1)\ket{\uparrow} \\
+         \psi_{a}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \psi_{b}(\boldsymbol{r}_2)\ket{\downarrow}  &amp; \psi_{c}(\boldsymbol{r}_2)\ket{\uparrow}  \\
+         \psi_{a}(\boldsymbol{r}_3)\ket{\uparrow} &amp; \psi_{b}(\boldsymbol{r}_3)\ket{\downarrow}  &amp; \psi_{c}(\boldsymbol{r}_3)\ket{\uparrow}  
+    \end{vmatrix},
+\end{aligned}\]</span> onde cada orbital molecular <span class="math inline">\(\psi_{i}\)</span> pode ter uma energia distinta. A figura <a href="#fig-RHF" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> representa graficamente os três métodos descritos acima.</p>
+<div id="fig-RHF" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-RHF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/RHF.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-RHF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: Diferença entre os métodos RHF, ROHF e UHF..
+</figcaption>
+</figure>
+</div>
+<p>Assim, no UHF, os orbitais moleculares <span class="math inline">\(\psi_{i}\)</span> são mais flexíveis do que no RHF e no ROHF, produzindo assim resultados mais precisos do que ambos os métodos. No entanto, como todos os <span class="math inline">\(\psi_{i}\)</span> são definidos de forma diferente, a quantidade de cálculo é o dobro em comparação ao RHF e ao ROHF.</p>
+<p>O procedimento auto-consistente é descrito como:</p>
+<ol type="1">
+<li><p>Decida a geometria do sistema que deseja resolver: <span class="math inline">\(\{R_A\}, \{Z_A\}, N\)</span> e defina o tipo de conjunto de base;</p></li>
+<li><p>Defina o conjunto de base <span class="math inline">\(\phi_\mu\)</span> (confome <a href="9-bases.html#eq-conjunto_de_base" class="quarto-xref">Equation&nbsp;<span>9.1</span></a>) a ser utilizado;</p></li>
+<li><p>Calcule as integrais <span class="math inline">\(S_{\mu\nu}, h_{\mu\nu}, J_{\mu\nu}\)</span> e <span class="math inline">\(K_{\mu\nu}\)</span> usando o cojunto de base <span class="math inline">\(\phi_\mu\)</span>;</p></li>
+<li><p>Inicialize o método com um chute inicial para os coeficientes <span class="math inline">\(c_{\mu k}^n\)</span>;</p></li>
+<li><p>Calcule a matriz de Fock <span class="math inline">\(F_{\mu\nu}\)</span>;</p></li>
+<li><p>Resolve a Eq de Roothan-HF para novos coeficientes <span class="math inline">\(c_{\mu k}^{n+1}\)</span>;</p></li>
+<li><p>Verifique a convergência <span class="math inline">\(c_{\mu k}^{n+1}=c_{\mu k}^{n}\)</span>. Se for verdadeiro, pare o cálculo e siga para o item 8. Caso contrário volte ao item 4.</p></li>
+<li><p>Por fim, obtenha a forma dos orbitais moleculares (MO) a partir de $ c_{k}$ e as energias dos MOs a partir de <span class="math inline">\(\epsilon_k\)</span>.</p></li>
+</ol>
+<p>Isso pode ser representado graficamente por um fluxograma como na <a href="#fig-SCF-HF" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>.</p>
+<div id="fig-SCF-HF" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-SCF-HF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/SCF-HF.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SCF-HF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.2: Método auto-consistente (SCF) para resolução das equações de Roothan-Hartree-Fock.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="energia-total" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="energia-total"><span class="header-section-number">8.5</span> Energia Total</h2>
+<p>A energia eletrônica da molécula <span class="math inline">\(E_0\)</span> não é igual a soma dos autovalores das equações de HF, <span class="math inline">\(E_0 \neq \sum_{i=1}^N \epsilon_i\)</span>. De fato, podemos notar que <span class="math display">\[
+E_0 = \sum_{i=1}^N \braket{\psi_i|\hat{h}+ \tfrac{1}{2}(\hat{J}-\hat{K})|\psi_i}
+\]</span> enquanto que os autovalores de HF são obtidos da <a href="#eq-HF" class="quarto-xref">Equation&nbsp;<span>8.3</span></a> como sendo <span class="math display">\[\epsilon_i = \braket{\psi_i|\hat{h}+\hat{J}-\hat{K}|\psi_i}\]</span> de tal modo que podemos escrever <span class="math display">\[
+E_0 = \sum_{i=1}^N \epsilon_i - \frac{1}{2} \sum_{i=1}^N \braket{\psi_i |\hat{J}-\hat{K}|\psi_i}
+\]</span></p>
+<p>A energia total da molécula deve levar em conta a repulsão eletrostática entre os núcleos tal que <span class="math display">\[\begin{align}
+    E_\text{tot} = E_0 + V_{nn}
+\end{align}\]</span> com <span class="math display">\[\begin{align}
+    V_{nn} = \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}.
+\end{align}\]</span></p>
+</section>
+<section id="densidade-eletrônica" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="densidade-eletrônica"><span class="header-section-number">8.6</span> Densidade Eletrônica</h2>
+<p>Vamos definir o operador de densidade de 1 corpo como sendo dado por <span id="eq-operador_densidade"><span class="math display">\[
+\hat{\rho}(\boldsymbol{r}) = \sum_{i=1}^N \delta(\boldsymbol{r}-\boldsymbol{r}_i)
+\tag{8.4}\]</span></span> de modo que o valor esperado desse operador seja calculado como <span class="math display">\[\begin{aligned}
+    \rho(\boldsymbol{r}) &amp;= \braket{\Psi| \hat{\rho}(\boldsymbol{r}) |\Psi} \nonumber \\
+    &amp;=\int \Psi^*(\boldsymbol{x}^N)\left[\sum_{i=1}^N \delta(\boldsymbol{r}-\boldsymbol{r}_i) \right]\Psi(\boldsymbol{x}^N)\ \text{d}\boldsymbol{x}^N
+\end{aligned}\]</span> que pode ser resolvida usando as regras de Slater-Condon. De fato, chegamos a seguinte relação <span class="math display">\[\begin{aligned}
+    \rho(\boldsymbol{r}) &amp;= N \sum_{s=-1/2}^{1/2}\int |\Psi(\boldsymbol{r},s,\boldsymbol{x}^{N-1})|^2\ \text{d}\boldsymbol{x}^{N-1} \nonumber \\
+    &amp;= N \sum_{s=-1/2}^{1/2}\int |\Psi(\boldsymbol{r},s,\boldsymbol{x}_2,\boldsymbol{x}_3,\ldots,\boldsymbol{x}_N)|^2\ \text{d}\boldsymbol{x}_2\ \text{d}\boldsymbol{x}_3 \ldots\text{d}\boldsymbol{x}_N,
+\end{aligned}\]</span> onde podemos notar que essa distribuição é de fato uma densidade eletrônica pois sua integral nos dá o número total de elétrons, <span class="math display">\[
+N = \int \rho(\boldsymbol{r})\ \text{d}\boldsymbol{r}
+\]</span>.</p>
+<p>No caso UHF, onde cada orbital molecular é escrito separadamente, podemos encontrar que <span class="math display">\[
+\rho(\boldsymbol{r}) =\sum_{i=1}^N|\psi_i(\boldsymbol{r})|^2
+\]</span> e já no caso RHF, temos uma degenerescência dupla de spin para cada orbital molecular, de modo que <span class="math display">\[
+    \rho(\boldsymbol{r}) = 2 \sum_{i=1}^{N/2} |\psi_i(\boldsymbol{r})|^2,
+\]</span> de modo que há apenas <span class="math inline">\(N/2\)</span> orbitais moleculares como solução das equações de HF. Usando o conjunto de base, dado pela <a href="9-bases.html#eq-conjunto_de_base" class="quarto-xref">Equation&nbsp;<span>9.1</span></a>, podemos escrever a densidade eletrônica como sendo <span class="math display">\[\begin{align}
+    \rho(\boldsymbol{r}) = \sum_{\mu \nu} P_{\mu\nu} \phi_\nu(\boldsymbol{r})\phi_\mu^*(\boldsymbol{r})
+\end{align}\]</span> onde definimos a matriz densidade como <span class="math display">\[
+P_{\mu\nu} = 2\sum_{i=1}^{N/2} c_{\mu i} c_{\nu i}^*,
+\]</span> de tal forma que dado um conjunto de base <span class="math inline">\(\{\phi_\mu(\boldsymbol{r})\}\)</span>, a matriz densidade <span class="math inline">\(P_{\mu\nu}\)</span> especifica completamente a densidade eletrônica <span class="math inline">\(\rho(\boldsymbol{r})\)</span>.</p>
 
 
 </section>
@@ -935,6 +1040,9 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../capitulos/9-bases.html" class="pagination-link" aria-label="Conjuntos de bases">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
