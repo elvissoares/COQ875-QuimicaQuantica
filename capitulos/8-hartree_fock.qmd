@@ -70,3 +70,126 @@ $$\begin{aligned}
 \end{aligned}$$
 
 As soluções $\ket{\psi_k}$ e $\epsilon_k$ são os spin-orbitais moleculares e as energias orbitais, respectivamente. Embora as equações de Hartree-Fock apareçam na forma de um problema de autovalor, devemos notar que o operador de Fock depende das próprias soluções $\ket{\psi_k}$. Assim, tal problema deve ser resolvido por outras técnicas. 
+
+## Método auto-consistente
+
+No procedimento auto-consistente (SCF, do inglês **S**elf **C**onsistent **F**ield) é necessário decidir a forma dos orbitais e inseri-los.
+
+Para uma molécula de camada fechada, mantém-se o mesmo orbital molecular $\psi_i$ para os dois elétrons emparelhados, e isso é chamado de **RHF** (Hartree-Fock Restrito). Por exemplo, no caso do átomo de Be (berílio com $Z=4$), a função de onda no RHF é escrita da seguinte forma
+$$\begin{aligned}
+    \Psi_\text{RHF}^{(\text{Be})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3,\boldsymbol{x}_4) = \frac{1}{\sqrt{4!}} \begin{vmatrix}
+        \psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow} & \psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow} & \psi_{2s}(\boldsymbol{r}_1)\ket{\uparrow} & \psi_{2s}(\boldsymbol{r}_1)\ket{\downarrow} \\
+         \psi_{1s}(\boldsymbol{r}_2)\ket{\uparrow} & \psi_{1s}(\boldsymbol{r}_2)\ket{\downarrow}  & \psi_{2s}(\boldsymbol{r}_2)\ket{\uparrow} & \psi_{2s}(\boldsymbol{r}_2)\ket{\downarrow}  \\
+         \psi_{1s}(\boldsymbol{r}_3)\ket{\uparrow} & \psi_{1s}(\boldsymbol{r}_3)\ket{\downarrow}  & \psi_{2s}(\boldsymbol{r}_3)\ket{\uparrow} & \psi_{2s}(\boldsymbol{r}_3)\ket{\downarrow}  \\
+         \psi_{1s}(\boldsymbol{r}_4)\ket{\uparrow} & \psi_{1s}(\boldsymbol{r}_4)\ket{\downarrow}  & \psi_{2s}(\boldsymbol{r}_4)\ket{\uparrow} & \psi_{2s}(\boldsymbol{r}_4)\ket{\downarrow} 
+    \end{vmatrix},
+\end{aligned}$$
+com uma redução dimensional do problema pela metade. Note que embora tenhamos 4 elétrons, temos apenas dois orbitais moleculares a serem otimizados, o 1s e o 2s.
+
+No caso de moléculas de camada aberta, o método acima não pode ser usado, sendo necessário outro método. No caso do **ROHF** (Hartree-Fock Restrito de Camada Aberta), utiliza-se o mesmo método do RHF para elétrons emparelhados, atribuindo um orbital molecular $\psi_i$ fixo, enquanto o elétron desemparelhado recebe uma função de onda diferente. Tomando o átomo de Li (lítio com $Z=3$) como exemplo podemos escrever 
+$$\begin{aligned}
+    \Psi_\text{ROHF}^{(\text{Li})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3) = \frac{1}{\sqrt{3!}} \begin{vmatrix}
+        \psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow} & \psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow} & \psi_{2s}(\boldsymbol{r}_1)\ket{\uparrow} \\
+         \psi_{1s}(\boldsymbol{r}_2)\ket{\uparrow} & \psi_{1s}(\boldsymbol{r}_2)\ket{\downarrow}  & \psi_{2s}(\boldsymbol{r}_2)\ket{\uparrow}  \\
+         \psi_{1s}(\boldsymbol{r}_3)\ket{\uparrow} & \psi_{1s}(\boldsymbol{r}_3)\ket{\downarrow}  & \psi_{2s}(\boldsymbol{r}_3)\ket{\uparrow}  
+    \end{vmatrix},
+\end{aligned}$$
+No entanto, há um problema com esse método. No caso de $\psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow}$ e $\psi_{2s}(\boldsymbol{r}_1)\ket{\uparrow}$, os spins são paralelos, havendo interação por meio do potencial de troca. Isso não ocorre para $\psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow}$. Em outras palavras, as energias de $\psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow}$ e $\psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow}$ tendem a ser diferentes, mas, no caso do ROHF, essas energias são forçadas a serem iguais, gerando erros. Tal fenômeno se chama **contaminação de spin**.
+
+Para resolver esse problema, no \textbf{UHF} (Hartree-Fock Não Restrito de Camada Aberta), todos os orbitais podem ter formas diferentes. No caso do átomo de Li, usado no exemplo anterior, a função de onda no UHF é definida como
+$$\begin{aligned}
+    \Psi_\text{UHF}^{(\text{Li})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3) = \frac{1}{\sqrt{3!}} \begin{vmatrix}
+        \psi_{a}(\boldsymbol{r}_1)\ket{\uparrow} & \psi_{b}(\boldsymbol{r}_1)\ket{\downarrow} & \psi_{c}(\boldsymbol{r}_1)\ket{\uparrow} \\
+         \psi_{a}(\boldsymbol{r}_2)\ket{\uparrow} & \psi_{b}(\boldsymbol{r}_2)\ket{\downarrow}  & \psi_{c}(\boldsymbol{r}_2)\ket{\uparrow}  \\
+         \psi_{a}(\boldsymbol{r}_3)\ket{\uparrow} & \psi_{b}(\boldsymbol{r}_3)\ket{\downarrow}  & \psi_{c}(\boldsymbol{r}_3)\ket{\uparrow}  
+    \end{vmatrix},
+\end{aligned}$$
+onde cada orbital molecular $\psi_{i}$ pode ter uma energia distinta. A figura @fig-RHF representa graficamente os três métodos descritos acima.
+
+![Diferença entre os métodos RHF, ROHF e UHF..](../figuras/RHF.png){#fig-RHF width=80%}
+
+Assim, no UHF, os orbitais moleculares $\psi_{i}$ são mais flexíveis do que no RHF e no ROHF, produzindo assim resultados mais precisos do que ambos os métodos. No entanto, como todos os  $\psi_{i}$ são definidos de forma diferente, a quantidade de cálculo é o dobro em comparação ao RHF e ao ROHF.
+
+O procedimento auto-consistente é descrito como: 
+
+1. Decida a geometria do sistema que deseja resolver: $\{R_A\}, \{Z_A\}, N$ e defina o tipo de conjunto de base;
+
+2. Defina o conjunto de base $\phi_\mu$ (confome @eq-conjunto_de_base) a ser utilizado;
+
+3. Calcule as integrais $S_{\mu\nu}, h_{\mu\nu}, J_{\mu\nu}$ e $K_{\mu\nu}$ usando o cojunto de base $\phi_\mu$;
+
+4. Inicialize o método com um chute inicial para os coeficientes $c_{\mu k}^n$;
+
+5. Calcule a matriz de Fock $F_{\mu\nu}$;
+
+6. Resolve a Eq de Roothan-HF para novos coeficientes  $c_{\mu k}^{n+1}$;
+
+7. Verifique a convergência $c_{\mu k}^{n+1}=c_{\mu k}^{n}$. Se for verdadeiro, pare o cálculo e siga para o item 8. Caso contrário volte ao item 4. 
+
+8. Por fim, obtenha a forma dos orbitais moleculares (MO) a partir de $ c_{\mu k}$ e as energias dos MOs a partir de $\epsilon_k$.
+
+
+Isso pode ser representado graficamente por um fluxograma como na @fig-SCF-HF.
+
+![Método auto-consistente (SCF) para resolução das equações de Roothan-Hartree-Fock.](../figuras/SCF-HF.png){#fig-SCF-HF width=80%}
+
+## Energia Total
+
+A energia eletrônica da molécula $E_0$ não é igual a soma dos autovalores das equações de HF, $E_0 \neq \sum_{i=1}^N \epsilon_i$. De fato, podemos notar que 
+$$
+E_0 = \sum_{i=1}^N \braket{\psi_i|\hat{h}+ \tfrac{1}{2}(\hat{J}-\hat{K})|\psi_i} 
+$$
+enquanto que os autovalores de HF são obtidos da @eq-HF como sendo
+$$\epsilon_i = \braket{\psi_i|\hat{h}+\hat{J}-\hat{K}|\psi_i}$$
+de tal modo que podemos escrever 
+$$
+E_0 = \sum_{i=1}^N \epsilon_i - \frac{1}{2} \sum_{i=1}^N \braket{\psi_i |\hat{J}-\hat{K}|\psi_i}
+$$
+
+A energia total da molécula deve levar em conta a repulsão eletrostática entre os núcleos tal que 
+\begin{align}
+    E_\text{tot} = E_0 + V_{nn}
+\end{align}
+com 
+\begin{align}
+    V_{nn} = \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}.
+\end{align}
+
+## Densidade Eletrônica
+
+Vamos definir o operador de densidade de 1 corpo como sendo dado por 
+$$
+\hat{\rho}(\boldsymbol{r}) = \sum_{i=1}^N \delta(\boldsymbol{r}-\boldsymbol{r}_i)
+$${#eq-operador_densidade}
+de modo que o valor esperado desse operador seja calculado como 
+$$\begin{aligned}
+    \rho(\boldsymbol{r}) &= \braket{\Psi| \hat{\rho}(\boldsymbol{r}) |\Psi} \nonumber \\
+    &=\int \Psi^*(\boldsymbol{x}^N)\left[\sum_{i=1}^N \delta(\boldsymbol{r}-\boldsymbol{r}_i) \right]\Psi(\boldsymbol{x}^N)\ \text{d}\boldsymbol{x}^N
+\end{aligned}$$
+que pode ser resolvida usando as regras de Slater-Condon. De fato, chegamos a seguinte relação 
+$$\begin{aligned}
+    \rho(\boldsymbol{r}) &= N \sum_{s=-1/2}^{1/2}\int |\Psi(\boldsymbol{r},s,\boldsymbol{x}^{N-1})|^2\ \text{d}\boldsymbol{x}^{N-1} \nonumber \\
+    &= N \sum_{s=-1/2}^{1/2}\int |\Psi(\boldsymbol{r},s,\boldsymbol{x}_2,\boldsymbol{x}_3,\ldots,\boldsymbol{x}_N)|^2\ \text{d}\boldsymbol{x}_2\ \text{d}\boldsymbol{x}_3 \ldots\text{d}\boldsymbol{x}_N,
+\end{aligned}$$
+onde podemos notar que essa distribuição é de fato uma densidade eletrônica pois sua integral nos dá o número total de elétrons, 
+$$
+N = \int \rho(\boldsymbol{r})\ \text{d}\boldsymbol{r} 
+$$. 
+
+No caso UHF, onde cada orbital molecular é escrito separadamente, podemos encontrar que 
+$$
+\rho(\boldsymbol{r}) =\sum_{i=1}^N|\psi_i(\boldsymbol{r})|^2
+$$
+e já no caso RHF, temos uma degenerescência dupla de spin para cada orbital molecular, de modo que 
+$$
+    \rho(\boldsymbol{r}) = 2 \sum_{i=1}^{N/2} |\psi_i(\boldsymbol{r})|^2,
+$$
+de modo que há apenas $N/2$ orbitais moleculares como solução das equações de HF. Usando o conjunto de base, dado pela @eq-conjunto_de_base, podemos escrever a densidade eletrônica como sendo
+\begin{align}
+    \rho(\boldsymbol{r}) = \sum_{\mu \nu} P_{\mu\nu} \phi_\nu(\boldsymbol{r})\phi_\mu^*(\boldsymbol{r})
+\end{align}
+onde definimos a matriz densidade como 
+$$
+P_{\mu\nu} = 2\sum_{i=1}^{N/2} c_{\mu i} c_{\nu i}^*,
+$$
+de tal forma que dado um conjunto de base $\{\phi_\mu(\boldsymbol{r})\}$, a matriz densidade $P_{\mu\nu}$ especifica completamente a densidade eletrônica $\rho(\boldsymbol{r})$.
