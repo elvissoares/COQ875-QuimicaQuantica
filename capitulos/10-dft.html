@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>10&nbsp; Teoria do funcional da densidade – Química Quântica para Moléculas e Sólidos</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../capitulos/9-bases.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-3dac5e246fdd9bdc5e35d09ab9b42ca8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1186ef8162c3c73f68abd6432a9e86e2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+MathJax = {
+  tex: {
+    macros: {
+      ket: ["\\left|#1\\right\\rangle", 1],
+      bra: ["\\left\\langle#1\\right|", 1],
+      braket: ["\\left\\langle#1\\right\\rangle", 1]
+    }
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/10-dft.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Química Quântica para Moléculas e Sólidos</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/elvissoares/COQ875-QuimicaQuantica" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../Química-Quântica-para-Moléculas-e-Sólidos.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../Química-Quântica-para-Moléculas-e-Sólidos.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apresentação</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Fundamentos da Mecânica Quântica</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/1-bases_experimentais.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bases experimentais e teóricas da Química Quântica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/2-postulados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/4-schroedinger.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Equação de Schroedinger e suas aplicações</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Estrutura Eletrônica de Átomos e Moléculas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/5-atomo_de_helio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Átomo de Hélio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/6-molecula_de_hidrogenio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Molécula de Hidrogênio</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/7-problema_de_muitos_eletrons.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Problema Geral de Muitos Elétrons</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/8-hartree_fock.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/9-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/10-dft.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#teoremas-de-hohenberg-kohn" id="toc-teoremas-de-hohenberg-kohn" class="nav-link active" data-scroll-target="#teoremas-de-hohenberg-kohn"><span class="header-section-number">10.1</span> Teoremas de Hohenberg-Kohn</a>
+  <ul class="collapse">
+  <li><a href="#primeiro-teorema-de-hohenberg-kohn" id="toc-primeiro-teorema-de-hohenberg-kohn" class="nav-link" data-scroll-target="#primeiro-teorema-de-hohenberg-kohn"><span class="header-section-number">10.1.1</span> Primeiro teorema de Hohenberg-Kohn</a></li>
+  <li><a href="#segundo-teorema-de-hohenberg-kohn" id="toc-segundo-teorema-de-hohenberg-kohn" class="nav-link" data-scroll-target="#segundo-teorema-de-hohenberg-kohn"><span class="header-section-number">10.1.2</span> Segundo teorema de Hohenberg-Kohn</a></li>
+  </ul></li>
+  <li><a href="#método-de-kohn-sham" id="toc-método-de-kohn-sham" class="nav-link" data-scroll-target="#método-de-kohn-sham"><span class="header-section-number">10.2</span> Método de Kohn-Sham</a></li>
+  <li><a href="#método-auto-consistente" id="toc-método-auto-consistente" class="nav-link" data-scroll-target="#método-auto-consistente"><span class="header-section-number">10.3</span> Método Auto-Consistente</a></li>
+  <li><a href="#energia-total" id="toc-energia-total" class="nav-link" data-scroll-target="#energia-total"><span class="header-section-number">10.4</span> Energia Total</a></li>
+  <li><a href="#funcionais-de-troca-e-correlação" id="toc-funcionais-de-troca-e-correlação" class="nav-link" data-scroll-target="#funcionais-de-troca-e-correlação"><span class="header-section-number">10.5</span> Funcionais de troca e correlação</a>
+  <ul class="collapse">
+  <li><a href="#aproximação-da-densidade-local-lda" id="toc-aproximação-da-densidade-local-lda" class="nav-link" data-scroll-target="#aproximação-da-densidade-local-lda"><span class="header-section-number">10.5.1</span> Aproximação da densidade local (LDA)</a></li>
+  <li><a href="#aproximação-de-gradiente-generalizado-gga" id="toc-aproximação-de-gradiente-generalizado-gga" class="nav-link" data-scroll-target="#aproximação-de-gradiente-generalizado-gga"><span class="header-section-number">10.5.2</span> Aproximação de Gradiente Generalizado (GGA)</a></li>
+  <li><a href="#aproximações-meta-generalizadas-meta-gga" id="toc-aproximações-meta-generalizadas-meta-gga" class="nav-link" data-scroll-target="#aproximações-meta-generalizadas-meta-gga"><span class="header-section-number">10.5.3</span> Aproximações Meta-Generalizadas (meta-GGA)</a></li>
+  <li><a href="#funcionais-híbridos" id="toc-funcionais-híbridos" class="nav-link" data-scroll-target="#funcionais-híbridos"><span class="header-section-number">10.5.4</span> Funcionais Híbridos</a></li>
+  <li><a href="#vantagens-e-desvantagens" id="toc-vantagens-e-desvantagens" class="nav-link" data-scroll-target="#vantagens-e-desvantagens"><span class="header-section-number">10.5.5</span> Vantagens e Desvantagens</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/10-dft.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/10-dft.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>A teoria do funcional da densidade (<strong>DFT</strong>, sigla em inglês para <strong>D</strong>ensity <strong>F</strong>unctional <strong>T</strong>heory) se baseia na ideia que a energia total de um sistema com <span class="math inline">\(N\)</span> elétrons e <span class="math inline">\(M\)</span> núcleos atômicos possa ser escrita como um funcional da densidade eletrônica dado por</p>
+<p><span class="math display">\[
+\begin{aligned}
+    E_0[\rho(\boldsymbol{r})] &amp;= \braket{\Psi|\hat{H}_e|\Psi } \\
+    &amp;= \braket{\Psi|\hat{T}_e + \hat{V}_{ee} + \hat{V}_{ne} |\Psi }
+\end{aligned}
+\]</span></p>
+<p>onde <span class="math inline">\(\Psi\)</span> é a função de onda dos <span class="math inline">\(N\)</span> elétrons e contem toda a complexidade do sistema. Nessa visão, os núcleos atômicos agem como potenciais externos sobre os elétrons, cujo valor esperado dessa interação pode ser calculado por</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \braket{\Psi|\hat{V}_{ne}|\Psi } &amp;= -\int \Psi^*(\boldsymbol{x}^N)\left[\sum_{i=1}^N\sum_{a=1}^M \frac{Z_a}{|\boldsymbol{r}_i-\boldsymbol{R}_a|} \right]\Psi(\boldsymbol{x}^N)\ \text{d}\boldsymbol{x}^N \\
+     &amp;= -\int \left\{\int \Psi^*(\boldsymbol{x}^N)\left[\sum_{i=1}^N \delta(\boldsymbol{r}-\boldsymbol{r}_i)\sum_{a=1}^M \frac{Z_a}{|\boldsymbol{r}-\boldsymbol{R}_a|} \right]\Psi(\boldsymbol{x}^N)\ \text{d}\boldsymbol{x}^N \right\}\text{d}\boldsymbol{r} \\
+     &amp;= -\sum_{a=1}^M  \int \frac{Z_a}{|\boldsymbol{r}-\boldsymbol{R}_a|}\rho(\boldsymbol{r})\ \text{d}\boldsymbol{r} = \int V_\text{ext}(\boldsymbol{r})\rho(\boldsymbol{r})\ \text{d}\boldsymbol{r}
+\end{aligned}
+\]</span></p>
+<p>onde <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span> pode ser entendido como o potencial externo produzido pelos núcleos atômicos sobre os elétrons. Assim, podemos escrever um funcional de energia eletrônica do sistema na forma de</p>
+<p><span id="eq-funcional-KohnHohenberg"><span class="math display">\[
+\begin{aligned}
+    E_0[\rho(\boldsymbol{r})] &amp;= \braket{\Psi|\hat{T}_e + \hat{V}_{ee}  |\Psi }  +\int V_\text{ext}(\boldsymbol{r}) \rho (\boldsymbol{r})\text{d}\boldsymbol{r} \\
+    &amp;= E_\text{HK}[\rho(\boldsymbol{r})] +\int V_\text{ext}(\boldsymbol{r}) \rho (\boldsymbol{r})\text{d}\boldsymbol{r}
+\end{aligned}
+\tag{10.1}\]</span></span></p>
+<p>onde agora os termos de energia cinética dos elétrons e a energia de interação elétron-elétron somados dão origem ao funcional de energia da densidade eletrônica. Esse funcional, <span class="math inline">\(E_\text{HK}[\rho(\boldsymbol{r})]\)</span> é conhecido como <strong>funcional de Hohenberg-Kohn</strong> e sua forma funcional é desconhecida.</p>
+<section id="teoremas-de-hohenberg-kohn" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="teoremas-de-hohenberg-kohn"><span class="header-section-number">10.1</span> Teoremas de Hohenberg-Kohn</h2>
+<p>São a base da DFT e demonstrados por ambos em 1964. O objetivo principal é trocar a função de onda para <span class="math inline">\(N\)</span>-elétrons, <span class="math inline">\(\Psi(\{ \boldsymbol{r}_i \})\)</span>, que é função de <span class="math inline">\(3N\)</span> coordenadas pela densidade eletrônica, <span class="math inline">\(\rho(\boldsymbol{r})\)</span> que é função apenas de 3 coordenadas.</p>
+<section id="primeiro-teorema-de-hohenberg-kohn" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="primeiro-teorema-de-hohenberg-kohn"><span class="header-section-number">10.1.1</span> Primeiro teorema de Hohenberg-Kohn</h3>
+<div id="thm-HK1" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 10.1</strong></span> Para um sistema de elétrons interagentes no estado fundamental, o potencial externo <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span> é determinado univocamente pela densidade eletrônica <span class="math inline">\(\rho_0(\boldsymbol{r})\)</span>, a menos de uma constante aditiva. Consequentemente, a densidade eletrônica do estado fundamental determina o Hamiltoniano do sistema e, portanto, todas as propriedades do estado fundamental.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Demonstração do primeiro teorema de Hohenberg-Kohn
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A demonstração pode ser feita por contradição. Suponha que existam dois potenciais externos distintos, <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span> e <span class="math inline">\(V'_\text{ext}(\boldsymbol{r})\)</span>, que não diferem apenas por uma constante, mas produzam a mesma densidade eletrônica fundamental <span class="math inline">\(\rho_0(\boldsymbol{r})\)</span>. Os Hamiltonianos correspondentes são</p>
+<p><span class="math display">\[
+\hat{H}
+=
+\hat{T}_e+\hat{V}_{ee}+\hat{V}_\text{ext}
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\hat{H}'
+=
+\hat{T}_e+\hat{V}_{ee}+\hat{V}'_\text{ext},
+\]</span></p>
+<p>com estados fundamentais <span class="math inline">\(\Psi_0\)</span> e <span class="math inline">\(\Psi'_0\)</span>, e energias <span class="math inline">\(E_0\)</span> e <span class="math inline">\(E'_0\)</span>, respectivamente.</p>
+<p>Pelo princípio variacional,</p>
+<p><span class="math display">\[
+E_0
+&lt;
+\braket{\Psi'_0|\hat{H}|\Psi'_0}.
+\]</span></p>
+<p>Como</p>
+<p><span class="math display">\[
+\hat{H}
+=
+\hat{H}'
++
+\hat{V}_\text{ext}
+-
+\hat{V}'_\text{ext},
+\]</span></p>
+<p>temos</p>
+<p><span class="math display">\[
+E_0
+&lt;
+E'_0
++
+\int
+\rho_0(\boldsymbol{r})
+\left[
+V_\text{ext}(\boldsymbol{r})
+-
+V'_\text{ext}(\boldsymbol{r})
+\right]
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>Invertendo os dois sistemas, obtemos</p>
+<p><span class="math display">\[
+E'_0
+&lt;
+E_0
++
+\int
+\rho_0(\boldsymbol{r})
+\left[
+V'_\text{ext}(\boldsymbol{r})
+-
+V_\text{ext}(\boldsymbol{r})
+\right]
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>Somando as duas desigualdades,</p>
+<p><span class="math display">\[
+E_0+E'_0&lt;E'_0+E_0,
+\]</span></p>
+<p>o que constitui uma contradição. Portanto, dois potenciais externos distintos, exceto por uma constante aditiva, não podem produzir a mesma densidade eletrônica do estado fundamental.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="segundo-teorema-de-hohenberg-kohn" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="segundo-teorema-de-hohenberg-kohn"><span class="header-section-number">10.1.2</span> Segundo teorema de Hohenberg-Kohn</h3>
+<div id="thm-HK2" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 10.2</strong></span> Para um dado potencial externo <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span>, o funcional de energia</p>
+<p><span class="math display">\[
+E[\rho]
+=
+E_\text{HK}[\rho]
++
+\int
+V_\text{ext}(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}
+\]</span></p>
+<p>atinge seu valor mínimo quando <span class="math inline">\(\rho(\boldsymbol{r})\)</span> é a densidade eletrônica do estado fundamental <span class="math inline">\(\rho_0(\boldsymbol{r})\)</span>. Portanto,</p>
+<p><span class="math display">\[
+E[\rho] \geq E[\rho_0] = E_0.
+\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Demonstração do segundo teorema de Hohenberg-Kohn
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A demonstração do segundo teorema pode ser feita diretamente a partir do princípio variacional. Considere uma densidade tentativa <span class="math inline">\(\rho(\boldsymbol{r})\)</span> associada a uma função de onda normalizada <span class="math inline">\(\Psi\)</span>. Pelo princípio variacional de Rayleigh-Ritz,</p>
+<p><span class="math display">\[
+\braket{\Psi|\hat{H}|\Psi}
+\geq
+\braket{\Psi_0|\hat{H}|\Psi_0}
+=
+E_0.
+\]</span></p>
+<p>Como o Hamiltoniano eletrônico pode ser escrito como</p>
+<p><span class="math display">\[
+\hat{H}
+=
+\hat{T}_e
++
+\hat{V}_{ee}
++
+\hat{V}_\text{ext},
+\]</span></p>
+<p>temos</p>
+<p><span class="math display">\[
+\braket{\Psi|\hat{H}|\Psi}
+=
+\braket{\Psi|\hat{T}_e+\hat{V}_{ee}|\Psi}
++
+\int
+V_\text{ext}(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>Identificando o funcional universal de Hohenberg-Kohn como</p>
+<p><span class="math display">\[
+E_\text{HK}[\rho]
+=
+\braket{\Psi|\hat{T}_e+\hat{V}_{ee}|\Psi},
+\]</span></p>
+<p>podemos escrever</p>
+<p><span class="math display">\[
+E[\rho]
+=
+E_\text{HK}[\rho]
++
+\int
+V_\text{ext}(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>Portanto, pelo princípio variacional,</p>
+<p><span class="math display">\[
+E[\rho]
+\geq
+E_0.
+\]</span></p>
+<p>Para a densidade eletrônica do estado fundamental, <span class="math inline">\(\rho_0(\boldsymbol{r})\)</span>, temos</p>
+<p><span class="math display">\[
+E[\rho_0]
+=
+E_0,
+\]</span></p>
+<p>de modo que</p>
+<p><span class="math display">\[
+E[\rho]
+\geq
+E[\rho_0].
+\]</span></p>
+<p>Assim, a energia do estado fundamental é obtida pela minimização do funcional de energia em relação à densidade eletrônica,</p>
+<p><span class="math display">\[
+E_0
+=
+\min_{\rho} E[\rho],
+\]</span></p>
+<p>sujeita à condição de normalização</p>
+<p><span class="math display">\[
+\int
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}
+=
+N.
+\]</span></p>
+<p>Portanto, o funcional de energia atinge seu valor mínimo quando a densidade tentativa coincide com a densidade eletrônica do estado fundamental,</p>
+<p><span class="math display">\[
+\rho(\boldsymbol{r})
+=
+\rho_0(\boldsymbol{r}).
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Funcionais e Cálculo Variacional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Um funcional é uma aplicação que associa um número a uma função. Um exemplo simples é um funcional da forma</p>
+<p><span class="math display">\[
+F[u] = \int f(u(\boldsymbol{r}))\,\text{d}\boldsymbol{r},
+\]</span></p>
+<p>onde <span class="math inline">\(f(u)\)</span> é uma função contínua. Nesse caso, uma pequena variação da função,</p>
+<p><span class="math display">\[
+u(\boldsymbol{r}) \rightarrow u(\boldsymbol{r})+\delta u(\boldsymbol{r}),
+\]</span></p>
+<p>produz uma variação do funcional dada por</p>
+<p><span class="math display">\[
+\delta F
+=
+F[u+\delta u]-F[u].
+\]</span></p>
+<p>Assim,</p>
+<p><span class="math display">\[
+\delta F
+=
+\int
+\left[
+f(u+\delta u)-f(u)
+\right]
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>Expandindo <span class="math inline">\(f(u+\delta u)\)</span> em série de Taylor até primeira ordem,</p>
+<p><span class="math display">\[
+f(u+\delta u)
+=
+f(u)
++
+\frac{\partial f}{\partial u}\delta u
++
+\mathcal{O}(\delta u^2),
+\]</span></p>
+<p>obtemos</p>
+<p><span class="math display">\[
+\delta F
+=
+\int
+\frac{\partial f}{\partial u}
+\delta u(\boldsymbol{r})
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>A derivada funcional é definida através da relação</p>
+<p><span class="math display">\[
+\delta F
+=
+\int
+\frac{\delta F}{\delta u(\boldsymbol{r})}
+\delta u(\boldsymbol{r})
+\text{d}\boldsymbol{r},
+\]</span></p>
+<p>de modo que, para esse caso simples,</p>
+<p><span class="math display">\[
+\frac{\delta F}{\delta u(\boldsymbol{r})}
+=
+\frac{\partial f}{\partial u}.
+\]</span></p>
+<section id="funcionais-dependentes-do-gradiente" class="level4" data-number="10.1.2.1">
+<h4 data-number="10.1.2.1" class="anchored" data-anchor-id="funcionais-dependentes-do-gradiente"><span class="header-section-number">10.1.2.1</span> Funcionais dependentes do gradiente</h4>
+<p>Um caso mais geral e particularmente importante em teoria do funcional da densidade ocorre quando o funcional depende não apenas da função <span class="math inline">\(u(\boldsymbol{r})\)</span>, mas também de seu gradiente,</p>
+<p><span class="math display">\[
+F[u]
+=
+\int
+f\left(
+u(\boldsymbol{r}),
+\nabla u(\boldsymbol{r})
+\right)
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>Aplicando uma pequena variação</p>
+<p><span class="math display">\[
+u(\boldsymbol{r})
+\rightarrow
+u(\boldsymbol{r})
++
+\delta u(\boldsymbol{r}),
+\]</span></p>
+<p>temos</p>
+<p><span class="math display">\[
+\nabla u(\boldsymbol{r})
+\rightarrow
+\nabla u(\boldsymbol{r})
++
+\nabla\delta u(\boldsymbol{r}).
+\]</span></p>
+<p>A variação do funcional, mantendo apenas os termos de primeira ordem, será</p>
+<p><span class="math display">\[
+\delta F
+=
+\int
+\left[
+\frac{\partial f}{\partial u}
+\delta u
++
+\frac{\partial f}{\partial(\nabla u)}
+\cdot
+\nabla\delta u
+\right]
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>O segundo termo pode ser integrado por partes utilizando</p>
+<p><span class="math display">\[
+\nabla\cdot
+\left[
+\frac{\partial f}{\partial(\nabla u)}
+\delta u
+\right]
+=
+\frac{\partial f}{\partial(\nabla u)}
+\cdot
+\nabla\delta u
++
+\delta u
+\nabla\cdot
+\left[
+\frac{\partial f}{\partial(\nabla u)}
+\right].
+\]</span></p>
+<p>Assim,</p>
+<p><span class="math display">\[
+\begin{aligned}
+\delta F
+&amp;=
+\int
+\left[
+\frac{\partial f}{\partial u}
+-
+\nabla\cdot
+\left(
+\frac{\partial f}{\partial(\nabla u)}
+\right)
+\right]
+\delta u
+\text{d}\boldsymbol{r}
+\\
+&amp;\quad+
+\int
+\nabla\cdot
+\left[
+\frac{\partial f}{\partial(\nabla u)}
+\delta u
+\right]
+\text{d}\boldsymbol{r}.
+\end{aligned}
+\]</span></p>
+<p>Assumindo que <span class="math inline">\(\delta u(\boldsymbol{r})\)</span> seja nula na fronteira do domínio, o termo de superfície desaparece. Portanto,</p>
+<p><span class="math display">\[
+\delta F
+=
+\int
+\left[
+\frac{\partial f}{\partial u}
+-
+\nabla\cdot
+\left(
+\frac{\partial f}{\partial(\nabla u)}
+\right)
+\right]
+\delta u(\boldsymbol{r})
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>Comparando com a definição da derivada funcional,</p>
+<p><span class="math display">\[
+\delta F
+=
+\int
+\frac{\delta F}{\delta u(\boldsymbol{r})}
+\delta u(\boldsymbol{r})
+\text{d}\boldsymbol{r},
+\]</span></p>
+<p>obtemos</p>
+<p><span class="math display">\[
+\boxed{
+\frac{\delta F}{\delta u(\boldsymbol{r})}
+=
+\frac{\partial f}{\partial u}
+-
+\nabla\cdot
+\left(
+\frac{\partial f}{\partial(\nabla u)}
+\right)
+}
+\]</span></p>
+<p>que corresponde à forma funcional da equação de Euler-Lagrange.</p>
+</section>
+<section id="condição-de-extremo" class="level4" data-number="10.1.2.2">
+<h4 data-number="10.1.2.2" class="anchored" data-anchor-id="condição-de-extremo"><span class="header-section-number">10.1.2.2</span> Condição de extremo</h4>
+<p>Quando buscamos uma função <span class="math inline">\(u(\boldsymbol{r})\)</span> que minimize ou maximize o funcional <span class="math inline">\(F[u]\)</span>, devemos impor</p>
+<p><span class="math display">\[
+\delta F=0
+\]</span></p>
+<p>para qualquer variação admissível <span class="math inline">\(\delta u(\boldsymbol{r})\)</span>. Isso implica</p>
+<p><span class="math display">\[
+\boxed{
+\frac{\partial f}{\partial u}
+-
+\nabla\cdot
+\left(
+\frac{\partial f}{\partial(\nabla u)}
+\right)
+=
+0
+}
+\]</span></p>
+<p>que é a equação de Euler-Lagrange associada ao funcional.</p>
+</section>
+<section id="propriedades" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="propriedades"><span class="header-section-number">10.1.3</span> Propriedades</h3>
+<p>Tais derivadas possuem algumas propriedades interessantes:</p>
+<ul>
+<li>se <span class="math inline">\(F[u(x)] = \lambda A[u(x)]+ \mu B[u(x)]\)</span> então <span class="math inline">\(\frac{\delta F}{\delta u(x)} = \lambda \frac{\delta A}{\delta u(x)} + \mu \frac{\delta B}{\delta u(x)}\)</span>;</li>
+<li>se <span class="math inline">\(F[u(x)] = A[u(x)]B[u(x)]\)</span> então <span class="math inline">\(\frac{\delta F}{\delta u(x)} = A \frac{\delta B}{\delta u(x)} + \frac{\delta A}{\delta u(x)}B\)</span>;</li>
+<li>se <span class="math inline">\(F[u(x)] = u(x') = \int u(x) \delta(x-x') \text{d}x\)</span> então <span class="math inline">\(\frac{\delta F}{\delta u(x)} = \frac{\delta u(x')}{\delta u(x)} = \delta(x-x')\)</span></li>
+</ul>
+</section>
+</div>
+</div>
+<p>O principal problema do DFT é determinar a forma explícita, aproximada ou não, do funcional universal de energia de Hohenberg-Kohn, <span class="math inline">\(E_\text{HK}[\rho(\boldsymbol{r})]\)</span>, afim de resolver o problema variacional e obter a densidade eletrônica para um dado potencial externo, <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span>.</p>
+</section>
+</section>
+<section id="método-de-kohn-sham" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="método-de-kohn-sham"><span class="header-section-number">10.2</span> Método de Kohn-Sham</h2>
+<p>Em 1965, Kohn e Sham propuseram escrever o funcional de energia de Hohenberg-Kohn na seguinte forma</p>
+<p><span class="math display">\[
+    E_\text{HK}[\rho(\boldsymbol{r})] = E_\text{S}[\rho(\boldsymbol{r})]+E_H[\rho(\boldsymbol{r})] + E_\text{XC}[\rho(\boldsymbol{r})],
+\]</span></p>
+<p>onde <span class="math inline">\(E_\text{S}\)</span> é a energia cinética de elétrons não-interagentes dada por</p>
+<p><span class="math display">\[
+    E_\text{S}[\rho] = \sum_{i=1}^N \braket{\psi_i|-\tfrac{1}{2} \nabla^2|\psi_i} = \sum_{i=1}^N \int \psi_i^*(\boldsymbol{x}) \left( -\frac{1}{2} \nabla^2\right)\psi_i(\boldsymbol{x})\text{d}\boldsymbol{x},
+\]</span></p>
+<p>com <span class="math inline">\(\ket{\psi_i}\)</span> sendo os spin-orbitais moleculares de 1 elétron. O termo <span class="math inline">\(E_H\)</span> é a energia de Hartree da interação coulombiana na aproximação de campo médio dada por</p>
+<p><span class="math display">\[
+    E_H[\rho] = \frac{1}{2} \iint \frac{\rho(\boldsymbol{r})\rho(\boldsymbol{r}')}{|\boldsymbol{r}-\boldsymbol{r}'|}\text{d}\boldsymbol{r}\text{d}\boldsymbol{r}',
+\]</span></p>
+<p>e, por fim, o termo <span class="math inline">\(E_\text{XC}\)</span> é denominado como funcional de <strong>energia de troca-correlação</strong> (em inglês, <em>e<strong>X</strong>change-<strong>C</strong>orrelation</em>) e é definido como</p>
+<p><span class="math display">\[
+    E_\text{XC}[\rho] = \left(\braket{\hat{T}_e}-E_\text{S}[\rho]\right) + \left(\braket{\hat{V}_{ee}} - E_H[\rho]\right)
+\]</span></p>
+<p>onde a primeira diferença <span class="math inline">\(\braket{\hat{T}_e}-E_\text{S}[\rho]\)</span> representa a diferença de energia cinética entre um sistema elétrons interagentes e um sistema de elétrons não-interagentes, e a segunda diferença <span class="math inline">\(\braket{\hat{V}_{ee}} - E_H[\rho]\)</span> define a diferença entre a energia de interação coulombiana total entre os elétrons e o termo de Hartree de campo médio.</p>
+<p>Com isso, os spin-orbitais moleculares de 1 elétron denominados aqui por <strong>spin-orbitais de Kohn-Sham</strong>, <span class="math inline">\(\psi_i(\boldsymbol{x})\equiv \psi_i(\boldsymbol{r},\sigma)\)</span>, serão usados para calcular a densidade eletrônica na forma</p>
+<p><span class="math display">\[
+    \rho(\boldsymbol{r})  = \sum_{i=1}^N \sum_\sigma |\psi_i(\boldsymbol{r},\sigma)|^2,
+\]</span></p>
+<p>e minimizar o funcional de energia eletrônico.</p>
+<p>Como os spin-orbitais de 1 elétron devem ser ortonormais,</p>
+<p><span class="math display">\[
+\braket{\psi_i|\psi_j}=\delta_{ij},
+\]</span></p>
+<p>devemos impor essas condições durante a minimização do funcional de energia. Para isso, introduzimos uma matriz de multiplicadores de Lagrange <span class="math inline">\(\epsilon_{ij}\)</span> e definimos a Lagrangeana</p>
+<p><span class="math display">\[
+\mathcal{L}[\{\psi_i\}]
+=
+E_0[\rho]
+-
+\sum_{i=1}^N
+\sum_{j=1}^N
+\epsilon_{ij}
+\left[
+\braket{\psi_i|\psi_j}
+-
+\delta_{ij}
+\right].
+\]</span></p>
+<p>A condição de mínimo é obtida impondo</p>
+<p><span class="math display">\[
+\frac{\delta\mathcal{L}}
+{\delta\psi_i^*(\boldsymbol{r})}
+=
+0.
+\]</span></p>
+<p>Explicitamente,</p>
+<p><span class="math display">\[
+\begin{aligned}
+0
+=
+\frac{\delta}{\delta\psi_i^*(\boldsymbol{r})}
+\Bigg\{
+&amp;E_\text{S}[\rho]
++
+E_H[\rho]
++
+E_\text{XC}[\rho]
++
+\int
+V_\text{ext}(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}
+\\
+&amp;-
+\sum_{j=1}^N
+\sum_{k=1}^N
+\epsilon_{jk}
+\left[
+\braket{\psi_j|\psi_k}
+-
+\delta_{jk}
+\right]
+\Bigg\}.
+\end{aligned}
+\]</span></p>
+<p>A derivada funcional do termo cinético em relação a <span class="math inline">\(\psi_i^*(\boldsymbol{r})\)</span> é</p>
+<p><span class="math display">\[
+\frac{\delta E_\text{S}}
+{\delta\psi_i^*(\boldsymbol{r})}
+=
+-\frac{1}{2}\nabla^2\psi_i(\boldsymbol{r}).
+\]</span></p>
+<p>Para os termos que dependem da densidade eletrônica, podemos utilizar a regra da cadeia,</p>
+<p><span class="math display">\[
+\frac{\delta A[\rho]}
+{\delta\psi_i^*(\boldsymbol{r})}
+=
+\frac{\delta A[\rho]}
+{\delta\rho(\boldsymbol{r})}
+\frac{\delta\rho(\boldsymbol{r})}
+{\delta\psi_i^*(\boldsymbol{r})}.
+\]</span></p>
+<p>Como</p>
+<p><span class="math display">\[
+\frac{\delta\rho(\boldsymbol{r})}
+{\delta\psi_i^*(\boldsymbol{r})}
+=
+\psi_i(\boldsymbol{r}),
+\]</span></p>
+<p>temos</p>
+<p><span class="math display">\[
+\frac{\delta E_H}
+{\delta\psi_i^*(\boldsymbol{r})}
+=
+V_H(\boldsymbol{r})
+\psi_i(\boldsymbol{r}),
+\]</span></p>
+<p><span class="math display">\[
+\frac{\delta E_\text{XC}}
+{\delta\psi_i^*(\boldsymbol{r})}
+=
+V_\text{XC}(\boldsymbol{r})
+\psi_i(\boldsymbol{r}),
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\frac{\delta}
+{\delta\psi_i^*(\boldsymbol{r})}
+\int
+V_\text{ext}(\boldsymbol{r}')
+\rho(\boldsymbol{r}')
+\text{d}\boldsymbol{r}'
+=
+V_\text{ext}(\boldsymbol{r})
+\psi_i(\boldsymbol{r}).
+\]</span></p>
+<p>Para o termo que impõe a ortonormalidade,</p>
+<p><span class="math display">\[
+\frac{\delta}
+{\delta\psi_i^*(\boldsymbol{r})}
+\braket{\psi_j|\psi_k}
+=
+\delta_{ij}\psi_k(\boldsymbol{r}),
+\]</span></p>
+<p>de modo que</p>
+<p><span class="math display">\[
+\frac{\delta}
+{\delta\psi_i^*(\boldsymbol{r})}
+\sum_{j,k}
+\epsilon_{jk}
+\braket{\psi_j|\psi_k}
+=
+\sum_k
+\epsilon_{ik}
+\psi_k(\boldsymbol{r}).
+\]</span></p>
+<p>Consequentemente, a condição variacional resulta em</p>
+<p><span class="math display">\[
+\left[
+-\frac{1}{2}\nabla^2
++
+V_H(\boldsymbol{r})
++
+V_\text{XC}(\boldsymbol{r})
++
+V_\text{ext}(\boldsymbol{r})
+\right]
+\psi_i(\boldsymbol{r})
+=
+\sum_{j=1}^N
+\epsilon_{ij}
+\psi_j(\boldsymbol{r}).
+\]</span></p>
+<p>Definindo o operador de Kohn-Sham como</p>
+<p><span class="math display">\[
+\hat{h}_\text{KS}
+=
+-\frac{1}{2}\nabla^2
++
+V_\text{eff}(\boldsymbol{r}),
+\]</span></p>
+<p>com</p>
+<p><span class="math display">\[
+V_\text{eff}(\boldsymbol{r})
+=
+V_H(\boldsymbol{r})
++
+V_\text{XC}(\boldsymbol{r})
++
+V_\text{ext}(\boldsymbol{r}),
+\]</span></p>
+<p>podemos escrever</p>
+<p><span class="math display">\[
+\hat{h}_\text{KS}\psi_i
+=
+\sum_{j=1}^N
+\epsilon_{ij}\psi_j.
+\]</span></p>
+<p>Os multiplicadores de Lagrange <span class="math inline">\(\epsilon_{ij}\)</span> formam uma matriz hermitiana. Portanto, existe uma transformação unitária dos orbitais ocupados capaz de diagonalizar essa matriz. Definindo novos orbitais por</p>
+<p><span class="math display">\[
+\phi_i
+=
+\sum_j
+U_{ji}\psi_j,
+\]</span></p>
+<p>onde <span class="math inline">\(U\)</span> é uma matriz unitária escolhida de modo que</p>
+<p><span class="math display">\[
+U^\dagger
+\boldsymbol{\epsilon}
+U
+=
+\operatorname{diag}
+(\epsilon_1,\epsilon_2,\ldots),
+\]</span></p>
+<p>as equações passam a ter a forma diagonal</p>
+<p><span class="math display">\[
+\boxed{
+\hat{h}_\text{KS}
+\phi_i(\boldsymbol{r})
+=
+\epsilon_i
+\phi_i(\boldsymbol{r})
+}
+\]</span></p>
+<p>que corresponde à forma canônica das equações de Kohn-Sham.</p>
+<p>Desta forma, o método de Kohn-Sham consiste em resolver o problema eletrônico a partir de um sistema auxiliar constituído de elétrons não-interagentes mas sujeitos a um potencial efetivo dado por <span class="math inline">\(V_\text{eff}(\boldsymbol{r}) = V_\text{H}(\boldsymbol{r})  + V_\text{XC}(\boldsymbol{r}) + V_\text{ext}(\boldsymbol{r})\)</span> onde o potencial de Hartree é calculado por</p>
+<p><span class="math display">\[
+    V_\text{H}(\boldsymbol{r}) = \frac{\delta E_\text{H}[\rho]}{\delta \rho(\boldsymbol{r}) } = \int \frac{\rho(\boldsymbol{r}')}{|\boldsymbol{r}-\boldsymbol{r}'|}\text{d}\boldsymbol{r}',
+\]</span></p>
+<p>e o potencial de troca e correlação definido como</p>
+<p><span class="math display">\[
+    V_{XC}(\boldsymbol{r}) = \frac{\delta E_{XC}[\rho(\boldsymbol{r})]}{\delta \rho(\boldsymbol{r})}.
+\]</span></p>
+</section>
+<section id="método-auto-consistente" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="método-auto-consistente"><span class="header-section-number">10.3</span> Método Auto-Consistente</h2>
+<p>Assim, como no caso de Hartree-Fock, podemos usar modelos restritos ou irrestritos para resolver as equações de Kohn-Sham, como RKS ou UKS, respectivamente.</p>
+<p>O procedimento auto-consistente é descrito como</p>
+<ol type="1">
+<li><p>Decida a geometria do sistema que deseja resolver: <span class="math inline">\(\{R_A\}, \{Z_A\}, N\)</span> e defina o tipo de conjunto de base;</p></li>
+<li><p>Calcule o potencial externo <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span>;</p></li>
+<li><p>Inicialize o método com um chute inicial para a densidade <span class="math inline">\(\rho^{n=0}(\boldsymbol{r})\)</span>;</p></li>
+<li><p>Calcule o potencial efetivo <span class="math inline">\(V_\text{eff}(\boldsymbol{r})\)</span>;</p></li>
+<li><p>Resolve as Eq de Kohn-Sham para nova densidade <span class="math inline">\(\rho^{n+1}(\boldsymbol{r}) = \sum_i |\psi_i(\boldsymbol{r})|^2\)</span>;</p></li>
+<li><p>Verifique a convergência <span class="math inline">\(\rho^{n+1}=\rho^{n}\)</span>. Se for verdadeiro, pare o cálculo e siga para o item 7. Caso contrário volte ao item 4.</p></li>
+<li><p>Por fim, obtenha a forma dos orbitais moleculares (MO) a partir de <span class="math inline">\(\psi_i(\boldsymbol{r})\)</span> e as energias dos MOs a partir de <span class="math inline">\(\epsilon_i\)</span>.</p></li>
+</ol>
+<p>Isso pode ser representado graficamente por um fluxograma como na <a href="#fig-SCF-DFT" class="quarto-xref">Figure&nbsp;<span>10.1</span></a>.</p>
+<div id="fig-SCF-DFT" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-SCF-DFT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/SCF-DFT.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SCF-DFT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10.1: Método auto-consistente (SCF) para resolução das equações de Kohn-Sham.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="energia-total" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="energia-total"><span class="header-section-number">10.4</span> Energia Total</h2>
+<p>A energia total do sistema de Kohn-Sham é dada por</p>
+<p><span class="math display">\[
+E[\rho]
+=
+E_\text{S}[\rho]
++
+E_H[\rho]
++
+E_\text{XC}[\rho]
++
+\int
+V_\text{ext}(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>A partir das equações de Kohn-Sham,</p>
+<p><span class="math display">\[
+\left[
+-\frac{1}{2}\nabla^2
++
+V_\text{ext}(\boldsymbol{r})
++
+V_H(\boldsymbol{r})
++
+V_\text{XC}(\boldsymbol{r})
+\right]
+\psi_i(\boldsymbol{r})
+=
+\epsilon_i\psi_i(\boldsymbol{r}),
+\]</span></p>
+<p>multiplicando por <span class="math inline">\(\psi_i^*(\boldsymbol{r})\)</span>, integrando e somando sobre todos os orbitais ocupados, obtemos</p>
+<p><span class="math display">\[
+\sum_i\epsilon_i
+=
+E_\text{S}[\rho]
++
+\int
+V_\text{ext}(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}
++
+\int
+V_H(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}
++
+\int
+V_\text{XC}(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}.
+\]</span></p>
+<p>Como</p>
+<p><span class="math display">\[
+E_H[\rho]
+=
+\frac{1}{2}
+\iint
+\frac{
+\rho(\boldsymbol{r})
+\rho(\boldsymbol{r}')
+}{
+|\boldsymbol{r}-\boldsymbol{r}'|
+}
+\text{d}\boldsymbol{r}
+\text{d}\boldsymbol{r}',
+\]</span></p>
+<p>temos</p>
+<p><span class="math display">\[
+\int
+V_H(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}
+=
+2E_H[\rho].
+\]</span></p>
+<p>Portanto, a energia total pode ser escrita em termos dos autovalores de Kohn-Sham como</p>
+<p><span class="math display">\[
+\boxed{
+E[\rho]
+=
+\sum_i\epsilon_i
+-
+E_H[\rho]
++
+E_\text{XC}[\rho]
+-
+\int
+V_\text{XC}(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}
+}
+\]</span></p>
+<p>ou, explicitamente,</p>
+<p><span class="math display">\[
+\boxed{
+E[\rho]
+=
+\sum_i\epsilon_i
+-
+\frac{1}{2}
+\iint
+\frac{
+\rho(\boldsymbol{r})
+\rho(\boldsymbol{r}')
+}{
+|\boldsymbol{r}-\boldsymbol{r}'|
+}
+\text{d}\boldsymbol{r}
+\text{d}\boldsymbol{r}'
++
+E_\text{XC}[\rho]
+-
+\int
+V_\text{XC}(\boldsymbol{r})
+\rho(\boldsymbol{r})
+\text{d}\boldsymbol{r}
+}
+\]</span></p>
+<p>A soma dos autovalores de Kohn-Sham não corresponde diretamente à energia total do sistema. O termo de Hartree presente nos autovalores conta a interação elétron-elétron duas vezes e, por isso, uma contribuição <span class="math inline">\(E_H[\rho]\)</span> deve ser subtraída. Além disso, a contribuição de troca e correlação presente nos autovalores é dada por <span class="math inline">\(\int V_\text{XC}(\boldsymbol{r})\rho(\boldsymbol{r})\text{d}\boldsymbol{r}\)</span>, que em geral é diferente do funcional de energia <span class="math inline">\(E_\text{XC}[\rho]\)</span>. Por isso, essa contribuição deve ser subtraída e substituída por <span class="math inline">\(E_\text{XC}[\rho]\)</span>.</p>
+</section>
+<section id="funcionais-de-troca-e-correlação" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="funcionais-de-troca-e-correlação"><span class="header-section-number">10.5</span> Funcionais de troca e correlação</h2>
+<p>Embora a energia <span class="math inline">\(E_0\)</span> possa, em princípio, ser calculada a partir do método de Kohn-Sham, não se conhece a forma exata do funcional de troca-correlação <span class="math inline">\(E_{xc}[\rho(\boldsymbol{r})]\)</span>. Há um desenvolvimento extenso de funcionais <span class="math inline">\(E_{xc}[\rho(\boldsymbol{r})]\)</span> aproximados para descrever uma gama de propriedades físicas distintas.</p>
+<section id="aproximação-da-densidade-local-lda" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="aproximação-da-densidade-local-lda"><span class="header-section-number">10.5.1</span> Aproximação da densidade local (LDA)</h3>
+<p>Para o gás de elétrons uniforme, o funcional de troca será dado por:</p>
+<p><span class="math display">\[
+E_x^{\text{LDA}}[\rho(\boldsymbol{r})] = \int \rho(\boldsymbol{r})\, \epsilon_x[\rho(\boldsymbol{r})]\, d\boldsymbol{r}
+\]</span></p>
+<p>E para a aproximação de um gás de elétrons uniforme podemos usar a aproximação de Slater, dando para o termo de troca:</p>
+<p><span class="math display">\[
+\epsilon_x[\rho(\boldsymbol{r})] = -\frac{3}{4} \left( \frac{3 \rho(\boldsymbol{r})}{\pi} \right)^{1/3}
+\]</span></p>
+<p>de modo que a derivada funcional seja</p>
+<p><span class="math display">\[
+V_x(\boldsymbol{r}) = \frac{\delta E_x}{\delta \rho(\boldsymbol{r})} = - \left( \frac{3}{\pi} \right)^{1/3} \rho(\boldsymbol{r})^{1/3}.
+\]</span></p>
+<p>Existem várias expressões para a energia de correlação <span class="math inline">\(E_\text{C}^{\text{LDA}}\)</span> que foram obtidas por ajuste aos resultados de cálculos precisos de Monte Carlo Quântico (QMC) de Ceperley e Alder para o gás eletrônico uniforme . Essas expressões são bastante complexas e geralmente são referidas por suas abreviações, como VWN, VWN5, CAPZ, entre outras. Apesar disso, elas produzem resultados muito semelhantes quando utilizadas em cálculos moleculares.</p>
+</section>
+<section id="aproximação-de-gradiente-generalizado-gga" class="level3" data-number="10.5.2">
+<h3 data-number="10.5.2" class="anchored" data-anchor-id="aproximação-de-gradiente-generalizado-gga"><span class="header-section-number">10.5.2</span> Aproximação de Gradiente Generalizado (GGA)</h3>
+<p>Motivado pelo trabalho de Weizsäcker, que introduziu um termo de gradiente na energia cinética do modelo de Thomas–Fermi, podemos adotar que</p>
+<p><span class="math display">\[
+E_{xc}^{\text{GGA}}[\rho(\boldsymbol{r})] = \int f(\rho(\boldsymbol{r}), \nabla \rho(\boldsymbol{r}))\, d\boldsymbol{r}
+\]</span></p>
+<p>tal que a derivada funcional seja</p>
+<p><span class="math display">\[
+\begin{aligned}
+V_{xc}^{\text{GGA}}[\boldsymbol{r}] = \frac{\delta E_{xc}}{\delta \rho(\boldsymbol{r})}
+= \frac{\partial f}{\partial \rho(\boldsymbol{r})} - \nabla \cdot \left( \frac{\partial f}{\partial \nabla \rho(\boldsymbol{r})} \right)
+\end{aligned}
+\]</span></p>
+<p>Assim, diferentes escolhas para <span class="math inline">\(f\)</span> nos permitem descrever melhor as inomogeneidades da distribuição eletrônica. Um dos funcionais mais conhecidos e utilizados é o <strong>PBE</strong> <span class="citation" data-cites="Perdew1996PBE">(<a href="#ref-Perdew1996PBE" role="doc-biblioref">Perdew et al. 1996</a>)</span>, cujo funcional de troca é escrito como</p>
+<p><span class="math display">\[
+E_x^{\text{PBE}}[\rho]
+=
+\int
+\rho(\boldsymbol{r})
+\epsilon_x^{\text{LDA}}[\rho(\boldsymbol{r})]
+F_x^{\text{PBE}}(s)
+\,\text{d}\boldsymbol{r},
+\]</span></p>
+<p>com o gradiente reduzido dado por</p>
+<p><span class="math display">\[
+s
+=
+\frac{|\nabla\rho(\boldsymbol{r})|}
+{2k_F(\boldsymbol{r})\rho(\boldsymbol{r})},
+\qquad
+k_F(\boldsymbol{r})
+=
+\left(3\pi^2\rho(\boldsymbol{r})\right)^{1/3}.
+\]</span></p>
+<p>No funcional PBE, o fator de intensificação de troca é definido como</p>
+<p><span class="math display">\[
+\boxed{
+F_x^{\text{PBE}}(s)
+=
+1+\kappa
+-
+\frac{\kappa}
+{1+\mu s^2/\kappa}
+}
+\]</span></p>
+<p>onde</p>
+<p><span class="math display">\[
+\kappa=0.804
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\mu\simeq0.21951.
+\]</span></p>
+<p>Para pequenos valores do gradiente reduzido, podemos expandir o fator de intensificação na forma</p>
+<p><span class="math display">\[
+F_x^{\text{PBE}}(s)
+=
+1+\mu s^2
+-
+\frac{\mu^2}{\kappa}s^4
++
+\mathcal{O}(s^6).
+\]</span></p>
+<p>É importante observar que o coeficiente de segunda ordem da expansão em gradientes da energia de troca para um gás de elétrons lentamente variável é</p>
+<p><span class="math display">\[
+\mu_\text{GE}
+=
+\frac{10}{81}.
+\]</span></p>
+<p>Esse valor não é utilizado no PBE original, que adota <span class="math inline">\(\mu\simeq0.21951\)</span>. A restauração do coeficiente <span class="math inline">\(\mu_\text{GE}=10/81\)</span> é uma das principais modificações introduzidas no funcional PBEsol, desenvolvido posteriormente para melhorar a descrição de propriedades de equilíbrio de sólidos e superfícies <span class="citation" data-cites="Perdew2008PBEsol">(<a href="#ref-Perdew2008PBEsol" role="doc-biblioref">Perdew et al. 2008</a>)</span>.</p>
+<p>Assim como PBE existem outros funcionais que são derivados de primeiros princípios (<strong>funcionais físicos</strong>)</p>
+<ul>
+<li>Troca: B86, LG, P, PBE, mPBE</li>
+<li>Correlação: PW91</li>
+</ul>
+<p>Outros funcionais contem parâmetros cujos valores são fitados para reproduzir experimentos ou cálculos mais acurados (<strong>funcionais químicos</strong>)</p>
+<ul>
+<li>Troca: B (de Becke), B88, CAM, FT97, O, PW, mPW, X</li>
+<li>Correlação: P86, LYP</li>
+</ul>
+</section>
+<section id="aproximações-meta-generalizadas-meta-gga" class="level3" data-number="10.5.3">
+<h3 data-number="10.5.3" class="anchored" data-anchor-id="aproximações-meta-generalizadas-meta-gga"><span class="header-section-number">10.5.3</span> Aproximações Meta-Generalizadas (meta-GGA)</h3>
+<p>Nelas são introduzidas formas de derivadas de ordem mais alta:</p>
+<p><span class="math display">\[
+E_{xc}^{\text{meta-GGA}}[\rho(\boldsymbol{r})] = \int \epsilon_{xc}^{\text{meta-GGA}}(\rho, \nabla \rho, \nabla^2 \rho, \tau) \, d\boldsymbol{r},
+\]</span></p>
+<p>onde <span class="math inline">\(\tau(\boldsymbol{r})\)</span> é a densidade de energia cinética não-interagente, dada por:</p>
+<p><span class="math display">\[
+\tau(\boldsymbol{r}) = \frac{1}{2} \sum_{i=1}^N |\nabla \psi_i(\boldsymbol{r})|^2
+\]</span></p>
+<p>Alguns funcionais famosos são B95, B98, ISM, KCIS, PKZB, TPSS, VSXC e SCAN.</p>
+</section>
+<section id="funcionais-híbridos" class="level3" data-number="10.5.4">
+<h3 data-number="10.5.4" class="anchored" data-anchor-id="funcionais-híbridos"><span class="header-section-number">10.5.4</span> Funcionais Híbridos</h3>
+<p>São funcionais baseados no princípio da combinação aditiva como o <strong>PBE0</strong> dado por</p>
+<p><span class="math display">\[
+E_\text{XC}^{\text{PBE0}}[\rho] =  E_\text{XC}^{\text{PBE}} + \frac{1}{4}( E_\text{X}^{\text{HF}}-E_\text{X}^{\text{PBE}} )
+\]</span></p>
+<p>Outros funcionais híbridos usam como termo de troca a energia de Hartree-Fock dada por</p>
+<p><span class="math display">\[
+    E_\text{X}^{\text{HF}} = -\sum_i \sum_j \iint \frac{\psi_i^*(\boldsymbol{r})\psi_j(\boldsymbol{r})\psi_j^*(\boldsymbol{r}')\psi_i(\boldsymbol{r}')}{|\boldsymbol{r}-\boldsymbol{r}'|}\ \text{d}\boldsymbol{r} \text{d}\boldsymbol{r}'
+\]</span></p>
+<p>com <span class="math inline">\(\psi_i\)</span> sendo os MO de Kohn-Sham. Assim, adotam outra parametrização na forma de</p>
+<p><span class="math display">\[
+\begin{aligned}
+E_\text{XC}[\rho] =\ &amp;  E_\text{XC}^{\text{LDA}} + a_0( E_\text{X}^{\text{HF}}-E_\text{X}^{\text{LDA}} ) + a_x(E_\text{X}^{\text{GGA}} - E_\text{X}^{\text{LDA}}) \\
+&amp; + a_c(E_\text{C}^{\text{GGA}} -E_\text{C}^{\text{LDA}})
+\end{aligned}
+\]</span></p>
+<p>com o mais famoso sendo funcional de <strong>B3LYP</strong> que usa <span class="math inline">\(a_0=0,\!2\)</span>, <span class="math inline">\(a_x=0,\!72\)</span> e <span class="math inline">\(a_c=0,\!81\)</span> com os funcionais <span class="math inline">\(E_\text{X}^{\text{B88}}\)</span> e <span class="math inline">\(E_\text{C}^{\text{LYP}}\)</span>.</p>
+<p>Outros funcionais híbridos são B1PW91, B1LYP, B1B95, mPW1PW91 e PBE1PBE.</p>
+</section>
+<section id="vantagens-e-desvantagens" class="level3" data-number="10.5.5">
+<h3 data-number="10.5.5" class="anchored" data-anchor-id="vantagens-e-desvantagens"><span class="header-section-number">10.5.5</span> Vantagens e Desvantagens</h3>
+<ul>
+<li><strong>LDA</strong>:
+<ul>
+<li>descreve ligações covalentes, átomos e metais razoavelmente bem;</li>
+<li>cancelamento de erros sistemáticos;</li>
+<li>subestima <span class="math inline">\(E_x\)</span> e superestima <span class="math inline">\(E_c\)</span>;</li>
+<li>superestima energia de ligação e subestima comprimentos;</li>
+<li>problema com ligações de hidrogênio;</li>
+<li>incapaz de incluir interações de longo alcance.</li>
+</ul></li>
+<li><strong>GGA</strong>:
+<ul>
+<li>descreve inhomogeneidades;</li>
+<li>não-empíricos: PBE</li>
+<li>empíricos: B88, LYP.</li>
+</ul></li>
+<li><strong>meta-GGA</strong>:
+<ul>
+<li>mais custosos computacionalmente.</li>
+</ul></li>
+<li><strong>Híbridos</strong>:
+<ul>
+<li>mais versáteis;</li>
+<li>PBE0 e B3LYP são os mais usados.</li>
+</ul></li>
+</ul>
+<p>Programas de Química Quântica oferecem uma grande variedade de funcionais, e selecionar um funcional adequado pode ser uma tarefa desafiadora. Para escolher um funcional, você deve:</p>
+<ul>
+<li>Pesquisar na literatura cálculos realizados em materiais e propriedades semelhante (muitas propriedades além da energia podem ser calculadas por DFT)</li>
+<li>Comparar os funcionais “candidatos” buscando, nas publicações que descrevem seu desenvolvimento, os pontos fortes e fracos — especialmente em relação ao tipo de cálculo que você deseja realizar;</li>
+<li>Verificar como seus funcionais candidatos se comportam com diferentes conjuntos de base (funcionais com parâmetros empíricos às vezes produzem melhores resultados com conjuntos de base “médios”, se foram parametrizados para isso);</li>
+<li>Realizar alguns cálculos de “calibração” em moléculas pequenas similares às que você deseja estudar, para comparar a precisão dos funcionais e conjuntos de base possíveis, decidindo assim qual combinação é melhor para os cálculos “definitivos”;</li>
+<li>Você pode até criar seus próprios funcionais, combinando funcionais de troca e correlação disponíveis — mas é essencial saber exatamente o que está fazendo;</li>
+<li>Verifique, verifique e verifique novamente a literatura! Simulações computacionais de materiais consomem muito tempo de processamento. É extremamente frustrante descobrir que os cálculos que você rodou por 6 meses são inúteis!</li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Perdew1996PBE" class="csl-entry" role="listitem">
+Perdew, John P., Kieron Burke, and Matthias Ernzerhof. 1996. <span>“Generalized Gradient Approximation Made Simple.”</span> <em>Physical Review Letters</em> 77 (18): 3865–68. <a href="https://doi.org/10.1103/PhysRevLett.77.3865">https://doi.org/10.1103/PhysRevLett.77.3865</a>.
+</div>
+<div id="ref-Perdew2008PBEsol" class="csl-entry" role="listitem">
+Perdew, John P., Adrienn Ruzsinszky, Gabor I. Csonka, et al. 2008. <span>“Restoring the Density-Gradient Expansion for Exchange in Solids and Surfaces.”</span> <em>Physical Review Letters</em> 100: 136406. <a href="https://doi.org/10.1103/PhysRevLett.100.136406">https://doi.org/10.1103/PhysRevLett.100.136406</a>.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/elvissoares\.github\.io\/COQ875-QuimicaQuantica\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../capitulos/9-bases.html" class="pagination-link" aria-label="Conjuntos de bases">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Química Quântica © 2026 Elvis do Amaral Soares.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/10-dft.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
