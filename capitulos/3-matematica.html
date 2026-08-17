@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Postulados da mecânica quântica – Química Quântica para Moléculas e Sólidos</title>
+<title>3&nbsp; Fundamentos Matemáticos da MQ – Química Quântica para Moléculas e Sólidos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../capitulos/3-matematica.html" rel="next">
-<link href="../capitulos/1-bases_experimentais.html" rel="prev">
+<link href="../capitulos/4-schroedinger.html" rel="next">
+<link href="../capitulos/2-postulados.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -89,35 +89,6 @@ MathJax = {
 };
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -299,7 +270,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/1-bases_experimentais.html">Fundamentos da Mecânica Quântica</a></li><li class="breadcrumb-item"><a href="../capitulos/2-postulados.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/1-bases_experimentais.html">Fundamentos da Mecânica Quântica</a></li><li class="breadcrumb-item"><a href="../capitulos/3-matematica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -374,13 +345,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/2-postulados.html" class="sidebar-item-text sidebar-link active">
+  <a href="../capitulos/2-postulados.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></span></a>
   </div>
 </li>
@@ -432,27 +403,16 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#i.-estado-quântico." id="toc-i.-estado-quântico." class="nav-link active" data-scroll-target="#i.-estado-quântico."><strong>I. Estado quântico.</strong></a></li>
-  <li><a href="#ii.-observáveis." id="toc-ii.-observáveis." class="nav-link" data-scroll-target="#ii.-observáveis."><strong>II. Observáveis.</strong></a></li>
-  <li><a href="#iii.-resultados-possíveis-de-uma-medida." id="toc-iii.-resultados-possíveis-de-uma-medida." class="nav-link" data-scroll-target="#iii.-resultados-possíveis-de-uma-medida."><strong>III. Resultados possíveis de uma medida.</strong></a></li>
-  <li><a href="#iv.-probabilidade-de-uma-medida." id="toc-iv.-probabilidade-de-uma-medida." class="nav-link" data-scroll-target="#iv.-probabilidade-de-uma-medida."><strong>IV. Probabilidade de uma medida.</strong></a></li>
-  <li><a href="#v.-estado-após-a-medida." id="toc-v.-estado-após-a-medida." class="nav-link" data-scroll-target="#v.-estado-após-a-medida."><strong>V. Estado após a medida.</strong></a></li>
-  <li><a href="#vi.-evolução-temporal." id="toc-vi.-evolução-temporal." class="nav-link" data-scroll-target="#vi.-evolução-temporal."><strong>VI. Evolução temporal.</strong></a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/livro-quarto/capitulos/2-postulados.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/1-bases_experimentais.html">Fundamentos da Mecânica Quântica</a></li><li class="breadcrumb-item"><a href="../capitulos/2-postulados.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/1-bases_experimentais.html">Fundamentos da Mecânica Quântica</a></li><li class="breadcrumb-item"><a href="../capitulos/3-matematica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></h1>
 </div>
 
 
@@ -469,106 +429,8 @@ window.Quarto = {
 </header>
 
 
-<p>A formulação matemática da mecânica quântica é baseada em um conjunto de postulados que definem como representar o estado de um sistema físico, como descrever grandezas observáveis, quais resultados podem ser obtidos em uma medida e como o sistema evolui no tempo.</p>
-<p>A seguir, apresentamos uma forma simplificada dos postulados, considerando principalmente sistemas descritos por estados normalizados e observáveis com espectro discreto não degenerado.</p>
-<section id="i.-estado-quântico." class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="i.-estado-quântico."><strong>I. Estado quântico.</strong></h2>
-<p>Em um instante de tempo <span class="math inline">\(t\)</span>, o estado físico de um sistema quântico é representado por um vetor de estado</p>
-<p><span class="math display">\[
-\ket{\psi(t)}
-\]</span></p>
-<p>pertencente a um espaço de Hilbert complexo, denotado por <span class="math inline">\(\mathcal{H}\)</span>.</p>
-<p>O vetor <span class="math inline">\(\ket{\psi(t)}\)</span> contém toda a informação acessível sobre o sistema. Em geral, considera-se que o estado está normalizado, isto é,</p>
-<p><span id="eq-normalizacao-ket"><span class="math display">\[
-\braket{\psi(t)|\psi(t)} = 1 .
-\tag{2.1}\]</span></span></p>
-<p>Na representação de posição, esse mesmo estado pode ser descrito por uma função de onda <span class="math inline">\(\psi(\mathbf{r},t)\)</span>, cuja normalização é dada por</p>
-<p><span id="eq-normalizacao-posicao"><span class="math display">\[
-\int |\psi(\mathbf{r},t)|^2 \, d\tau = 1 .
-\tag{2.2}\]</span></span></p>
-</section>
-<section id="ii.-observáveis." class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="ii.-observáveis."><strong>II. Observáveis.</strong></h2>
-<p>Toda quantidade física mensurável <span class="math inline">\(A\)</span> é descrita por um operador hermitiano <span class="math inline">\(\hat{A}\)</span> atuando no espaço de Hilbert <span class="math inline">\(\mathcal{H}\)</span>.</p>
-<p>Esse operador é chamado de <strong>observável</strong>. A condição de hermiticidade,</p>
-<p><span id="eq-operador-hermitiano"><span class="math display">\[
-\hat{A}^{\dagger} = \hat{A},
-\tag{2.3}\]</span></span></p>
-<p>garante que os resultados possíveis de uma medida sejam números reais.</p>
-<p>Exemplos importantes de observáveis são o operador posição <span class="math inline">\(\hat{x}\)</span>, o operador momento linear <span class="math inline">\(\hat{p}_x\)</span> e o operador energia, ou Hamiltoniano, <span class="math inline">\(\hat{H}\)</span>.</p>
-<p>Na representação de posição, os operadores posição e momento linear são escritos como</p>
-<p><span class="math display">\[
-\hat{x}=x
-\]</span></p>
-<p>e</p>
-<p><span id="eq-operador-momento"><span class="math display">\[
-\hat{p}_x = -i\hbar\frac{\partial}{\partial x}.
-\tag{2.4}\]</span></span></p>
-</section>
-<section id="iii.-resultados-possíveis-de-uma-medida." class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="iii.-resultados-possíveis-de-uma-medida."><strong>III. Resultados possíveis de uma medida.</strong></h2>
-<p>As únicas medidas possíveis da quantidade física <span class="math inline">\(A\)</span> são os autovalores <span class="math inline">\(a_n\)</span> do operador associado <span class="math inline">\(\hat{A}\)</span>.</p>
-<p>Os autovalores e autovetores de <span class="math inline">\(\hat{A}\)</span> são definidos pela equação de autovalores</p>
-<p><span id="eq-autovalor-observavel"><span class="math display">\[
-\hat{A}\ket{a_n}=a_n\ket{a_n},
-\tag{2.5}\]</span></span></p>
-<p>onde <span class="math inline">\(\ket{a_n}\)</span> é o autovetor associado ao autovalor <span class="math inline">\(a_n\)</span>.</p>
-<p>Assim, ao medir a grandeza <span class="math inline">\(A\)</span>, o resultado obtido deve necessariamente ser um dos valores permitidos <span class="math inline">\(a_n\)</span>.</p>
-</section>
-<section id="iv.-probabilidade-de-uma-medida." class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="iv.-probabilidade-de-uma-medida."><strong>IV. Probabilidade de uma medida.</strong></h2>
-<p>Quando medimos a quantidade física <span class="math inline">\(A\)</span> em um sistema preparado no estado <span class="math inline">\(\ket{\psi}\)</span>, a probabilidade de obter o autovalor <span class="math inline">\(a_n\)</span> é dada por</p>
-<p><span id="eq-regra-born"><span class="math display">\[
-P(a_n)=|\braket{a_n|\psi}|^2 .
-\tag{2.6}\]</span></span></p>
-<p>Essa expressão é conhecida como <strong>regra de Born</strong>.</p>
-<p>O termo <span class="math inline">\(\braket{a_n|\psi}\)</span> representa a amplitude de probabilidade de encontrar o sistema no autoestado <span class="math inline">\(\ket{a_n}\)</span>. O módulo ao quadrado dessa amplitude fornece a probabilidade associada ao resultado <span class="math inline">\(a_n\)</span>.</p>
-<p>Se o estado <span class="math inline">\(\ket{\psi}\)</span> for escrito como uma superposição dos autoestados de <span class="math inline">\(\hat{A}\)</span>,</p>
-<p><span id="eq-superposicao-autoestados"><span class="math display">\[
-\ket{\psi} = \sum_n c_n \ket{a_n},
-\tag{2.7}\]</span></span></p>
-<p>então os coeficientes <span class="math inline">\(c_n\)</span> são dados por</p>
-<p><span class="math display">\[
-c_n = \braket{a_n|\psi},
-\]</span></p>
-<p>e a probabilidade de medir <span class="math inline">\(a_n\)</span> é</p>
-<p><span id="eq-probabilidade-coeficiente"><span class="math display">\[
-P(a_n)=|c_n|^2.
-\tag{2.8}\]</span></span></p>
-</section>
-<section id="v.-estado-após-a-medida." class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="v.-estado-após-a-medida."><strong>V. Estado após a medida.</strong></h2>
-<p>Se uma medida da quantidade <span class="math inline">\(A\)</span> for realizada e o autovalor <span class="math inline">\(a_n\)</span> for obtido, o estado do sistema imediatamente após a medida passa a ser o autoestado correspondente a esse autovalor.</p>
-<p>Para um espectro discreto não degenerado, essa mudança pode ser escrita como</p>
-<p><span id="eq-colapso-nao-degenerado"><span class="math display">\[
-\ket{\psi}
-\longrightarrow
-\frac{\braket{a_n|\psi}}{\sqrt{|\braket{a_n|\psi}|^2}}\ket{a_n}.
-\tag{2.9}\]</span></span></p>
-<p>O fator</p>
-<p><span class="math display">\[
-\frac{\braket{a_n|\psi}}{\sqrt{|\braket{a_n|\psi}|^2}}
-\]</span></p>
-<p>é apenas uma fase global. Como fases globais não alteram o estado físico, frequentemente escrevemos simplesmente</p>
-<p><span id="eq-colapso-simplificado"><span class="math display">\[
-\ket{\psi} \longrightarrow \ket{a_n}.
-\tag{2.10}\]</span></span></p>
-<p>Esse postulado expressa a chamada <strong>redução do estado</strong> ou <strong>colapso da função de onda</strong>. Ele indica que, após a medida, uma nova medida imediata da mesma grandeza <span class="math inline">\(A\)</span> produzirá novamente o mesmo autovalor <span class="math inline">\(a_n\)</span>, desde que o sistema não tenha evoluído significativamente entre as duas medidas.</p>
-<p>No caso de autovalores degenerados, o estado não colapsa necessariamente para um único autovetor, mas para a projeção de <span class="math inline">\(\ket{\psi}\)</span> no subespaço associado ao autovalor medido.</p>
-</section>
-<section id="vi.-evolução-temporal." class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="vi.-evolução-temporal."><strong>VI. Evolução temporal.</strong></h2>
-<p>Na ausência de medidas, a evolução temporal do vetor de estado <span class="math inline">\(\ket{\psi(t)}\)</span> é governada pela equação de Schrödinger dependente do tempo:</p>
-<p><span id="eq-schrodinger-ket"><span class="math display">\[
-i\hbar \frac{\partial}{\partial t}\ket{\psi(t)}
-=
-\hat{H}\ket{\psi(t)} ,
-\tag{2.11}\]</span></span></p>
-<p>onde <span class="math inline">\(\hat{H}\)</span> é o operador Hamiltoniano, associado à energia total do sistema.</p>
-<p>Esses postulados fornecem a estrutura conceitual e matemática da mecânica quântica. A partir deles, é possível descrever fenômenos como a quantização da energia, a dualidade onda-partícula, o princípio da incerteza, a estrutura eletrônica dos átomos e as ligações químicas.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -986,13 +848,13 @@ i\hbar \frac{\partial}{\partial t}\ket{\psi(t)}
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../capitulos/1-bases_experimentais.html" class="pagination-link" aria-label="Bases experimentais e teóricas da Química Quântica">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bases experimentais e teóricas da Química Quântica</span></span>
+      <a href="../capitulos/2-postulados.html" class="pagination-link" aria-label="Postulados da mecânica quântica">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../capitulos/3-matematica.html" class="pagination-link" aria-label="Fundamentos Matemáticos da MQ">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/4-schroedinger.html" class="pagination-link" aria-label="Equação de Schroedinger e suas aplicações">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Equação de Schroedinger e suas aplicações</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1004,7 +866,7 @@ i\hbar \frac{\partial}{\partial t}\ket{\psi(t)}
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/livro-quarto/capitulos/2-postulados.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/livro-quarto/capitulos/3-matematica.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>
