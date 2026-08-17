@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: _book
+  output-dir: docs 
 
 license: "CC BY-NC-SA"
 
@@ -38,7 +38,7 @@ book:
 
   downloads: [pdf, epub]
   repo-url: https://github.com/elvissoares/COQ875-QuimicaQuantica
-  repo-branch: livro-quarto
+  repo-branch: 2026_2
   repo-actions: [source, issue]
 
 bibliography: referencias/referencias.bib
