@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -437,6 +472,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/11-pyscf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">PySCF</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -522,6 +563,31 @@ window.Quarto = {
 <section id="base-de-orbitais-estilo-pople-sto-ng" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="base-de-orbitais-estilo-pople-sto-ng"><span class="header-section-number">9.4</span> Base de orbitais estilo Pople (STO-<span class="math inline">\(n\)</span>G)</h2>
 <p>Esse conjunto de base consiste em CGF onde as funções <span class="math inline">\(\phi^{\text{CGF},nlm}(\boldsymbol{r})\)</span> tentam reproduzir a base de Slater (dai o STO) com <span class="math inline">\(n\)</span> gaussianas (dai o <span class="math inline">\(n\)</span>G). A <a href="#fig-sto_vs_gto" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> apresenta a comparação do orbital de slater 1s com os primeiros orbitais de Pople STO-<span class="math inline">\(n\)</span>G.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">STO-1s wavefunction for a hydrogen-like atom</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> STO1s(r,zeta<span class="op">=</span><span class="fl">1.0</span>):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.sqrt(zeta<span class="op">**</span><span class="dv">3</span><span class="op">/</span>np.pi) <span class="op">*</span> np.exp(<span class="op">-</span>zeta <span class="op">*</span> r)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">Gaussian-type orbital (GTO) for a given alpha</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> GTO(r,alpha):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.power(<span class="dv">2</span> <span class="op">*</span> alpha <span class="op">/</span> np.pi,<span class="dv">3</span><span class="op">/</span><span class="fl">4.0</span>) <span class="op">*</span> np.exp(<span class="op">-</span>alpha <span class="op">*</span> r<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">Pople set (STO-$n$G)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> STO1G(r):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> GTO(r,alpha<span class="op">=</span><span class="fl">0.270950</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> STO2G(r):</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.678914</span><span class="op">*</span>GTO(r,alpha<span class="op">=</span><span class="fl">0.151623</span>) <span class="op">+</span> <span class="fl">0.430129</span><span class="op">*</span>GTO(r,alpha<span class="op">=</span><span class="fl">0.851819</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> STO3G(r):</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.444635</span><span class="op">*</span>GTO(r,alpha<span class="op">=</span><span class="fl">0.109818</span>) <span class="op">+</span> <span class="fl">0.535328</span><span class="op">*</span>GTO(r,alpha<span class="op">=</span><span class="fl">0.405771</span>) <span class="op">+</span> <span class="fl">0.154329</span><span class="op">*</span>GTO(r,alpha<span class="op">=</span><span class="fl">2.22766</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="fig-sto_vs_gto" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sto_vs_gto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">

@@ -332,7 +332,7 @@
     "href": "capitulos/9-bases.html#base-de-orbitais-estilo-pople-sto-ng",
     "title": "9  Conjuntos de bases",
     "section": "9.4 Base de orbitais estilo Pople (STO-\\(n\\)G)",
-    "text": "9.4 Base de orbitais estilo Pople (STO-\\(n\\)G)\nEsse conjunto de base consiste em CGF onde as funções \\(\\phi^{\\text{CGF},nlm}(\\boldsymbol{r})\\) tentam reproduzir a base de Slater (dai o STO) com \\(n\\) gaussianas (dai o \\(n\\)G). A Figure 9.1 apresenta a comparação do orbital de slater 1s com os primeiros orbitais de Pople STO-\\(n\\)G.\n\n\n\n\n\n\nFigure 9.1: Comparação do orbital de Slater 1s com as funções gaussianas de Pople (STO-\\(n\\)G).\n\n\n\nA mais famosa delas é a base primitiva STO-3G onde são utilizadas 3 gaussianas afim de representar os orbitais 1s de Slater que pode ser representada por \\[\\begin{aligned}\n    \\phi^{\\text{STO-3G},1s}(\\zeta=1,\\boldsymbol{r}) &= \\sum_{i=1}^3 d_{i} \\phi^{\\text{GTO},1s}_i(\\alpha_{i},\\boldsymbol{r}) \\\\\n    \\phi^{\\text{STO-3G},2s}(\\zeta=1,\\boldsymbol{r}) &= \\sum_{i=1}^3 d_{i} \\phi^{\\text{GTO},2s}_i(\\alpha_{i},\\boldsymbol{r}) \\\\\n    \\phi^{\\text{STO-3G},2p}(\\zeta=1,\\boldsymbol{r}) &= \\sum_{i=1}^3 d_{i} \\phi^{\\text{GTO},2p}_i(\\alpha_{i},\\boldsymbol{r})\n\\end{aligned}\\] e como exemplo temos que \\[\\begin{aligned}\n    \\phi^{\\text{STO-3G},1s}(\\zeta=1,\\boldsymbol{r}) =\\ & 0.444635\\phi^{\\text{GTO},1s}(\\alpha=0.109818,\\boldsymbol{r})\\nonumber \\\\\n    & + 0.535328\\phi^{\\text{GTO},1s}(\\alpha=0.405771,\\boldsymbol{r}) \\nonumber \\\\\n    &+0.154329\\phi^{\\text{GTO},1s}(\\alpha=2.22766,\\boldsymbol{r})\n\\end{aligned}\\]\nEssa base é bem estabelecida para elementos da 1ª linha da tabela periódica (Li a F), mas pode ser estendida para elementos da 2ª linha (Na a Cl) também.",
+    "text": "9.4 Base de orbitais estilo Pople (STO-\\(n\\)G)\nEsse conjunto de base consiste em CGF onde as funções \\(\\phi^{\\text{CGF},nlm}(\\boldsymbol{r})\\) tentam reproduzir a base de Slater (dai o STO) com \\(n\\) gaussianas (dai o \\(n\\)G). A Figure 9.1 apresenta a comparação do orbital de slater 1s com os primeiros orbitais de Pople STO-\\(n\\)G.\nimport numpy as np\n\n\"\"\"\nSTO-1s wavefunction for a hydrogen-like atom\n\"\"\"\ndef STO1s(r,zeta=1.0):\n    return np.sqrt(zeta**3/np.pi) * np.exp(-zeta * r)\n\n\"\"\"\nGaussian-type orbital (GTO) for a given alpha\n\"\"\"\ndef GTO(r,alpha):\n    return np.power(2 * alpha / np.pi,3/4.0) * np.exp(-alpha * r**2)\n\n\"\"\"\nPople set (STO-$n$G)\n\"\"\"\ndef STO1G(r):\n    return GTO(r,alpha=0.270950)\n\ndef STO2G(r):\n    return 0.678914*GTO(r,alpha=0.151623) + 0.430129*GTO(r,alpha=0.851819)\n\ndef STO3G(r):\n    return 0.444635*GTO(r,alpha=0.109818) + 0.535328*GTO(r,alpha=0.405771) + 0.154329*GTO(r,alpha=2.22766)\n\n\n\n\n\n\nFigure 9.1: Comparação do orbital de Slater 1s com as funções gaussianas de Pople (STO-\\(n\\)G).\n\n\n\nA mais famosa delas é a base primitiva STO-3G onde são utilizadas 3 gaussianas afim de representar os orbitais 1s de Slater que pode ser representada por \\[\\begin{aligned}\n    \\phi^{\\text{STO-3G},1s}(\\zeta=1,\\boldsymbol{r}) &= \\sum_{i=1}^3 d_{i} \\phi^{\\text{GTO},1s}_i(\\alpha_{i},\\boldsymbol{r}) \\\\\n    \\phi^{\\text{STO-3G},2s}(\\zeta=1,\\boldsymbol{r}) &= \\sum_{i=1}^3 d_{i} \\phi^{\\text{GTO},2s}_i(\\alpha_{i},\\boldsymbol{r}) \\\\\n    \\phi^{\\text{STO-3G},2p}(\\zeta=1,\\boldsymbol{r}) &= \\sum_{i=1}^3 d_{i} \\phi^{\\text{GTO},2p}_i(\\alpha_{i},\\boldsymbol{r})\n\\end{aligned}\\] e como exemplo temos que \\[\\begin{aligned}\n    \\phi^{\\text{STO-3G},1s}(\\zeta=1,\\boldsymbol{r}) =\\ & 0.444635\\phi^{\\text{GTO},1s}(\\alpha=0.109818,\\boldsymbol{r})\\nonumber \\\\\n    & + 0.535328\\phi^{\\text{GTO},1s}(\\alpha=0.405771,\\boldsymbol{r}) \\nonumber \\\\\n    &+0.154329\\phi^{\\text{GTO},1s}(\\alpha=2.22766,\\boldsymbol{r})\n\\end{aligned}\\]\nEssa base é bem estabelecida para elementos da 1ª linha da tabela periódica (Li a F), mas pode ser estendida para elementos da 2ª linha (Na a Cl) também.",
     "crumbs": [
       "Estrutura Eletrônica de Átomos e Moléculas",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Conjuntos de bases</span>"
@@ -479,6 +479,72 @@
     "crumbs": [
       "Estrutura Eletrônica de Átomos e Moléculas",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Teoria do funcional da densidade</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/11-pyscf.html",
+    "href": "capitulos/11-pyscf.html",
+    "title": "11  PySCF",
+    "section": "",
+    "text": "11.1 Instalação\nNesse capítulo vamos apresentar o pacote PySCF, que é uma biblioteca de código aberto para cálculos de química quântica. O PySCF é escrito em Python e C, e oferece uma ampla gama de funcionalidades para cálculos de estrutura eletrônica, incluindo métodos de Hartree-Fock, DFT, e métodos pós-Hartree-Fock.\nSeu website oficial é https://pyscf.org, onde você pode encontrar documentação detalhada, tutoriais e exemplos de uso.\nA instalação do PySCF pode ser feita facilmente usando o gerenciador de pacotes pip. Para instalar o PySCF, você pode executar o seguinte comando no terminal:",
+    "crumbs": [
+      "Estrutura Eletrônica de Átomos e Moléculas",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>PySCF</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/11-pyscf.html#instalação",
+    "href": "capitulos/11-pyscf.html#instalação",
+    "title": "11  PySCF",
+    "section": "",
+    "text": "pip install pyscf",
+    "crumbs": [
+      "Estrutura Eletrônica de Átomos e Moléculas",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>PySCF</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/11-pyscf.html#criando-uma-molécula",
+    "href": "capitulos/11-pyscf.html#criando-uma-molécula",
+    "title": "11  PySCF",
+    "section": "11.2 Criando uma molécula",
+    "text": "11.2 Criando uma molécula\nNo PySCF, você pode criar uma molécula usando a classe Mole do módulo gto.\nA seguir, apresentamos um exemplo de como criar uma molécula de hidrogênio (H2) com a base sto-3g:\nfrom pyscf import gto\n\nmol_h2 = gto.M(\n    atom = [['H',(0, 0, 0)], ['H',(1, 0, 0)]],\n    basis = 'sto-3g')\nOutro exemplo é a criação de uma molécula de água (H2O) com a base 6-31g:\nmol_h2o = gto.M(\n    atom = [['O',(0, 0, 0)], ['H',(0.7586, 0.5043, 0)], ['H',(-0.7586, 0.5043, 0)]],\n    basis = '6-31g')\nAs unidades de distância são em Angstroms, e a base especificada é usada para os cálculos eletrônicos.",
+    "crumbs": [
+      "Estrutura Eletrônica de Átomos e Moléculas",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>PySCF</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/11-pyscf.html#cálculos-de-hartree-fock",
+    "href": "capitulos/11-pyscf.html#cálculos-de-hartree-fock",
+    "title": "11  PySCF",
+    "section": "11.3 Cálculos de Hartree-Fock",
+    "text": "11.3 Cálculos de Hartree-Fock\nNo PySCF, você pode realizar um cálculo de Hartree-Fock usando a classe RHF (Restricted Hartree-Fock) do módulo scf.\nA seguir, apresentamos um exemplo de como realizar um cálculo de Hartree-Fock para a molécula de hidrogênio (H2):\nfrom pyscf import scf\n\nrhf_h2 = scf.RHF(mol_h2)\ne_h2 = rhf_h2.kernel()\ncom e_h2 contendo o valor da energia de Hartree-Fock para a molécula de hidrogênio (em unidades atômicas de energia, Hartree) e o output do cálculo será algo como:\nconverged SCF energy = -1.06610864931794\nPara a molécula de água (H2O), o cálculo de Hartree-Fock seria realizado da seguinte forma:\nrhf_h2o = scf.RHF(mol_h2o)\ne_h2o = rhf_h2o.kernel()\ncujo output será algo como:\nconverged SCF energy = -75.982010306225",
+    "crumbs": [
+      "Estrutura Eletrônica de Átomos e Moléculas",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>PySCF</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/11-pyscf.html#cálculos-de-dft",
+    "href": "capitulos/11-pyscf.html#cálculos-de-dft",
+    "title": "11  PySCF",
+    "section": "11.4 Cálculos de DFT",
+    "text": "11.4 Cálculos de DFT\nNo PySCF, você pode realizar um cálculo de DFT usando a classe RKS (Restricted Kohn-Sham) do módulo scf.\nA seguir, apresentamos um exemplo de como realizar um cálculo de DFT para a molécula de água (H2O) usando o funcional B3LYP:\nfrom pyscf import scf\n\nrks_h2o = scf.RKS(mol_h2o)\nrks_h2o.xc = 'b3lyp'\ne_h2o_dft = rks_h2o.kernel()\ncujo output será algo como:\nconverged SCF energy = -76.3780493873302",
+    "crumbs": [
+      "Estrutura Eletrônica de Átomos e Moléculas",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>PySCF</span>"
+    ]
+  },
+  {
+    "objectID": "capitulos/11-pyscf.html#otimização-geométrica",
+    "href": "capitulos/11-pyscf.html#otimização-geométrica",
+    "title": "11  PySCF",
+    "section": "11.5 Otimização geométrica",
+    "text": "11.5 Otimização geométrica\nNo PySCF, você pode realizar uma otimização geométrica usando o módulo geomopt.\nNesse caso devemos instalar o pacote geometric que é uma dependência do PySCF para otimização geométrica. Você pode instalar o pacote geometric usando o seguinte comando:\npip install geometric\nA seguir, apresentamos um exemplo de como otimizar a geometria da molécula de água (H2O) usando DFT com o funcional B3LYP:\nfrom pyscf.geomopt.geometric_solver import optimize\n\nmol_h2o_eq = optimize(rks_h2o)\nO output da otimização geométrica é bem extenso, mas ao final você verá algo como:\nGeometry optimization cycle 5\nCartesian coordinates (Angstrom)\n Atom        New coordinates             dX        dY        dZ\n   O  -0.000000  -0.044590  -0.000000   -0.000000  0.000093  0.000000\n   H   0.790977   0.526934  -0.000000    0.000314  0.000081 -0.000000\n   H  -0.790977   0.526934  -0.000000   -0.000314  0.000081  0.000000\nconverged SCF energy = -76.3861166872955\n--------------- RKS_Scanner gradients ---------------\n         x                y                z\n0 O    -0.0000000000     0.0000007485     0.0000000000\n1 H    -0.0000133536    -0.0000040060     0.0000000000\n2 H     0.0000133536    -0.0000040060    -0.0000000000\n----------------------------------------------\ncycle 5: E = -76.3861166873  dE = -1.49867e-07  norm(grad) = 1.97305e-05\nStep    4 : Displace = 2.560e-04/3.135e-04 (rms/max) Trust = 2.828e-01 (+) Grad = 1.139e-05/1.394e-05 (rms/max) E (change) = -76.3861166873 (-1.499e-07) Quality = 1.057\nHessian Eigenvalues: 4.99889e-02 5.00000e-02 5.00000e-02 ... 1.60676e-01 5.11791e-01 6.75229e-01\nConverged! =D\n\n    #==========================================================================#\n    #| If this code has benefited your research, please support us by citing: |#\n    #|                                                                        |#\n    #| Wang, L.-P.; Song, C.C. (2016) \"Geometry optimization made simple with |#\n    #| translation and rotation coordinates\", J. Chem, Phys. 144, 214108.     |#\n    #| http://dx.doi.org/10.1063/1.4952956                                    |#\n    #==========================================================================#\n    Time elapsed since start of run_optimizer: 10.153 seconds\nAo final da otimização, podemos imprimir as coordenadas atômicas otimizadas da molécula de água (H2O) em Angstroms e Bohr:\nprint(mol_h2o_eq.tostring())\nprint('Atomic coordinates (Ang):')\nprint(mol_h2o_eq.atom_coords(unit='Ang'))\nprint('Atomic coordinates (Bohr):')\nprint(mol_h2o_eq.atom_coords(unit='Bohr'))\ncujo output será algo como:\nO          -0.00000000       -0.04459006       -0.00000000\nH           0.79097651        0.52693426       -0.00000000\nH          -0.79097651        0.52693426       -0.00000000\nAtomic coordinates (Ang):\n[[-4.34499243e-14 -4.45900570e-02 -1.65663466e-14]\n [ 7.90976515e-01  5.26934257e-01 -1.48570073e-14]\n [-7.90976515e-01  5.26934257e-01 -7.96253036e-15]]\nAtomic coordinates (Bohr):\n[[-8.21084571e-14 -8.42629956e-02 -3.13058580e-14]\n [ 1.49472898e+00  9.95761431e-01 -2.80756748e-14]\n [-1.49472898e+00  9.95761431e-01 -1.50470016e-14]]\nOs exemplos contidos neste capítulo podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link abaixo:",
+    "crumbs": [
+      "Estrutura Eletrônica de Átomos e Moléculas",
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>PySCF</span>"
     ]
   }
 ]
