@@ -129,6 +129,10 @@ MO 8 energy: 30.794397465074287 eV
 ```
 e os arquivos `h2o_mo_id1.cube`, `h2o_mo_id2.cube`, ..., `h2o_mo_id8.cube` serão gerados, podendo ser visualizados em softwares de visualização molecular, como o VESTA.
 
+![Orbital HOMO da água calculado usando o PySCF e visualizado no Blender](../figuras/agua_mo_homo.png){#fig-water-mo-homo width=40%}
+
+![Orbital LUMO da água calculado usando o PySCF e visualizado no Blender](../figuras/agua_mo_lumo.png){#fig-water-mo-lumo width=40%}
+
 Outro comando útil é o método `analyze()` que fornece informações detalhadas sobre a densidade eletrônica, populações de Mulliken, energias dos orbitais moleculares, entre outros dados:
 ```python
 rhf_h2o.analyze()
@@ -172,7 +176,10 @@ cubegen.density(mol_h2o, 'h2o_den.cube', rhf_h2o.make_rdm1())
 
 cujo output será um arquivo `h2o_den.cube` que pode ser visualizado em softwares de visualização molecular, como o VESTA.
 
-## Potencial eletrostático molecular
+
+![Superfície de isodensidade eletrônica da água ($0.1$ em a.u.) calculado usando o PySCF e visualizado no Blender](../figuras/agua_den.png){#fig-water-den width=40%}
+
+### Potencial eletrostático molecular
 
 No PySCF, você pode calcular o potencial eletrostático molecular (MEP) usando o método `get_mep()` do objeto de cálculo SCF. O MEP é uma função que descreve a distribuição do potencial elétrico gerado pelos elétrons e núcleos da molécula.
 ```python
