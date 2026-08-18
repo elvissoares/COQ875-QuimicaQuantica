@@ -33,7 +33,7 @@ onde agora os termos de energia cinética dos elétrons e a energia de interaç�
 
 ## Teoremas de Hohenberg-Kohn
 
-São a base da DFT e demonstrados por ambos em 1964. O objetivo principal é trocar a função de onda para $N$-elétrons, $\Psi(\{ \boldsymbol{r}_i \})$, que é função de $3N$ coordenadas pela densidade eletrônica, $\rho(\boldsymbol{r})$ que é função apenas de 3 coordenadas. 
+Os teoremas de Hohenberg-Kohn constituem a base formal da teoria do funcional da densidade e foram demonstrados originalmente em 1964 [@Hohenberg1964]. O objetivo principal é trocar a função de onda para $N$ elétrons, $\Psi(\{\boldsymbol{r}_i\})$, que depende de $3N$ coordenadas espaciais, pela densidade eletrônica $\rho(\boldsymbol{r})$, que depende apenas de 3 coordenadas espaciais.
 
 ### Primeiro teorema de Hohenberg-Kohn
 
@@ -526,7 +526,7 @@ O principal problema do DFT é determinar a forma explícita, aproximada ou não
 
 ## Método de Kohn-Sham
 
-Em 1965, Kohn e Sham propuseram escrever o funcional de energia de Hohenberg-Kohn na seguinte forma
+Em 1965, Kohn e Sham propuseram um método prático para resolver o problema variacional da DFT introduzindo um sistema auxiliar de elétrons não interagentes que reproduz a densidade eletrônica do sistema interagente [@Kohn1965]. Nesse caso, o funcional de energia de Hohenberg-Kohn pode ser escrito como
 
 $$
     E_\text{HK}[\rho(\boldsymbol{r})] = E_\text{S}[\rho(\boldsymbol{r})]+E_H[\rho(\boldsymbol{r})] + E_\text{XC}[\rho(\boldsymbol{r})],
@@ -803,7 +803,7 @@ $$
 e o potencial de troca e correlação definido como 
 
 $$
-    V_{XC}(\boldsymbol{r}) = \frac{\delta E_{XC}[\rho(\boldsymbol{r})]}{\delta \rho(\boldsymbol{r})}.
+    V_\text{XC}(\boldsymbol{r}) = \frac{\delta E_\text{XC}[\rho(\boldsymbol{r})]}{\delta \rho(\boldsymbol{r})}.
 $$
 
 
@@ -972,7 +972,7 @@ A soma dos autovalores de Kohn-Sham não corresponde diretamente à energia tota
 
 ## Funcionais de troca e correlação
 
-Embora a energia $E_0$ possa, em princípio, ser calculada a partir do método de Kohn-Sham, não se conhece a forma exata do funcional de troca-correlação $E_{xc}[\rho(\boldsymbol{r})]$. Há um desenvolvimento extenso de funcionais $E_{xc}[\rho(\boldsymbol{r})]$ aproximados para descrever uma gama de propriedades físicas distintas.
+Embora a energia $E_0$ possa, em princípio, ser calculada a partir do método de Kohn-Sham, não se conhece a forma exata do funcional de troca-correlação $E_\text{XC}[\rho(\boldsymbol{r})]$. Há um desenvolvimento extenso de funcionais $E_\text{XC}[\rho(\boldsymbol{r})]$ aproximados para descrever uma gama de propriedades físicas distintas.
 
 
 ### Aproximação da densidade local (LDA)
@@ -980,22 +980,22 @@ Embora a energia $E_0$ possa, em princípio, ser calculada a partir do método d
 Para o gás de elétrons uniforme, o funcional de troca será dado por:
 
 $$
-E_x^{\text{LDA}}[\rho(\boldsymbol{r})] = \int \rho(\boldsymbol{r})\, \epsilon_x[\rho(\boldsymbol{r})]\, d\boldsymbol{r}
+E_\text{X}^{\text{LDA}}[\rho(\boldsymbol{r})] = \int \rho(\boldsymbol{r})\, \epsilon_\text{X}[\rho(\boldsymbol{r})]\, d\boldsymbol{r}
 $$
 
 E para a aproximação de um gás de elétrons uniforme podemos usar a aproximação de Slater, dando para o termo de troca:
 
 $$
-\epsilon_x[\rho(\boldsymbol{r})] = -\frac{3}{4} \left( \frac{3 \rho(\boldsymbol{r})}{\pi} \right)^{1/3}
+\epsilon_\text{X}[\rho(\boldsymbol{r})] = -\frac{3}{4} \left( \frac{3 \rho(\boldsymbol{r})}{\pi} \right)^{1/3}
 $$
 
 de modo que a derivada funcional seja 
 
 $$
-V_x(\boldsymbol{r}) = \frac{\delta E_x}{\delta \rho(\boldsymbol{r})} = - \left( \frac{3}{\pi} \right)^{1/3} \rho(\boldsymbol{r})^{1/3}.
+V_\text{X}(\boldsymbol{r}) = \frac{\delta E_\text{X}}{\delta \rho(\boldsymbol{r})} = - \left( \frac{3}{\pi} \right)^{1/3} \rho(\boldsymbol{r})^{1/3}.
 $$
 
-Existem várias expressões para a energia de correlação $E_\text{C}^{\text{LDA}}$ que foram obtidas por ajuste aos resultados de cálculos precisos de Monte Carlo Quântico (QMC) de Ceperley e Alder para o gás eletrônico uniforme . Essas expressões são bastante complexas e geralmente são referidas por suas abreviações, como VWN, VWN5, CAPZ, entre outras. Apesar disso, elas produzem resultados muito semelhantes quando utilizadas em cálculos moleculares.
+Existem várias expressões para a energia de correlação $E_\text{C}^{\text{LDA}}$ obtidas a partir de parametrizações de cálculos precisos de Monte Carlo Quântico para o gás eletrônico uniforme. Entre os resultados fundamentais estão os cálculos de Ceperley e Alder [@Ceperley1980], que forneceram dados de referência para a energia de correlação do gás de elétrons. Essas expressões são bastante complexas e geralmente são referidas por suas abreviações, como VWN, VWN5, CAPZ, entre outras. Apesar disso, elas produzem resultados muito semelhantes quando utilizadas em cálculos moleculares.
 
 
 ### Aproximação de Gradiente Generalizado (GGA)
@@ -1003,14 +1003,14 @@ Existem várias expressões para a energia de correlação $E_\text{C}^{\text{LD
 Motivado pelo trabalho de Weizsäcker, que introduziu um termo de gradiente na energia cinética do modelo de Thomas–Fermi, podemos adotar que
 
 $$
-E_{xc}^{\text{GGA}}[\rho(\boldsymbol{r})] = \int f(\rho(\boldsymbol{r}), \nabla \rho(\boldsymbol{r}))\, d\boldsymbol{r}
+E_\text{XC}^{\text{GGA}}[\rho(\boldsymbol{r})] = \int f(\rho(\boldsymbol{r}), \nabla \rho(\boldsymbol{r}))\, d\boldsymbol{r}
 $$
 
 tal que a derivada funcional seja
 
 $$
 \begin{aligned}
-V_{xc}^{\text{GGA}}[\boldsymbol{r}] = \frac{\delta E_{xc}}{\delta \rho(\boldsymbol{r})} 
+V_\text{XC}^{\text{GGA}}[\boldsymbol{r}] = \frac{\delta E_\text{XC}}{\delta \rho(\boldsymbol{r})} 
 = \frac{\partial f}{\partial \rho(\boldsymbol{r})} - \nabla \cdot \left( \frac{\partial f}{\partial \nabla \rho(\boldsymbol{r})} \right)
 \end{aligned}
 $$
@@ -1018,12 +1018,12 @@ $$
 Assim, diferentes escolhas para $f$ nos permitem descrever melhor as inomogeneidades da distribuição eletrônica. Um dos funcionais mais conhecidos e utilizados é o **PBE** [@Perdew1996PBE], cujo funcional de troca é escrito como
 
 $$
-E_x^{\text{PBE}}[\rho]
+E_\text{X}^{\text{PBE}}[\rho]
 =
 \int
 \rho(\boldsymbol{r})
-\epsilon_x^{\text{LDA}}[\rho(\boldsymbol{r})]
-F_x^{\text{PBE}}(s)
+ \epsilon_\text{X}^{\text{LDA}}[\rho(\boldsymbol{r})]
+F_\text{X}^{\text{PBE}}(s)
 \,\text{d}\boldsymbol{r},
 $$
 
@@ -1044,7 +1044,7 @@ No funcional PBE, o fator de intensificação de troca é definido como
 
 $$
 \boxed{
-F_x^{\text{PBE}}(s)
+F_\text{X}^{\text{PBE}}(s)
 =
 1+\kappa
 -
@@ -1068,7 +1068,7 @@ $$
 Para pequenos valores do gradiente reduzido, podemos expandir o fator de intensificação na forma
 
 $$
-F_x^{\text{PBE}}(s)
+F_\text{X}^{\text{PBE}}(s)
 =
 1+\mu s^2
 -
@@ -1103,7 +1103,7 @@ Outros funcionais contem parâmetros cujos valores são fitados para reproduzir 
 Nelas são introduzidas formas de derivadas de ordem mais alta:
 
 $$
-E_{xc}^{\text{meta-GGA}}[\rho(\boldsymbol{r})] = \int \epsilon_{xc}^{\text{meta-GGA}}(\rho, \nabla \rho, \nabla^2 \rho, \tau) \, d\boldsymbol{r},
+E_\text{XC}^{\text{meta-GGA}}[\rho(\boldsymbol{r})] = \int \epsilon_\text{XC}^{\text{meta-GGA}}(\rho, \nabla \rho, \nabla^2 \rho, \tau) \, d\boldsymbol{r},
 $$
 
 onde $\tau(\boldsymbol{r})$ é a densidade de energia cinética não-interagente, dada por:
@@ -1138,9 +1138,80 @@ E_\text{XC}[\rho] =\ &  E_\text{XC}^{\text{LDA}} + a_0( E_\text{X}^{\text{HF}}-E
 \end{aligned}
 $$
 
-com o mais famoso sendo funcional de **B3LYP** que usa $a_0=0,\!2$, $a_x=0,\!72$ e $a_c=0,\!81$ com os funcionais $E_\text{X}^{\text{B88}}$ e $E_\text{C}^{\text{LYP}}$.
+Um dos funcionais híbridos mais conhecidos é o **B3LYP**, baseado na forma de três parâmetros proposta por Becke [@Becke1993]. O funcional combina troca local, troca exata de Hartree-Fock, uma correção de gradiente para a troca e contribuições local e não local para a correlação.
+
+Sua forma pode ser escrita como
+
+$$
+E_\text{XC}^{\text{B3LYP}}
+=
+E_X^{\text{LSDA}}
++
+a_0
+\left(
+E_X^{\text{HF}}
+-
+E_X^{\text{LSDA}}
+\right)
++
+a_x
+\Delta E_X^{\text{B88}}
++
+E_C^{\text{VWN}}
++
+a_c
+\left(
+E_C^{\text{LYP}}
+-
+E_C^{\text{VWN}}
+\right),
+$$
+
+onde
+
+$$
+\Delta E_X^{\text{B88}}
+=
+E_X^{\text{B88}}
+-
+E_X^{\text{LSDA}}.
+$$
+
+De forma equivalente,
+
+$$
+\boxed{
+E_\text{XC}^{\text{B3LYP}}
+=
+(1-a_0)E_X^{\text{LSDA}}
++
+a_0E_X^{\text{HF}}
++
+a_x\Delta E_X^{\text{B88}}
++
+(1-a_c)E_C^{\text{VWN}}
++
+a_cE_C^{\text{LYP}}
+}
+$$
+
+com os parâmetros
+
+$$
+a_0=0.20,
+\qquad
+a_x=0.72,
+\qquad
+a_c=0.81.
+$$
+
+O parâmetro $a_0$ determina a fração de troca exata de Hartree-Fock, de modo que o B3LYP contém $20\%$ de troca exata. O parâmetro $a_x$ controla a contribuição da correção de gradiente de Becke para a troca, enquanto $a_c$ controla a mistura entre a correlação local de Vosko-Wilk-Nusair (VWN) e a correlação de Lee-Yang-Parr (LYP).
+
+Os três parâmetros foram determinados empiricamente por ajuste a propriedades termoquímicas moleculares [@Becke1993]. A contribuição LYP é baseada no funcional de correlação desenvolvido por Lee, Yang e Parr a partir da expressão de Colle-Salvetti [@Lee1988], enquanto a contribuição VWN utiliza uma parametrização da energia de correlação do gás eletrônico uniforme [@Vosko1980].
 
 Outros funcionais híbridos são B1PW91, B1LYP, B1B95, mPW1PW91 e PBE1PBE.
+
+
 
 
 ### Vantagens e Desvantagens
@@ -1164,6 +1235,151 @@ Outros funcionais híbridos são B1PW91, B1LYP, B1B95, mPW1PW91 e PBE1PBE.
 - **Híbridos**:
     - mais versáteis;
     - PBE0 e B3LYP são os mais usados.
+
+## Funcionais modernos e interações de dispersão
+
+Apesar do sucesso das aproximações LDA, GGA, meta-GGA e dos funcionais híbridos, alguns fenômenos permanecem difíceis de descrever utilizando apenas funcionais semilocais ou híbridos globais. Entre eles estão as interações de dispersão de London, processos de transferência de carga e propriedades eletrônicas que dependem do comportamento de longo alcance do potencial de troca e correlação.
+
+### Funcionais híbridos com separação de alcance
+
+Nos funcionais híbridos convencionais, como PBE0 e B3LYP, uma fração fixa da troca de Hartree-Fock é utilizada para todas as distâncias eletrônicas. Nos funcionais híbridos com separação de alcance (*range-separated hybrids*), a interação coulombiana é separada em contribuições de curto e longo alcance.
+
+Uma decomposição comum é
+
+$$
+\frac{1}{r_{12}}
+=
+\frac{\operatorname{erfc}(\omega r_{12})}{r_{12}}
++
+\frac{\operatorname{erf}(\omega r_{12})}{r_{12}},
+$$
+
+onde $\omega$ controla a distância característica na qual ocorre a separação entre as contribuições de curto e longo alcance.
+
+Essa decomposição permite utilizar diferentes quantidades de troca exata nas duas regiões. De maneira geral,
+
+$$
+E_X
+=
+E_X^\text{SR}
++
+E_X^\text{LR},
+$$
+
+onde SR (*short range*) e LR (*long range*) representam as contribuições de curto e longo alcance, respectivamente.
+
+Um exemplo conhecido é o funcional **CAM-B3LYP**, que combina a estrutura do B3LYP com uma separação de alcance baseada no método de atenuação coulombiana [@Yanai2004]. Esse tipo de funcional melhora, em particular, a descrição de fenômenos nos quais o comportamento de longo alcance da troca é importante, como estados excitados com transferência de carga.
+
+Outros exemplos de funcionais com separação de alcance incluem $\omega$B97X, $\omega$B97X-D, $\omega$B97X-V e $\omega$B97M-V. Alguns desses funcionais também incorporam explicitamente correções para interações de dispersão.
+
+
+### Interações de dispersão
+
+As interações de dispersão de London são originadas por correlações instantâneas entre flutuações da densidade eletrônica em regiões espacialmente separadas. Em grandes distâncias, a interação entre dois átomos ou fragmentos apresenta como termo dominante um comportamento aproximadamente dado por
+
+$$
+E_\text{disp}
+\sim
+-\frac{C_6}{R^6},
+$$
+
+onde $R$ é a distância entre os fragmentos e $C_6$ é o coeficiente de dispersão.
+
+Funcionais locais e semilocais convencionais não descrevem corretamente essa contribuição de correlação de longo alcance. Diferentes estratégias foram desenvolvidas para incorporar essas interações em cálculos DFT.
+
+
+### Correções DFT-D
+
+Uma estratégia consiste em adicionar à energia obtida por DFT uma contribuição de dispersão calculada separadamente,
+
+$$
+E_\text{DFT-D}
+=
+E_\text{DFT}
++
+E_\text{disp}.
+$$
+
+No método **DFT-D3**, a correção de dispersão contém contribuições de pares atômicos, sendo escrita de forma esquemática como
+
+$$
+E_\text{disp}^{\text{D3}}
+=
+-
+\sum_{A<B}
+\sum_{n=6,8}
+s_n
+\frac{C_n^{AB}}{R_{AB}^n}
+f_{d,n}(R_{AB}),
+$$
+
+onde $C_n^{AB}$ são coeficientes de dispersão, $R_{AB}$ é a distância entre os átomos $A$ e $B$, $s_n$ são parâmetros que dependem do funcional utilizado e $f_{d,n}$ é uma função de amortecimento que reduz a contribuição da correção de dispersão em pequenas distâncias [@Grimme2010D3].
+
+Uma evolução desse método é o **DFT-D4**, no qual as polarizabilidades atômicas e os coeficientes de dispersão passam a depender também das cargas atômicas do ambiente químico. Dessa forma, a correção consegue responder de maneira mais flexível às mudanças no estado eletrônico dos átomos [@Caldeweyher2019D4].
+
+Assim, notações como
+
+$$
+\text{PBE-D3}, \qquad
+\text{B3LYP-D3}, \qquad
+\text{PBE-D4}
+$$
+
+indicam que uma correção de dispersão foi adicionada ao funcional original.
+
+
+### Funcionais de correlação não local
+
+Outra estratégia consiste em incorporar a dispersão diretamente no funcional da densidade através de um termo de correlação não local,
+
+$$
+E_c^\text{NL}[\rho]
+=
+\frac{1}{2}
+\iint
+\rho(\boldsymbol{r})
+\Phi(\boldsymbol{r},\boldsymbol{r}')
+\rho(\boldsymbol{r}')
+\text{d}\boldsymbol{r}
+\text{d}\boldsymbol{r}',
+$$
+
+onde $\Phi(\boldsymbol{r},\boldsymbol{r}')$ é um núcleo não local que acopla a densidade eletrônica em diferentes pontos do espaço.
+
+Um exemplo importante é o funcional **VV10**, proposto por Vydrov e Van Voorhis [@Vydrov2010VV10]. Nesse caso, a correlação não local permite descrever interações de van der Waals utilizando diretamente a densidade eletrônica.
+
+Uma versão computacionalmente mais eficiente, denominada **rVV10**, foi posteriormente proposta por Sabatini, Gorni e de Gironcoli [@Sabatini2013rVV10].
+
+A correlação VV10 ou rVV10 pode ser combinada com diferentes aproximações de troca e correlação semilocal. Exemplos modernos incluem funcionais como $\omega$B97X-V e $\omega$B97M-V, nos quais uma contribuição não local de dispersão é incorporada ao funcional [@Mardirossian2014wB97XV].
+
+
+### Funcionais duplos híbridos
+
+Os funcionais duplos híbridos estendem a ideia dos funcionais híbridos ao incluir, além da troca exata de Hartree-Fock, uma contribuição explícita de correlação obtida por teoria de perturbação.
+
+De maneira esquemática, um funcional duplo híbrido pode ser escrito como
+
+$$
+E_\text{XC}^{\text{DH}}
+=
+a_X E_X^\text{HF}
++
+(1-a_X)E_X^\text{DFT}
++
+(1-a_C)E_C^\text{DFT}
++
+a_C E_C^\text{PT2},
+$$
+
+onde $E_C^\text{PT2}$ é uma contribuição de correlação de segunda ordem calculada a partir dos orbitais e autovalores obtidos no cálculo de Kohn-Sham.
+
+Um dos primeiros funcionais desse tipo amplamente utilizados foi o **B2PLYP**, proposto por Grimme [@Grimme2006B2PLYP], que combina troca B88 e correlação LYP com troca exata de Hartree-Fock e uma contribuição perturbativa de segunda ordem.
+
+A inclusão do termo perturbativo geralmente aumenta o custo computacional em relação aos funcionais híbridos convencionais, mas pode melhorar significativamente a descrição de energias de reação, termoquímica e interações intermoleculares.
+
+Funcionais duplos híbridos modernos também podem ser combinados com separação de alcance e correções de dispersão, dando origem a aproximações que incorporam simultaneamente troca exata, correlação perturbativa e interações de longo alcance.
+
+## Seleção de Funcionais
 
 Programas de Química Quântica oferecem uma grande variedade de funcionais, e selecionar um funcional adequado pode ser uma tarefa desafiadora. Para escolher um funcional, você deve:
 

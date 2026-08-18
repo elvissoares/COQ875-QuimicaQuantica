@@ -481,10 +481,15 @@ window.Quarto = {
 <p>Usando o <a href="5-atomo_de_helio.html#eq-principio-variacional" class="quarto-xref">Equation&nbsp;<span>5.7</span></a>, podemos escolher uma função de onda eletrônica tentativa <span class="math inline">\(\ket{\Psi_e}\)</span> tal que o valor esperado para o Hamiltoniano eletrônico molecular <span class="math inline">\(\hat{H}_e\)</span> possa ser calculado como <span class="math display">\[
 E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
 \]</span> onde <span class="math inline">\(E_0\)</span> é a energia do estado fundamental eletrônico e <span class="math inline">\(\hat{H}_e\)</span> é o Hamiltoniano eletrônico molecular definido, a partir da <a href="7-problema_de_muitos_eletrons.html#eq-problema_eletronico" class="quarto-xref">Equation&nbsp;<span>7.1</span></a>, como <span class="math display">\[
-\hat{H}_e =  \sum_{i=1}^N \hat{h}_i + \frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|}+ \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}
+\hat{H}_e =  \sum_{i=1}^N \hat{h}_i + \frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|}
 \]</span> onde <span class="math inline">\(\hat{h}_i\)</span> é o operador de 1 elétron que inclui a energia cinética do elétron e a interação coulombiana elétron-núcleo, escrito na forma <span class="math display">\[
     \hat{h}_i=-\frac{1}{2}\nabla_i^2 - \sum_{A=1}^M \frac{Z_A}{|\boldsymbol{r}_i-\boldsymbol{R}_A|},
+\]</span> enquanto o termo de interação elétron-elétron é dado por <span class="math display">\[
+\frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|}.
 \]</span></p>
+<p>O potencial de interação núcleo-núcleo <span class="math inline">\(V_{nn}\)</span> dado por <span class="math display">\[
+V_{nn} = \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}
+\]</span> não é incluído no Hamiltoniano eletrônico, pois ele não depende das coordenadas eletrônicas e portanto, não afeta a função de onda eletrônica. No entanto, o termo <span class="math inline">\(V_{nn}\)</span> deve ser adicionado à energia total da molécula, como veremos mais adiante.</p>
 <section id="determinante-de-slater" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="determinante-de-slater"><span class="header-section-number">8.1</span> Determinante de Slater</h2>
 <p>A função de onda eletrônica de muitos elétrons <span class="math inline">\(\ket{\Psi_e}\)</span> na base de posições e spins deve ser escrita como <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N)\)</span> onde <span class="math inline">\(\boldsymbol{x}_i=\boldsymbol{r}_i,\sigma_i\)</span> é uma variável que representa a posição <span class="math inline">\(\boldsymbol{r}_i\)</span> e o spin <span class="math inline">\(\sigma_i\)</span> do elétron <span class="math inline">\(i\)</span>. Sabemos que tal função de onda pode ser escrita em termos do produto de funções de onda para 1 elétron, <span class="math inline">\(\psi_j(\boldsymbol{x}_i)\)</span>, onde <span class="math inline">\(i\)</span> representa o elétron e <span class="math inline">\(j\)</span> o estado de 1 elétron, e com a condição que <span class="math inline">\(\braket{\psi_i|\psi_j} = \delta_{ij}\)</span>. É comum denominarmos o conjunto <span class="math inline">\(\psi_j(\boldsymbol{x}_i)\)</span> como <strong>conjunto de spin-orbitais molecular</strong>.</p>
@@ -527,7 +532,18 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
 <section id="método-auto-consistente" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="método-auto-consistente"><span class="header-section-number">8.4</span> Método auto-consistente</h2>
 <p>No procedimento auto-consistente (SCF, do inglês <strong>S</strong>elf <strong>C</strong>onsistent <strong>F</strong>ield) é necessário decidir a forma dos orbitais e inseri-los.</p>
-<p>Para uma molécula de camada fechada, mantém-se o mesmo orbital molecular <span class="math inline">\(\psi_i\)</span> para os dois elétrons emparelhados, e isso é chamado de <strong>RHF</strong> (Hartree-Fock Restrito). Por exemplo, no caso do átomo de Be (berílio com <span class="math inline">\(Z=4\)</span>), a função de onda no RHF é escrita da seguinte forma <span class="math display">\[\begin{aligned}
+<p>Para uma molécula de camada fechada, mantém-se o mesmo orbital molecular <span class="math inline">\(\psi_i\)</span> para os dois elétrons emparelhados, e isso é chamado de <strong>RHF</strong> (Hartree-Fock Restrito).</p>
+<div id="fig-Be" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Be-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/beryllium.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Be-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: Átomo de Berílio (Be) com <span class="math inline">\(Z=4\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Por exemplo, no caso do átomo de Be (berílio com <span class="math inline">\(Z=4\)</span>, conforme <a href="#fig-Be" class="quarto-xref">Figure&nbsp;<span>8.1</span></a>), a função de onda no RHF é escrita da seguinte forma <span class="math display">\[\begin{aligned}
     \Psi_\text{RHF}^{(\text{Be})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3,\boldsymbol{x}_4) = \frac{1}{\sqrt{4!}} \begin{vmatrix}
         \psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow} &amp; \psi_{2s}(\boldsymbol{r}_1)\ket{\uparrow} &amp; \psi_{2s}(\boldsymbol{r}_1)\ket{\downarrow} \\
          \psi_{1s}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_2)\ket{\downarrow}  &amp; \psi_{2s}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \psi_{2s}(\boldsymbol{r}_2)\ket{\downarrow}  \\
@@ -535,7 +551,18 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
          \psi_{1s}(\boldsymbol{r}_4)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_4)\ket{\downarrow}  &amp; \psi_{2s}(\boldsymbol{r}_4)\ket{\uparrow} &amp; \psi_{2s}(\boldsymbol{r}_4)\ket{\downarrow}
     \end{vmatrix},
 \end{aligned}\]</span> com uma redução dimensional do problema pela metade. Note que embora tenhamos 4 elétrons, temos apenas dois orbitais moleculares a serem otimizados, o 1s e o 2s.</p>
-<p>No caso de moléculas de camada aberta, o método acima não pode ser usado, sendo necessário outro método. No caso do <strong>ROHF</strong> (Hartree-Fock Restrito de Camada Aberta), utiliza-se o mesmo método do RHF para elétrons emparelhados, atribuindo um orbital molecular <span class="math inline">\(\psi_i\)</span> fixo, enquanto o elétron desemparelhado recebe uma função de onda diferente. Tomando o átomo de Li (lítio com <span class="math inline">\(Z=3\)</span>) como exemplo podemos escrever <span class="math display">\[\begin{aligned}
+<p>No caso de moléculas de camada aberta, o método acima não pode ser usado, sendo necessário outro método. No caso do <strong>ROHF</strong> (Hartree-Fock Restrito de Camada Aberta), utiliza-se o mesmo método do RHF para elétrons emparelhados, atribuindo um orbital molecular <span class="math inline">\(\psi_i\)</span> fixo, enquanto o elétron desemparelhado recebe uma função de onda diferente.</p>
+<div id="fig-Li" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Li-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/lithium.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Li-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.2: Átomo de Lítio (Li) com <span class="math inline">\(Z=3\)</span>.
+</figcaption>
+</figure>
+</div>
+<p>Tomando o átomo de Li (lítio com <span class="math inline">\(Z=3\)</span>, conforme <a href="#fig-Li" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>) como exemplo podemos escrever <span class="math display">\[\begin{aligned}
     \Psi_\text{ROHF}^{(\text{Li})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3) = \frac{1}{\sqrt{3!}} \begin{vmatrix}
         \psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow} &amp; \psi_{2s}(\boldsymbol{r}_1)\ket{\uparrow} \\
          \psi_{1s}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \psi_{1s}(\boldsymbol{r}_2)\ket{\downarrow}  &amp; \psi_{2s}(\boldsymbol{r}_2)\ket{\uparrow}  \\
@@ -548,14 +575,14 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
          \psi_{a}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \psi_{b}(\boldsymbol{r}_2)\ket{\downarrow}  &amp; \psi_{c}(\boldsymbol{r}_2)\ket{\uparrow}  \\
          \psi_{a}(\boldsymbol{r}_3)\ket{\uparrow} &amp; \psi_{b}(\boldsymbol{r}_3)\ket{\downarrow}  &amp; \psi_{c}(\boldsymbol{r}_3)\ket{\uparrow}  
     \end{vmatrix},
-\end{aligned}\]</span> onde cada orbital molecular <span class="math inline">\(\psi_{i}\)</span> pode ter uma energia distinta. A figura <a href="#fig-RHF" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> representa graficamente os três métodos descritos acima.</p>
+\end{aligned}\]</span> onde cada orbital molecular <span class="math inline">\(\psi_{i}\)</span> pode ter uma energia distinta. A figura <a href="#fig-RHF" class="quarto-xref">Figure&nbsp;<span>8.3</span></a> representa graficamente os três métodos descritos acima.</p>
 <div id="fig-RHF" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-RHF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figuras/RHF.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-RHF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.1: Diferença entre os métodos RHF, ROHF e UHF..
+Figure&nbsp;8.3: Diferença entre os métodos RHF, ROHF e UHF..
 </figcaption>
 </figure>
 </div>
@@ -571,14 +598,14 @@ Figure&nbsp;8.1: Diferença entre os métodos RHF, ROHF e UHF..
 <li><p>Verifique a convergência <span class="math inline">\(c_{\mu k}^{n+1}=c_{\mu k}^{n}\)</span>. Se for verdadeiro, pare o cálculo e siga para o item 8. Caso contrário volte ao item 4.</p></li>
 <li><p>Por fim, obtenha a forma dos orbitais moleculares (MO) a partir de $ c_{k}$ e as energias dos MOs a partir de <span class="math inline">\(\epsilon_k\)</span>.</p></li>
 </ol>
-<p>Isso pode ser representado graficamente por um fluxograma como na <a href="#fig-SCF-HF" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>.</p>
+<p>Isso pode ser representado graficamente por um fluxograma como na <a href="#fig-SCF-HF" class="quarto-xref">Figure&nbsp;<span>8.4</span></a>.</p>
 <div id="fig-SCF-HF" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-SCF-HF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figuras/SCF-HF.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SCF-HF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.2: Método auto-consistente (SCF) para resolução das equações de Roothan-Hartree-Fock.
+Figure&nbsp;8.4: Método auto-consistente (SCF) para resolução das equações de Roothan-Hartree-Fock.
 </figcaption>
 </figure>
 </div>

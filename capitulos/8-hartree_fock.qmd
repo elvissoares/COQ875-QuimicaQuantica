@@ -6,12 +6,22 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
 $$
 onde $E_0$ é a energia do estado fundamental eletrônico e $\hat{H}_e$ é  o Hamiltoniano eletrônico molecular definido, a partir da @eq-problema_eletronico, como 
 $$
-\hat{H}_e =  \sum_{i=1}^N \hat{h}_i + \frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|}+ \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}
+\hat{H}_e =  \sum_{i=1}^N \hat{h}_i + \frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|}
 $$
 onde $\hat{h}_i$ é o operador de 1 elétron que inclui a energia cinética do elétron e a interação coulombiana elétron-núcleo, escrito na forma 
 $$
     \hat{h}_i=-\frac{1}{2}\nabla_i^2 - \sum_{A=1}^M \frac{Z_A}{|\boldsymbol{r}_i-\boldsymbol{R}_A|}, 
 $$
+enquanto o termo de interação elétron-elétron é dado por
+$$
+\frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|}.
+$$
+
+O potencial de interação núcleo-núcleo $V_{nn}$ dado por 
+$$
+V_{nn} = \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}
+$$
+não é incluído no Hamiltoniano eletrônico, pois ele não depende das coordenadas eletrônicas e portanto, não afeta a função de onda eletrônica. No entanto, o termo $V_{nn}$ deve ser adicionado à energia total da molécula, como veremos mais adiante.
 
 ## Determinante de Slater
 
@@ -75,7 +85,11 @@ As soluções $\ket{\psi_k}$ e $\epsilon_k$ são os spin-orbitais moleculares e 
 
 No procedimento auto-consistente (SCF, do inglês **S**elf **C**onsistent **F**ield) é necessário decidir a forma dos orbitais e inseri-los.
 
-Para uma molécula de camada fechada, mantém-se o mesmo orbital molecular $\psi_i$ para os dois elétrons emparelhados, e isso é chamado de **RHF** (Hartree-Fock Restrito). Por exemplo, no caso do átomo de Be (berílio com $Z=4$), a função de onda no RHF é escrita da seguinte forma
+Para uma molécula de camada fechada, mantém-se o mesmo orbital molecular $\psi_i$ para os dois elétrons emparelhados, e isso é chamado de **RHF** (Hartree-Fock Restrito). 
+
+![Átomo de Berílio (Be) com $Z=4$.](../figuras/beryllium.png){#fig-Be width=50%}
+
+Por exemplo, no caso do átomo de Be (berílio com $Z=4$, conforme @fig-Be), a função de onda no RHF é escrita da seguinte forma
 $$\begin{aligned}
     \Psi_\text{RHF}^{(\text{Be})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3,\boldsymbol{x}_4) = \frac{1}{\sqrt{4!}} \begin{vmatrix}
         \psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow} & \psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow} & \psi_{2s}(\boldsymbol{r}_1)\ket{\uparrow} & \psi_{2s}(\boldsymbol{r}_1)\ket{\downarrow} \\
@@ -86,7 +100,11 @@ $$\begin{aligned}
 \end{aligned}$$
 com uma redução dimensional do problema pela metade. Note que embora tenhamos 4 elétrons, temos apenas dois orbitais moleculares a serem otimizados, o 1s e o 2s.
 
-No caso de moléculas de camada aberta, o método acima não pode ser usado, sendo necessário outro método. No caso do **ROHF** (Hartree-Fock Restrito de Camada Aberta), utiliza-se o mesmo método do RHF para elétrons emparelhados, atribuindo um orbital molecular $\psi_i$ fixo, enquanto o elétron desemparelhado recebe uma função de onda diferente. Tomando o átomo de Li (lítio com $Z=3$) como exemplo podemos escrever 
+No caso de moléculas de camada aberta, o método acima não pode ser usado, sendo necessário outro método. No caso do **ROHF** (Hartree-Fock Restrito de Camada Aberta), utiliza-se o mesmo método do RHF para elétrons emparelhados, atribuindo um orbital molecular $\psi_i$ fixo, enquanto o elétron desemparelhado recebe uma função de onda diferente. 
+
+![Átomo de Lítio (Li) com $Z=3$.](../figuras/lithium.png){#fig-Li width=50%}
+
+Tomando o átomo de Li (lítio com $Z=3$, conforme @fig-Li) como exemplo podemos escrever 
 $$\begin{aligned}
     \Psi_\text{ROHF}^{(\text{Li})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3) = \frac{1}{\sqrt{3!}} \begin{vmatrix}
         \psi_{1s}(\boldsymbol{r}_1)\ket{\uparrow} & \psi_{1s}(\boldsymbol{r}_1)\ket{\downarrow} & \psi_{2s}(\boldsymbol{r}_1)\ket{\uparrow} \\
