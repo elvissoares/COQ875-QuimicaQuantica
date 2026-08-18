@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/9-bases.html</loc>
-    <lastmod>2026-08-18T13:22:40.442Z</lastmod>
+    <lastmod>2026-08-18T13:53:56.575Z</lastmod>
   </url>
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/10-dft.html</loc>
@@ -51,5 +51,9 @@
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/Química-Quântica-para-Moléculas-e-Sólidos.pdf</loc>
     <lastmod>2026-08-18T13:26:52.289Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/11-pyscf.html</loc>
+    <lastmod>2026-08-18T16:16:41.849Z</lastmod>
   </url>
 </urlset>

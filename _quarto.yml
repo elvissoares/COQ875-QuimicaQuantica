@@ -37,6 +37,7 @@ book:
         - capitulos/8-hartree_fock.qmd
         - capitulos/9-bases.qmd
         - capitulos/10-dft.qmd
+        - capitulos/11-pyscf.qmd
 
   downloads: [pdf, epub]
   repo-url: https://github.com/elvissoares/COQ875-QuimicaQuantica

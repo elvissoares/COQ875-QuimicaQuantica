@@ -1,0 +1,17 @@
+name: quimica-quantica
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - jupyter
+  - ipykernel
+  - pip
+  - pip:
+      - pyscf
+      - ase

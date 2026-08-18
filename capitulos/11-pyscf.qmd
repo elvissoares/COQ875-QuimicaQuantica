@@ -1,0 +1,158 @@
+# PySCF
+
+Nesse capítulo vamos apresentar o pacote PySCF, que é uma biblioteca de código aberto para cálculos de química quântica. O PySCF é escrito em Python e C, e oferece uma ampla gama de funcionalidades para cálculos de estrutura eletrônica, incluindo métodos de Hartree-Fock, DFT, e métodos pós-Hartree-Fock.
+
+Seu website oficial é [https://pyscf.org](https://pyscf.org), onde você pode encontrar documentação detalhada, tutoriais e exemplos de uso.
+
+
+## Instalação
+
+A instalação do PySCF pode ser feita facilmente usando o gerenciador de pacotes `pip`. Para instalar o PySCF, você pode executar o seguinte comando no terminal:
+
+```bash
+pip install pyscf
+```
+
+## Criando uma molécula
+
+No PySCF, você pode criar uma molécula usando a classe `Mole` do módulo `gto`. 
+
+A seguir, apresentamos um exemplo de como criar uma molécula de hidrogênio (H2) com a base `sto-3g`:
+
+```python
+from pyscf import gto
+
+mol_h2 = gto.M(
+    atom = [['H',(0, 0, 0)], ['H',(1, 0, 0)]],
+    basis = 'sto-3g')
+```
+
+Outro exemplo é a criação de uma molécula de água (H2O) com a base `6-31g`:
+
+```python
+mol_h2o = gto.M(
+    atom = [['O',(0, 0, 0)], ['H',(0.7586, 0.5043, 0)], ['H',(-0.7586, 0.5043, 0)]],
+    basis = '6-31g')
+```
+
+As unidades de distância são em Angstroms, e a base especificada é usada para os cálculos eletrônicos.
+
+## Cálculos de Hartree-Fock
+
+No PySCF, você pode realizar um cálculo de Hartree-Fock usando a classe `RHF` (Restricted Hartree-Fock) do módulo `scf`. 
+
+A seguir, apresentamos um exemplo de como realizar um cálculo de Hartree-Fock para a molécula de hidrogênio (H2):
+
+```python
+from pyscf import scf
+
+rhf_h2 = scf.RHF(mol_h2)
+e_h2 = rhf_h2.kernel()
+```
+com `e_h2` contendo o valor da energia de Hartree-Fock para a molécula de hidrogênio (em unidades atômicas de energia, Hartree) e o output do cálculo será algo como:
+
+```
+converged SCF energy = -1.06610864931794
+```
+
+Para a molécula de água (H2O), o cálculo de Hartree-Fock seria realizado da seguinte forma:
+```python
+rhf_h2o = scf.RHF(mol_h2o)
+e_h2o = rhf_h2o.kernel()
+```
+cujo output será algo como:
+```
+converged SCF energy = -75.982010306225
+```
+
+## Cálculos de DFT
+
+No PySCF, você pode realizar um cálculo de DFT usando a classe `RKS` (Restricted Kohn-Sham) do módulo `scf`. 
+
+A seguir, apresentamos um exemplo de como realizar um cálculo de DFT para a molécula de água (H2O) usando o funcional B3LYP:
+
+```python
+from pyscf import scf
+
+rks_h2o = scf.RKS(mol_h2o)
+rks_h2o.xc = 'b3lyp'
+e_h2o_dft = rks_h2o.kernel()
+```
+cujo output será algo como:
+```
+converged SCF energy = -76.3780493873302
+```
+
+## Otimização geométrica
+
+No PySCF, você pode realizar uma otimização geométrica usando o módulo `geomopt`. 
+
+Nesse caso devemos instalar o pacote `geometric` que é uma dependência do PySCF para otimização geométrica. Você pode instalar o pacote `geometric` usando o seguinte comando:
+```bash
+pip install geometric
+```
+
+A seguir, apresentamos um exemplo de como otimizar a geometria da molécula de água (H2O) usando DFT com o funcional B3LYP:
+
+```python
+from pyscf.geomopt.geometric_solver import optimize
+
+mol_h2o_eq = optimize(rks_h2o)
+```
+
+O output da otimização geométrica é bem extenso, mas ao final você verá algo como:
+```
+Geometry optimization cycle 5
+Cartesian coordinates (Angstrom)
+ Atom        New coordinates             dX        dY        dZ
+   O  -0.000000  -0.044590  -0.000000   -0.000000  0.000093  0.000000
+   H   0.790977   0.526934  -0.000000    0.000314  0.000081 -0.000000
+   H  -0.790977   0.526934  -0.000000   -0.000314  0.000081  0.000000
+converged SCF energy = -76.3861166872955
+--------------- RKS_Scanner gradients ---------------
+         x                y                z
+0 O    -0.0000000000     0.0000007485     0.0000000000
+1 H    -0.0000133536    -0.0000040060     0.0000000000
+2 H     0.0000133536    -0.0000040060    -0.0000000000
+----------------------------------------------
+cycle 5: E = -76.3861166873  dE = -1.49867e-07  norm(grad) = 1.97305e-05
+Step    4 : Displace = 2.560e-04/3.135e-04 (rms/max) Trust = 2.828e-01 (+) Grad = 1.139e-05/1.394e-05 (rms/max) E (change) = -76.3861166873 (-1.499e-07) Quality = 1.057
+Hessian Eigenvalues: 4.99889e-02 5.00000e-02 5.00000e-02 ... 1.60676e-01 5.11791e-01 6.75229e-01
+Converged! =D
+
+    #==========================================================================#
+    #| If this code has benefited your research, please support us by citing: |#
+    #|                                                                        |#
+    #| Wang, L.-P.; Song, C.C. (2016) "Geometry optimization made simple with |#
+    #| translation and rotation coordinates", J. Chem, Phys. 144, 214108.     |#
+    #| http://dx.doi.org/10.1063/1.4952956                                    |#
+    #==========================================================================#
+    Time elapsed since start of run_optimizer: 10.153 seconds
+```
+
+Ao final da otimização, podemos imprimir as coordenadas atômicas otimizadas da molécula de água (H2O) em Angstroms e Bohr:
+```python
+print(mol_h2o_eq.tostring())
+print('Atomic coordinates (Ang):')
+print(mol_h2o_eq.atom_coords(unit='Ang'))
+print('Atomic coordinates (Bohr):')
+print(mol_h2o_eq.atom_coords(unit='Bohr'))
+``` 
+cujo output será algo como:
+```
+O          -0.00000000       -0.04459006       -0.00000000
+H           0.79097651        0.52693426       -0.00000000
+H          -0.79097651        0.52693426       -0.00000000
+Atomic coordinates (Ang):
+[[-4.34499243e-14 -4.45900570e-02 -1.65663466e-14]
+ [ 7.90976515e-01  5.26934257e-01 -1.48570073e-14]
+ [-7.90976515e-01  5.26934257e-01 -7.96253036e-15]]
+Atomic coordinates (Bohr):
+[[-8.21084571e-14 -8.42629956e-02 -3.13058580e-14]
+ [ 1.49472898e+00  9.95761431e-01 -2.80756748e-14]
+ [-1.49472898e+00  9.95761431e-01 -1.50470016e-14]]
+ ```
+
+
+Os exemplos contidos neste capítulo podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link abaixo:
+<a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/1-intro_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
