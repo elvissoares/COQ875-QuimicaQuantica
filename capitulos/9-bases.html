@@ -456,7 +456,8 @@ window.Quarto = {
   <li><a href="#base-de-orbitais-split-valence" id="toc-base-de-orbitais-split-valence" class="nav-link" data-scroll-target="#base-de-orbitais-split-valence"><span class="header-section-number">9.5</span> Base de orbitais split valence</a></li>
   <li><a href="#bases-polarizadas-e-difusas" id="toc-bases-polarizadas-e-difusas" class="nav-link" data-scroll-target="#bases-polarizadas-e-difusas"><span class="header-section-number">9.6</span> Bases polarizadas e difusas</a></li>
   <li><a href="#bases-consistentes-com-correlação" id="toc-bases-consistentes-com-correlação" class="nav-link" data-scroll-target="#bases-consistentes-com-correlação"><span class="header-section-number">9.7</span> Bases consistentes com correlação</a></li>
-  <li><a href="#equações-de-roothan-hartree-fock" id="toc-equações-de-roothan-hartree-fock" class="nav-link" data-scroll-target="#equações-de-roothan-hartree-fock"><span class="header-section-number">9.8</span> Equações de Roothan-Hartree-Fock</a></li>
+  <li><a href="#equações-de-roothan-hall" id="toc-equações-de-roothan-hall" class="nav-link" data-scroll-target="#equações-de-roothan-hall"><span class="header-section-number">9.8</span> Equações de Roothan-Hall</a></li>
+  <li><a href="#matriz-densidade" id="toc-matriz-densidade" class="nav-link" data-scroll-target="#matriz-densidade"><span class="header-section-number">9.9</span> Matriz Densidade</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/9-bases.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -466,7 +467,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/9-bases.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></h1>
+<h1 class="title"><span id="sec-bases" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></h1>
 </div>
 
 
@@ -483,9 +484,9 @@ window.Quarto = {
 </header>
 
 
-<p>Podemos escrever os spin-orbitais de 1 elétron em termos de um conjunto de base <span class="math inline">\(\phi_\mu\)</span> tal que <span id="eq-conjunto_de_base"><span class="math display">\[
-\psi_k(\boldsymbol{r}) = \sum_{\mu=1}^B c_{\mu k} \phi_\mu(\boldsymbol{r})
-\tag{9.1}\]</span></span> sendo <span class="math inline">\(B\)</span> o número de elementos do conjunto de base. Embora os spin-orbitais sejam ortonormais, tal que <span class="math inline">\(\braket{\psi_i|\psi_j} = \delta_{ij}\)</span>, as funções da base podem não ser. De fato, podemos escolher elementos da base como sendo normalizados, i.e.&nbsp;<span class="math inline">\(\braket{\phi_\mu|\phi_\mu} = 1\)</span>, porém dois elementos distintos do conjunto de base não precisam ser ortogonais entre si, levando a um dado por <span class="math inline">\(\braket{\phi_\mu|\phi_\nu} = S_{\mu\nu}\)</span>.</p>
+<p>Podemos escrever os orbitais moleculares de 1 elétron, <span class="math inline">\(\varphi_k(\boldsymbol{r})\)</span>, em termos de um conjunto de base <span class="math inline">\(\phi_\mu\)</span> tal que <span id="eq-conjunto_de_base"><span class="math display">\[
+\varphi_k(\boldsymbol{r}) = \sum_{\mu=1}^B c_{\mu k} \phi_\mu(\boldsymbol{r})
+\tag{9.1}\]</span></span> sendo <span class="math inline">\(B\)</span> o número de elementos do conjunto de base. Embora os spin-orbitais sejam ortonormais, tal que <span class="math inline">\(\braket{\varphi_i|\varphi_j} = \delta_{ij}\)</span>, as funções da base podem não ser. De fato, podemos escolher elementos da base como sendo normalizados, i.e.&nbsp;<span class="math inline">\(\braket{\phi_\mu|\phi_\mu} = 1\)</span>, porém dois elementos distintos do conjunto de base não precisam ser ortogonais entre si, levando a um dado por <span class="math inline">\(\braket{\phi_\mu|\phi_\nu} = S_{\mu\nu}\)</span>.</p>
 <p>Em geral, procuramos escrever as funções de base centradas nos núcleos atômicos, tal que <span class="math inline">\(\phi_\mu(\boldsymbol{r}-\boldsymbol{R}_A)\)</span> seja a função de base <span class="math inline">\(\mu\)</span> centrada no núcleo <span class="math inline">\(\boldsymbol{R}_A\)</span>. Como exemplo, no caso do LCAO, usamos <span class="math inline">\(\phi_\mu\)</span> como sendo os orbitais atômicos.</p>
 <section id="base-de-orbitais-de-slater-sto" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="base-de-orbitais-de-slater-sto"><span class="header-section-number">9.1</span> Base de orbitais de Slater (STO)</h2>
@@ -625,15 +626,31 @@ Figure&nbsp;9.1: Comparação do orbital de Slater 1s com as funções gaussiana
 </table>
 <p>O conjunto aumentado caracterizado pelo prefixo <strong>aug-</strong> inclui as funções difusas.</p>
 </section>
-<section id="equações-de-roothan-hartree-fock" class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="equações-de-roothan-hartree-fock"><span class="header-section-number">9.8</span> Equações de Roothan-Hartree-Fock</h2>
+<section id="equações-de-roothan-hall" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="equações-de-roothan-hall"><span class="header-section-number">9.8</span> Equações de Roothan-Hall</h2>
 <p>Usando a representação dos orbitais moleculares no conjunto de base, <a href="#eq-conjunto_de_base" class="quarto-xref">Equation&nbsp;<span>9.1</span></a>, podemos escrever as equações de HF, <a href="8-hartree_fock.html#eq-HF" class="quarto-xref">Equation&nbsp;<span>8.3</span></a>, em termos de <span class="math display">\[\hat{F} \sum_{\nu=1}^B c_{\nu k} \ket{\phi_\nu} = \epsilon_k \sum_{\nu=1}^B c_{\nu k} \ket{\phi_\nu}
 \]</span> e efetuando o produto interno com <span class="math inline">\(\ket{\phi_\mu}\)</span>, chegamos a <span id="eq-Rothaan_FH_equations"><span class="math display">\[
 F_{\mu\nu} c_{\nu k} = \epsilon_k S_{\mu \nu} c_{\nu k}
-\tag{9.2}\]</span></span> onde <span class="math inline">\(S_{\mu\nu}\)</span> são os elementos de matriz da integral de overlap, e os elementos de matriz do operador de Fock são <span class="math display">\[
+\tag{9.2}\]</span></span> ou <span class="math display">\[
+\boxed{
+\mathbf{F}\mathbf{C}
+=
+\mathbf{S}\mathbf{C}\boldsymbol{\epsilon}
+}
+\]</span> onde <span class="math inline">\(S_{\mu\nu}\)</span> são os elementos de matriz da integral de overlap, e os elementos de matriz do operador de Fock são <span class="math display">\[
 F_{\mu\nu} = \braket{\phi_\mu|\hat{F}|\phi_\nu}.
 \]</span></p>
-<p>As <a href="#eq-Rothaan_FH_equations" class="quarto-xref">Equation&nbsp;<span>9.2</span></a> são denominadas de <strong>equações de Roothan-Hartree-Fock</strong> e são equivalentes as equações de HF mas agora utilizando um conjunto de base específico.</p>
+<p>As <a href="#eq-Rothaan_FH_equations" class="quarto-xref">Equation&nbsp;<span>9.2</span></a> são denominadas de <strong>equações de Roothan-Hall</strong> e são equivalentes as equações de HF mas agora utilizando um conjunto de base específico.</p>
+</section>
+<section id="matriz-densidade" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="matriz-densidade"><span class="header-section-number">9.9</span> Matriz Densidade</h2>
+<p>Usando o conjunto de base, dado pela <a href="#eq-conjunto_de_base" class="quarto-xref">Equation&nbsp;<span>9.1</span></a>, podemos escrever a densidade eletrônica dada por <span class="math display">\[
+    \rho(\boldsymbol{r}) = 2 \sum_{i=1}^{N/2} |\varphi_i(\boldsymbol{r})|^2,
+\]</span> como sendo <span class="math display">\[\begin{align}
+    \rho(\boldsymbol{r}) = \sum_{\mu \nu} P_{\mu\nu} \phi_\nu(\boldsymbol{r})\phi_\mu^*(\boldsymbol{r})
+\end{align}\]</span> onde definimos a matriz densidade como <span class="math display">\[
+P_{\mu\nu} = 2\sum_{i=1}^{N/2} c_{\mu i} c_{\nu i}^*,
+\]</span> de tal forma que dado um conjunto de base <span class="math inline">\(\{\phi_\mu(\boldsymbol{r})\}\)</span>, a matriz densidade <span class="math inline">\(P_{\mu\nu}\)</span> especifica completamente a densidade eletrônica <span class="math inline">\(\rho(\boldsymbol{r})\)</span>.</p>
 
 
 </section>
