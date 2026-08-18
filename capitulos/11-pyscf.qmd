@@ -37,7 +37,16 @@ mol_h2o = gto.M(
 
 As unidades de distância são em Angstroms, e a base especificada é usada para os cálculos eletrônicos.
 
-## Cálculos de Hartree-Fock
+## Cálculos Auto-Consistentes de Energia 
+
+::: {.callout-tip}
+
+Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link:
+<a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/1-intro_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+:::
+
+### Cálculos de Hartree-Fock
 
 No PySCF, você pode realizar um cálculo de Hartree-Fock usando a classe `RHF` (Restricted Hartree-Fock) do módulo `scf`. 
 
@@ -65,7 +74,7 @@ cujo output será algo como:
 converged SCF energy = -75.982010306225
 ```
 
-## Cálculos de DFT
+### Cálculos de DFT
 
 No PySCF, você pode realizar um cálculo de DFT usando a classe `RKS` (Restricted Kohn-Sham) do módulo `scf`. 
 
@@ -82,6 +91,18 @@ cujo output será algo como:
 ```
 converged SCF energy = -76.3780493873302
 ```
+
+## Orbitais moleculares
+
+No PySCF, você pode acessar os orbitais moleculares (MOs) e suas energias após a convergência do cálculo de Hartree-Fock ou DFT.
+
+::: {.callout-tip}
+
+Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link:
+<a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/2-orbitais_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+:::
+
 
 ## Otimização geométrica
 
@@ -154,5 +175,3 @@ Atomic coordinates (Bohr):
  ```
 
 
-Os exemplos contidos neste capítulo podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link abaixo:
-<a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/1-intro_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
