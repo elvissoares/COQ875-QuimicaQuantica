@@ -1,10 +1,10 @@
-# Conjuntos de bases
+# Conjuntos de bases {#sec-bases}
 
-Podemos escrever os spin-orbitais de 1 elétron em termos de um conjunto de base $\phi_\mu$ tal que 
+Podemos escrever os orbitais moleculares de 1 elétron, $\varphi_k(\boldsymbol{r})$, em termos de um conjunto de base $\phi_\mu$ tal que
 $$
-\psi_k(\boldsymbol{r}) = \sum_{\mu=1}^B c_{\mu k} \phi_\mu(\boldsymbol{r})
+\varphi_k(\boldsymbol{r}) = \sum_{\mu=1}^B c_{\mu k} \phi_\mu(\boldsymbol{r})
 $${#eq-conjunto_de_base}
-sendo $B$ o número de elementos do conjunto de base. Embora os spin-orbitais sejam ortonormais, tal que $\braket{\psi_i|\psi_j} = \delta_{ij}$, as funções da base podem não ser. De fato, podemos escolher elementos da base como sendo normalizados, i.e. $\braket{\phi_\mu|\phi_\mu} = 1$, porém dois elementos distintos do conjunto de base não precisam ser ortogonais entre si, levando a um \emph{overlap} dado por $\braket{\phi_\mu|\phi_\nu} = S_{\mu\nu}$.
+sendo $B$ o número de elementos do conjunto de base. Embora os spin-orbitais sejam ortonormais, tal que $\braket{\varphi_i|\varphi_j} = \delta_{ij}$, as funções da base podem não ser. De fato, podemos escolher elementos da base como sendo normalizados, i.e. $\braket{\phi_\mu|\phi_\mu} = 1$, porém dois elementos distintos do conjunto de base não precisam ser ortogonais entre si, levando a um \emph{overlap} dado por $\braket{\phi_\mu|\phi_\nu} = S_{\mu\nu}$.
 
 Em geral, procuramos escrever as funções de base centradas nos núcleos atômicos, tal que $\phi_\mu(\boldsymbol{r}-\boldsymbol{R}_A)$ seja a função de base $\mu$ centrada no núcleo $\boldsymbol{R}_A$. Como exemplo, no caso do LCAO, usamos $\phi_\mu$ como sendo os orbitais atômicos. 
 
@@ -122,7 +122,7 @@ A ordem da inclusão de bases polarizadas deve seguir a ordem da energia de corr
 
 O conjunto aumentado caracterizado pelo prefixo **aug-** inclui as funções difusas.
 
-## Equações de Roothan-Hartree-Fock
+## Equações de Roothan-Hall
 
 Usando a representação dos orbitais moleculares no conjunto de base, @eq-conjunto_de_base, podemos escrever as equações de HF, @eq-HF, em termos de 
 $$\hat{F} \sum_{\nu=1}^B c_{\nu k} \ket{\phi_\nu} = \epsilon_k \sum_{\nu=1}^B c_{\nu k} \ket{\phi_\nu}
@@ -131,9 +131,34 @@ e efetuando o produto interno com $\ket{\phi_\mu}$, chegamos a
 $$
 F_{\mu\nu} c_{\nu k} = \epsilon_k S_{\mu \nu} c_{\nu k}
 $${#eq-Rothaan_FH_equations}
+ou 
+$$
+\boxed{
+\mathbf{F}\mathbf{C}
+=
+\mathbf{S}\mathbf{C}\boldsymbol{\epsilon}
+}
+$$
 onde $S_{\mu\nu}$ são os elementos de matriz da integral de overlap, e os elementos de matriz do operador de Fock são
 $$
 F_{\mu\nu} = \braket{\phi_\mu|\hat{F}|\phi_\nu}.
 $$
 
-As @eq-Rothaan_FH_equations são denominadas de **equações de Roothan-Hartree-Fock** e são equivalentes as equações de HF mas agora utilizando um conjunto de base específico. 
+
+As @eq-Rothaan_FH_equations são denominadas de **equações de Roothan-Hall** e são equivalentes as equações de HF mas agora utilizando um conjunto de base específico.
+
+## Matriz Densidade
+
+Usando o conjunto de base, dado pela @eq-conjunto_de_base, podemos escrever a densidade eletrônica dada por 
+$$
+    \rho(\boldsymbol{r}) = 2 \sum_{i=1}^{N/2} |\varphi_i(\boldsymbol{r})|^2,
+$$
+como sendo
+\begin{align}
+    \rho(\boldsymbol{r}) = \sum_{\mu \nu} P_{\mu\nu} \phi_\nu(\boldsymbol{r})\phi_\mu^*(\boldsymbol{r})
+\end{align}
+onde definimos a matriz densidade como 
+$$
+P_{\mu\nu} = 2\sum_{i=1}^{N/2} c_{\mu i} c_{\nu i}^*,
+$$
+de tal forma que dado um conjunto de base $\{\phi_\mu(\boldsymbol{r})\}$, a matriz densidade $P_{\mu\nu}$ especifica completamente a densidade eletrônica $\rho(\boldsymbol{r})$.

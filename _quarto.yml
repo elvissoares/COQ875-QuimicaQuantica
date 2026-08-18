@@ -72,9 +72,10 @@ format:
     documentclass: scrreprt
     number-sections: true
     toc: true
-    pdf-engine: lualatex
+    pdf-engine: pdflatex
     include-in-header:
       text: |
+        \usepackage{amsmath}
         \newcommand{\ket}[1]{\left|#1\right\rangle}
         \newcommand{\bra}[1]{\left\langle#1\right|}
         \newcommand{\braket}[1]{\left\langle#1\right\rangle}
