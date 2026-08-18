@@ -462,8 +462,12 @@ MathJax = {
   <ul>
   <li><a href="#instalação" id="toc-instalação" class="nav-link active" data-scroll-target="#instalação"><span class="header-section-number">11.1</span> Instalação</a></li>
   <li><a href="#criando-uma-molécula" id="toc-criando-uma-molécula" class="nav-link" data-scroll-target="#criando-uma-molécula"><span class="header-section-number">11.2</span> Criando uma molécula</a></li>
-  <li><a href="#cálculos-de-hartree-fock" id="toc-cálculos-de-hartree-fock" class="nav-link" data-scroll-target="#cálculos-de-hartree-fock"><span class="header-section-number">11.3</span> Cálculos de Hartree-Fock</a></li>
-  <li><a href="#cálculos-de-dft" id="toc-cálculos-de-dft" class="nav-link" data-scroll-target="#cálculos-de-dft"><span class="header-section-number">11.4</span> Cálculos de DFT</a></li>
+  <li><a href="#cálculos-auto-consistentes-de-energia" id="toc-cálculos-auto-consistentes-de-energia" class="nav-link" data-scroll-target="#cálculos-auto-consistentes-de-energia"><span class="header-section-number">11.3</span> Cálculos Auto-Consistentes de Energia</a>
+  <ul class="collapse">
+  <li><a href="#cálculos-de-hartree-fock" id="toc-cálculos-de-hartree-fock" class="nav-link" data-scroll-target="#cálculos-de-hartree-fock"><span class="header-section-number">11.3.1</span> Cálculos de Hartree-Fock</a></li>
+  <li><a href="#cálculos-de-dft" id="toc-cálculos-de-dft" class="nav-link" data-scroll-target="#cálculos-de-dft"><span class="header-section-number">11.3.2</span> Cálculos de DFT</a></li>
+  </ul></li>
+  <li><a href="#orbitais-moleculares" id="toc-orbitais-moleculares" class="nav-link" data-scroll-target="#orbitais-moleculares"><span class="header-section-number">11.4</span> Orbitais moleculares</a></li>
   <li><a href="#otimização-geométrica" id="toc-otimização-geométrica" class="nav-link" data-scroll-target="#otimização-geométrica"><span class="header-section-number">11.5</span> Otimização geométrica</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/11-pyscf.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -513,8 +517,23 @@ MathJax = {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    basis <span class="op">=</span> <span class="st">'6-31g'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>As unidades de distância são em Angstroms, e a base especificada é usada para os cálculos eletrônicos.</p>
 </section>
-<section id="cálculos-de-hartree-fock" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="cálculos-de-hartree-fock"><span class="header-section-number">11.3</span> Cálculos de Hartree-Fock</h2>
+<section id="cálculos-auto-consistentes-de-energia" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="cálculos-auto-consistentes-de-energia"><span class="header-section-number">11.3</span> Cálculos Auto-Consistentes de Energia</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: <a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/1-intro_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+</div>
+</div>
+<section id="cálculos-de-hartree-fock" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="cálculos-de-hartree-fock"><span class="header-section-number">11.3.1</span> Cálculos de Hartree-Fock</h3>
 <p>No PySCF, você pode realizar um cálculo de Hartree-Fock usando a classe <code>RHF</code> (Restricted Hartree-Fock) do módulo <code>scf</code>.</p>
 <p>A seguir, apresentamos um exemplo de como realizar um cálculo de Hartree-Fock para a molécula de hidrogênio (H2):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> scf</span>
@@ -529,8 +548,8 @@ MathJax = {
 <p>cujo output será algo como:</p>
 <pre><code>converged SCF energy = -75.982010306225</code></pre>
 </section>
-<section id="cálculos-de-dft" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="cálculos-de-dft"><span class="header-section-number">11.4</span> Cálculos de DFT</h2>
+<section id="cálculos-de-dft" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="cálculos-de-dft"><span class="header-section-number">11.3.2</span> Cálculos de DFT</h3>
 <p>No PySCF, você pode realizar um cálculo de DFT usando a classe <code>RKS</code> (Restricted Kohn-Sham) do módulo <code>scf</code>.</p>
 <p>A seguir, apresentamos um exemplo de como realizar um cálculo de DFT para a molécula de água (H2O) usando o funcional B3LYP:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> scf</span>
@@ -540,6 +559,24 @@ MathJax = {
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>e_h2o_dft <span class="op">=</span> rks_h2o.kernel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>cujo output será algo como:</p>
 <pre><code>converged SCF energy = -76.3780493873302</code></pre>
+</section>
+</section>
+<section id="orbitais-moleculares" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="orbitais-moleculares"><span class="header-section-number">11.4</span> Orbitais moleculares</h2>
+<p>No PySCF, você pode acessar os orbitais moleculares (MOs) e suas energias após a convergência do cálculo de Hartree-Fock ou DFT.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: <a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/2-orbitais_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+</div>
+</div>
 </section>
 <section id="otimização-geométrica" class="level2" data-number="11.5">
 <h2 data-number="11.5" class="anchored" data-anchor-id="otimização-geométrica"><span class="header-section-number">11.5</span> Otimização geométrica</h2>
@@ -595,7 +632,6 @@ Atomic coordinates (Bohr):
 [[-8.21084571e-14 -8.42629956e-02 -3.13058580e-14]
  [ 1.49472898e+00  9.95761431e-01 -2.80756748e-14]
  [-1.49472898e+00  9.95761431e-01 -1.50470016e-14]]</code></pre>
-<p>Os exemplos contidos neste capítulo podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link abaixo: <a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/1-intro_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 
 
 </section>
