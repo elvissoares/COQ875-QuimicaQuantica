@@ -464,7 +464,11 @@ MathJax = {
   <li><a href="#cálculos-de-hartree-fock" id="toc-cálculos-de-hartree-fock" class="nav-link" data-scroll-target="#cálculos-de-hartree-fock"><span class="header-section-number">11.3.1</span> Cálculos de Hartree-Fock</a></li>
   <li><a href="#cálculos-de-dft" id="toc-cálculos-de-dft" class="nav-link" data-scroll-target="#cálculos-de-dft"><span class="header-section-number">11.3.2</span> Cálculos de DFT</a></li>
   </ul></li>
-  <li><a href="#orbitais-moleculares" id="toc-orbitais-moleculares" class="nav-link" data-scroll-target="#orbitais-moleculares"><span class="header-section-number">11.4</span> Orbitais moleculares</a></li>
+  <li><a href="#orbitais-moleculares-e-densidade-eletrônica" id="toc-orbitais-moleculares-e-densidade-eletrônica" class="nav-link" data-scroll-target="#orbitais-moleculares-e-densidade-eletrônica"><span class="header-section-number">11.4</span> Orbitais moleculares e Densidade Eletrônica</a>
+  <ul class="collapse">
+  <li><a href="#orbitais-moleculares" id="toc-orbitais-moleculares" class="nav-link" data-scroll-target="#orbitais-moleculares"><span class="header-section-number">11.4.1</span> Orbitais Moleculares</a></li>
+  <li><a href="#densidade-eletrônica" id="toc-densidade-eletrônica" class="nav-link" data-scroll-target="#densidade-eletrônica"><span class="header-section-number">11.4.2</span> Densidade eletrônica</a></li>
+  </ul></li>
   <li><a href="#otimização-geométrica" id="toc-otimização-geométrica" class="nav-link" data-scroll-target="#otimização-geométrica"><span class="header-section-number">11.5</span> Otimização geométrica</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/11-pyscf.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -558,9 +562,8 @@ Tip
 <pre><code>converged SCF energy = -76.3780493873302</code></pre>
 </section>
 </section>
-<section id="orbitais-moleculares" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="orbitais-moleculares"><span class="header-section-number">11.4</span> Orbitais moleculares</h2>
-<p>No PySCF, você pode acessar os orbitais moleculares (MOs) e suas energias após a convergência do cálculo de Hartree-Fock ou DFT.</p>
+<section id="orbitais-moleculares-e-densidade-eletrônica" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="orbitais-moleculares-e-densidade-eletrônica"><span class="header-section-number">11.4</span> Orbitais moleculares e Densidade Eletrônica</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -574,16 +577,85 @@ Tip
 <p>Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: <a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/2-orbitais_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
 </div>
 </div>
+<section id="orbitais-moleculares" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="orbitais-moleculares"><span class="header-section-number">11.4.1</span> Orbitais Moleculares</h3>
+<p>No PySCF, você pode acessar os orbitais moleculares (MOs) e suas energias após a convergência do cálculo de Hartree-Fock ou DFT.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf.tools <span class="im">import</span> cubegen <span class="co"># para exportar aquivos cube</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>hartree_to_ev <span class="op">=</span> <span class="fl">27.2114</span> <span class="co"># Conversão de Hartree para eV</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportanto os 8 primeiros orbitais moleculares</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>):</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    cubegen.orbital(mol_h2o, <span class="ss">f'h2o_mo_id</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">.cube'</span>, rhf_h2o.mo_coeff[:,i])</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"MO </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> energy: </span><span class="sc">{</span>rhf_h2o<span class="sc">.</span>mo_energy[i]<span class="op">*</span>hartree_to_ev<span class="sc">}</span><span class="ss"> eV"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>MO 1 energy: -559.0648505073075 eV
+MO 2 energy: -37.35824208425234 eV
+MO 3 energy: -20.472436335886574 eV
+MO 4 energy: -15.010271665557314 eV
+MO 5 energy: -13.620368424502718 eV
+MO 6 energy: 5.892416334684666 eV
+MO 7 energy: 8.489434880237042 eV
+MO 8 energy: 30.794397465074287 eV</code></pre>
+<p>e os arquivos <code>h2o_mo_id1.cube</code>, <code>h2o_mo_id2.cube</code>, …, <code>h2o_mo_id8.cube</code> serão gerados, podendo ser visualizados em softwares de visualização molecular, como o VMD, PyMOL ou VESTA.</p>
+<p>Outro comando útil é o método <code>analyze()</code> que fornece informações detalhadas sobre a densidade eletrônica, populações de Mulliken, energias dos orbitais moleculares, entre outros dados:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rhf_h2o.analyze()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>**** MO energy ****
+MO #1   energy= -20.5452439237712  occ= 2
+MO #2   energy= -1.37288938034252  occ= 2
+MO #3   energy= -0.752347778353432 occ= 2
+MO #4   energy= -0.551617030566502 occ= 2
+MO #5   energy= -0.500539054385394 occ= 2
+MO #6   energy= 0.216542196825032  occ= 0
+MO #7   energy= 0.311980819812176  occ= 0
+MO #8   energy= 1.13167266164454   occ= 0
+MO #9   energy= 1.16714239571367   occ= 0
+MO #10  energy= 1.18839667472837   occ= 0
+MO #11  energy= 1.21799463765162   occ= 0
+MO #12  energy= 1.40648729738536   occ= 0
+MO #13  energy= 1.67628216207442   occ= 0
+ ** Mulliken atomic charges  **
+charge of    0O =     -0.66401
+charge of    1H =      0.33200
+charge of    2H =      0.33200
+Dipole moment(X, Y, Z, Debye):  0.00000,  2.45844, -0.00000
+((array([1.99998907e+00, 1.59484969e+00, 3.37983153e-03, 1.32200180e+00,
+         1.73548741e+00, 1.99560867e+00, 6.39191091e-03, 1.90976617e-03,
+         4.39132862e-03, 6.46096227e-01, 2.18990368e-02, 6.46096227e-01,
+         2.18990368e-02]),
+  array([-0.66400947,  0.33200474,  0.33200474])),
+ array([ 1.25552744e-14,  2.45844212e+00, -1.20462032e-16]))</code></pre>
+</section>
+<section id="densidade-eletrônica" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="densidade-eletrônica"><span class="header-section-number">11.4.2</span> Densidade eletrônica</h3>
+<p>No PySCF, você pode calcular a densidade eletrônica usando o método <code>get_density()</code> do objeto de cálculo SCF. A densidade eletrônica é uma função que descreve a distribuição de elétrons na molécula.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cubegen.density(mol_h2o, <span class="st">'h2o_den.cube'</span>, rhf_h2o.make_rdm1())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será um arquivo <code>h2o_den.cube</code> que pode ser visualizado em softwares de visualização molecular, como o VMD, PyMOL ou VESTA.</p>
+</section>
 </section>
 <section id="otimização-geométrica" class="level2" data-number="11.5">
 <h2 data-number="11.5" class="anchored" data-anchor-id="otimização-geométrica"><span class="header-section-number">11.5</span> Otimização geométrica</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: <a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/3-otimizacao_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+</div>
+</div>
 <p>No PySCF, você pode realizar uma otimização geométrica usando o módulo <code>geomopt</code>.</p>
 <p>Nesse caso devemos instalar o pacote <code>geometric</code> que é uma dependência do PySCF para otimização geométrica. Você pode instalar o pacote <code>geometric</code> usando o seguinte comando:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install geometric</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install geometric</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>A seguir, apresentamos um exemplo de como otimizar a geometria da molécula de água (H2O) usando DFT com o funcional B3LYP:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf.geomopt.geometric_solver <span class="im">import</span> optimize</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>mol_h2o_eq <span class="op">=</span> optimize(rks_h2o)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf.geomopt.geometric_solver <span class="im">import</span> optimize</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mol_h2o_eq <span class="op">=</span> optimize(rks_h2o)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>O output da otimização geométrica é bem extenso, mas ao final você verá algo como:</p>
 <pre><code>Geometry optimization cycle 5
 Cartesian coordinates (Angstrom)
@@ -612,11 +684,11 @@ Converged! =D
     #==========================================================================#
     Time elapsed since start of run_optimizer: 10.153 seconds</code></pre>
 <p>Ao final da otimização, podemos imprimir as coordenadas atômicas otimizadas da molécula de água (H2O) em Angstroms e Bohr:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mol_h2o_eq.tostring())</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Atomic coordinates (Ang):'</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mol_h2o_eq.atom_coords(unit<span class="op">=</span><span class="st">'Ang'</span>))</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Atomic coordinates (Bohr):'</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mol_h2o_eq.atom_coords(unit<span class="op">=</span><span class="st">'Bohr'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mol_h2o_eq.tostring())</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Atomic coordinates (Ang):'</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mol_h2o_eq.atom_coords(unit<span class="op">=</span><span class="st">'Ang'</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Atomic coordinates (Bohr):'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mol_h2o_eq.atom_coords(unit<span class="op">=</span><span class="st">'Bohr'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>cujo output será algo como:</p>
 <pre><code>O          -0.00000000       -0.04459006       -0.00000000
 H           0.79097651        0.52693426       -0.00000000
