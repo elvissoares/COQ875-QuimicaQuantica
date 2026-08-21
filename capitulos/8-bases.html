@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Fundamentos Matemáticos da MQ – Química Quântica para Moléculas e Sólidos</title>
+<title>8&nbsp; Conjuntos de bases – Química Quântica para Moléculas e Sólidos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,7 +26,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -36,8 +55,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../capitulos/4-schroedinger.html" rel="next">
-<link href="../capitulos/2-postulados.html" rel="prev">
+<link href="../capitulos/9-solidos.html" rel="next">
+<link href="../capitulos/7-dft.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -89,6 +108,35 @@ MathJax = {
 };
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -270,7 +318,7 @@ MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/1-bases_experimentais.html">Fundamentos da Mecânica Quântica</a></li><li class="breadcrumb-item"><a href="../capitulos/3-matematica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-sistemas_2eletrons.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/8-bases.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -351,7 +399,7 @@ MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link active">
+  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></span></a>
   </div>
 </li>
@@ -392,7 +440,7 @@ MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/8-bases.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/8-bases.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
   </div>
 </li>
@@ -491,16 +539,35 @@ MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#base-de-orbitais-de-slater-sto" id="toc-base-de-orbitais-de-slater-sto" class="nav-link active" data-scroll-target="#base-de-orbitais-de-slater-sto"><span class="header-section-number">8.1</span> Base de orbitais de Slater (STO)</a></li>
+  <li><a href="#base-de-orbitais-gaussianos-gto" id="toc-base-de-orbitais-gaussianos-gto" class="nav-link" data-scroll-target="#base-de-orbitais-gaussianos-gto"><span class="header-section-number">8.2</span> Base de orbitais gaussianos (GTO)</a></li>
+  <li><a href="#base-de-orbitais-gaussianos-contraídos-cgf" id="toc-base-de-orbitais-gaussianos-contraídos-cgf" class="nav-link" data-scroll-target="#base-de-orbitais-gaussianos-contraídos-cgf"><span class="header-section-number">8.3</span> Base de orbitais gaussianos contraídos (CGF)</a></li>
+  <li><a href="#base-de-orbitais-estilo-pople-sto-ng" id="toc-base-de-orbitais-estilo-pople-sto-ng" class="nav-link" data-scroll-target="#base-de-orbitais-estilo-pople-sto-ng"><span class="header-section-number">8.4</span> Base de orbitais estilo Pople (STO-<span class="math inline">\(n\)</span>G)</a></li>
+  <li><a href="#base-de-orbitais-split-valence" id="toc-base-de-orbitais-split-valence" class="nav-link" data-scroll-target="#base-de-orbitais-split-valence"><span class="header-section-number">8.5</span> Base de orbitais split valence</a></li>
+  <li><a href="#bases-polarizadas-e-difusas" id="toc-bases-polarizadas-e-difusas" class="nav-link" data-scroll-target="#bases-polarizadas-e-difusas"><span class="header-section-number">8.6</span> Bases polarizadas e difusas</a></li>
+  <li><a href="#famílias-modernas-de-conjuntos-de-base" id="toc-famílias-modernas-de-conjuntos-de-base" class="nav-link" data-scroll-target="#famílias-modernas-de-conjuntos-de-base"><span class="header-section-number">8.7</span> Famílias modernas de conjuntos de base</a>
+  <ul class="collapse">
+  <li><a href="#conjuntos-de-base-de-ahlrichs-e-família-def2" id="toc-conjuntos-de-base-de-ahlrichs-e-família-def2" class="nav-link" data-scroll-target="#conjuntos-de-base-de-ahlrichs-e-família-def2"><span class="header-section-number">8.7.1</span> Conjuntos de base de Ahlrichs e família def2</a></li>
+  <li><a href="#bases-consistentes-com-correlação" id="toc-bases-consistentes-com-correlação" class="nav-link" data-scroll-target="#bases-consistentes-com-correlação"><span class="header-section-number">8.7.2</span> Bases consistentes com correlação</a></li>
+  </ul></li>
+  <li><a href="#equações-de-roothan-hall-ou-equações-de-hartree-fock-em-bases-gaussianas" id="toc-equações-de-roothan-hall-ou-equações-de-hartree-fock-em-bases-gaussianas" class="nav-link" data-scroll-target="#equações-de-roothan-hall-ou-equações-de-hartree-fock-em-bases-gaussianas"><span class="header-section-number">8.8</span> Equações de Roothan-Hall ou Equações de Hartree-Fock em bases gaussianas</a></li>
+  <li><a href="#equações-de-kohn-sham-em-bases-gaussianas" id="toc-equações-de-kohn-sham-em-bases-gaussianas" class="nav-link" data-scroll-target="#equações-de-kohn-sham-em-bases-gaussianas"><span class="header-section-number">8.9</span> Equações de Kohn-Sham em bases gaussianas</a></li>
+  <li><a href="#matriz-densidade" id="toc-matriz-densidade" class="nav-link" data-scroll-target="#matriz-densidade"><span class="header-section-number">8.10</span> Matriz Densidade</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/8-bases.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/1-bases_experimentais.html">Fundamentos da Mecânica Quântica</a></li><li class="breadcrumb-item"><a href="../capitulos/3-matematica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-sistemas_2eletrons.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/8-bases.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></h1>
+<h1 class="title"><span id="sec-bases" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></h1>
 </div>
 
 
@@ -517,8 +584,278 @@ MathJax = {
 </header>
 
 
+<p>Podemos escrever os orbitais moleculares de 1 elétron, <span class="math inline">\(\varphi_k(\boldsymbol{r})\)</span>, em termos de um conjunto de base <span class="math inline">\(\phi_\mu\)</span> tal que <span id="eq-conjunto_de_base"><span class="math display">\[
+\varphi_k(\boldsymbol{r}) = \sum_{\mu=1}^B c_{\mu k} \phi_\mu(\boldsymbol{r})
+\tag{8.1}\]</span></span> sendo <span class="math inline">\(B\)</span> o número de elementos do conjunto de base. Embora os spin-orbitais sejam ortonormais, tal que <span class="math inline">\(\braket{\varphi_i|\varphi_j} = \delta_{ij}\)</span>, as funções da base podem não ser. De fato, podemos escolher elementos da base como sendo normalizados, i.e.&nbsp;<span class="math inline">\(\braket{\phi_\mu|\phi_\mu} = 1\)</span>, porém dois elementos distintos do conjunto de base não precisam ser ortogonais entre si, levando a um dado por <span class="math inline">\(\braket{\phi_\mu|\phi_\nu} = S_{\mu\nu}\)</span>.</p>
+<p>Em geral, procuramos escrever as funções de base centradas nos núcleos atômicos, tal que <span class="math inline">\(\phi_\mu(\boldsymbol{r}-\boldsymbol{R}_A)\)</span> seja a função de base <span class="math inline">\(\mu\)</span> centrada no núcleo <span class="math inline">\(\boldsymbol{R}_A\)</span>. Como exemplo, no caso do LCAO, usamos <span class="math inline">\(\phi_\mu\)</span> como sendo os orbitais atômicos.</p>
+<section id="base-de-orbitais-de-slater-sto" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="base-de-orbitais-de-slater-sto"><span class="header-section-number">8.1</span> Base de orbitais de Slater (STO)</h2>
+<p>Os orbitais de Slater (STO, do inglês, <strong>S</strong>later <strong>T</strong>ype <strong>O</strong>rbitals) são baseados nos orbitais do átomo de Hidrogênio mas sem levar em conta os polinômios de Laguerre. De fato, podemos escrever os orbitais de Slater como sendo <span class="math display">\[\begin{align}
+    \phi^{\text{STO}, nlm}(\boldsymbol{r}) = \mathcal{N} r^{n-1} e^{-\zeta r} Y_{lm}(\theta,\phi)
+\end{align}\]</span> sendo <span class="math inline">\(\mathcal{N}\)</span> uma constante de normalização, <span class="math inline">\(\zeta\)</span> o parâmetro variacional e <span class="math inline">\(n\)</span>, <span class="math inline">\(l\)</span> e <span class="math inline">\(m\)</span> sendo os números quânticos. Os orbitais de Slater primitivos para os orbitais 1s, 2p e 3d são <span class="math display">\[\begin{align}
+    \phi^{\text{STO}, 1s}(\boldsymbol{r}) &amp;= \left(\frac{\zeta^3}{\pi}\right)^{1/2}e^{-\zeta r} \\
+    \phi^{\text{STO}, 2p_x}(\boldsymbol{r}) &amp;= \left(\frac{\zeta^5}{\pi}\right)^{1/2} x e^{-\zeta r} \\
+    \phi^{\text{STO}, 3d_{xy}}(\boldsymbol{r}) &amp;= \left(\frac{2\zeta^7}{3\pi}\right)^{1/2}  xy e^{-\zeta r}
+\end{align}\]</span></p>
+</section>
+<section id="base-de-orbitais-gaussianos-gto" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="base-de-orbitais-gaussianos-gto"><span class="header-section-number">8.2</span> Base de orbitais gaussianos (GTO)</h2>
+<p>Os orbitais gaussianos (GTO, do inglês, <strong>G</strong>aussian <strong>T</strong>ype <strong>O</strong>rbitals) são baseados na função gaussiano, podendo ser escritos como <span class="math display">\[\begin{align}
+    \phi^{\text{GTO}}_{nlm}(\boldsymbol{r}) = \mathcal{N} r^{n-1} e^{-\alpha r^2} Y_{lm}(\theta,\phi)
+\end{align}\]</span> sendo <span class="math inline">\(\mathcal{N}\)</span> uma constante de normalização, <span class="math inline">\(\alpha\)</span> o parâmetro variacional e <span class="math inline">\(n\)</span>, <span class="math inline">\(l\)</span> e <span class="math inline">\(m\)</span> sendo os números quânticos. Uma das vantagens de orbitais 1s gaussianos é a simplificação do produto de duas gaussianas com centradas em átomos distintos ter como resultado uma nova gaussiana. De fato, temos que <span class="math display">\[\phi^{\text{GTO}}_{1s}(\alpha,\boldsymbol{r}-\boldsymbol{R}_A)\phi^{\text{GTO}}_{1s}(\beta,\boldsymbol{r}-\boldsymbol{R}_B) = K_{AB} \phi^{\text{GTO}}_{1s}(p,\boldsymbol{r}-\boldsymbol{R}_P)\]</span> onde <span class="math display">\[K_{AB} = \left(\frac{2 \alpha \beta}{\pi p}\right)^{3/4} e^{-\frac{\alpha \beta}{p} |\boldsymbol{R}_A-\boldsymbol{R}_B| }\]</span> com <span class="math inline">\(p = \alpha + \beta\)</span> e o novo centro sendo <span class="math display">\[\begin{align}
+    \boldsymbol{R}_P = (\alpha \boldsymbol{R}_A + \beta \boldsymbol{R}_B)/p.
+\end{align}\]</span> Assim, qualquer integral de par de gaussianas pode ser efetuada como uma integral de gaussiano única.</p>
+<p>Os orbitais gaussianos primitivos para os orbitais 1s, 2p e 3d são <span class="math display">\[\begin{aligned}
+    \phi_\text{1s}(\boldsymbol{r}) &amp;= \left(\frac{2 \alpha}{\pi}\right)^{3/4}e^{-\alpha r^2}  \\
+    \phi_{\text{2p}_x}(\boldsymbol{r}) &amp;= \left(\frac{128\alpha^5}{\pi^3}\right)^{1/4} x e^{-\alpha r^2}  \\
+    \phi_{\text{3d}_{xy}}(\boldsymbol{r}) &amp;= \left(\frac{2048\alpha^7}{\pi^3}\right)^{1/4}  xy e^{-\alpha r^2}
+\end{aligned}\]</span></p>
+</section>
+<section id="base-de-orbitais-gaussianos-contraídos-cgf" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="base-de-orbitais-gaussianos-contraídos-cgf"><span class="header-section-number">8.3</span> Base de orbitais gaussianos contraídos (CGF)</h2>
+<p>Nesse caso procuramos escrever os orbitais como soma de <span class="math inline">\(n\)</span> orbitais gaussianos tal que <span class="math display">\[\begin{align}
+    \phi^{\text{CGF},nlm}(\zeta,\boldsymbol{r}) = \sum_{i=1}^n d_{i\mu} \phi^{\text{GTO},nlm}_i(\zeta^2\alpha_{i\mu},\boldsymbol{r})
+\end{align}\]</span> tal que a diferença entre as duas distribuições, dada por <span class="math display">\[\begin{align}
+    \varepsilon = \int [\phi^{nlm}(\boldsymbol{r})-\phi^{\text{CGF},nlm}(\boldsymbol{r})]^2\ \text{d}\boldsymbol{r}
+\end{align}\]</span> seja mínima.</p>
+</section>
+<section id="base-de-orbitais-estilo-pople-sto-ng" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="base-de-orbitais-estilo-pople-sto-ng"><span class="header-section-number">8.4</span> Base de orbitais estilo Pople (STO-<span class="math inline">\(n\)</span>G)</h2>
+<p>Esse conjunto de base consiste em CGF onde as funções <span class="math inline">\(\phi^{\text{CGF},nlm}(\boldsymbol{r})\)</span> tentam reproduzir a base de Slater (dai o STO) com <span class="math inline">\(n\)</span> gaussianas (dai o <span class="math inline">\(n\)</span>G). A <a href="#fig-sto_vs_gto" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> apresenta a comparação do orbital de slater 1s com os primeiros orbitais de Pople STO-<span class="math inline">\(n\)</span>G.</p>
+<div id="fig-sto_vs_gto" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sto_vs_gto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/sto_vs_gto.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sto_vs_gto-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: Comparação do orbital de Slater 1s com as funções gaussianas de Pople (STO-<span class="math inline">\(n\)</span>G).
+</figcaption>
+</figure>
+</div>
+<p>A mais famosa delas é a <strong>base primitiva STO-3G</strong> onde são utilizadas 3 gaussianas afim de representar os orbitais 1s de Slater que pode ser representada por <span class="math display">\[\begin{aligned}
+    \phi^{\text{STO-3G},1s}(\zeta=1,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},1s}_i(\alpha_{i},\boldsymbol{r}) \\
+    \phi^{\text{STO-3G},2s}(\zeta=1,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},2s}_i(\alpha_{i},\boldsymbol{r}) \\
+    \phi^{\text{STO-3G},2p}(\zeta=1,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},2p}_i(\alpha_{i},\boldsymbol{r})
+\end{aligned}\]</span> e como exemplo temos que <span class="math display">\[\begin{aligned}
+    \phi^{\text{STO-3G},1s}(\zeta=1,\boldsymbol{r}) =\ &amp; 0.444635\phi^{\text{GTO},1s}(\alpha=0.109818,\boldsymbol{r})\nonumber \\
+    &amp; + 0.535328\phi^{\text{GTO},1s}(\alpha=0.405771,\boldsymbol{r}) \nonumber \\
+    &amp;+0.154329\phi^{\text{GTO},1s}(\alpha=2.22766,\boldsymbol{r})
+\end{aligned}\]</span></p>
+<p>Essa base é bem estabelecida para elementos da 1ª linha da tabela periódica (Li a F), mas pode ser estendida para elementos da 2ª linha (Na a Cl) também.</p>
+</section>
+<section id="base-de-orbitais-split-valence" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="base-de-orbitais-split-valence"><span class="header-section-number">8.5</span> Base de orbitais split valence</h2>
+<p>Nesse conjunto de bases introduzimos mais funções afim de separar a parte mais interna dos orbitais e a parte mais externa dos orbitais.</p>
+<p>Um exemplo é dobrar o conjunto de funções tal que teremos dois parâmetros, <span class="math inline">\(\zeta\)</span> e <span class="math inline">\(\zeta'\)</span> para descrever cada orbital. Esse conjunto de base é denominado <strong>double zeta</strong>, e um exemplo desse conjunto é o <strong>6-31G</strong> onde as 6 primeiras funções representam o orbital mais interno (1s), enquanto que os orbitais de valência são representados com 3 gaussianas para um parâmetro <span class="math inline">\(\zeta\)</span> e 1 gaussiana para outro parâmetro <span class="math inline">\(\zeta'&gt; \zeta\)</span>. Para os átomos da 1ª linha da tabela períodica (Li a F) teremos <span class="math display">\[\begin{aligned}
+    \phi_{1s}(\zeta,\boldsymbol{r}) &amp;= \sum_{i=1}^6 d_{i} \phi^{\text{GTO},1s}_i(\zeta^2\alpha_{i},\boldsymbol{r}) \\
+    \phi_{2s}(\zeta,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},1s}_i(\zeta^2\alpha_{i},\boldsymbol{r}) \\
+    \phi'_{2s}(\zeta',\boldsymbol{r}) &amp;= d_{1}' \phi^{\text{GTO},1s}_i(\zeta'^2\alpha_{i},\boldsymbol{r}) \\
+    \phi_{2p}(\zeta,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},2p}_i(\zeta^2\alpha_{i},\boldsymbol{r}) \\
+    \phi'_{2p}(\zeta',\boldsymbol{r}) &amp;= d_{1}' \phi^{\text{GTO},2p}_i(\zeta'^2\alpha_{i},\boldsymbol{r})
+\end{aligned}\]</span> e para o H temos <span class="math display">\[\begin{aligned}
+    \phi_{1s}(\zeta,\boldsymbol{r}) &amp;= \sum_{i=1}^3 d_{i} \phi^{\text{GTO},1s}_i(\zeta^2\alpha_{i},\boldsymbol{r}) \\
+    \phi'_{1s}(\zeta',\boldsymbol{r}) &amp;= d_{1}' \phi^{\text{GTO},1s}_i(\zeta'^2\alpha_{i},\boldsymbol{r})
+\end{aligned}\]</span></p>
+<p>Existem também orbitais <strong>triple zeta</strong> como o <strong>6-311G</strong>, orbitais <strong>quadruple zeta</strong>, orbitais <strong>5 zeta</strong> e assim por diante.</p>
+</section>
+<section id="bases-polarizadas-e-difusas" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="bases-polarizadas-e-difusas"><span class="header-section-number">8.6</span> Bases polarizadas e difusas</h2>
+<p>Até aqui usamos somente orbitais do tipo-s ou tipo-p para construir as bases.</p>
+<ul>
+<li><p><strong>polarizados:</strong> adição de orbitais tipo-d em átomos da 1ª linha Li-F e orbitais tipo-p para H. Como exemplo, temos <strong>6-31G</strong>* que adiciona orbitais do tipo-d para os elementos pesados. Adicionando os orbitais do tipo-p para o H teremos o conjunto <strong>6-31G</strong>**.</p></li>
+<li><p><strong>difusos:</strong> adição de orbitais tipo-s e tipo-p com <span class="math inline">\(\zeta \gg 1\)</span> em átomos não-H tal que tenha um decaimento lento, como exemplo temos o <strong>6-31+G</strong>. Se adicionarmos orbitais difusos tipo-s em átomos de H teremos <strong>6-31++G</strong>.</p></li>
+<li><p><strong>polarizados e difusos:</strong> combinação dos dois anteriores. Exemplo, <strong>6-31+G</strong>* com funções polarizadas e difusas apenas em átomos pesados, e <strong>6-31+G</strong>** com funções polarizadas em átomos pesados e hidrogênio, bem como funções difusas em átomos pesados.</p></li>
+</ul>
+</section>
+<section id="famílias-modernas-de-conjuntos-de-base" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="famílias-modernas-de-conjuntos-de-base"><span class="header-section-number">8.7</span> Famílias modernas de conjuntos de base</h2>
+<p>Além dos conjuntos de base de Pople, outras famílias foram desenvolvidas com o objetivo de melhorar a sistematicidade, a eficiência computacional e a descrição da correlação eletrônica. Entre as mais utilizadas estão os conjuntos de Ahlrichs e colaboradores, particularmente a família <strong>def2</strong>, e os conjuntos <strong>consistentes com correlação</strong> desenvolvidos por Dunning e colaboradores.</p>
+<section id="conjuntos-de-base-de-ahlrichs-e-família-def2" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="conjuntos-de-base-de-ahlrichs-e-família-def2"><span class="header-section-number">8.7.1</span> Conjuntos de base de Ahlrichs e família def2</h3>
+<p>Outro grupo importante de conjuntos de base gaussianos foi desenvolvido por Ahlrichs e colaboradores. As famílias originais incluem os conjuntos <strong>SV</strong> (<em>split valence</em>), <strong>SVP</strong>, <strong>TZV</strong> (<em>triple-zeta valence</em>) e <strong>TZVP</strong>, nos quais a letra <strong>P</strong> indica a inclusão de funções de polarização.</p>
+<p>Posteriormente, esses conjuntos foram reformulados e sistematizados na família <strong>def2</strong>, que inclui conjuntos de qualidade <em>split-valence</em>, <em>triple-zeta valence</em> e <em>quadruple-zeta valence</em>, como</p>
+<p><span class="math display">\[
+\text{def2-SVP},
+\qquad
+\text{def2-TZVP},
+\qquad
+\text{def2-QZVP}.
+\]</span></p>
+<p>Também existem variantes contendo conjuntos adicionais de funções de polarização, indicadas pelo sufixo <strong>PP</strong>, como</p>
+<p><span class="math display">\[
+\text{def2-SVPP},
+\qquad
+\text{def2-TZVPP},
+\qquad
+\text{def2-QZVPP}.
+\]</span></p>
+<p>A nomenclatura pode variar entre diferentes programas de química quântica. Por exemplo, o conjunto denominado <strong>def2-SV(P)</strong> na literatura pode aparecer em alguns programas como <code>Def2SVPP</code>, enquanto nomes como <code>Def2TZVP</code> correspondem ao conjunto <strong>def2-TZVP</strong>.</p>
+<p>A família def2 foi construída de maneira balanceada para uma ampla faixa da tabela periódica e é amplamente utilizada em cálculos de Hartree-Fock e DFT <span class="citation" data-cites="Weigend2005">(<a href="#ref-Weigend2005" role="doc-biblioref">Weigend and Ahlrichs 2005</a>)</span>. Para elementos mais pesados, esses conjuntos são frequentemente utilizados em conjunto com potenciais efetivos de caroço (<em>Effective Core Potentials</em>, ECPs), reduzindo o número de elétrons tratados explicitamente.</p>
+<p>A sequência</p>
+<p><span class="math display">\[
+\text{def2-SV(P)}
+\rightarrow
+\text{def2-TZVP}
+\rightarrow
+\text{def2-QZVP}
+\]</span></p>
+<p>representa um aumento progressivo da flexibilidade do conjunto de base na região de valência. As variantes <strong>P</strong> e <strong>PP</strong> acrescentam funções de polarização, permitindo uma descrição mais flexível da distribuição eletrônica em moléculas e sólidos.</p>
+</section>
+<section id="bases-consistentes-com-correlação" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="bases-consistentes-com-correlação"><span class="header-section-number">8.7.2</span> Bases consistentes com correlação</h3>
+<p>Os conjuntos de base <strong>consistentes com correlação</strong> (<em>correlation-consistent basis sets</em>) foram desenvolvidos por Dunning e colaboradores com o objetivo de descrever de maneira sistemática a energia de correlação eletrônica <span class="citation" data-cites="Dunning1989">(<a href="#ref-Dunning1989" role="doc-biblioref">Dunning 1989</a>)</span>. Diferentemente de conjuntos construídos principalmente para reproduzir a energia de Hartree-Fock, essas bases são organizadas de modo que funções de diferentes momentos angulares sejam adicionadas em grupos que contribuem progressivamente para a recuperação da energia de correlação.</p>
+<p>A nomenclatura geral desses conjuntos é</p>
+<p><span class="math display">\[
+\text{cc-pV}X\text{Z},
+\]</span></p>
+<p>onde <strong>cc</strong> significa <em>correlation consistent</em>, <strong>p</strong> indica a inclusão de funções de polarização, <strong>V</strong> indica que o conjunto foi construído para descrever a correlação dos elétrons de valência e <span class="math inline">\(X\)</span> representa a qualidade zeta do conjunto. Os valores mais comuns são</p>
+<p><span class="math display">\[
+X = D,\;T,\;Q,\;5,\;6,
+\]</span></p>
+<p>correspondendo, respectivamente, a <em>double-zeta</em>, <em>triple-zeta</em>, <em>quadruple-zeta</em>, <em>quintuple-zeta</em> e <em>sextuple-zeta</em>.</p>
+<p>A característica fundamental dessa construção é que o aumento do conjunto de base não ocorre simplesmente pela adição arbitrária de funções. As funções de polarização são adicionadas em grupos ordenados de acordo com sua contribuição para a energia de correlação. Para elementos do primeiro período, por exemplo, a sequência de funções de polarização é</p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{cc-pVDZ} &amp;:\quad 1d,\\
+\text{cc-pVTZ} &amp;:\quad 2d\,1f,\\
+\text{cc-pVQZ} &amp;:\quad 3d\,2f\,1g,\\
+\text{cc-pV5Z} &amp;:\quad 4d\,3f\,2g\,1h,\\
+\text{cc-pV6Z} &amp;:\quad 5d\,4f\,3g\,2h\,1i.
+\end{aligned}
+\]</span></p>
+<p>Assim, ao passar de cc-pVDZ para cc-pVTZ, por exemplo, não adicionamos apenas uma nova função radial de valência, mas também um conjunto de funções de polarização necessário para melhorar de maneira balanceada a descrição da correlação eletrônica. Essa construção produz uma sequência hierárquica de conjuntos de base que converge sistematicamente em direção ao limite de conjunto de base completo (<em>Complete Basis Set</em>, CBS).</p>
+<p>Alguns exemplos da composição dos conjuntos cc-pVXZ são apresentados na tabela abaixo.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Base</th>
+<th><strong>H</strong></th>
+<th><strong>Li–F</strong></th>
+<th><strong>Na–Cl</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>cc-pVDZ</strong></td>
+<td>[2s 1p] → 5 funções</td>
+<td>[3s 2p 1d] → 14 funções</td>
+<td>[4s 3p 1d] → 18 funções</td>
+</tr>
+<tr class="even">
+<td><strong>cc-pVTZ</strong></td>
+<td>[3s 2p 1d] → 14 funções</td>
+<td>[4s 3p 2d 1f] → 30 funções</td>
+<td>[5s 4p 2d 1f] → 34 funções</td>
+</tr>
+<tr class="odd">
+<td><strong>cc-pVQZ</strong></td>
+<td>[4s 3p 2d 1f] → 30 funções</td>
+<td>[5s 4p 3d 2f 1g] → 55 funções</td>
+<td>[6s 5p 3d 2f 1g] → 59 funções</td>
+</tr>
+<tr class="even">
+<td><strong>aug-cc-pVDZ</strong></td>
+<td>[3s 2p] → 9 funções</td>
+<td>[4s 3p 2d] → 23 funções</td>
+<td>[5s 4p 2d] → 27 funções</td>
+</tr>
+<tr class="odd">
+<td><strong>aug-cc-pVTZ</strong></td>
+<td>[4s 3p 2d] → 23 funções</td>
+<td>[5s 4p 3d 2f] → 46 funções</td>
+<td>[6s 5p 3d 2f] → 50 funções</td>
+</tr>
+<tr class="even">
+<td><strong>aug-cc-pVQZ</strong></td>
+<td>[5s 4p 3d 2f] → 46 funções</td>
+<td>[6s 5p 4d 3f 2g] → 80 funções</td>
+<td>[7s 6p 4d 3f 2g] → 84 funções</td>
+</tr>
+</tbody>
+</table>
+<p>Os conjuntos de base <strong>aumentados</strong>, identificados pelo prefixo <strong>aug-</strong>, incluem funções difusas adicionais, isto é, funções gaussianas com expoentes pequenos e, portanto, com maior extensão espacial. Dessa forma,</p>
+<p><span class="math display">\[
+\text{cc-pV}X\text{Z}
+\longrightarrow
+\text{aug-cc-pV}X\text{Z}.
+\]</span></p>
+<p>As funções difusas são particularmente importantes quando a densidade eletrônica se estende por regiões mais afastadas dos núcleos, como em ânions, estados de Rydberg, cálculos de afinidade eletrônica, polarizabilidades e interações intermoleculares de longo alcance. Os conjuntos aug-cc-pVXZ foram desenvolvidos justamente para melhorar a descrição desse tipo de sistema e propriedade <span class="citation" data-cites="Kendall1992">(<a href="#ref-Kendall1992" role="doc-biblioref">Kendall et al. 1992</a>)</span>.</p>
+<p>Uma das principais vantagens da família correlation-consistent é a possibilidade de estudar de maneira sistemática a convergência de uma propriedade com o tamanho do conjunto de base,</p>
+<p><span class="math display">\[
+\text{cc-pVDZ}
+\rightarrow
+\text{cc-pVTZ}
+\rightarrow
+\text{cc-pVQZ}
+\rightarrow
+\text{cc-pV5Z}
+\rightarrow
+\text{cc-pV6Z}
+\rightarrow
+\text{CBS}.
+\]</span></p>
+<p>Essa característica torna esses conjuntos particularmente importantes em métodos de função de onda correlacionados, como MP2, CI e <em>Coupled Cluster</em>, nos quais a convergência da energia de correlação em relação ao conjunto de base desempenha um papel central.</p>
+</section>
+</section>
+<section id="equações-de-roothan-hall-ou-equações-de-hartree-fock-em-bases-gaussianas" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="equações-de-roothan-hall-ou-equações-de-hartree-fock-em-bases-gaussianas"><span class="header-section-number">8.8</span> Equações de Roothan-Hall ou Equações de Hartree-Fock em bases gaussianas</h2>
+<p>Usando a representação dos orbitais moleculares no conjunto de base, <a href="#eq-conjunto_de_base" class="quarto-xref">Equation&nbsp;<span>8.1</span></a>, podemos escrever as equações de HF, <a href="6-hartree_fock.html#eq-HF" class="quarto-xref">Equation&nbsp;<span>6.5</span></a>, em termos de <span class="math display">\[\hat{F} \sum_{\nu=1}^B c_{\nu k} \ket{\phi_\nu} = \epsilon_k \sum_{\nu=1}^B c_{\nu k} \ket{\phi_\nu}
+\]</span> e efetuando o produto interno com <span class="math inline">\(\ket{\phi_\mu}\)</span>, chegamos a <span id="eq-Rothaan_FH_equations"><span class="math display">\[
+F_{\mu\nu} c_{\nu k} = \epsilon_k S_{\mu \nu} c_{\nu k}
+\tag{8.2}\]</span></span> ou <span class="math display">\[
+\boxed{
+\mathbf{F}\mathbf{C}
+=
+\mathbf{S}\mathbf{C}\boldsymbol{\epsilon}
+}
+\]</span> onde <span class="math inline">\(S_{\mu\nu}\)</span> são os elementos de matriz da integral de overlap, e os elementos de matriz do operador de Fock são <span class="math display">\[
+F_{\mu\nu} = \braket{\phi_\mu|\hat{F}|\phi_\nu}.
+\]</span></p>
+<p>As <a href="#eq-Rothaan_FH_equations" class="quarto-xref">Equation&nbsp;<span>8.2</span></a> são denominadas de <strong>equações de Roothan-Hall</strong> e são equivalentes as equações de HF mas agora utilizando um conjunto de base específico.</p>
+</section>
+<section id="equações-de-kohn-sham-em-bases-gaussianas" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="equações-de-kohn-sham-em-bases-gaussianas"><span class="header-section-number">8.9</span> Equações de Kohn-Sham em bases gaussianas</h2>
+<p>De forma semelhante as equações de Kohn-Sham, <a href="7-dft.html#eq-KS" class="quarto-xref">Equation&nbsp;<span>7.2</span></a>, podem ser escritas em termos do conjunto de base como <span class="math display">\[
+F_{\mu\nu} c_{\nu k} = \epsilon_k S_{\mu \nu} c_{\nu k}
+\]</span> ou <span class="math display">\[
+\boxed{
+\mathbf{F}\mathbf{C}
+=
+\mathbf{S}\mathbf{C}\boldsymbol{\epsilon}
+}
+\]</span> onde <span class="math inline">\(S_{\mu\nu}\)</span> são os elementos de matriz da integral de overlap, e os elementos de matriz do operador de Kohn-Sham são <span class="math display">\[
+F_{\mu\nu} = \braket{\phi_\mu|\hat{h}^{\text{KS}}|\phi_\nu}.
+\]</span></p>
+</section>
+<section id="matriz-densidade" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="matriz-densidade"><span class="header-section-number">8.10</span> Matriz Densidade</h2>
+<p>Usando o conjunto de base, dado pela <a href="#eq-conjunto_de_base" class="quarto-xref">Equation&nbsp;<span>8.1</span></a>, podemos escrever a densidade eletrônica dada por <span class="math display">\[
+    \rho(\boldsymbol{r}) = 2 \sum_{i=1}^{N/2} |\varphi_i(\boldsymbol{r})|^2,
+\]</span> como sendo <span class="math display">\[\begin{align}
+    \rho(\boldsymbol{r}) = \sum_{\mu \nu} P_{\mu\nu} \phi_\nu(\boldsymbol{r})\phi_\mu^*(\boldsymbol{r})
+\end{align}\]</span> onde definimos a matriz densidade como <span class="math display">\[
+P_{\mu\nu} = 2\sum_{i=1}^{N/2} c_{\mu i} c_{\nu i}^*,
+\]</span> de tal forma que dado um conjunto de base <span class="math inline">\(\{\phi_\mu(\boldsymbol{r})\}\)</span>, a matriz densidade <span class="math inline">\(P_{\mu\nu}\)</span> especifica completamente a densidade eletrônica <span class="math inline">\(\rho(\boldsymbol{r})\)</span>.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Dunning1989" class="csl-entry" role="listitem">
+Dunning, Thom H. 1989. <span>“Gaussian Basis Sets for Use in Correlated Molecular Calculations. I. The Atoms Boron Through Neon and Hydrogen.”</span> <em>The Journal of Chemical Physics</em> 90 (2): 1007–23. <a href="https://doi.org/10.1063/1.456153">https://doi.org/10.1063/1.456153</a>.
+</div>
+<div id="ref-Kendall1992" class="csl-entry" role="listitem">
+Kendall, Rick A., Thom H. Dunning, and Robert J. Harrison. 1992. <span>“Electron Affinities of the First-Row Atoms Revisited. Systematic Basis Sets and Wave Functions.”</span> <em>The Journal of Chemical Physics</em> 96 (9): 6796–806. <a href="https://doi.org/10.1063/1.462569">https://doi.org/10.1063/1.462569</a>.
+</div>
+<div id="ref-Weigend2005" class="csl-entry" role="listitem">
+Weigend, Florian, and Reinhart Ahlrichs. 2005. <span>“Balanced Basis Sets of Split Valence, Triple Zeta Valence and Quadruple Zeta Valence Quality for h to Rn: Design and Assessment of Accuracy.”</span> <em>Physical Chemistry Chemical Physics</em> 7: 3297–305. <a href="https://doi.org/10.1039/B508541A">https://doi.org/10.1039/B508541A</a>.
+</div>
+</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -936,13 +1273,13 @@ MathJax = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../capitulos/2-postulados.html" class="pagination-link" aria-label="Postulados da mecânica quântica">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></span>
+      <a href="../capitulos/7-dft.html" class="pagination-link" aria-label="Teoria do funcional da densidade">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../capitulos/4-schroedinger.html" class="pagination-link" aria-label="Equação de Schroedinger e suas aplicações">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Equação de Schroedinger e suas aplicações</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/9-solidos.html" class="pagination-link" aria-label="Sólidos">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sólidos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -954,7 +1291,7 @@ MathJax = {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/3-matematica.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/8-bases.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>

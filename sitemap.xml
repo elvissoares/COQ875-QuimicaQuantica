@@ -2,58 +2,90 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/index.html</loc>
-    <lastmod>2026-08-18T19:28:42.508Z</lastmod>
+    <lastmod>2026-08-21T15:28:41.425Z</lastmod>
   </url>
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/prefacio.html</loc>
-    <lastmod>2026-08-18T19:28:42.689Z</lastmod>
+    <lastmod>2026-08-21T15:28:41.670Z</lastmod>
   </url>
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/1-bases_experimentais.html</loc>
-    <lastmod>2026-08-18T19:28:42.474Z</lastmod>
+    <lastmod>2026-08-21T15:28:41.365Z</lastmod>
   </url>
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/2-postulados.html</loc>
-    <lastmod>2026-08-18T19:28:42.475Z</lastmod>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
   </url>
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/3-matematica.html</loc>
-    <lastmod>2026-08-18T19:28:42.475Z</lastmod>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
   </url>
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/4-schroedinger.html</loc>
-    <lastmod>2026-08-18T19:28:42.475Z</lastmod>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
   </url>
   <url>
-    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/5-atomo_de_helio.html</loc>
-    <lastmod>2026-08-18T19:28:42.475Z</lastmod>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/5-sistemas_2eletrons.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
   </url>
   <url>
-    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/6-molecula_de_hidrogenio.html</loc>
-    <lastmod>2026-08-18T19:28:42.475Z</lastmod>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/6-hartree_fock.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
   </url>
   <url>
-    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/7-problema_de_muitos_eletrons.html</loc>
-    <lastmod>2026-08-18T19:28:42.475Z</lastmod>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/7-dft.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
   </url>
   <url>
-    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/8-hartree_fock.html</loc>
-    <lastmod>2026-08-18T19:28:42.475Z</lastmod>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/8-bases.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
   </url>
   <url>
-    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/9-bases.html</loc>
-    <lastmod>2026-08-18T19:28:42.475Z</lastmod>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/9-solidos.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
   </url>
   <url>
-    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/10-dft.html</loc>
-    <lastmod>2026-08-18T19:28:42.475Z</lastmod>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/10-bloch.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
   </url>
   <url>
-    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/11-pyscf.html</loc>
-    <lastmod>2026-08-18T19:28:42.475Z</lastmod>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/11-dft_em_solidos.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/12-densidade_de_estados_e_bandas.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/13-pyscf.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/14-vasp.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/15-otimizacao_de_geometrias.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/16-adsorcao.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/17-reacao_quimica.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/18-vibracoes.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/capitulos/19-calor_especifico.html</loc>
+    <lastmod>2026-08-21T15:28:41.366Z</lastmod>
   </url>
   <url>
     <loc>https://elvissoares.github.io/COQ875-QuimicaQuantica/Química-Quântica-para-Moléculas-e-Sólidos.pdf</loc>
-    <lastmod>2026-08-18T19:29:47.076Z</lastmod>
+    <lastmod>2026-08-21T15:29:47.046Z</lastmod>
   </url>
 </urlset>

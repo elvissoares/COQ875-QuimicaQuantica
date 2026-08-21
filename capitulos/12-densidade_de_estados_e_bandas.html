@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Fundamentos Matemáticos da MQ – Química Quântica para Moléculas e Sólidos</title>
+<title>12&nbsp; Estrutura Eletrônica de Sólidos – Química Quântica para Moléculas e Sólidos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../capitulos/4-schroedinger.html" rel="next">
-<link href="../capitulos/2-postulados.html" rel="prev">
+<link href="../capitulos/13-pyscf.html" rel="next">
+<link href="../capitulos/11-dft_em_solidos.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -270,7 +270,7 @@ MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/1-bases_experimentais.html">Fundamentos da Mecânica Quântica</a></li><li class="breadcrumb-item"><a href="../capitulos/3-matematica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/9-solidos.html">Estrutura Eletrônica de Sólidos</a></li><li class="breadcrumb-item"><a href="../capitulos/12-densidade_de_estados_e_bandas.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -351,7 +351,7 @@ MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link active">
+  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></span></a>
   </div>
 </li>
@@ -427,7 +427,7 @@ MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/12-densidade_de_estados_e_bandas.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/12-densidade_de_estados_e_bandas.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></span></a>
   </div>
 </li>
@@ -491,16 +491,25 @@ MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#densidade-de-estados" id="toc-densidade-de-estados" class="nav-link active" data-scroll-target="#densidade-de-estados"><span class="header-section-number">12.1</span> Densidade de Estados</a></li>
+  <li><a href="#estrutura-de-bandas" id="toc-estrutura-de-bandas" class="nav-link" data-scroll-target="#estrutura-de-bandas"><span class="header-section-number">12.2</span> Estrutura de Bandas</a></li>
+  <li><a href="#dos-projetada" id="toc-dos-projetada" class="nav-link" data-scroll-target="#dos-projetada"><span class="header-section-number">12.3</span> DOS projetada</a></li>
+  <li><a href="#metais-semicondutores-e-isolantes" id="toc-metais-semicondutores-e-isolantes" class="nav-link" data-scroll-target="#metais-semicondutores-e-isolantes"><span class="header-section-number">12.4</span> Metais, semicondutores e isolantes</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/12-densidade_de_estados_e_bandas.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/1-bases_experimentais.html">Fundamentos da Mecânica Quântica</a></li><li class="breadcrumb-item"><a href="../capitulos/3-matematica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/9-solidos.html">Estrutura Eletrônica de Sólidos</a></li><li class="breadcrumb-item"><a href="../capitulos/12-densidade_de_estados_e_bandas.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></h1>
 </div>
 
 
@@ -517,8 +526,20 @@ MathJax = {
 </header>
 
 
+<section id="densidade-de-estados" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="densidade-de-estados"><span class="header-section-number">12.1</span> Densidade de Estados</h2>
+</section>
+<section id="estrutura-de-bandas" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="estrutura-de-bandas"><span class="header-section-number">12.2</span> Estrutura de Bandas</h2>
+</section>
+<section id="dos-projetada" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="dos-projetada"><span class="header-section-number">12.3</span> DOS projetada</h2>
+</section>
+<section id="metais-semicondutores-e-isolantes" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="metais-semicondutores-e-isolantes"><span class="header-section-number">12.4</span> Metais, semicondutores e isolantes</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -936,13 +957,13 @@ MathJax = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../capitulos/2-postulados.html" class="pagination-link" aria-label="Postulados da mecânica quântica">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></span>
+      <a href="../capitulos/11-dft_em_solidos.html" class="pagination-link" aria-label="DFT em Sólidos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">DFT em Sólidos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../capitulos/4-schroedinger.html" class="pagination-link" aria-label="Equação de Schroedinger e suas aplicações">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Equação de Schroedinger e suas aplicações</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/13-pyscf.html" class="pagination-link" aria-label="PySCF">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">PySCF</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -954,7 +975,7 @@ MathJax = {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/3-matematica.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/12-densidade_de_estados_e_bandas.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>

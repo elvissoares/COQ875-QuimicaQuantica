@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Fundamentos Matemáticos da MQ – Química Quântica para Moléculas e Sólidos</title>
+<title>11&nbsp; DFT em Sólidos – Química Quântica para Moléculas e Sólidos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../capitulos/4-schroedinger.html" rel="next">
-<link href="../capitulos/2-postulados.html" rel="prev">
+<link href="../capitulos/12-densidade_de_estados_e_bandas.html" rel="next">
+<link href="../capitulos/10-bloch.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -270,7 +270,7 @@ MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/1-bases_experimentais.html">Fundamentos da Mecânica Quântica</a></li><li class="breadcrumb-item"><a href="../capitulos/3-matematica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/9-solidos.html">Estrutura Eletrônica de Sólidos</a></li><li class="breadcrumb-item"><a href="../capitulos/11-dft_em_solidos.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">DFT em Sólidos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -351,7 +351,7 @@ MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link active">
+  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></span></a>
   </div>
 </li>
@@ -421,7 +421,7 @@ MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/11-dft_em_solidos.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/11-dft_em_solidos.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">DFT em Sólidos</span></span></a>
   </div>
 </li>
@@ -491,16 +491,27 @@ MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#base-de-ondas-planas" id="toc-base-de-ondas-planas" class="nav-link active" data-scroll-target="#base-de-ondas-planas"><span class="header-section-number">11.1</span> Base de ondas planas</a></li>
+  <li><a href="#energia-de-corte" id="toc-energia-de-corte" class="nav-link" data-scroll-target="#energia-de-corte"><span class="header-section-number">11.2</span> Energia de corte</a></li>
+  <li><a href="#pseudopotenciais" id="toc-pseudopotenciais" class="nav-link" data-scroll-target="#pseudopotenciais"><span class="header-section-number">11.3</span> Pseudopotenciais</a></li>
+  <li><a href="#projetor-de-onda-aumentada-paw" id="toc-projetor-de-onda-aumentada-paw" class="nav-link" data-scroll-target="#projetor-de-onda-aumentada-paw"><span class="header-section-number">11.4</span> Projetor de Onda Aumentada (PAW)</a></li>
+  <li><a href="#malhas-monkhorstpack" id="toc-malhas-monkhorstpack" class="nav-link" data-scroll-target="#malhas-monkhorstpack"><span class="header-section-number">11.5</span> Malhas Monkhorst–Pack</a></li>
+  <li><a href="#cálculo-scf-em-sólidos" id="toc-cálculo-scf-em-sólidos" class="nav-link" data-scroll-target="#cálculo-scf-em-sólidos"><span class="header-section-number">11.6</span> Cálculo SCF em sólidos</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/11-dft_em_solidos.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/1-bases_experimentais.html">Fundamentos da Mecânica Quântica</a></li><li class="breadcrumb-item"><a href="../capitulos/3-matematica.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/9-solidos.html">Estrutura Eletrônica de Sólidos</a></li><li class="breadcrumb-item"><a href="../capitulos/11-dft_em_solidos.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">DFT em Sólidos</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">DFT em Sólidos</span></h1>
 </div>
 
 
@@ -517,8 +528,26 @@ MathJax = {
 </header>
 
 
+<section id="base-de-ondas-planas" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="base-de-ondas-planas"><span class="header-section-number">11.1</span> Base de ondas planas</h2>
+</section>
+<section id="energia-de-corte" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="energia-de-corte"><span class="header-section-number">11.2</span> Energia de corte</h2>
+</section>
+<section id="pseudopotenciais" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="pseudopotenciais"><span class="header-section-number">11.3</span> Pseudopotenciais</h2>
+</section>
+<section id="projetor-de-onda-aumentada-paw" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="projetor-de-onda-aumentada-paw"><span class="header-section-number">11.4</span> Projetor de Onda Aumentada (PAW)</h2>
+</section>
+<section id="malhas-monkhorstpack" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="malhas-monkhorstpack"><span class="header-section-number">11.5</span> Malhas Monkhorst–Pack</h2>
+</section>
+<section id="cálculo-scf-em-sólidos" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="cálculo-scf-em-sólidos"><span class="header-section-number">11.6</span> Cálculo SCF em sólidos</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -936,13 +965,13 @@ MathJax = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../capitulos/2-postulados.html" class="pagination-link" aria-label="Postulados da mecânica quântica">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></span>
+      <a href="../capitulos/10-bloch.html" class="pagination-link" aria-label="Teorema de Bloch">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teorema de Bloch</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../capitulos/4-schroedinger.html" class="pagination-link" aria-label="Equação de Schroedinger e suas aplicações">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Equação de Schroedinger e suas aplicações</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/12-densidade_de_estados_e_bandas.html" class="pagination-link" aria-label="Estrutura Eletrônica de Sólidos">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -954,7 +983,7 @@ MathJax = {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/3-matematica.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/11-dft_em_solidos.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>
