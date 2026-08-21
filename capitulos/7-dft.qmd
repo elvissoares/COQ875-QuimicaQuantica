@@ -790,7 +790,7 @@ $$
 \epsilon_i
 \phi_i(\boldsymbol{r})
 }
-$$
+$$ {#eq-KS}
 
 que corresponde à forma canônica das equações de Kohn-Sham. 
 

@@ -60,33 +60,6 @@ seja mínima.
 
 Esse conjunto de base consiste em CGF onde as funções $\phi^{\text{CGF},nlm}(\boldsymbol{r})$ tentam reproduzir a base de Slater (dai o STO) com $n$ gaussianas (dai o $n$G). A @fig-sto_vs_gto apresenta a comparação do orbital de slater 1s com os primeiros orbitais de Pople STO-$n$G.
 
-```python
-import numpy as np
-
-"""
-STO-1s wavefunction for a hydrogen-like atom
-"""
-def STO1s(r,zeta=1.0):
-    return np.sqrt(zeta**3/np.pi) * np.exp(-zeta * r)
-
-"""
-Gaussian-type orbital (GTO) for a given alpha
-"""
-def GTO(r,alpha):
-    return np.power(2 * alpha / np.pi,3/4.0) * np.exp(-alpha * r**2)
-
-"""
-Pople set (STO-$n$G)
-"""
-def STO1G(r):
-    return GTO(r,alpha=0.270950)
-
-def STO2G(r):
-    return 0.678914*GTO(r,alpha=0.151623) + 0.430129*GTO(r,alpha=0.851819)
-
-def STO3G(r):
-    return 0.444635*GTO(r,alpha=0.109818) + 0.535328*GTO(r,alpha=0.405771) + 0.154329*GTO(r,alpha=2.22766)
-```
 
 ![Comparação do orbital de Slater 1s com as funções gaussianas de Pople (STO-$n$G).](../figuras/sto_vs_gto.png){#fig-sto_vs_gto width=80%}
 
@@ -135,9 +108,85 @@ Até aqui usamos somente orbitais do tipo-s ou tipo-p para construir as bases.
 
 - **polarizados e difusos:** combinação dos dois anteriores. Exemplo, **6-31+G*** com funções polarizadas e difusas apenas em átomos pesados, e **6-31+G**** com funções polarizadas em átomos pesados e hidrogênio, bem como funções difusas em átomos pesados.
 
-## Bases consistentes com correlação
+## Famílias modernas de conjuntos de base
 
-A ordem da inclusão de bases polarizadas deve seguir a ordem da energia de correlação. Assim, primeiro 1d, depois 2d 1f, depois 3d 2f 1g, e assim por diante. 
+Além dos conjuntos de base de Pople, outras famílias foram desenvolvidas com o objetivo de melhorar a sistematicidade, a eficiência computacional e a descrição da correlação eletrônica. Entre as mais utilizadas estão os conjuntos de Ahlrichs e colaboradores, particularmente a família **def2**, e os conjuntos **consistentes com correlação** desenvolvidos por Dunning e colaboradores.
+
+
+### Conjuntos de base de Ahlrichs e família def2
+
+Outro grupo importante de conjuntos de base gaussianos foi desenvolvido por Ahlrichs e colaboradores. As famílias originais incluem os conjuntos **SV** (*split valence*), **SVP**, **TZV** (*triple-zeta valence*) e **TZVP**, nos quais a letra **P** indica a inclusão de funções de polarização.
+
+Posteriormente, esses conjuntos foram reformulados e sistematizados na família **def2**, que inclui conjuntos de qualidade *split-valence*, *triple-zeta valence* e *quadruple-zeta valence*, como
+
+$$
+\text{def2-SVP},
+\qquad
+\text{def2-TZVP},
+\qquad
+\text{def2-QZVP}.
+$$
+
+Também existem variantes contendo conjuntos adicionais de funções de polarização, indicadas pelo sufixo **PP**, como
+
+$$
+\text{def2-SVPP},
+\qquad
+\text{def2-TZVPP},
+\qquad
+\text{def2-QZVPP}.
+$$
+
+A nomenclatura pode variar entre diferentes programas de química quântica. Por exemplo, o conjunto denominado **def2-SV(P)** na literatura pode aparecer em alguns programas como `Def2SVPP`, enquanto nomes como `Def2TZVP` correspondem ao conjunto **def2-TZVP**.
+
+A família def2 foi construída de maneira balanceada para uma ampla faixa da tabela periódica e é amplamente utilizada em cálculos de Hartree-Fock e DFT [@Weigend2005]. Para elementos mais pesados, esses conjuntos são frequentemente utilizados em conjunto com potenciais efetivos de caroço (*Effective Core Potentials*, ECPs), reduzindo o número de elétrons tratados explicitamente.
+
+A sequência
+
+$$
+\text{def2-SV(P)}
+\rightarrow
+\text{def2-TZVP}
+\rightarrow
+\text{def2-QZVP}
+$$
+
+representa um aumento progressivo da flexibilidade do conjunto de base na região de valência. As variantes **P** e **PP** acrescentam funções de polarização, permitindo uma descrição mais flexível da distribuição eletrônica em moléculas e sólidos.
+
+
+### Bases consistentes com correlação
+
+Os conjuntos de base **consistentes com correlação** (*correlation-consistent basis sets*) foram desenvolvidos por Dunning e colaboradores com o objetivo de descrever de maneira sistemática a energia de correlação eletrônica [@Dunning1989]. Diferentemente de conjuntos construídos principalmente para reproduzir a energia de Hartree-Fock, essas bases são organizadas de modo que funções de diferentes momentos angulares sejam adicionadas em grupos que contribuem progressivamente para a recuperação da energia de correlação.
+
+A nomenclatura geral desses conjuntos é
+
+$$
+\text{cc-pV}X\text{Z},
+$$
+
+onde **cc** significa *correlation consistent*, **p** indica a inclusão de funções de polarização, **V** indica que o conjunto foi construído para descrever a correlação dos elétrons de valência e $X$ representa a qualidade zeta do conjunto. Os valores mais comuns são
+
+$$
+X = D,\;T,\;Q,\;5,\;6,
+$$
+
+correspondendo, respectivamente, a *double-zeta*, *triple-zeta*, *quadruple-zeta*, *quintuple-zeta* e *sextuple-zeta*.
+
+A característica fundamental dessa construção é que o aumento do conjunto de base não ocorre simplesmente pela adição arbitrária de funções. As funções de polarização são adicionadas em grupos ordenados de acordo com sua contribuição para a energia de correlação. Para elementos do primeiro período, por exemplo, a sequência de funções de polarização é
+
+$$
+\begin{aligned}
+\text{cc-pVDZ} &:\quad 1d,\\
+\text{cc-pVTZ} &:\quad 2d\,1f,\\
+\text{cc-pVQZ} &:\quad 3d\,2f\,1g,\\
+\text{cc-pV5Z} &:\quad 4d\,3f\,2g\,1h,\\
+\text{cc-pV6Z} &:\quad 5d\,4f\,3g\,2h\,1i.
+\end{aligned}
+$$
+
+Assim, ao passar de cc-pVDZ para cc-pVTZ, por exemplo, não adicionamos apenas uma nova função radial de valência, mas também um conjunto de funções de polarização necessário para melhorar de maneira balanceada a descrição da correlação eletrônica. Essa construção produz uma sequência hierárquica de conjuntos de base que converge sistematicamente em direção ao limite de conjunto de base completo (*Complete Basis Set*, CBS).
+
+Alguns exemplos da composição dos conjuntos cc-pVXZ são apresentados na tabela abaixo.
 
 | Base | **H** | **Li–F** | **Na–Cl** |
 |---|---|---|---|
@@ -148,9 +197,35 @@ A ordem da inclusão de bases polarizadas deve seguir a ordem da energia de corr
 | **aug-cc-pVTZ** | [4s 3p 2d] → 23 funções | [5s 4p 3d 2f] → 46 funções | [6s 5p 3d 2f] → 50 funções |
 | **aug-cc-pVQZ** | [5s 4p 3d 2f] → 46 funções | [6s 5p 4d 3f 2g] → 80 funções | [7s 6p 4d 3f 2g] → 84 funções |
 
-O conjunto aumentado caracterizado pelo prefixo **aug-** inclui as funções difusas.
+Os conjuntos de base **aumentados**, identificados pelo prefixo **aug-**, incluem funções difusas adicionais, isto é, funções gaussianas com expoentes pequenos e, portanto, com maior extensão espacial. Dessa forma,
 
-## Equações de Roothan-Hall
+$$
+\text{cc-pV}X\text{Z}
+\longrightarrow
+\text{aug-cc-pV}X\text{Z}.
+$$
+
+As funções difusas são particularmente importantes quando a densidade eletrônica se estende por regiões mais afastadas dos núcleos, como em ânions, estados de Rydberg, cálculos de afinidade eletrônica, polarizabilidades e interações intermoleculares de longo alcance. Os conjuntos aug-cc-pVXZ foram desenvolvidos justamente para melhorar a descrição desse tipo de sistema e propriedade [@Kendall1992].
+
+Uma das principais vantagens da família correlation-consistent é a possibilidade de estudar de maneira sistemática a convergência de uma propriedade com o tamanho do conjunto de base,
+
+$$
+\text{cc-pVDZ}
+\rightarrow
+\text{cc-pVTZ}
+\rightarrow
+\text{cc-pVQZ}
+\rightarrow
+\text{cc-pV5Z}
+\rightarrow
+\text{cc-pV6Z}
+\rightarrow
+\text{CBS}.
+$$
+
+Essa característica torna esses conjuntos particularmente importantes em métodos de função de onda correlacionados, como MP2, CI e *Coupled Cluster*, nos quais a convergência da energia de correlação em relação ao conjunto de base desempenha um papel central.
+
+## Equações de Roothan-Hall ou Equações de Hartree-Fock em bases gaussianas
 
 Usando a representação dos orbitais moleculares no conjunto de base, @eq-conjunto_de_base, podemos escrever as equações de HF, @eq-HF, em termos de 
 $$\hat{F} \sum_{\nu=1}^B c_{\nu k} \ket{\phi_\nu} = \epsilon_k \sum_{\nu=1}^B c_{\nu k} \ket{\phi_\nu}
@@ -174,6 +249,25 @@ $$
 
 
 As @eq-Rothaan_FH_equations são denominadas de **equações de Roothan-Hall** e são equivalentes as equações de HF mas agora utilizando um conjunto de base específico.
+
+## Equações de Kohn-Sham em bases gaussianas
+
+De forma semelhante as equações de Kohn-Sham, @eq-KS, podem ser escritas em termos do conjunto de base como
+$$
+F_{\mu\nu} c_{\nu k} = \epsilon_k S_{\mu \nu} c_{\nu k}
+$$
+ou
+$$
+\boxed{
+\mathbf{F}\mathbf{C}
+=
+\mathbf{S}\mathbf{C}\boldsymbol{\epsilon}
+}
+$$
+onde $S_{\mu\nu}$ são os elementos de matriz da integral de overlap, e os elementos de matriz do operador de Kohn-Sham são
+$$
+F_{\mu\nu} = \braket{\phi_\mu|\hat{h}^{\text{KS}}|\phi_\nu}.
+$$  
 
 ## Matriz Densidade
 

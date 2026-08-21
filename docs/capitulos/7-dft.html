@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>10&nbsp; Teoria do funcional da densidade – Química Quântica para Moléculas e Sólidos</title>
+<title>7&nbsp; Teoria do funcional da densidade – Química Quântica para Moléculas e Sólidos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -52,8 +52,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../capitulos/11-pyscf.html" rel="next">
-<link href="../capitulos/9-bases.html" rel="prev">
+<link href="../capitulos/8-bases.html" rel="next">
+<link href="../capitulos/6-hartree_fock.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -315,7 +315,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/10-dft.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-sistemas_2eletrons.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/7-dft.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -419,44 +419,114 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/5-atomo_de_helio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Átomo de Hélio</span></span></a>
+  <a href="../capitulos/5-sistemas_2eletrons.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de 2 elétrons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/6-molecula_de_hidrogenio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Molécula de Hidrogênio</span></span></a>
+  <a href="../capitulos/6-hartree_fock.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/7-problema_de_muitos_eletrons.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Problema Geral de Muitos Elétrons</span></span></a>
+  <a href="../capitulos/7-dft.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/8-hartree_fock.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
+  <a href="../capitulos/8-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Estrutura Eletrônica de Sólidos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/9-solidos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sólidos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/9-bases.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
+  <a href="../capitulos/10-bloch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teorema de Bloch</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/10-dft.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span></a>
+  <a href="../capitulos/11-dft_em_solidos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">DFT em Sólidos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/11-pyscf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">PySCF</span></span></a>
+  <a href="../capitulos/12-densidade_de_estados_e_bandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Aplicações Computacionais</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/13-pyscf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">PySCF</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/14-vasp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">VASP</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/15-otimizacao_de_geometrias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Otimização de Geometrias</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/16-adsorcao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Adsorção</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/17-reacao_quimica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cálculos de Reações Químicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/18-vibracoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Cálculos de vibrações e espectros vibracionais</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/19-calor_especifico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Cálculos termodinâmicos</span></span></a>
   </div>
 </li>
       </ul>
@@ -471,41 +541,41 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#teoremas-de-hohenberg-kohn" id="toc-teoremas-de-hohenberg-kohn" class="nav-link active" data-scroll-target="#teoremas-de-hohenberg-kohn"><span class="header-section-number">10.1</span> Teoremas de Hohenberg-Kohn</a>
+  <li><a href="#teoremas-de-hohenberg-kohn" id="toc-teoremas-de-hohenberg-kohn" class="nav-link active" data-scroll-target="#teoremas-de-hohenberg-kohn"><span class="header-section-number">7.1</span> Teoremas de Hohenberg-Kohn</a>
   <ul class="collapse">
-  <li><a href="#primeiro-teorema-de-hohenberg-kohn" id="toc-primeiro-teorema-de-hohenberg-kohn" class="nav-link" data-scroll-target="#primeiro-teorema-de-hohenberg-kohn"><span class="header-section-number">10.1.1</span> Primeiro teorema de Hohenberg-Kohn</a></li>
-  <li><a href="#segundo-teorema-de-hohenberg-kohn" id="toc-segundo-teorema-de-hohenberg-kohn" class="nav-link" data-scroll-target="#segundo-teorema-de-hohenberg-kohn"><span class="header-section-number">10.1.2</span> Segundo teorema de Hohenberg-Kohn</a></li>
+  <li><a href="#primeiro-teorema-de-hohenberg-kohn" id="toc-primeiro-teorema-de-hohenberg-kohn" class="nav-link" data-scroll-target="#primeiro-teorema-de-hohenberg-kohn"><span class="header-section-number">7.1.1</span> Primeiro teorema de Hohenberg-Kohn</a></li>
+  <li><a href="#segundo-teorema-de-hohenberg-kohn" id="toc-segundo-teorema-de-hohenberg-kohn" class="nav-link" data-scroll-target="#segundo-teorema-de-hohenberg-kohn"><span class="header-section-number">7.1.2</span> Segundo teorema de Hohenberg-Kohn</a></li>
   </ul></li>
-  <li><a href="#método-de-kohn-sham" id="toc-método-de-kohn-sham" class="nav-link" data-scroll-target="#método-de-kohn-sham"><span class="header-section-number">10.2</span> Método de Kohn-Sham</a></li>
-  <li><a href="#método-auto-consistente" id="toc-método-auto-consistente" class="nav-link" data-scroll-target="#método-auto-consistente"><span class="header-section-number">10.3</span> Método Auto-Consistente</a></li>
-  <li><a href="#energia-total" id="toc-energia-total" class="nav-link" data-scroll-target="#energia-total"><span class="header-section-number">10.4</span> Energia Total</a></li>
-  <li><a href="#funcionais-de-troca-e-correlação" id="toc-funcionais-de-troca-e-correlação" class="nav-link" data-scroll-target="#funcionais-de-troca-e-correlação"><span class="header-section-number">10.5</span> Funcionais de troca e correlação</a>
+  <li><a href="#método-de-kohn-sham" id="toc-método-de-kohn-sham" class="nav-link" data-scroll-target="#método-de-kohn-sham"><span class="header-section-number">7.2</span> Método de Kohn-Sham</a></li>
+  <li><a href="#método-auto-consistente" id="toc-método-auto-consistente" class="nav-link" data-scroll-target="#método-auto-consistente"><span class="header-section-number">7.3</span> Método Auto-Consistente</a></li>
+  <li><a href="#energia-total" id="toc-energia-total" class="nav-link" data-scroll-target="#energia-total"><span class="header-section-number">7.4</span> Energia Total</a></li>
+  <li><a href="#funcionais-de-troca-e-correlação" id="toc-funcionais-de-troca-e-correlação" class="nav-link" data-scroll-target="#funcionais-de-troca-e-correlação"><span class="header-section-number">7.5</span> Funcionais de troca e correlação</a>
   <ul class="collapse">
-  <li><a href="#aproximação-da-densidade-local-lda" id="toc-aproximação-da-densidade-local-lda" class="nav-link" data-scroll-target="#aproximação-da-densidade-local-lda"><span class="header-section-number">10.5.1</span> Aproximação da densidade local (LDA)</a></li>
-  <li><a href="#aproximação-de-gradiente-generalizado-gga" id="toc-aproximação-de-gradiente-generalizado-gga" class="nav-link" data-scroll-target="#aproximação-de-gradiente-generalizado-gga"><span class="header-section-number">10.5.2</span> Aproximação de Gradiente Generalizado (GGA)</a></li>
-  <li><a href="#aproximações-meta-generalizadas-meta-gga" id="toc-aproximações-meta-generalizadas-meta-gga" class="nav-link" data-scroll-target="#aproximações-meta-generalizadas-meta-gga"><span class="header-section-number">10.5.3</span> Aproximações Meta-Generalizadas (meta-GGA)</a></li>
-  <li><a href="#funcionais-híbridos" id="toc-funcionais-híbridos" class="nav-link" data-scroll-target="#funcionais-híbridos"><span class="header-section-number">10.5.4</span> Funcionais Híbridos</a></li>
-  <li><a href="#vantagens-e-desvantagens" id="toc-vantagens-e-desvantagens" class="nav-link" data-scroll-target="#vantagens-e-desvantagens"><span class="header-section-number">10.5.5</span> Vantagens e Desvantagens</a></li>
+  <li><a href="#aproximação-da-densidade-local-lda" id="toc-aproximação-da-densidade-local-lda" class="nav-link" data-scroll-target="#aproximação-da-densidade-local-lda"><span class="header-section-number">7.5.1</span> Aproximação da densidade local (LDA)</a></li>
+  <li><a href="#aproximação-de-gradiente-generalizado-gga" id="toc-aproximação-de-gradiente-generalizado-gga" class="nav-link" data-scroll-target="#aproximação-de-gradiente-generalizado-gga"><span class="header-section-number">7.5.2</span> Aproximação de Gradiente Generalizado (GGA)</a></li>
+  <li><a href="#aproximações-meta-generalizadas-meta-gga" id="toc-aproximações-meta-generalizadas-meta-gga" class="nav-link" data-scroll-target="#aproximações-meta-generalizadas-meta-gga"><span class="header-section-number">7.5.3</span> Aproximações Meta-Generalizadas (meta-GGA)</a></li>
+  <li><a href="#funcionais-híbridos" id="toc-funcionais-híbridos" class="nav-link" data-scroll-target="#funcionais-híbridos"><span class="header-section-number">7.5.4</span> Funcionais Híbridos</a></li>
+  <li><a href="#vantagens-e-desvantagens" id="toc-vantagens-e-desvantagens" class="nav-link" data-scroll-target="#vantagens-e-desvantagens"><span class="header-section-number">7.5.5</span> Vantagens e Desvantagens</a></li>
   </ul></li>
-  <li><a href="#funcionais-modernos-e-interações-de-dispersão" id="toc-funcionais-modernos-e-interações-de-dispersão" class="nav-link" data-scroll-target="#funcionais-modernos-e-interações-de-dispersão"><span class="header-section-number">10.6</span> Funcionais modernos e interações de dispersão</a>
+  <li><a href="#funcionais-modernos-e-interações-de-dispersão" id="toc-funcionais-modernos-e-interações-de-dispersão" class="nav-link" data-scroll-target="#funcionais-modernos-e-interações-de-dispersão"><span class="header-section-number">7.6</span> Funcionais modernos e interações de dispersão</a>
   <ul class="collapse">
-  <li><a href="#funcionais-híbridos-com-separação-de-alcance" id="toc-funcionais-híbridos-com-separação-de-alcance" class="nav-link" data-scroll-target="#funcionais-híbridos-com-separação-de-alcance"><span class="header-section-number">10.6.1</span> Funcionais híbridos com separação de alcance</a></li>
-  <li><a href="#interações-de-dispersão" id="toc-interações-de-dispersão" class="nav-link" data-scroll-target="#interações-de-dispersão"><span class="header-section-number">10.6.2</span> Interações de dispersão</a></li>
-  <li><a href="#correções-dft-d" id="toc-correções-dft-d" class="nav-link" data-scroll-target="#correções-dft-d"><span class="header-section-number">10.6.3</span> Correções DFT-D</a></li>
-  <li><a href="#funcionais-de-correlação-não-local" id="toc-funcionais-de-correlação-não-local" class="nav-link" data-scroll-target="#funcionais-de-correlação-não-local"><span class="header-section-number">10.6.4</span> Funcionais de correlação não local</a></li>
-  <li><a href="#funcionais-duplos-híbridos" id="toc-funcionais-duplos-híbridos" class="nav-link" data-scroll-target="#funcionais-duplos-híbridos"><span class="header-section-number">10.6.5</span> Funcionais duplos híbridos</a></li>
+  <li><a href="#funcionais-híbridos-com-separação-de-alcance" id="toc-funcionais-híbridos-com-separação-de-alcance" class="nav-link" data-scroll-target="#funcionais-híbridos-com-separação-de-alcance"><span class="header-section-number">7.6.1</span> Funcionais híbridos com separação de alcance</a></li>
+  <li><a href="#interações-de-dispersão" id="toc-interações-de-dispersão" class="nav-link" data-scroll-target="#interações-de-dispersão"><span class="header-section-number">7.6.2</span> Interações de dispersão</a></li>
+  <li><a href="#correções-dft-d" id="toc-correções-dft-d" class="nav-link" data-scroll-target="#correções-dft-d"><span class="header-section-number">7.6.3</span> Correções DFT-D</a></li>
+  <li><a href="#funcionais-de-correlação-não-local" id="toc-funcionais-de-correlação-não-local" class="nav-link" data-scroll-target="#funcionais-de-correlação-não-local"><span class="header-section-number">7.6.4</span> Funcionais de correlação não local</a></li>
+  <li><a href="#funcionais-duplos-híbridos" id="toc-funcionais-duplos-híbridos" class="nav-link" data-scroll-target="#funcionais-duplos-híbridos"><span class="header-section-number">7.6.5</span> Funcionais duplos híbridos</a></li>
   </ul></li>
-  <li><a href="#seleção-de-funcionais" id="toc-seleção-de-funcionais" class="nav-link" data-scroll-target="#seleção-de-funcionais"><span class="header-section-number">10.7</span> Seleção de Funcionais</a></li>
+  <li><a href="#seleção-de-funcionais" id="toc-seleção-de-funcionais" class="nav-link" data-scroll-target="#seleção-de-funcionais"><span class="header-section-number">7.7</span> Seleção de Funcionais</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/10-dft.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/7-dft.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/10-dft.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-sistemas_2eletrons.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/7-dft.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></h1>
 </div>
 
 
@@ -543,15 +613,15 @@ window.Quarto = {
     E_0[\rho(\boldsymbol{r})] &amp;= \braket{\Psi|\hat{T}_e + \hat{V}_{ee}  |\Psi }  +\int V_\text{ext}(\boldsymbol{r}) \rho (\boldsymbol{r})\text{d}\boldsymbol{r} \\
     &amp;= E_\text{HK}[\rho(\boldsymbol{r})] +\int V_\text{ext}(\boldsymbol{r}) \rho (\boldsymbol{r})\text{d}\boldsymbol{r}
 \end{aligned}
-\tag{10.1}\]</span></span></p>
+\tag{7.1}\]</span></span></p>
 <p>onde agora os termos de energia cinética dos elétrons e a energia de interação elétron-elétron somados dão origem ao funcional de energia da densidade eletrônica. Esse funcional, <span class="math inline">\(E_\text{HK}[\rho(\boldsymbol{r})]\)</span> é conhecido como <strong>funcional de Hohenberg-Kohn</strong> e sua forma funcional é desconhecida.</p>
-<section id="teoremas-de-hohenberg-kohn" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="teoremas-de-hohenberg-kohn"><span class="header-section-number">10.1</span> Teoremas de Hohenberg-Kohn</h2>
+<section id="teoremas-de-hohenberg-kohn" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="teoremas-de-hohenberg-kohn"><span class="header-section-number">7.1</span> Teoremas de Hohenberg-Kohn</h2>
 <p>Os teoremas de Hohenberg-Kohn constituem a base formal da teoria do funcional da densidade e foram demonstrados originalmente em 1964 <span class="citation" data-cites="Hohenberg1964">(<a href="#ref-Hohenberg1964" role="doc-biblioref">Hohenberg and Kohn 1964</a>)</span>. O objetivo principal é trocar a função de onda para <span class="math inline">\(N\)</span> elétrons, <span class="math inline">\(\Psi(\{\boldsymbol{r}_i\})\)</span>, que depende de <span class="math inline">\(3N\)</span> coordenadas espaciais, pela densidade eletrônica <span class="math inline">\(\rho(\boldsymbol{r})\)</span>, que depende apenas de 3 coordenadas espaciais.</p>
-<section id="primeiro-teorema-de-hohenberg-kohn" class="level3" data-number="10.1.1">
-<h3 data-number="10.1.1" class="anchored" data-anchor-id="primeiro-teorema-de-hohenberg-kohn"><span class="header-section-number">10.1.1</span> Primeiro teorema de Hohenberg-Kohn</h3>
+<section id="primeiro-teorema-de-hohenberg-kohn" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="primeiro-teorema-de-hohenberg-kohn"><span class="header-section-number">7.1.1</span> Primeiro teorema de Hohenberg-Kohn</h3>
 <div id="thm-HK1" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 10.1</strong></span> Para um sistema de elétrons interagentes no estado fundamental, o potencial externo <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span> é determinado univocamente pela densidade eletrônica <span class="math inline">\(\rho_0(\boldsymbol{r})\)</span>, a menos de uma constante aditiva. Consequentemente, a densidade eletrônica do estado fundamental determina o Hamiltoniano do sistema e, portanto, todas as propriedades do estado fundamental.</p>
+<p><span class="theorem-title"><strong>Theorem 7.1</strong></span> Para um sistema de elétrons interagentes no estado fundamental, o potencial externo <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span> é determinado univocamente pela densidade eletrônica <span class="math inline">\(\rho_0(\boldsymbol{r})\)</span>, a menos de uma constante aditiva. Consequentemente, a densidade eletrônica do estado fundamental determina o Hamiltoniano do sistema e, portanto, todas as propriedades do estado fundamental.</p>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -633,10 +703,10 @@ E_0+E'_0&lt;E'_0+E_0,
 </div>
 </div>
 </section>
-<section id="segundo-teorema-de-hohenberg-kohn" class="level3" data-number="10.1.2">
-<h3 data-number="10.1.2" class="anchored" data-anchor-id="segundo-teorema-de-hohenberg-kohn"><span class="header-section-number">10.1.2</span> Segundo teorema de Hohenberg-Kohn</h3>
+<section id="segundo-teorema-de-hohenberg-kohn" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="segundo-teorema-de-hohenberg-kohn"><span class="header-section-number">7.1.2</span> Segundo teorema de Hohenberg-Kohn</h3>
 <div id="thm-HK2" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 10.2</strong></span> Para um dado potencial externo <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span>, o funcional de energia</p>
+<p><span class="theorem-title"><strong>Theorem 7.2</strong></span> Para um dado potencial externo <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span>, o funcional de energia</p>
 <p><span class="math display">\[
 E[\rho]
 =
@@ -819,8 +889,8 @@ f(u)
 =
 \frac{\partial f}{\partial u}.
 \]</span></p>
-<section id="funcionais-dependentes-do-gradiente" class="level4" data-number="10.1.2.1">
-<h4 data-number="10.1.2.1" class="anchored" data-anchor-id="funcionais-dependentes-do-gradiente"><span class="header-section-number">10.1.2.1</span> Funcionais dependentes do gradiente</h4>
+<section id="funcionais-dependentes-do-gradiente" class="level4" data-number="7.1.2.1">
+<h4 data-number="7.1.2.1" class="anchored" data-anchor-id="funcionais-dependentes-do-gradiente"><span class="header-section-number">7.1.2.1</span> Funcionais dependentes do gradiente</h4>
 <p>Um caso mais geral e particularmente importante em teoria do funcional da densidade ocorre quando o funcional depende não apenas da função <span class="math inline">\(u(\boldsymbol{r})\)</span>, mas também de seu gradiente,</p>
 <p><span class="math display">\[
 F[u]
@@ -948,8 +1018,8 @@ u(\boldsymbol{r})
 \]</span></p>
 <p>que corresponde à forma funcional da equação de Euler-Lagrange.</p>
 </section>
-<section id="condição-de-extremo" class="level4" data-number="10.1.2.2">
-<h4 data-number="10.1.2.2" class="anchored" data-anchor-id="condição-de-extremo"><span class="header-section-number">10.1.2.2</span> Condição de extremo</h4>
+<section id="condição-de-extremo" class="level4" data-number="7.1.2.2">
+<h4 data-number="7.1.2.2" class="anchored" data-anchor-id="condição-de-extremo"><span class="header-section-number">7.1.2.2</span> Condição de extremo</h4>
 <p>Quando buscamos uma função <span class="math inline">\(u(\boldsymbol{r})\)</span> que minimize ou maximize o funcional <span class="math inline">\(F[u]\)</span>, devemos impor</p>
 <p><span class="math display">\[
 \delta F=0
@@ -969,8 +1039,8 @@ u(\boldsymbol{r})
 \]</span></p>
 <p>que é a equação de Euler-Lagrange associada ao funcional.</p>
 </section>
-<section id="propriedades" class="level3" data-number="10.1.3">
-<h3 data-number="10.1.3" class="anchored" data-anchor-id="propriedades"><span class="header-section-number">10.1.3</span> Propriedades</h3>
+<section id="propriedades" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="propriedades"><span class="header-section-number">7.1.3</span> Propriedades</h3>
 <p>Tais derivadas possuem algumas propriedades interessantes:</p>
 <ul>
 <li>se <span class="math inline">\(F[u(x)] = \lambda A[u(x)]+ \mu B[u(x)]\)</span> então <span class="math inline">\(\frac{\delta F}{\delta u(x)} = \lambda \frac{\delta A}{\delta u(x)} + \mu \frac{\delta B}{\delta u(x)}\)</span>;</li>
@@ -983,8 +1053,8 @@ u(\boldsymbol{r})
 <p>O principal problema do DFT é determinar a forma explícita, aproximada ou não, do funcional universal de energia de Hohenberg-Kohn, <span class="math inline">\(E_\text{HK}[\rho(\boldsymbol{r})]\)</span>, afim de resolver o problema variacional e obter a densidade eletrônica para um dado potencial externo, <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span>.</p>
 </section>
 </section>
-<section id="método-de-kohn-sham" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="método-de-kohn-sham"><span class="header-section-number">10.2</span> Método de Kohn-Sham</h2>
+<section id="método-de-kohn-sham" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="método-de-kohn-sham"><span class="header-section-number">7.2</span> Método de Kohn-Sham</h2>
 <p>Em 1965, Kohn e Sham propuseram um método prático para resolver o problema variacional da DFT introduzindo um sistema auxiliar de elétrons não interagentes que reproduz a densidade eletrônica do sistema interagente <span class="citation" data-cites="Kohn1965">(<a href="#ref-Kohn1965" role="doc-biblioref">Kohn and Sham 1965</a>)</span>. Nesse caso, o funcional de energia de Hohenberg-Kohn pode ser escrito como</p>
 <p><span class="math display">\[
     E_\text{HK}[\rho(\boldsymbol{r})] = E_\text{S}[\rho(\boldsymbol{r})]+E_H[\rho(\boldsymbol{r})] + E_\text{XC}[\rho(\boldsymbol{r})],
@@ -1193,7 +1263,7 @@ U
 (\epsilon_1,\epsilon_2,\ldots),
 \]</span></p>
 <p>as equações passam a ter a forma diagonal</p>
-<p><span class="math display">\[
+<p><span id="eq-KS"><span class="math display">\[
 \boxed{
 \hat{h}_\text{KS}
 \phi_i(\boldsymbol{r})
@@ -1201,7 +1271,7 @@ U
 \epsilon_i
 \phi_i(\boldsymbol{r})
 }
-\]</span></p>
+\tag{7.2}\]</span></span></p>
 <p>que corresponde à forma canônica das equações de Kohn-Sham.</p>
 <p>Desta forma, o método de Kohn-Sham consiste em resolver o problema eletrônico a partir de um sistema auxiliar constituído de elétrons não-interagentes mas sujeitos a um potencial efetivo dado por <span class="math inline">\(V_\text{eff}(\boldsymbol{r}) = V_\text{H}(\boldsymbol{r})  + V_\text{XC}(\boldsymbol{r}) + V_\text{ext}(\boldsymbol{r})\)</span> onde o potencial de Hartree é calculado por</p>
 <p><span class="math display">\[
@@ -1212,8 +1282,8 @@ U
     V_\text{XC}(\boldsymbol{r}) = \frac{\delta E_\text{XC}[\rho(\boldsymbol{r})]}{\delta \rho(\boldsymbol{r})}.
 \]</span></p>
 </section>
-<section id="método-auto-consistente" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="método-auto-consistente"><span class="header-section-number">10.3</span> Método Auto-Consistente</h2>
+<section id="método-auto-consistente" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="método-auto-consistente"><span class="header-section-number">7.3</span> Método Auto-Consistente</h2>
 <p>Assim, como no caso de Hartree-Fock, podemos usar modelos restritos ou irrestritos para resolver as equações de Kohn-Sham, como RKS ou UKS, respectivamente.</p>
 <p>O procedimento auto-consistente é descrito como</p>
 <ol type="1">
@@ -1225,20 +1295,20 @@ U
 <li><p>Verifique a convergência <span class="math inline">\(\rho^{n+1}=\rho^{n}\)</span>. Se for verdadeiro, pare o cálculo e siga para o item 7. Caso contrário volte ao item 4.</p></li>
 <li><p>Por fim, obtenha a forma dos orbitais moleculares (MO) a partir de <span class="math inline">\(\psi_i(\boldsymbol{r})\)</span> e as energias dos MOs a partir de <span class="math inline">\(\epsilon_i\)</span>.</p></li>
 </ol>
-<p>Isso pode ser representado graficamente por um fluxograma como na <a href="#fig-SCF-DFT" class="quarto-xref">Figure&nbsp;<span>10.1</span></a>.</p>
+<p>Isso pode ser representado graficamente por um fluxograma como na <a href="#fig-SCF-DFT" class="quarto-xref">Figure&nbsp;<span>7.1</span></a>.</p>
 <div id="fig-SCF-DFT" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-SCF-DFT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figuras/SCF-DFT.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SCF-DFT-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.1: Método auto-consistente (SCF) para resolução das equações de Kohn-Sham.
+Figure&nbsp;7.1: Método auto-consistente (SCF) para resolução das equações de Kohn-Sham.
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="energia-total" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="energia-total"><span class="header-section-number">10.4</span> Energia Total</h2>
+<section id="energia-total" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="energia-total"><span class="header-section-number">7.4</span> Energia Total</h2>
 <p>A energia total do sistema de Kohn-Sham é dada por</p>
 <p><span class="math display">\[
 E[\rho]
@@ -1359,11 +1429,11 @@ V_\text{XC}(\boldsymbol{r})
 \]</span></p>
 <p>A soma dos autovalores de Kohn-Sham não corresponde diretamente à energia total do sistema. O termo de Hartree presente nos autovalores conta a interação elétron-elétron duas vezes e, por isso, uma contribuição <span class="math inline">\(E_H[\rho]\)</span> deve ser subtraída. Além disso, a contribuição de troca e correlação presente nos autovalores é dada por <span class="math inline">\(\int V_\text{XC}(\boldsymbol{r})\rho(\boldsymbol{r})\text{d}\boldsymbol{r}\)</span>, que em geral é diferente do funcional de energia <span class="math inline">\(E_\text{XC}[\rho]\)</span>. Por isso, essa contribuição deve ser subtraída e substituída por <span class="math inline">\(E_\text{XC}[\rho]\)</span>.</p>
 </section>
-<section id="funcionais-de-troca-e-correlação" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="funcionais-de-troca-e-correlação"><span class="header-section-number">10.5</span> Funcionais de troca e correlação</h2>
+<section id="funcionais-de-troca-e-correlação" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="funcionais-de-troca-e-correlação"><span class="header-section-number">7.5</span> Funcionais de troca e correlação</h2>
 <p>Embora a energia <span class="math inline">\(E_0\)</span> possa, em princípio, ser calculada a partir do método de Kohn-Sham, não se conhece a forma exata do funcional de troca-correlação <span class="math inline">\(E_\text{XC}[\rho(\boldsymbol{r})]\)</span>. Há um desenvolvimento extenso de funcionais <span class="math inline">\(E_\text{XC}[\rho(\boldsymbol{r})]\)</span> aproximados para descrever uma gama de propriedades físicas distintas.</p>
-<section id="aproximação-da-densidade-local-lda" class="level3" data-number="10.5.1">
-<h3 data-number="10.5.1" class="anchored" data-anchor-id="aproximação-da-densidade-local-lda"><span class="header-section-number">10.5.1</span> Aproximação da densidade local (LDA)</h3>
+<section id="aproximação-da-densidade-local-lda" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="aproximação-da-densidade-local-lda"><span class="header-section-number">7.5.1</span> Aproximação da densidade local (LDA)</h3>
 <p>Para o gás de elétrons uniforme, o funcional de troca será dado por:</p>
 <p><span class="math display">\[
 E_\text{X}^{\text{LDA}}[\rho(\boldsymbol{r})] = \int \rho(\boldsymbol{r})\, \epsilon_\text{X}[\rho(\boldsymbol{r})]\, d\boldsymbol{r}
@@ -1378,8 +1448,8 @@ V_\text{X}(\boldsymbol{r}) = \frac{\delta E_\text{X}}{\delta \rho(\boldsymbol{r}
 \]</span></p>
 <p>Existem várias expressões para a energia de correlação <span class="math inline">\(E_\text{C}^{\text{LDA}}\)</span> obtidas a partir de parametrizações de cálculos precisos de Monte Carlo Quântico para o gás eletrônico uniforme. Entre os resultados fundamentais estão os cálculos de Ceperley e Alder <span class="citation" data-cites="Ceperley1980">(<a href="#ref-Ceperley1980" role="doc-biblioref">Ceperley and Alder 1980</a>)</span>, que forneceram dados de referência para a energia de correlação do gás de elétrons. Essas expressões são bastante complexas e geralmente são referidas por suas abreviações, como VWN, VWN5, CAPZ, entre outras. Apesar disso, elas produzem resultados muito semelhantes quando utilizadas em cálculos moleculares.</p>
 </section>
-<section id="aproximação-de-gradiente-generalizado-gga" class="level3" data-number="10.5.2">
-<h3 data-number="10.5.2" class="anchored" data-anchor-id="aproximação-de-gradiente-generalizado-gga"><span class="header-section-number">10.5.2</span> Aproximação de Gradiente Generalizado (GGA)</h3>
+<section id="aproximação-de-gradiente-generalizado-gga" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="aproximação-de-gradiente-generalizado-gga"><span class="header-section-number">7.5.2</span> Aproximação de Gradiente Generalizado (GGA)</h3>
 <p>Motivado pelo trabalho de Weizsäcker, que introduziu um termo de gradiente na energia cinética do modelo de Thomas–Fermi, podemos adotar que</p>
 <p><span class="math display">\[
 E_\text{XC}^{\text{GGA}}[\rho(\boldsymbol{r})] = \int f(\rho(\boldsymbol{r}), \nabla \rho(\boldsymbol{r}))\, d\boldsymbol{r}
@@ -1459,8 +1529,8 @@ F_\text{X}^{\text{PBE}}(s)
 <li>Correlação: P86, LYP</li>
 </ul>
 </section>
-<section id="aproximações-meta-generalizadas-meta-gga" class="level3" data-number="10.5.3">
-<h3 data-number="10.5.3" class="anchored" data-anchor-id="aproximações-meta-generalizadas-meta-gga"><span class="header-section-number">10.5.3</span> Aproximações Meta-Generalizadas (meta-GGA)</h3>
+<section id="aproximações-meta-generalizadas-meta-gga" class="level3" data-number="7.5.3">
+<h3 data-number="7.5.3" class="anchored" data-anchor-id="aproximações-meta-generalizadas-meta-gga"><span class="header-section-number">7.5.3</span> Aproximações Meta-Generalizadas (meta-GGA)</h3>
 <p>Nelas são introduzidas formas de derivadas de ordem mais alta:</p>
 <p><span class="math display">\[
 E_\text{XC}^{\text{meta-GGA}}[\rho(\boldsymbol{r})] = \int \epsilon_\text{XC}^{\text{meta-GGA}}(\rho, \nabla \rho, \nabla^2 \rho, \tau) \, d\boldsymbol{r},
@@ -1471,8 +1541,8 @@ E_\text{XC}^{\text{meta-GGA}}[\rho(\boldsymbol{r})] = \int \epsilon_\text{XC}^{\
 \]</span></p>
 <p>Alguns funcionais famosos são B95, B98, ISM, KCIS, PKZB, TPSS, VSXC e SCAN.</p>
 </section>
-<section id="funcionais-híbridos" class="level3" data-number="10.5.4">
-<h3 data-number="10.5.4" class="anchored" data-anchor-id="funcionais-híbridos"><span class="header-section-number">10.5.4</span> Funcionais Híbridos</h3>
+<section id="funcionais-híbridos" class="level3" data-number="7.5.4">
+<h3 data-number="7.5.4" class="anchored" data-anchor-id="funcionais-híbridos"><span class="header-section-number">7.5.4</span> Funcionais Híbridos</h3>
 <p>São funcionais baseados no princípio da combinação aditiva como o <strong>PBE0</strong> dado por</p>
 <p><span class="math display">\[
 E_\text{XC}^{\text{PBE0}}[\rho] =  E_\text{XC}^{\text{PBE}} + \frac{1}{4}( E_\text{X}^{\text{HF}}-E_\text{X}^{\text{PBE}} )
@@ -1550,8 +1620,8 @@ a_c=0.81.
 <p>Os três parâmetros foram determinados empiricamente por ajuste a propriedades termoquímicas moleculares <span class="citation" data-cites="Becke1993">(<a href="#ref-Becke1993" role="doc-biblioref">Becke 1993</a>)</span>. A contribuição LYP é baseada no funcional de correlação desenvolvido por Lee, Yang e Parr a partir da expressão de Colle-Salvetti <span class="citation" data-cites="Lee1988">(<a href="#ref-Lee1988" role="doc-biblioref">Lee et al. 1988</a>)</span>, enquanto a contribuição VWN utiliza uma parametrização da energia de correlação do gás eletrônico uniforme <span class="citation" data-cites="Vosko1980">(<a href="#ref-Vosko1980" role="doc-biblioref">Vosko et al. 1980</a>)</span>.</p>
 <p>Outros funcionais híbridos são B1PW91, B1LYP, B1B95, mPW1PW91 e PBE1PBE.</p>
 </section>
-<section id="vantagens-e-desvantagens" class="level3" data-number="10.5.5">
-<h3 data-number="10.5.5" class="anchored" data-anchor-id="vantagens-e-desvantagens"><span class="header-section-number">10.5.5</span> Vantagens e Desvantagens</h3>
+<section id="vantagens-e-desvantagens" class="level3" data-number="7.5.5">
+<h3 data-number="7.5.5" class="anchored" data-anchor-id="vantagens-e-desvantagens"><span class="header-section-number">7.5.5</span> Vantagens e Desvantagens</h3>
 <ul>
 <li><strong>LDA</strong>:
 <ul>
@@ -1580,11 +1650,11 @@ a_c=0.81.
 </ul>
 </section>
 </section>
-<section id="funcionais-modernos-e-interações-de-dispersão" class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="funcionais-modernos-e-interações-de-dispersão"><span class="header-section-number">10.6</span> Funcionais modernos e interações de dispersão</h2>
+<section id="funcionais-modernos-e-interações-de-dispersão" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="funcionais-modernos-e-interações-de-dispersão"><span class="header-section-number">7.6</span> Funcionais modernos e interações de dispersão</h2>
 <p>Apesar do sucesso das aproximações LDA, GGA, meta-GGA e dos funcionais híbridos, alguns fenômenos permanecem difíceis de descrever utilizando apenas funcionais semilocais ou híbridos globais. Entre eles estão as interações de dispersão de London, processos de transferência de carga e propriedades eletrônicas que dependem do comportamento de longo alcance do potencial de troca e correlação.</p>
-<section id="funcionais-híbridos-com-separação-de-alcance" class="level3" data-number="10.6.1">
-<h3 data-number="10.6.1" class="anchored" data-anchor-id="funcionais-híbridos-com-separação-de-alcance"><span class="header-section-number">10.6.1</span> Funcionais híbridos com separação de alcance</h3>
+<section id="funcionais-híbridos-com-separação-de-alcance" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="funcionais-híbridos-com-separação-de-alcance"><span class="header-section-number">7.6.1</span> Funcionais híbridos com separação de alcance</h3>
 <p>Nos funcionais híbridos convencionais, como PBE0 e B3LYP, uma fração fixa da troca de Hartree-Fock é utilizada para todas as distâncias eletrônicas. Nos funcionais híbridos com separação de alcance (<em>range-separated hybrids</em>), a interação coulombiana é separada em contribuições de curto e longo alcance.</p>
 <p>Uma decomposição comum é</p>
 <p><span class="math display">\[
@@ -1607,8 +1677,8 @@ E_X^\text{LR},
 <p>Um exemplo conhecido é o funcional <strong>CAM-B3LYP</strong>, que combina a estrutura do B3LYP com uma separação de alcance baseada no método de atenuação coulombiana <span class="citation" data-cites="Yanai2004">(<a href="#ref-Yanai2004" role="doc-biblioref">Yanai et al. 2004</a>)</span>. Esse tipo de funcional melhora, em particular, a descrição de fenômenos nos quais o comportamento de longo alcance da troca é importante, como estados excitados com transferência de carga.</p>
 <p>Outros exemplos de funcionais com separação de alcance incluem <span class="math inline">\(\omega\)</span>B97X, <span class="math inline">\(\omega\)</span>B97X-D, <span class="math inline">\(\omega\)</span>B97X-V e <span class="math inline">\(\omega\)</span>B97M-V. Alguns desses funcionais também incorporam explicitamente correções para interações de dispersão.</p>
 </section>
-<section id="interações-de-dispersão" class="level3" data-number="10.6.2">
-<h3 data-number="10.6.2" class="anchored" data-anchor-id="interações-de-dispersão"><span class="header-section-number">10.6.2</span> Interações de dispersão</h3>
+<section id="interações-de-dispersão" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="interações-de-dispersão"><span class="header-section-number">7.6.2</span> Interações de dispersão</h3>
 <p>As interações de dispersão de London são originadas por correlações instantâneas entre flutuações da densidade eletrônica em regiões espacialmente separadas. Em grandes distâncias, a interação entre dois átomos ou fragmentos apresenta como termo dominante um comportamento aproximadamente dado por</p>
 <p><span class="math display">\[
 E_\text{disp}
@@ -1618,8 +1688,8 @@ E_\text{disp}
 <p>onde <span class="math inline">\(R\)</span> é a distância entre os fragmentos e <span class="math inline">\(C_6\)</span> é o coeficiente de dispersão.</p>
 <p>Funcionais locais e semilocais convencionais não descrevem corretamente essa contribuição de correlação de longo alcance. Diferentes estratégias foram desenvolvidas para incorporar essas interações em cálculos DFT.</p>
 </section>
-<section id="correções-dft-d" class="level3" data-number="10.6.3">
-<h3 data-number="10.6.3" class="anchored" data-anchor-id="correções-dft-d"><span class="header-section-number">10.6.3</span> Correções DFT-D</h3>
+<section id="correções-dft-d" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="correções-dft-d"><span class="header-section-number">7.6.3</span> Correções DFT-D</h3>
 <p>Uma estratégia consiste em adicionar à energia obtida por DFT uma contribuição de dispersão calculada separadamente,</p>
 <p><span class="math display">\[
 E_\text{DFT-D}
@@ -1649,8 +1719,8 @@ f_{d,n}(R_{AB}),
 \]</span></p>
 <p>indicam que uma correção de dispersão foi adicionada ao funcional original.</p>
 </section>
-<section id="funcionais-de-correlação-não-local" class="level3" data-number="10.6.4">
-<h3 data-number="10.6.4" class="anchored" data-anchor-id="funcionais-de-correlação-não-local"><span class="header-section-number">10.6.4</span> Funcionais de correlação não local</h3>
+<section id="funcionais-de-correlação-não-local" class="level3" data-number="7.6.4">
+<h3 data-number="7.6.4" class="anchored" data-anchor-id="funcionais-de-correlação-não-local"><span class="header-section-number">7.6.4</span> Funcionais de correlação não local</h3>
 <p>Outra estratégia consiste em incorporar a dispersão diretamente no funcional da densidade através de um termo de correlação não local,</p>
 <p><span class="math display">\[
 E_c^\text{NL}[\rho]
@@ -1668,8 +1738,8 @@ E_c^\text{NL}[\rho]
 <p>Uma versão computacionalmente mais eficiente, denominada <strong>rVV10</strong>, foi posteriormente proposta por Sabatini, Gorni e de Gironcoli <span class="citation" data-cites="Sabatini2013rVV10">(<a href="#ref-Sabatini2013rVV10" role="doc-biblioref">Sabatini et al. 2013</a>)</span>.</p>
 <p>A correlação VV10 ou rVV10 pode ser combinada com diferentes aproximações de troca e correlação semilocal. Exemplos modernos incluem funcionais como <span class="math inline">\(\omega\)</span>B97X-V e <span class="math inline">\(\omega\)</span>B97M-V, nos quais uma contribuição não local de dispersão é incorporada ao funcional <span class="citation" data-cites="Mardirossian2014wB97XV">(<a href="#ref-Mardirossian2014wB97XV" role="doc-biblioref">Mardirossian and Head-Gordon 2014</a>)</span>.</p>
 </section>
-<section id="funcionais-duplos-híbridos" class="level3" data-number="10.6.5">
-<h3 data-number="10.6.5" class="anchored" data-anchor-id="funcionais-duplos-híbridos"><span class="header-section-number">10.6.5</span> Funcionais duplos híbridos</h3>
+<section id="funcionais-duplos-híbridos" class="level3" data-number="7.6.5">
+<h3 data-number="7.6.5" class="anchored" data-anchor-id="funcionais-duplos-híbridos"><span class="header-section-number">7.6.5</span> Funcionais duplos híbridos</h3>
 <p>Os funcionais duplos híbridos estendem a ideia dos funcionais híbridos ao incluir, além da troca exata de Hartree-Fock, uma contribuição explícita de correlação obtida por teoria de perturbação.</p>
 <p>De maneira esquemática, um funcional duplo híbrido pode ser escrito como</p>
 <p><span class="math display">\[
@@ -1689,8 +1759,8 @@ a_C E_C^\text{PT2},
 <p>Funcionais duplos híbridos modernos também podem ser combinados com separação de alcance e correções de dispersão, dando origem a aproximações que incorporam simultaneamente troca exata, correlação perturbativa e interações de longo alcance.</p>
 </section>
 </section>
-<section id="seleção-de-funcionais" class="level2" data-number="10.7">
-<h2 data-number="10.7" class="anchored" data-anchor-id="seleção-de-funcionais"><span class="header-section-number">10.7</span> Seleção de Funcionais</h2>
+<section id="seleção-de-funcionais" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="seleção-de-funcionais"><span class="header-section-number">7.7</span> Seleção de Funcionais</h2>
 <p>Programas de Química Quântica oferecem uma grande variedade de funcionais, e selecionar um funcional adequado pode ser uma tarefa desafiadora. Para escolher um funcional, você deve:</p>
 <ul>
 <li>Pesquisar na literatura cálculos realizados em materiais e propriedades semelhante (muitas propriedades além da energia podem ser calculadas por DFT)</li>
@@ -2167,13 +2237,13 @@ Yanai, Takeshi, David P. Tew, and Nicholas C. Handy. 2004. <span>“A New Hybrid
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../capitulos/9-bases.html" class="pagination-link" aria-label="Conjuntos de bases">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span>
+      <a href="../capitulos/6-hartree_fock.html" class="pagination-link" aria-label="Método de Hartree-Fock">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../capitulos/11-pyscf.html" class="pagination-link" aria-label="PySCF">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">PySCF</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/8-bases.html" class="pagination-link" aria-label="Conjuntos de bases">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -2185,7 +2255,7 @@ Yanai, Takeshi, David P. Tew, and Nicholas C. Handy. 2004. <span>“A New Hybrid
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/10-dft.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/7-dft.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>

@@ -1,5 +1,37 @@
 # Método de Hartree-Fock
 
+## Problema Geral de Muitos Elétrons
+
+O caso geral de um sistema de $M$ núcleos atômicos e $N$ elétrons interagindo entre si pode ser tratado através da Equação de Schrodinger escrita na forma 
+$$\begin{aligned}
+    &\left[ \sum_{A=1}^M \frac{\hat{P}_A^2}{2 M_A} + \sum_{i=1}^N\frac{\hat{p}_\text{i}^2}{2 m_e} - \sum_{A=1}^M\sum_{i=1}^N \frac{Z_A e^2}{(4\pi \epsilon_0)|\boldsymbol{r}_i-\boldsymbol{R}_A|} \right. \nonumber \\ 
+    & \left.+ \frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{e^2}{(4\pi \epsilon_0)|\boldsymbol{r}_i-\boldsymbol{r}_j|} + \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B e^2}{(4\pi \epsilon_0)|\boldsymbol{R}_A-\boldsymbol{R}_B|}\right]\ket{\Psi} = E_T \ket{\Psi}
+\end{aligned}$$
+sendo $Z_A$ e $M_A$ o número atômico e a massa atômica do núcleo $A$, respectivamente.
+
+Usando a **aproximação de Born-Oppenheimer**, podemos separar a dinâmica dos núcleos da dinâmica dos elétrons tal que 
+\begin{align}
+    \Psi(\{\boldsymbol{r}_i\},\{\boldsymbol{R}_A\}) = \sum_e \Psi_e(\{\boldsymbol{r}_i\}) \Psi_n(\{\boldsymbol{R}_A\})
+\end{align}
+onde a função eletrônica $\Psi_e(\{\boldsymbol{r}_i\})$ depende parametricamente do conjunto de posições dos núcleos $\{\boldsymbol{R}_A\}$ e $\Psi_n(\{\boldsymbol{R}_A\})$ é a função de onda dos núcleos.
+
+ A equação de Schrodinger para a parte eletrônica, _em unidades atômicas_, fica então na forma 
+$$\begin{aligned}
+    &\left[ -\frac{1}{2}\sum_{i=1}^N\nabla_i^2 - \sum_{A=1}^M\sum_{i=1}^N \frac{Z_A}{|\boldsymbol{r}_i-\boldsymbol{R}_A|} + \frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|} \right.\nonumber \\
+    & \left.+ \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}\right]\Psi_e(\{\boldsymbol{r}_i\}) = E_\text{ele}(\{\boldsymbol{R}_A\}) \Psi_e(\{\boldsymbol{r}_i\})
+\end{aligned}$${#eq-problema_eletronico}
+onde $E_\text{ele}(\{\boldsymbol{R}_A\})$ é a energia eletrônica que depende parametricamente da posição dos núcleos atômicos. 
+
+A equação de Schrodinger que representa a dinâmica dos núcleos é escrita como 
+$$\begin{aligned}
+    \left[ -\frac{1}{2}\sum_{A=1}^M\frac{\nabla_A^2}{M_A} + E_\text{ele}(\{\boldsymbol{R}_A\}) \right]\Psi_n(\{\boldsymbol{R}_A\}) = E_T \Psi_n(\{\boldsymbol{R}_A\})
+\end{aligned}$${#eq-problema_nucleos}
+sendo $E_T$ a energia total do sistema. 
+
+Nosso intuito é resolver a @eq-problema_eletronico que é o problema eletrônico de diversos sistemas em Química Quântica. Em seguida, voltaremos a @eq-problema_nucleos afim de analisar como as configurações eletrônicas das moléculas podem determinar seus estados de vibração e rotação. 
+
+## Método de Hartree-Fock
+
 Usando o @eq-principio-variacional, podemos escolher uma função de onda eletrônica tentativa $\ket{\Psi_e}$ tal que o valor esperado para o Hamiltoniano eletrônico molecular $\hat{H}_e$ possa ser calculado como
 $$
 E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e} 

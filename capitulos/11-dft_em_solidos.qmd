@@ -1,0 +1,13 @@
+# DFT em Sólidos
+
+## Base de ondas planas
+
+## Energia de corte
+
+## Pseudopotenciais
+
+## Projetor de Onda Aumentada (PAW)
+
+## Malhas Monkhorst–Pack
+
+## Cálculo SCF em sólidos

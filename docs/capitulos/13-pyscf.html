@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Molécula de Hidrogênio – Química Quântica para Moléculas e Sólidos</title>
+<title>13&nbsp; PySCF – Química Quântica para Moléculas e Sólidos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,8 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../capitulos/7-problema_de_muitos_eletrons.html" rel="next">
-<link href="../capitulos/5-atomo_de_helio.html" rel="prev">
+<link href="../capitulos/14-vasp.html" rel="next">
+<link href="../capitulos/12-densidade_de_estados_e_bandas.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -86,6 +121,35 @@ MathJax = {
 };
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -267,7 +331,7 @@ MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/6-molecula_de_hidrogenio.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Molécula de Hidrogênio</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/13-pyscf.html">Aplicações Computacionais</a></li><li class="breadcrumb-item"><a href="../capitulos/13-pyscf.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">PySCF</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -371,44 +435,114 @@ MathJax = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/5-atomo_de_helio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Átomo de Hélio</span></span></a>
+  <a href="../capitulos/5-sistemas_2eletrons.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de 2 elétrons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/6-molecula_de_hidrogenio.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Molécula de Hidrogênio</span></span></a>
+  <a href="../capitulos/6-hartree_fock.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/7-problema_de_muitos_eletrons.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Problema Geral de Muitos Elétrons</span></span></a>
+  <a href="../capitulos/7-dft.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/8-hartree_fock.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
+  <a href="../capitulos/8-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Estrutura Eletrônica de Sólidos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/9-solidos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sólidos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/9-bases.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
+  <a href="../capitulos/10-bloch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teorema de Bloch</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/10-dft.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span></a>
+  <a href="../capitulos/11-dft_em_solidos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">DFT em Sólidos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/11-pyscf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">PySCF</span></span></a>
+  <a href="../capitulos/12-densidade_de_estados_e_bandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Aplicações Computacionais</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/13-pyscf.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">PySCF</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/14-vasp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">VASP</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/15-otimizacao_de_geometrias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Otimização de Geometrias</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/16-adsorcao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Adsorção</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/17-reacao_quimica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cálculos de Reações Químicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/18-vibracoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Cálculos de vibrações e espectros vibracionais</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/19-calor_especifico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Cálculos termodinâmicos</span></span></a>
   </div>
 </li>
       </ul>
@@ -418,16 +552,34 @@ MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#instalação" id="toc-instalação" class="nav-link active" data-scroll-target="#instalação"><span class="header-section-number">13.1</span> Instalação</a></li>
+  <li><a href="#criando-uma-molécula" id="toc-criando-uma-molécula" class="nav-link" data-scroll-target="#criando-uma-molécula"><span class="header-section-number">13.2</span> Criando uma molécula</a></li>
+  <li><a href="#cálculos-auto-consistentes-de-energia" id="toc-cálculos-auto-consistentes-de-energia" class="nav-link" data-scroll-target="#cálculos-auto-consistentes-de-energia"><span class="header-section-number">13.3</span> Cálculos Auto-Consistentes de Energia</a>
+  <ul class="collapse">
+  <li><a href="#cálculos-de-hartree-fock" id="toc-cálculos-de-hartree-fock" class="nav-link" data-scroll-target="#cálculos-de-hartree-fock"><span class="header-section-number">13.3.1</span> Cálculos de Hartree-Fock</a></li>
+  <li><a href="#cálculos-de-dft" id="toc-cálculos-de-dft" class="nav-link" data-scroll-target="#cálculos-de-dft"><span class="header-section-number">13.3.2</span> Cálculos de DFT</a></li>
+  </ul></li>
+  <li><a href="#orbitais-moleculares-e-densidade-eletrônica" id="toc-orbitais-moleculares-e-densidade-eletrônica" class="nav-link" data-scroll-target="#orbitais-moleculares-e-densidade-eletrônica"><span class="header-section-number">13.4</span> Orbitais moleculares e Densidade Eletrônica</a>
+  <ul class="collapse">
+  <li><a href="#orbitais-moleculares" id="toc-orbitais-moleculares" class="nav-link" data-scroll-target="#orbitais-moleculares"><span class="header-section-number">13.4.1</span> Orbitais Moleculares</a></li>
+  <li><a href="#densidade-eletrônica" id="toc-densidade-eletrônica" class="nav-link" data-scroll-target="#densidade-eletrônica"><span class="header-section-number">13.4.2</span> Densidade eletrônica</a></li>
+  <li><a href="#potencial-eletrostático-molecular" id="toc-potencial-eletrostático-molecular" class="nav-link" data-scroll-target="#potencial-eletrostático-molecular"><span class="header-section-number">13.4.3</span> Potencial eletrostático molecular</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/13-pyscf.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/6-molecula_de_hidrogenio.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Molécula de Hidrogênio</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/13-pyscf.html">Aplicações Computacionais</a></li><li class="breadcrumb-item"><a href="../capitulos/13-pyscf.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">PySCF</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Molécula de Hidrogênio</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">PySCF</span></h1>
 </div>
 
 
@@ -444,8 +596,182 @@ MathJax = {
 </header>
 
 
+<p>Nesse capítulo vamos apresentar o pacote PySCF, que é uma biblioteca de código aberto para cálculos de química quântica. O PySCF é escrito em Python e C, e oferece uma ampla gama de funcionalidades para cálculos de estrutura eletrônica, incluindo métodos de Hartree-Fock, DFT, e métodos pós-Hartree-Fock.</p>
+<p>Seu website oficial é <a href="https://pyscf.org">https://pyscf.org</a>, onde você pode encontrar documentação detalhada, tutoriais e exemplos de uso.</p>
+<section id="instalação" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="instalação"><span class="header-section-number">13.1</span> Instalação</h2>
+<p>A instalação do PySCF pode ser feita facilmente usando o gerenciador de pacotes <code>pip</code>. Para instalar o PySCF, você pode executar o seguinte comando no terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pyscf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="criando-uma-molécula" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="criando-uma-molécula"><span class="header-section-number">13.2</span> Criando uma molécula</h2>
+<p>No PySCF, você pode criar uma molécula usando a classe <code>Mole</code> do módulo <code>gto</code>.</p>
+<p>A seguir, apresentamos um exemplo de como criar uma molécula de hidrogênio (H2) com a base <code>sto-3g</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> gto</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mol_h2 <span class="op">=</span> gto.M(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    atom <span class="op">=</span> [[<span class="st">'H'</span>,(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)], [<span class="st">'H'</span>,(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)]],</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    basis <span class="op">=</span> <span class="st">'sto-3g'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Outro exemplo é a criação de uma molécula de água (H2O) com a base <code>6-31g</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mol_h2o <span class="op">=</span> gto.M(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    atom <span class="op">=</span> [[<span class="st">'O'</span>,(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)], [<span class="st">'H'</span>,(<span class="fl">0.7586</span>, <span class="fl">0.5043</span>, <span class="dv">0</span>)], [<span class="st">'H'</span>,(<span class="op">-</span><span class="fl">0.7586</span>, <span class="fl">0.5043</span>, <span class="dv">0</span>)]],</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    basis <span class="op">=</span> <span class="st">'6-31g'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>As unidades de distância são em Angstroms, e a base especificada é usada para os cálculos eletrônicos.</p>
+</section>
+<section id="cálculos-auto-consistentes-de-energia" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="cálculos-auto-consistentes-de-energia"><span class="header-section-number">13.3</span> Cálculos Auto-Consistentes de Energia</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: <a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/1-intro_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+</div>
+</div>
+<section id="cálculos-de-hartree-fock" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="cálculos-de-hartree-fock"><span class="header-section-number">13.3.1</span> Cálculos de Hartree-Fock</h3>
+<p>No PySCF, você pode realizar um cálculo de Hartree-Fock usando a classe <code>RHF</code> (Restricted Hartree-Fock) do módulo <code>scf</code>.</p>
+<p>A seguir, apresentamos um exemplo de como realizar um cálculo de Hartree-Fock para a molécula de hidrogênio (H2):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> scf</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>rhf_h2 <span class="op">=</span> scf.RHF(mol_h2)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>e_h2 <span class="op">=</span> rhf_h2.kernel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>com <code>e_h2</code> contendo o valor da energia de Hartree-Fock para a molécula de hidrogênio (em unidades atômicas de energia, Hartree) e o output do cálculo será algo como:</p>
+<pre><code>converged SCF energy = -1.06610864931794</code></pre>
+<p>Para a molécula de água (H2O), o cálculo de Hartree-Fock seria realizado da seguinte forma:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rhf_h2o <span class="op">=</span> scf.RHF(mol_h2o)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>e_h2o <span class="op">=</span> rhf_h2o.kernel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>converged SCF energy = -75.982010306225</code></pre>
+</section>
+<section id="cálculos-de-dft" class="level3" data-number="13.3.2">
+<h3 data-number="13.3.2" class="anchored" data-anchor-id="cálculos-de-dft"><span class="header-section-number">13.3.2</span> Cálculos de DFT</h3>
+<p>No PySCF, você pode realizar um cálculo de DFT usando a classe <code>RKS</code> (Restricted Kohn-Sham) do módulo <code>scf</code>.</p>
+<p>A seguir, apresentamos um exemplo de como realizar um cálculo de DFT para a molécula de água (H2O) usando o funcional B3LYP:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> scf</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>rks_h2o <span class="op">=</span> scf.RKS(mol_h2o)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>rks_h2o.xc <span class="op">=</span> <span class="st">'b3lyp'</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>e_h2o_dft <span class="op">=</span> rks_h2o.kernel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>converged SCF energy = -76.3780493873302</code></pre>
+</section>
+</section>
+<section id="orbitais-moleculares-e-densidade-eletrônica" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="orbitais-moleculares-e-densidade-eletrônica"><span class="header-section-number">13.4</span> Orbitais moleculares e Densidade Eletrônica</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: <a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/2-orbitais_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+</div>
+</div>
+<section id="orbitais-moleculares" class="level3" data-number="13.4.1">
+<h3 data-number="13.4.1" class="anchored" data-anchor-id="orbitais-moleculares"><span class="header-section-number">13.4.1</span> Orbitais Moleculares</h3>
+<p>No PySCF, você pode acessar os orbitais moleculares (MOs) e suas energias após a convergência do cálculo de Hartree-Fock ou DFT.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf.tools <span class="im">import</span> cubegen <span class="co"># para exportar aquivos cube</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>hartree_to_ev <span class="op">=</span> <span class="fl">27.2114</span> <span class="co"># Conversão de Hartree para eV</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportanto os 8 primeiros orbitais moleculares</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>):</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    cubegen.orbital(mol_h2o, <span class="ss">f'h2o_mo_id</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">.cube'</span>, rhf_h2o.mo_coeff[:,i])</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"MO </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> energy: </span><span class="sc">{</span>rhf_h2o<span class="sc">.</span>mo_energy[i]<span class="op">*</span>hartree_to_ev<span class="sc">}</span><span class="ss"> eV"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>MO 1 energy: -559.0648505073075 eV
+MO 2 energy: -37.35824208425234 eV
+MO 3 energy: -20.472436335886574 eV
+MO 4 energy: -15.010271665557314 eV
+MO 5 energy: -13.620368424502718 eV
+MO 6 energy: 5.892416334684666 eV
+MO 7 energy: 8.489434880237042 eV
+MO 8 energy: 30.794397465074287 eV</code></pre>
+<p>e os arquivos <code>h2o_mo_id1.cube</code>, <code>h2o_mo_id2.cube</code>, …, <code>h2o_mo_id8.cube</code> serão gerados, podendo ser visualizados em softwares de visualização molecular, como o VESTA.</p>
+<div id="fig-water-mo-homo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-water-mo-homo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/agua_mo_homo.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-water-mo-homo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.1: Orbital HOMO da água calculado usando o PySCF e visualizado no Blender
+</figcaption>
+</figure>
+</div>
+<div id="fig-water-mo-lumo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-water-mo-lumo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/agua_mo_lumo.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-water-mo-lumo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.2: Orbital LUMO da água calculado usando o PySCF e visualizado no Blender
+</figcaption>
+</figure>
+</div>
+<p>Outro comando útil é o método <code>analyze()</code> que fornece informações detalhadas sobre a densidade eletrônica, populações de Mulliken, energias dos orbitais moleculares, entre outros dados:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rhf_h2o.analyze()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>**** MO energy ****
+MO #1   energy= -20.5452439237712  occ= 2
+MO #2   energy= -1.37288938034252  occ= 2
+MO #3   energy= -0.752347778353432 occ= 2
+MO #4   energy= -0.551617030566502 occ= 2
+MO #5   energy= -0.500539054385394 occ= 2
+MO #6   energy= 0.216542196825032  occ= 0
+MO #7   energy= 0.311980819812176  occ= 0
+MO #8   energy= 1.13167266164454   occ= 0
+MO #9   energy= 1.16714239571367   occ= 0
+MO #10  energy= 1.18839667472837   occ= 0
+MO #11  energy= 1.21799463765162   occ= 0
+MO #12  energy= 1.40648729738536   occ= 0
+MO #13  energy= 1.67628216207442   occ= 0
+ ** Mulliken atomic charges  **
+charge of    0O =     -0.66401
+charge of    1H =      0.33200
+charge of    2H =      0.33200
+Dipole moment(X, Y, Z, Debye):  0.00000,  2.45844, -0.00000
+((array([1.99998907e+00, 1.59484969e+00, 3.37983153e-03, 1.32200180e+00,
+         1.73548741e+00, 1.99560867e+00, 6.39191091e-03, 1.90976617e-03,
+         4.39132862e-03, 6.46096227e-01, 2.18990368e-02, 6.46096227e-01,
+         2.18990368e-02]),
+  array([-0.66400947,  0.33200474,  0.33200474])),
+ array([ 1.25552744e-14,  2.45844212e+00, -1.20462032e-16]))</code></pre>
+</section>
+<section id="densidade-eletrônica" class="level3" data-number="13.4.2">
+<h3 data-number="13.4.2" class="anchored" data-anchor-id="densidade-eletrônica"><span class="header-section-number">13.4.2</span> Densidade eletrônica</h3>
+<p>No PySCF, você pode calcular a densidade eletrônica usando o método <code>get_density()</code> do objeto de cálculo SCF. A densidade eletrônica é uma função que descreve a distribuição de elétrons na molécula.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cubegen.density(mol_h2o, <span class="st">'h2o_den.cube'</span>, rhf_h2o.make_rdm1())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será um arquivo <code>h2o_den.cube</code> que pode ser visualizado em softwares de visualização molecular, como o VESTA.</p>
+<div id="fig-water-den" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-water-den-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/agua_den.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-water-den-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13.3: Superfície de isodensidade eletrônica da água (<span class="math inline">\(0.1\)</span> em a.u.) calculado usando o PySCF e visualizado no Blender
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="potencial-eletrostático-molecular" class="level3" data-number="13.4.3">
+<h3 data-number="13.4.3" class="anchored" data-anchor-id="potencial-eletrostático-molecular"><span class="header-section-number">13.4.3</span> Potencial eletrostático molecular</h3>
+<p>No PySCF, você pode calcular o potencial eletrostático molecular (MEP) usando o método <code>get_mep()</code> do objeto de cálculo SCF. O MEP é uma função que descreve a distribuição do potencial elétrico gerado pelos elétrons e núcleos da molécula.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>cubegen.mep(mol_h2o, <span class="st">'h2o_pot.cube'</span>, rhf_h2o.make_rdm1())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será um arquivo <code>h2o_pot.cube</code> que pode ser visualizado em softwares de visualização molecular, como o VESTA.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -863,13 +1189,13 @@ MathJax = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../capitulos/5-atomo_de_helio.html" class="pagination-link" aria-label="Átomo de Hélio">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Átomo de Hélio</span></span>
+      <a href="../capitulos/12-densidade_de_estados_e_bandas.html" class="pagination-link" aria-label="Estrutura Eletrônica de Sólidos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../capitulos/7-problema_de_muitos_eletrons.html" class="pagination-link" aria-label="Problema Geral de Muitos Elétrons">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Problema Geral de Muitos Elétrons</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/14-vasp.html" class="pagination-link" aria-label="VASP">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">VASP</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -881,7 +1207,7 @@ MathJax = {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/6-molecula_de_hidrogenio.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/13-pyscf.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>

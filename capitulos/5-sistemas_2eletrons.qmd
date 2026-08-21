@@ -1,4 +1,6 @@
-# Átomo de Hélio
+# Sistemas de 2 elétrons
+
+## Átomo de Hélio
 
 O átomo de hélio é constituído por um núcleo de carga $+2e$ e dois elétrons. Considerando explicitamente o movimento do núcleo, as interações elétron--núcleo e a interação entre os dois elétrons, a equação de Schrödinger independente do tempo pode ser escrita como
 
@@ -267,3 +269,5 @@ $$
 cujo valor ótimo do parâmetro será $\lambda_*=27/16=1.6875$. Lembrando que $\lambda$ tem caráter de carga do núcleo no caso de um átomo hidrogenóide, podemos dizer que esse valor de $\lambda$ representa uma carga blindada do núcleo do átomo de He que os elétrons interagem. Nesse caso temos como valor esperado da energia $\braket{\hat{H}}_*=-2.84766\ \text{Ha}=-77.4887$ eV, que agora nos fornece 1,8\% de erro em relação ao valor experimental.
 
 Veremos mais adiante que uma escolha melhor para a função de onda do átomo de He pode ser uma combinação de diversas funções de onda de Slater com parâmetros $\lambda_i$ distintos. 
+
+## Molécula de Hidrogênio

@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>9&nbsp; Sólidos – Química Quântica para Moléculas e Sólidos</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../capitulos/10-bloch.html" rel="next">
+<link href="../capitulos/8-bases.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a86916a49c48730c794466cf646bb6fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e96371329041a54aa97349587386818e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+MathJax = {
+  tex: {
+    macros: {
+      ket: ["\\left|#1\\right\\rangle", 1],
+      bra: ["\\left\\langle#1\\right|", 1],
+      braket: ["\\left\\langle#1\\right\\rangle", 1]
+    }
+  }
+};
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/9-solidos.html">Estrutura Eletrônica de Sólidos</a></li><li class="breadcrumb-item"><a href="../capitulos/9-solidos.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sólidos</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Química Quântica para Moléculas e Sólidos</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/elvissoares/COQ875-QuimicaQuantica" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../Química-Quântica-para-Moléculas-e-Sólidos.pdf">
+              <i class="bi bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../Química-Quântica-para-Moléculas-e-Sólidos.epub">
+              <i class="bi bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apresentação</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Fundamentos da Mecânica Quântica</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/1-bases_experimentais.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bases experimentais e teóricas da Química Quântica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/2-postulados.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/4-schroedinger.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Equação de Schroedinger e suas aplicações</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Estrutura Eletrônica de Átomos e Moléculas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/5-sistemas_2eletrons.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de 2 elétrons</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/6-hartree_fock.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/7-dft.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/8-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Estrutura Eletrônica de Sólidos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/9-solidos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sólidos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/10-bloch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teorema de Bloch</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/11-dft_em_solidos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">DFT em Sólidos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/12-densidade_de_estados_e_bandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Aplicações Computacionais</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/13-pyscf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">PySCF</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/14-vasp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">VASP</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/15-otimizacao_de_geometrias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Otimização de Geometrias</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/16-adsorcao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Adsorção</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/17-reacao_quimica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cálculos de Reações Químicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/18-vibracoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Cálculos de vibrações e espectros vibracionais</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/19-calor_especifico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Cálculos termodinâmicos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#rede-cristalina" id="toc-rede-cristalina" class="nav-link active" data-scroll-target="#rede-cristalina"><span class="header-section-number">9.1</span> Rede cristalina</a>
+  <ul class="collapse">
+  <li><a href="#vetores-primitivos" id="toc-vetores-primitivos" class="nav-link" data-scroll-target="#vetores-primitivos"><span class="header-section-number">9.1.1</span> Vetores primitivos</a></li>
+  <li><a href="#volume-da-célula-primitiva" id="toc-volume-da-célula-primitiva" class="nav-link" data-scroll-target="#volume-da-célula-primitiva"><span class="header-section-number">9.1.2</span> Volume da célula primitiva</a></li>
+  </ul></li>
+  <li><a href="#estrutura-cristalina-rede-base" id="toc-estrutura-cristalina-rede-base" class="nav-link" data-scroll-target="#estrutura-cristalina-rede-base"><span class="header-section-number">9.2</span> Estrutura cristalina: rede + base</a>
+  <ul class="collapse">
+  <li><a href="#base-cristalina" id="toc-base-cristalina" class="nav-link" data-scroll-target="#base-cristalina"><span class="header-section-number">9.2.1</span> Base cristalina</a></li>
+  </ul></li>
+  <li><a href="#células-unitárias" id="toc-células-unitárias" class="nav-link" data-scroll-target="#células-unitárias"><span class="header-section-number">9.3</span> Células unitárias</a>
+  <ul class="collapse">
+  <li><a href="#célula-primitiva" id="toc-célula-primitiva" class="nav-link" data-scroll-target="#célula-primitiva"><span class="header-section-number">9.3.1</span> Célula primitiva</a></li>
+  <li><a href="#célula-convencional" id="toc-célula-convencional" class="nav-link" data-scroll-target="#célula-convencional"><span class="header-section-number">9.3.2</span> Célula convencional</a></li>
+  <li><a href="#célula-de-wignerseitz" id="toc-célula-de-wignerseitz" class="nav-link" data-scroll-target="#célula-de-wignerseitz"><span class="header-section-number">9.3.3</span> Célula de Wigner–Seitz</a></li>
+  </ul></li>
+  <li><a href="#redes-de-bravais" id="toc-redes-de-bravais" class="nav-link" data-scroll-target="#redes-de-bravais"><span class="header-section-number">9.4</span> Redes de Bravais</a>
+  <ul class="collapse">
+  <li><a href="#rede-cúbica-simples-sc" id="toc-rede-cúbica-simples-sc" class="nav-link" data-scroll-target="#rede-cúbica-simples-sc"><span class="header-section-number">9.4.1</span> Rede cúbica simples (SC)</a></li>
+  <li><a href="#rede-cúbica-de-corpo-centrado-bcc" id="toc-rede-cúbica-de-corpo-centrado-bcc" class="nav-link" data-scroll-target="#rede-cúbica-de-corpo-centrado-bcc"><span class="header-section-number">9.4.2</span> Rede cúbica de corpo centrado (BCC)</a></li>
+  <li><a href="#rede-cúbica-de-face-centrada-fcc" id="toc-rede-cúbica-de-face-centrada-fcc" class="nav-link" data-scroll-target="#rede-cúbica-de-face-centrada-fcc"><span class="header-section-number">9.4.3</span> Rede cúbica de face centrada (FCC)</a></li>
+  <li><a href="#rede-hexagonal" id="toc-rede-hexagonal" class="nav-link" data-scroll-target="#rede-hexagonal"><span class="header-section-number">9.4.4</span> Rede hexagonal</a></li>
+  </ul></li>
+  <li><a href="#estruturas-cristalinas-importantes" id="toc-estruturas-cristalinas-importantes" class="nav-link" data-scroll-target="#estruturas-cristalinas-importantes"><span class="header-section-number">9.5</span> Estruturas cristalinas importantes</a>
+  <ul class="collapse">
+  <li><a href="#estrutura-hexagonal-compacta-hcp" id="toc-estrutura-hexagonal-compacta-hcp" class="nav-link" data-scroll-target="#estrutura-hexagonal-compacta-hcp"><span class="header-section-number">9.5.1</span> Estrutura hexagonal compacta (HCP)</a></li>
+  <li><a href="#estrutura-do-diamante" id="toc-estrutura-do-diamante" class="nav-link" data-scroll-target="#estrutura-do-diamante"><span class="header-section-number">9.5.2</span> Estrutura do diamante</a></li>
+  <li><a href="#estrutura-do-nacl" id="toc-estrutura-do-nacl" class="nav-link" data-scroll-target="#estrutura-do-nacl"><span class="header-section-number">9.5.3</span> Estrutura do NaCl</a></li>
+  </ul></li>
+  <li><a href="#direções-e-planos-cristalinos" id="toc-direções-e-planos-cristalinos" class="nav-link" data-scroll-target="#direções-e-planos-cristalinos"><span class="header-section-number">9.6</span> Direções e planos cristalinos</a>
+  <ul class="collapse">
+  <li><a href="#direções-cristalográficas" id="toc-direções-cristalográficas" class="nav-link" data-scroll-target="#direções-cristalográficas"><span class="header-section-number">9.6.1</span> Direções cristalográficas</a></li>
+  <li><a href="#planos-cristalinos" id="toc-planos-cristalinos" class="nav-link" data-scroll-target="#planos-cristalinos"><span class="header-section-number">9.6.2</span> Planos cristalinos</a></li>
+  <li><a href="#índices-de-miller" id="toc-índices-de-miller" class="nav-link" data-scroll-target="#índices-de-miller"><span class="header-section-number">9.6.3</span> Índices de Miller</a></li>
+  <li><a href="#notação-para-direções-e-planos" id="toc-notação-para-direções-e-planos" class="nav-link" data-scroll-target="#notação-para-direções-e-planos"><span class="header-section-number">9.6.4</span> Notação para direções e planos</a></li>
+  </ul></li>
+  <li><a href="#difração-de-raios-x" id="toc-difração-de-raios-x" class="nav-link" data-scroll-target="#difração-de-raios-x"><span class="header-section-number">9.7</span> Difração de Raios X</a>
+  <ul class="collapse">
+  <li><a href="#condição-de-bragg" id="toc-condição-de-bragg" class="nav-link" data-scroll-target="#condição-de-bragg"><span class="header-section-number">9.7.1</span> Condição de Bragg</a></li>
+  <li><a href="#espaçamento-interplanar" id="toc-espaçamento-interplanar" class="nav-link" data-scroll-target="#espaçamento-interplanar"><span class="header-section-number">9.7.2</span> Espaçamento interplanar</a></li>
+  <li><a href="#padrão-de-difração" id="toc-padrão-de-difração" class="nav-link" data-scroll-target="#padrão-de-difração"><span class="header-section-number">9.7.3</span> Padrão de difração</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/9-solidos.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/9-solidos.html">Estrutura Eletrônica de Sólidos</a></li><li class="breadcrumb-item"><a href="../capitulos/9-solidos.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sólidos</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sólidos</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="rede-cristalina" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="rede-cristalina"><span class="header-section-number">9.1</span> Rede cristalina</h2>
+<p>Uma <strong>rede cristalina</strong> é um conjunto infinito e periódico de pontos no espaço gerado por combinações lineares inteiras de um conjunto de vetores primitivos. Em três dimensões, qualquer ponto da rede pode ser escrito como</p>
+<p><span id="eq-rede-cristalina"><span class="math display">\[
+\boxed{
+\boldsymbol{R}_n
+=
+n_1\boldsymbol{a}_1
++
+n_2\boldsymbol{a}_2
++
+n_3\boldsymbol{a}_3
+}
+\tag{9.1}\]</span></span></p>
+<p>onde</p>
+<p><span class="math display">\[
+n_1,n_2,n_3\in\mathbb{Z},
+\]</span></p>
+<p>e <span class="math inline">\(\boldsymbol{a}_1\)</span>, <span class="math inline">\(\boldsymbol{a}_2\)</span> e <span class="math inline">\(\boldsymbol{a}_3\)</span> são os <strong>vetores primitivos da rede</strong>.</p>
+<p>A rede apresenta invariância por translação, no sentido de que, se <span class="math inline">\(\boldsymbol{R}_n\)</span> é um ponto da rede, então</p>
+<p><span class="math display">\[
+\boldsymbol{R}_n+\boldsymbol{R}_m
+\]</span></p>
+<p>também pertence à rede para qualquer vetor <span class="math inline">\(\boldsymbol{R}_m\)</span> da própria rede.</p>
+<p>A escolha dos vetores primitivos não é única.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<section id="vetores-primitivos" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="vetores-primitivos"><span class="header-section-number">9.1.1</span> Vetores primitivos</h3>
+<p>Os vetores</p>
+<p><span class="math display">\[
+\boldsymbol{a}_1,
+\qquad
+\boldsymbol{a}_2,
+\qquad
+\boldsymbol{a}_3
+\]</span></p>
+<p>são denominados <strong>vetores primitivos da rede</strong> quando qualquer vetor da rede pode ser escrito como uma combinação linear inteira desses vetores,</p>
+<p><span class="math display">\[
+\boldsymbol{R}
+=
+n_1\boldsymbol{a}_1
++
+n_2\boldsymbol{a}_2
++
+n_3\boldsymbol{a}_3.
+\]</span></p>
+<p>Em duas dimensões, a construção é análoga,</p>
+<p><span class="math display">\[
+\boldsymbol{R}_n^\text{2D}
+=
+n_1\boldsymbol{a}_1
++
+n_2\boldsymbol{a}_2,
+\]</span></p>
+<p>com</p>
+<p><span class="math display">\[
+n_1,n_2\in\mathbb{Z}.
+\]</span></p>
+<div id="fig-rede2d" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rede2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/rede2d.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rede2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.1: Pontos de uma rede bidimensional com possíveis vetores primitivos. <em>Fonte: Kittel, p.&nbsp;5</em>
+</figcaption>
+</figure>
+</div>
+<p>A <a href="#fig-rede2d" class="quarto-xref">Figure&nbsp;<span>9.1</span></a> mostra que diferentes escolhas de vetores primitivos podem gerar a mesma rede.</p>
+<p>Em três dimensões,</p>
+<p><span class="math display">\[
+\boldsymbol{R}_n^\text{3D}
+=
+n_1\boldsymbol{a}_1
++
+n_2\boldsymbol{a}_2
++
+n_3\boldsymbol{a}_3.
+\]</span></p>
+<div id="fig-rede3d" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rede3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/rede3d.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rede3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.2: Pontos de uma rede tridimensional com possíveis vetores primitivos. <em>Fonte: Kittel, p.&nbsp;5</em>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="volume-da-célula-primitiva" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="volume-da-célula-primitiva"><span class="header-section-number">9.1.2</span> Volume da célula primitiva</h3>
+<p>Os vetores primitivos definem um paralelepípedo que constitui uma célula primitiva da rede. O volume dessa célula é dado pelo produto misto</p>
+<p><span id="eq-volume-celula-primitiva"><span class="math display">\[
+\boxed{
+\Omega
+=
+\left|
+\boldsymbol{a}_1
+\cdot
+\left(
+\boldsymbol{a}_2
+\times
+\boldsymbol{a}_3
+\right)
+\right|
+}
+\tag{9.2}\]</span></span></p>
+<p>onde <span class="math inline">\(\Omega\)</span> representa o volume da célula primitiva.</p>
+<p>Em duas dimensões, a área da célula primitiva é dada por</p>
+<p><span class="math display">\[
+A
+=
+\left|
+\boldsymbol{a}_1
+\times
+\boldsymbol{a}_2
+\right|.
+\]</span></p>
+<p>Diferentes escolhas equivalentes de vetores primitivos podem gerar células com formas distintas, mas com o mesmo volume.</p>
+</section>
+</section>
+<section id="estrutura-cristalina-rede-base" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="estrutura-cristalina-rede-base"><span class="header-section-number">9.2</span> Estrutura cristalina: rede + base</h2>
+<p>Uma <strong>estrutura cristalina</strong> é obtida associando a cada ponto de uma rede de Bravais um conjunto de um ou mais átomos, denominado <strong>base</strong> ou <strong>motivo</strong> cristalino. Dessa forma, podemos representar uma estrutura cristalina simbolicamente como</p>
+<p><span class="math display">\[
+\boxed{
+\text{estrutura cristalina}
+=
+\text{rede de Bravais}
++
+\text{base}
+}
+\]</span></p>
+<p>A rede de Bravais descreve apenas a periodicidade translacional do cristal, enquanto a base especifica quais átomos estão associados a cada ponto da rede e quais são suas posições relativas dentro da célula.</p>
+<section id="base-cristalina" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="base-cristalina"><span class="header-section-number">9.2.1</span> Base cristalina</h3>
+<p>Considere uma rede de Bravais definida pelos vetores</p>
+<p><span class="math display">\[
+\boldsymbol{R}_n
+=
+n_1\boldsymbol{a}_1
++
+n_2\boldsymbol{a}_2
++
+n_3\boldsymbol{a}_3.
+\]</span></p>
+<p>A cada ponto <span class="math inline">\(\boldsymbol{R}_n\)</span> da rede associamos uma base contendo <span class="math inline">\(N_b\)</span> átomos. A posição do átomo <span class="math inline">\(\alpha\)</span> dentro da base pode ser representada por um vetor</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_\alpha,
+\]</span></p>
+<p>com</p>
+<p><span class="math display">\[
+\alpha=1,2,\ldots,N_b.
+\]</span></p>
+<p>Assim, a posição de qualquer átomo da estrutura cristalina pode ser escrita como</p>
+<p><span id="eq-posicao-estrutura-cristalina"><span class="math display">\[
+\boxed{
+\boldsymbol{r}_{n\alpha}
+=
+\boldsymbol{R}_n
++
+\boldsymbol{\tau}_\alpha
+}
+\tag{9.3}\]</span></span></p>
+<p>onde <span class="math inline">\(\boldsymbol{R}_n\)</span> identifica a célula da rede e <span class="math inline">\(\boldsymbol{\tau}_\alpha\)</span> identifica a posição do átomo <span class="math inline">\(\alpha\)</span> dentro dessa célula.</p>
+<p>Os vetores <span class="math inline">\(\boldsymbol{\tau}_\alpha\)</span> podem ser escritos em termos dos vetores primitivos como</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_\alpha
+=
+u_\alpha\boldsymbol{a}_1
++
+v_\alpha\boldsymbol{a}_2
++
+w_\alpha\boldsymbol{a}_3,
+\]</span></p>
+<p>onde <span class="math inline">\(u_\alpha\)</span>, <span class="math inline">\(v_\alpha\)</span> e <span class="math inline">\(w_\alpha\)</span> são denominadas <strong>coordenadas fracionárias</strong> do átomo dentro da célula.</p>
+<p>Por exemplo, uma base contendo dois átomos pode ser representada por</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_1=(0,0,0)
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_2
+=
+\frac{1}{4}\boldsymbol{a}_1
++
+\frac{1}{4}\boldsymbol{a}_2
++
+\frac{1}{4}\boldsymbol{a}_3.
+\]</span></p>
+<p>Nesse caso, cada ponto da rede de Bravais gera dois átomos na estrutura cristalina.</p>
+</section>
+</section>
+<section id="células-unitárias" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="células-unitárias"><span class="header-section-number">9.3</span> Células unitárias</h2>
+<p>Uma <strong>célula unitária</strong> é uma região do espaço que, quando repetida pelas translações da rede, preenche todo o espaço sem deixar lacunas ou produzir sobreposições. A escolha da célula unitária não é única, e diferentes células podem representar exatamente a mesma rede cristalina.</p>
+<div id="fig-rede2d-unitcell" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rede2d-unitcell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/rede2d_unitcell.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rede2d-unitcell-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.3: Algumas células unitárias possíveis para uma rede triangular. <em>Fonte: Simon, p.&nbsp;115</em>
+</figcaption>
+</figure>
+</div>
+<p>A <a href="#fig-rede2d-unitcell" class="quarto-xref">Figure&nbsp;<span>9.3</span></a> ilustra que uma mesma rede pode ser descrita por diferentes células unitárias, com formas distintas.</p>
+<section id="célula-primitiva" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="célula-primitiva"><span class="header-section-number">9.3.1</span> Célula primitiva</h3>
+<p>Uma <strong>célula primitiva</strong> é uma célula unitária que contém exatamente um ponto da rede de Bravais. Ela representa a menor região do espaço capaz de reproduzir toda a rede por translação.</p>
+<p>Em três dimensões, uma célula primitiva pode ser construída a partir dos vetores primitivos</p>
+<p><span class="math display">\[
+\boldsymbol{a}_1,
+\qquad
+\boldsymbol{a}_2,
+\qquad
+\boldsymbol{a}_3,
+\]</span></p>
+<p>e seu volume é dado por</p>
+<p><span class="math display">\[
+\Omega
+=
+\left|
+\boldsymbol{a}_1
+\cdot
+\left(
+\boldsymbol{a}_2
+\times
+\boldsymbol{a}_3
+\right)
+\right|.
+\]</span></p>
+<p>É importante notar que uma célula primitiva contém <strong>um ponto da rede</strong>, mas não necessariamente apenas um átomo. O número de átomos presentes na célula depende da base associada à rede cristalina.</p>
+</section>
+<section id="célula-convencional" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="célula-convencional"><span class="header-section-number">9.3.2</span> Célula convencional</h3>
+<p>Uma <strong>célula convencional</strong> é uma célula unitária escolhida para representar de maneira mais evidente a simetria da rede cristalina. Em geral, ela possui um volume maior que a célula primitiva e pode conter mais de um ponto da rede.</p>
+<p>A célula convencional é particularmente útil para visualizar e classificar redes cristalinas, pois seus vetores geralmente são escolhidos de modo a refletir diretamente elementos de simetria como comprimentos iguais, ângulos retos ou eixos de rotação.</p>
+<p>Por exemplo, as redes cúbica de corpo centrado (BCC) e cúbica de face centrada (FCC) são normalmente representadas por células convencionais cúbicas. Essas células contêm, respectivamente, dois e quatro pontos da rede, embora ambas possuam células primitivas de menor volume.</p>
+<p>Assim, enquanto a célula primitiva é definida pela condição de conter exatamente um ponto da rede, a célula convencional é escolhida principalmente por razões de simetria e conveniência geométrica.</p>
+</section>
+<section id="célula-de-wignerseitz" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="célula-de-wignerseitz"><span class="header-section-number">9.3.3</span> Célula de Wigner–Seitz</h3>
+<p>A <strong>célula de Wigner–Seitz</strong> é uma célula primitiva construída de forma que todos os pontos no seu interior estejam mais próximos de um determinado ponto da rede do que de qualquer outro ponto da rede.</p>
+<p>Sua construção pode ser feita escolhendo um ponto da rede e seguindo os passos:</p>
+<ol type="1">
+<li>ligar o ponto escolhido aos pontos vizinhos da rede;</li>
+<li>traçar os planos perpendiculares a esses segmentos passando por seus pontos médios;</li>
+<li>selecionar a região fechada que contém o ponto inicial.</li>
+</ol>
+<p>A região obtida é a célula de Wigner–Seitz.</p>
+<p>Por construção, a célula de Wigner–Seitz contém exatamente um ponto da rede e possui o mesmo volume de qualquer outra célula primitiva da mesma rede.</p>
+<p>Uma característica importante dessa célula é que sua forma reflete diretamente a simetria local da rede. Por esse motivo, a construção de Wigner–Seitz será particularmente útil posteriormente na definição da primeira zona de Brillouin, que corresponde à célula de Wigner–Seitz da rede recíproca.</p>
+</section>
+</section>
+<section id="redes-de-bravais" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="redes-de-bravais"><span class="header-section-number">9.4</span> Redes de Bravais</h2>
+<p>Uma <strong>rede de Bravais</strong> é um conjunto infinito de pontos equivalentes gerados por translações inteiras dos vetores primitivos da rede,</p>
+<p><span class="math display">\[
+\boldsymbol{R}_n
+=
+n_1\boldsymbol{a}_1
++
+n_2\boldsymbol{a}_2
++
+n_3\boldsymbol{a}_3,
+\]</span></p>
+<p>com</p>
+<p><span class="math display">\[
+n_1,n_2,n_3\in\mathbb{Z}.
+\]</span></p>
+<p>Em três dimensões existem apenas <strong>14 redes de Bravais distintas</strong>, que podem ser agrupadas em <strong>7 sistemas cristalinos</strong> de acordo com as relações entre os comprimentos dos vetores da célula convencional,</p>
+<p><span class="math display">\[
+a,\qquad b,\qquad c,
+\]</span></p>
+<p>e os ângulos entre eles,</p>
+<p><span class="math display">\[
+\alpha,\qquad \beta,\qquad \gamma.
+\]</span></p>
+<p>Os sete sistemas cristalinos são triclínico, monoclínico, ortorrômbico, tetragonal, trigonal ou romboédrico, hexagonal e cúbico.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Sistema cristalino</th>
+<th>Relações entre os parâmetros da célula</th>
+<th>Redes de Bravais</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Triclínico</td>
+<td><span class="math inline">\(a\neq b\neq c\)</span>; <span class="math inline">\(\alpha\neq\beta\neq\gamma\neq90^\circ\)</span></td>
+<td>P</td>
+</tr>
+<tr class="even">
+<td>Monoclínico</td>
+<td><span class="math inline">\(a\neq b\neq c\)</span>; <span class="math inline">\(\alpha=\gamma=90^\circ\)</span>, <span class="math inline">\(\beta\neq90^\circ\)</span></td>
+<td>P, C</td>
+</tr>
+<tr class="odd">
+<td>Ortorrômbico</td>
+<td><span class="math inline">\(a\neq b\neq c\)</span>; <span class="math inline">\(\alpha=\beta=\gamma=90^\circ\)</span></td>
+<td>P, C, I, F</td>
+</tr>
+<tr class="even">
+<td>Tetragonal</td>
+<td><span class="math inline">\(a=b\neq c\)</span>; <span class="math inline">\(\alpha=\beta=\gamma=90^\circ\)</span></td>
+<td>P, I</td>
+</tr>
+<tr class="odd">
+<td>Trigonal</td>
+<td><span class="math inline">\(a=b=c\)</span>; <span class="math inline">\(\alpha=\beta=\gamma\neq90^\circ\)</span></td>
+<td>R</td>
+</tr>
+<tr class="even">
+<td>Hexagonal</td>
+<td><span class="math inline">\(a=b\neq c\)</span>; <span class="math inline">\(\alpha=\beta=90^\circ\)</span>, <span class="math inline">\(\gamma=120^\circ\)</span></td>
+<td>P</td>
+</tr>
+<tr class="odd">
+<td>Cúbico</td>
+<td><span class="math inline">\(a=b=c\)</span>; <span class="math inline">\(\alpha=\beta=\gamma=90^\circ\)</span></td>
+<td>P, I, F</td>
+</tr>
+</tbody>
+</table>
+<p>Na tabela, as letras indicam o tipo de centragem da célula convencional:</p>
+<ul>
+<li><strong>P</strong>: primitiva;</li>
+<li><strong>I</strong>: corpo centrado;</li>
+<li><strong>F</strong>: faces centradas;</li>
+<li><strong>C</strong>: base centrada;</li>
+<li><strong>R</strong>: romboédrica.</li>
+</ul>
+<div id="fig-redes3d" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-redes3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/redes3d.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-redes3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.4: Células convencionais correspondentes às 14 redes de Bravais. <em>Fonte: Simon, p.&nbsp;122</em>
+</figcaption>
+</figure>
+</div>
+<section id="rede-cúbica-simples-sc" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="rede-cúbica-simples-sc"><span class="header-section-number">9.4.1</span> Rede cúbica simples (SC)</h3>
+<p>Na rede <strong>cúbica simples</strong> (<em>simple cubic</em>, SC), os pontos da rede estão localizados apenas nos vértices da célula cúbica convencional.</p>
+<div id="fig-sc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/sc.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.5: Célula unitária SC.
+</figcaption>
+</figure>
+</div>
+<p>Uma escolha natural de vetores primitivos é</p>
+<p><span class="math display">\[
+\boldsymbol{a}_1
+=
+a\hat{\boldsymbol{x}},
+\qquad
+\boldsymbol{a}_2
+=
+a\hat{\boldsymbol{y}},
+\qquad
+\boldsymbol{a}_3
+=
+a\hat{\boldsymbol{z}},
+\]</span></p>
+<p>onde <span class="math inline">\(a\)</span> é o parâmetro de rede.</p>
+<p>O volume da célula primitiva é</p>
+<p><span class="math display">\[
+\Omega_\text{SC}
+=
+a^3.
+\]</span></p>
+<p>Cada vértice da célula cúbica é compartilhado por oito células vizinhas. Como existem oito vértices, o número efetivo de pontos da rede por célula convencional é</p>
+<p><span class="math display">\[
+8\times\frac{1}{8}
+=
+1.
+\]</span></p>
+<p>Portanto, para a rede cúbica simples, a célula convencional também é uma célula primitiva.</p>
+<p>Cada ponto da rede possui seis primeiros vizinhos, localizados nas direções</p>
+<p><span class="math display">\[
+\pm\hat{\boldsymbol{x}},
+\qquad
+\pm\hat{\boldsymbol{y}},
+\qquad
+\pm\hat{\boldsymbol{z}},
+\]</span></p>
+<p>de modo que o número de coordenação da rede SC é</p>
+<p><span class="math display">\[
+z_\text{SC}=6.
+\]</span></p>
+</section>
+<section id="rede-cúbica-de-corpo-centrado-bcc" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="rede-cúbica-de-corpo-centrado-bcc"><span class="header-section-number">9.4.2</span> Rede cúbica de corpo centrado (BCC)</h3>
+<p>Na rede <strong>cúbica de corpo centrado</strong> (<em>body-centered cubic</em>, BCC), além dos pontos localizados nos oito vértices da célula convencional, existe um ponto adicional no centro do cubo.</p>
+<div id="fig-bcc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bcc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/bcc.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bcc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.6: Célula unitária BCC.
+</figcaption>
+</figure>
+</div>
+<p>A célula convencional contém</p>
+<p><span class="math display">\[
+8\times\frac{1}{8}+1=2
+\]</span></p>
+<p>pontos da rede.</p>
+<p>Portanto, a célula cúbica convencional não é primitiva.</p>
+<p>Uma possível escolha de vetores primitivos é</p>
+<p><span class="math display">\[
+\boldsymbol{a}_1
+=
+\frac{a}{2}
+\left(
+-\hat{\boldsymbol{x}}
++
+\hat{\boldsymbol{y}}
++
+\hat{\boldsymbol{z}}
+\right),
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{a}_2
+=
+\frac{a}{2}
+\left(
+\hat{\boldsymbol{x}}
+-
+\hat{\boldsymbol{y}}
++
+\hat{\boldsymbol{z}}
+\right),
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{a}_3
+=
+\frac{a}{2}
+\left(
+\hat{\boldsymbol{x}}
++
+\hat{\boldsymbol{y}}
+-
+\hat{\boldsymbol{z}}
+\right).
+\]</span></p>
+<p>O volume da célula primitiva é</p>
+<p><span class="math display">\[
+\boxed{
+\Omega_\text{BCC}
+=
+\frac{a^3}{2}
+}
+\]</span></p>
+<p>e corresponde à metade do volume da célula convencional.</p>
+<p>Cada ponto da rede BCC possui oito primeiros vizinhos, de modo que</p>
+<p><span class="math display">\[
+z_\text{BCC}=8.
+\]</span></p>
+<p>A distância entre primeiros vizinhos é</p>
+<p><span class="math display">\[
+d_\text{nn}
+=
+\frac{\sqrt{3}}{2}a.
+\]</span></p>
+</section>
+<section id="rede-cúbica-de-face-centrada-fcc" class="level3" data-number="9.4.3">
+<h3 data-number="9.4.3" class="anchored" data-anchor-id="rede-cúbica-de-face-centrada-fcc"><span class="header-section-number">9.4.3</span> Rede cúbica de face centrada (FCC)</h3>
+<p>Na rede <strong>cúbica de face centrada</strong> (<em>face-centered cubic</em>, FCC), existem pontos da rede nos oito vértices e no centro de cada uma das seis faces da célula cúbica convencional.</p>
+<div id="fig-fcc" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fcc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/fcc.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fcc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.7: Célula unitária FCC.
+</figcaption>
+</figure>
+</div>
+<p>O número efetivo de pontos da rede por célula convencional é</p>
+<p><span class="math display">\[
+8\times\frac{1}{8}
++
+6\times\frac{1}{2}
+=
+4.
+\]</span></p>
+<p>Assim, a célula convencional FCC contém quatro pontos da rede.</p>
+<p>Uma escolha comum de vetores primitivos é</p>
+<p><span class="math display">\[
+\boldsymbol{a}_1
+=
+\frac{a}{2}
+\left(
+\hat{\boldsymbol{y}}
++
+\hat{\boldsymbol{z}}
+\right),
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{a}_2
+=
+\frac{a}{2}
+\left(
+\hat{\boldsymbol{x}}
++
+\hat{\boldsymbol{z}}
+\right),
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{a}_3
+=
+\frac{a}{2}
+\left(
+\hat{\boldsymbol{x}}
++
+\hat{\boldsymbol{y}}
+\right).
+\]</span></p>
+<p>O volume da célula primitiva é</p>
+<p><span class="math display">\[
+\boxed{
+\Omega_\text{FCC}
+=
+\frac{a^3}{4}
+}
+\]</span></p>
+<p>e corresponde a um quarto do volume da célula convencional.</p>
+<p>Cada ponto da rede possui doze primeiros vizinhos,</p>
+<p><span class="math display">\[
+z_\text{FCC}=12,
+\]</span></p>
+<p>e a distância entre primeiros vizinhos é</p>
+<p><span class="math display">\[
+d_\text{nn}
+=
+\frac{a}{\sqrt{2}}.
+\]</span></p>
+<p>A rede FCC apresenta uma alta eficiência de empacotamento e aparece como rede de Bravais de diversas estruturas cristalinas importantes, incluindo estruturas metálicas e a estrutura do diamante.</p>
+</section>
+<section id="rede-hexagonal" class="level3" data-number="9.4.4">
+<h3 data-number="9.4.4" class="anchored" data-anchor-id="rede-hexagonal"><span class="header-section-number">9.4.4</span> Rede hexagonal</h3>
+<p>A rede de Bravais <strong>hexagonal</strong> pode ser descrita por dois vetores primitivos de mesmo comprimento no plano basal, formando um ângulo de <span class="math inline">\(120^\circ\)</span>, e um terceiro vetor perpendicular a esse plano.</p>
+<div id="fig-hex" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/hex.png" class="img-fluid figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.8: Célula unitária da rede hexagonal.
+</figcaption>
+</figure>
+</div>
+<p>Uma escolha comum é</p>
+<p><span class="math display">\[
+\boldsymbol{a}_1
+=
+a\hat{\boldsymbol{x}},
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{a}_2
+=
+a
+\left(
+-\frac{1}{2}\hat{\boldsymbol{x}}
++
+\frac{\sqrt{3}}{2}\hat{\boldsymbol{y}}
+\right),
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\boldsymbol{a}_3
+=
+c\hat{\boldsymbol{z}}.
+\]</span></p>
+<p>Assim,</p>
+<p><span class="math display">\[
+|\boldsymbol{a}_1|
+=
+|\boldsymbol{a}_2|
+=
+a,
+\qquad
+|\boldsymbol{a}_3|
+=
+c,
+\]</span></p>
+<p>com</p>
+<p><span class="math display">\[
+\boldsymbol{a}_1\cdot\boldsymbol{a}_2
+=
+a^2\cos120^\circ.
+\]</span></p>
+<p>O volume da célula primitiva hexagonal é</p>
+<p><span class="math display">\[
+\boxed{
+\Omega_\text{hex}
+=
+\frac{\sqrt{3}}{2}a^2c
+}
+\]</span></p>
+<p>É importante distinguir a <strong>rede de Bravais hexagonal</strong> da estrutura <strong>hexagonal compacta (HCP)</strong>. A rede hexagonal é uma das 14 redes de Bravais, enquanto a estrutura HCP resulta da associação dessa rede a uma base contendo mais de um átomo.</p>
+<div id="fig-hex_hcp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hex_hcp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/hex_hcp.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hex_hcp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.9: Comparação entre rede hexagonal e HCP.
+</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Rede de Bravais e estrutura cristalina
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>É importante distinguir os conceitos de rede de Bravais e estrutura cristalina. Uma <strong>rede de Bravais</strong> é um conjunto geométrico de pontos equivalentes relacionados por translações da rede. Todos os pontos da rede possuem exatamente a mesma vizinhança e são geometricamente equivalentes.</p>
+<p>Já uma <strong>estrutura cristalina</strong> contém, além da periodicidade da rede, informações sobre a identidade química e a posição dos átomos que compõem a base. Assim, estruturas cristalinas diferentes podem possuir a mesma rede de Bravais, mas bases distintas.</p>
+<p>Por exemplo, a estrutura do diamante pode ser descrita por uma rede de Bravais cúbica de face centrada (FCC) associada a uma base contendo dois átomos. Da mesma forma, a estrutura do NaCl também pode ser descrita a partir de uma rede FCC, porém com uma base diferente contendo espécies químicas distintas.</p>
+<p>Portanto, estruturas como <strong>diamante</strong>, <strong>NaCl</strong> e <strong>HCP</strong> não devem ser confundidas com redes de Bravais. As redes de Bravais descrevem a simetria translacional, enquanto essas estruturas resultam da combinação de uma rede com uma determinada base atômica.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="estruturas-cristalinas-importantes" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="estruturas-cristalinas-importantes"><span class="header-section-number">9.5</span> Estruturas cristalinas importantes</h2>
+<p>Diversas estruturas cristalinas de interesse em física, química e ciência dos materiais podem ser descritas a partir de uma rede de Bravais associada a uma base contendo um ou mais átomos. A posição de qualquer átomo pode ser escrita como</p>
+<p><span class="math display">\[
+\boldsymbol{r}_{n\alpha}
+=
+\boldsymbol{R}_n
++
+\boldsymbol{\tau}_\alpha,
+\]</span></p>
+<p>onde <span class="math inline">\(\boldsymbol{R}_n\)</span> identifica um ponto da rede de Bravais e <span class="math inline">\(\boldsymbol{\tau}_\alpha\)</span> representa a posição do átomo <span class="math inline">\(\alpha\)</span> dentro da base.</p>
+<p>A seguir serão discutidas três estruturas cristalinas importantes: HCP, diamante e NaCl.</p>
+<section id="estrutura-hexagonal-compacta-hcp" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="estrutura-hexagonal-compacta-hcp"><span class="header-section-number">9.5.1</span> Estrutura hexagonal compacta (HCP)</h3>
+<p>A estrutura <strong>hexagonal compacta</strong> (<em>hexagonal close-packed</em>, HCP) não constitui uma rede de Bravais. Ela pode ser descrita por uma rede de Bravais hexagonal associada a uma base contendo dois átomos.</p>
+<div id="fig-hcp" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hcp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/hcp.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hcp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.10: Célula unitária HCP.
+</figcaption>
+</figure>
+</div>
+<p>Utilizando os vetores primitivos da rede hexagonal</p>
+<p><span class="math display">\[
+\boldsymbol{a}_1
+=
+a\hat{\boldsymbol{x}},
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol{a}_2
+=
+a
+\left(
+-\frac{1}{2}\hat{\boldsymbol{x}}
++
+\frac{\sqrt{3}}{2}\hat{\boldsymbol{y}}
+\right),
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\boldsymbol{a}_3
+=
+c\hat{\boldsymbol{z}},
+\]</span></p>
+<p>uma possível escolha para a base é</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_1
+=
+\boldsymbol{0}
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_2
+=
+\frac{2}{3}\boldsymbol{a}_1
++
+\frac{1}{3}\boldsymbol{a}_2
++
+\frac{1}{2}\boldsymbol{a}_3.
+\]</span></p>
+<p>Em coordenadas fracionárias, podemos escrever</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_1=(0,0,0)
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_2=
+\left(
+\frac{2}{3},
+\frac{1}{3},
+\frac{1}{2}
+\right).
+\]</span></p>
+<p>Assim, cada célula primitiva da estrutura HCP contém dois átomos.</p>
+<p>A estrutura HCP pode ser interpretada como um empilhamento de planos hexagonais compactos na sequência</p>
+<p><span class="math display">\[
+\text{ABABAB}\ldots
+\]</span></p>
+<p>O número de coordenação é</p>
+<p><span class="math display">\[
+z_\text{HCP}=12,
+\]</span></p>
+<p>isto é, cada átomo possui doze primeiros vizinhos.</p>
+<p>Para um empacotamento ideal de esferas rígidas, a razão entre os parâmetros de rede é</p>
+<p><span class="math display">\[
+\boxed{
+\frac{c}{a}
+=
+\sqrt{\frac{8}{3}}
+\approx
+1.633
+}
+\]</span></p>
+<p>Embora HCP e FCC possuam o mesmo número de coordenação e a mesma eficiência máxima de empacotamento, elas diferem na sequência de empilhamento. Enquanto HCP apresenta</p>
+<p><span class="math display">\[
+\text{ABAB}\ldots,
+\]</span></p>
+<p>a estrutura FCC apresenta</p>
+<p><span class="math display">\[
+\text{ABCABC}\ldots.
+\]</span></p>
+</section>
+<section id="estrutura-do-diamante" class="level3" data-number="9.5.2">
+<h3 data-number="9.5.2" class="anchored" data-anchor-id="estrutura-do-diamante"><span class="header-section-number">9.5.2</span> Estrutura do diamante</h3>
+<p>A estrutura do <strong>diamante</strong> pode ser descrita por uma rede de Bravais cúbica de face centrada (FCC) associada a uma base contendo dois átomos idênticos.</p>
+<div id="fig-diamond" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-diamond-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/diamond.jpeg" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diamond-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.11: Estrutura cristalina do diamante.
+</figcaption>
+</figure>
+</div>
+<p>Uma possível escolha para a base é</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_1
+=
+(0,0,0)
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_2
+=
+\left(
+\frac{1}{4},
+\frac{1}{4},
+\frac{1}{4}
+\right)a,
+\]</span></p>
+<p>onde as coordenadas são dadas em relação aos eixos da célula cúbica convencional de parâmetro de rede <span class="math inline">\(a\)</span>.</p>
+<p>Assim, a estrutura pode ser interpretada como duas sub-redes FCC interpenetrantes, deslocadas uma em relação à outra pelo vetor</p>
+<p><span class="math display">\[
+\boxed{
+\boldsymbol{\tau}
+=
+\frac{a}{4}
+\left(
+\hat{\boldsymbol{x}}
++
+\hat{\boldsymbol{y}}
++
+\hat{\boldsymbol{z}}
+\right)
+}
+\]</span></p>
+<p>A célula convencional FCC contém quatro pontos da rede. Como existem dois átomos na base, a célula convencional da estrutura do diamante contém</p>
+<p><span class="math display">\[
+4\times2=8
+\]</span></p>
+<p>átomos.</p>
+<p>Cada átomo possui quatro primeiros vizinhos dispostos segundo uma geometria tetraédrica, de modo que</p>
+<p><span class="math display">\[
+z_\text{diamante}=4.
+\]</span></p>
+<p>A distância entre primeiros vizinhos é</p>
+<p><span class="math display">\[
+\boxed{
+d_\text{nn}
+=
+\frac{\sqrt{3}}{4}a
+}
+\]</span></p>
+<p>A estrutura do diamante é encontrada em materiais importantes como carbono na fase diamante, silício e germânio.</p>
+</section>
+<section id="estrutura-do-nacl" class="level3" data-number="9.5.3">
+<h3 data-number="9.5.3" class="anchored" data-anchor-id="estrutura-do-nacl"><span class="header-section-number">9.5.3</span> Estrutura do NaCl</h3>
+<p>A estrutura cristalina do <strong>NaCl</strong>, também denominada estrutura <em>rock salt</em>, pode ser descrita a partir de uma rede de Bravais FCC associada a uma base contendo dois átomos de espécies diferentes.</p>
+<div id="fig-nacl" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nacl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/nacl.jpeg" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nacl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.12: Estrutura cristalina do NaCl.
+</figcaption>
+</figure>
+</div>
+<p>Uma possível escolha para a base é</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_\text{Cl}
+=
+(0,0,0)
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\boldsymbol{\tau}_\text{Na}
+=
+\left(
+\frac{1}{2},
+0,
+0
+\right)a.
+\]</span></p>
+<p>Outras escolhas equivalentes para a origem e para a base são possíveis.</p>
+<p>A estrutura também pode ser interpretada como duas sub-redes FCC interpenetrantes, uma formada por íons Na<span class="math inline">\(^+\)</span> e outra por íons Cl<span class="math inline">\(^-\)</span>, deslocadas uma em relação à outra.</p>
+<p>A célula convencional contém quatro pontos da rede FCC. Como a base contém dois átomos, a célula convencional da estrutura NaCl contém</p>
+<p><span class="math display">\[
+4\text{ Na}
++
+4\text{ Cl},
+\]</span></p>
+<p>totalizando oito átomos.</p>
+<p>Cada íon Na<span class="math inline">\(^+\)</span> possui seis íons Cl<span class="math inline">\(^-\)</span> como primeiros vizinhos, e cada íon Cl<span class="math inline">\(^-\)</span> possui seis íons Na<span class="math inline">\(^+\)</span> como primeiros vizinhos. Portanto,</p>
+<p><span class="math display">\[
+z_\text{NaCl}=6.
+\]</span></p>
+<p>A geometria local é octaédrica.</p>
+<p>A distância entre primeiros vizinhos é</p>
+<p><span class="math display">\[
+\boxed{
+d_\text{nn}
+=
+\frac{a}{2}
+}
+\]</span></p>
+<p>A estrutura do NaCl mostra claramente que a rede de Bravais descreve apenas a periodicidade translacional, enquanto a base determina a identidade química dos átomos e sua disposição relativa dentro da célula.</p>
+</section>
+</section>
+<section id="direções-e-planos-cristalinos" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="direções-e-planos-cristalinos"><span class="header-section-number">9.6</span> Direções e planos cristalinos</h2>
+<p>A geometria de uma rede cristalina pode ser descrita não apenas pelos vetores primitivos e pelas posições dos pontos da rede, mas também por direções e famílias de planos. Essas construções são particularmente importantes para descrever propriedades anisotrópicas dos cristais, superfícies, crescimento cristalino e fenômenos de difração.</p>
+<section id="direções-cristalográficas" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="direções-cristalográficas"><span class="header-section-number">9.6.1</span> Direções cristalográficas</h3>
+<p>Uma <strong>direção cristalográfica</strong> é definida por um vetor que conecta dois pontos da rede. Em uma célula convencional, uma direção pode ser escrita como</p>
+<p><span class="math display">\[
+\boldsymbol{d}
+=
+u\boldsymbol{a}_1
++
+v\boldsymbol{a}_2
++
+w\boldsymbol{a}_3,
+\]</span></p>
+<p>onde <span class="math inline">\(u\)</span>, <span class="math inline">\(v\)</span> e <span class="math inline">\(w\)</span> são números proporcionais às componentes do vetor ao longo dos eixos cristalográficos.</p>
+<p>Os índices de uma direção são obtidos reduzindo essas componentes aos menores números inteiros proporcionais e são representados pela notação</p>
+<p><span class="math display">\[
+\boxed{
+[uvw]
+}
+\]</span></p>
+<p>Por exemplo, uma direção paralela ao eixo <span class="math inline">\(x\)</span> em uma célula cúbica é representada por</p>
+<p><span class="math display">\[
+[100],
+\]</span></p>
+<p>enquanto a diagonal de uma face é representada por</p>
+<p><span class="math display">\[
+[110],
+\]</span></p>
+<p>e a diagonal do corpo por</p>
+<p><span class="math display">\[
+[111].
+\]</span></p>
+<p>Índices negativos são representados por uma barra sobre o número. Por exemplo,</p>
+<p><span class="math display">\[
+[\bar{1}10]
+\]</span></p>
+<p>representa uma direção com componente negativa ao longo do primeiro eixo cristalográfico.</p>
+<p>Uma família de direções equivalentes por operações de simetria é representada utilizando sinais de menor e maior,</p>
+<p><span class="math display">\[
+\boxed{
+\langle uvw\rangle
+}
+\]</span></p>
+<p>Por exemplo, em uma rede cúbica, a família</p>
+<p><span class="math display">\[
+\langle 100\rangle
+\]</span></p>
+<p>inclui as direções</p>
+<p><span class="math display">\[
+[100],\quad
+[010],\quad
+[001],
+\]</span></p>
+<p>e suas direções opostas.</p>
+</section>
+<section id="planos-cristalinos" class="level3" data-number="9.6.2">
+<h3 data-number="9.6.2" class="anchored" data-anchor-id="planos-cristalinos"><span class="header-section-number">9.6.2</span> Planos cristalinos</h3>
+<p>Um <strong>plano cristalino</strong> é um plano que contém pontos da rede e cuja orientação pode ser especificada em relação aos eixos cristalográficos.</p>
+<p>Uma família de planos paralelos pode ser caracterizada pelas distâncias em que um desses planos intercepta os eixos definidos pelos vetores da célula.</p>
+<p>Considere um plano que intercepta os eixos cristalográficos nas posições</p>
+<p><span class="math display">\[
+\frac{a}{h},
+\qquad
+\frac{b}{k},
+\qquad
+\frac{c}{l},
+\]</span></p>
+<p>onde <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span> são os parâmetros da célula. Os números inteiros <span class="math inline">\(h\)</span>, <span class="math inline">\(k\)</span> e <span class="math inline">\(l\)</span> definem os <strong>índices de Miller</strong> do plano.</p>
+</section>
+<section id="índices-de-miller" class="level3" data-number="9.6.3">
+<h3 data-number="9.6.3" class="anchored" data-anchor-id="índices-de-miller"><span class="header-section-number">9.6.3</span> Índices de Miller</h3>
+<p>Os índices de Miller são representados pela notação</p>
+<p><span class="math display">\[
+\boxed{
+(hkl)
+}
+\]</span></p>
+<p>e podem ser obtidos através do seguinte procedimento:</p>
+<ol type="1">
+<li>determine os pontos onde o plano intercepta os três eixos cristalográficos;</li>
+<li>escreva esses interceptos em unidades dos parâmetros de rede <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> e <span class="math inline">\(c\)</span>;</li>
+<li>tome os inversos desses valores;</li>
+<li>multiplique por um fator comum de modo a obter os menores números inteiros possíveis.</li>
+</ol>
+<p>Por exemplo, considere um plano que intercepta os eixos nas posições</p>
+<p><span class="math display">\[
+a,\qquad
+b,\qquad
+\infty.
+\]</span></p>
+<p>Em unidades dos parâmetros de rede, os interceptos são</p>
+<p><span class="math display">\[
+1,\qquad
+1,\qquad
+\infty.
+\]</span></p>
+<p>Tomando os inversos,</p>
+<p><span class="math display">\[
+1,\qquad
+1,\qquad
+0,
+\]</span></p>
+<p>obtemos o plano</p>
+<p><span class="math display">\[
+\boxed{
+(110)
+}
+\]</span></p>
+<p>O índice zero indica que o plano é paralelo ao eixo correspondente.</p>
+<p>Da mesma forma, um plano com interceptos</p>
+<p><span class="math display">\[
+a,\qquad
+\infty,\qquad
+\infty
+\]</span></p>
+<p>possui índices</p>
+<p><span class="math display">\[
+(100).
+\]</span></p>
+<p>Índices negativos são indicados por uma barra. Assim,</p>
+<p><span class="math display">\[
+(\bar{1}10)
+\]</span></p>
+<p>representa um plano que possui intercepto negativo ao longo do primeiro eixo cristalográfico.</p>
+<p>Uma família de planos equivalentes por simetria é indicada por chaves,</p>
+<p><span class="math display">\[
+\boxed{
+\{hkl\}
+}
+\]</span></p>
+<p>Por exemplo, em um cristal cúbico,</p>
+<p><span class="math display">\[
+\{100\}
+\]</span></p>
+<p>representa os planos equivalentes às faces do cubo.</p>
+<p>Outros planos podem ser visualizados na <a href="#fig-planos" class="quarto-xref">Figure&nbsp;<span>9.13</span></a>.</p>
+<div id="fig-planos" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-planos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/planos.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-planos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.13: Alguns planos cristalinos e seus respectivos índices de Miller. <em>Fonte: Kittel, p.&nbsp;12</em>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="notação-para-direções-e-planos" class="level3" data-number="9.6.4">
+<h3 data-number="9.6.4" class="anchored" data-anchor-id="notação-para-direções-e-planos"><span class="header-section-number">9.6.4</span> Notação para direções e planos</h3>
+<p>É importante distinguir as diferentes notações utilizadas em cristalografia:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Notação</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\([uvw]\)</span></td>
+<td>uma direção cristalográfica</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\langle uvw\rangle\)</span></td>
+<td>família de direções equivalentes</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\((hkl)\)</span></td>
+<td>um plano cristalino</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\{hkl\}\)</span></td>
+<td>família de planos equivalentes</td>
+</tr>
+</tbody>
+</table>
+<p>Em sistemas cúbicos, a direção <span class="math inline">\([hkl]\)</span> é perpendicular ao plano <span class="math inline">\((hkl)\)</span>. Essa relação simples não é válida, em geral, para células não ortogonais. No próximo capítulo, essa relação será formulada de maneira geral através da rede recíproca.</p>
+</section>
+</section>
+<section id="difração-de-raios-x" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="difração-de-raios-x"><span class="header-section-number">9.7</span> Difração de Raios X</h2>
+<p>A difração de raios X é uma das principais técnicas utilizadas para caracterizar a estrutura de materiais cristalinos. Sua origem está na interferência entre ondas eletromagnéticas espalhadas pelos átomos de um cristal.</p>
+<p>Como as distâncias interatômicas típicas em sólidos são da ordem de</p>
+<p><span class="math display">\[
+d \sim 1~\text{Å},
+\]</span></p>
+<p>é necessário utilizar radiação com comprimento de onda da mesma ordem de grandeza para observar efeitos de difração. Os raios X possuem comprimentos de onda adequados para esse propósito.</p>
+<p>Quando um feixe de raios X incide sobre um cristal, os átomos espalham a radiação incidente. Devido à periodicidade da estrutura cristalina, as ondas espalhadas podem interferir construtiva ou destrutivamente dependendo da direção de observação.</p>
+<p>A ocorrência de interferência construtiva está relacionada às distâncias entre os planos cristalinos e pode ser descrita pela <strong>lei de Bragg</strong>.</p>
+<div id="fig-bragg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bragg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/bragg.png" class="img-fluid figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bragg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9.14: Difração de Bragg. <em>Fonte: Simon, p.&nbsp;143</em>
+</figcaption>
+</figure>
+</div>
+<section id="condição-de-bragg" class="level3" data-number="9.7.1">
+<h3 data-number="9.7.1" class="anchored" data-anchor-id="condição-de-bragg"><span class="header-section-number">9.7.1</span> Condição de Bragg</h3>
+<p>Considere duas ondas incidentes sobre dois planos cristalinos paralelos separados por uma distância <span class="math inline">\(d_{hkl}\)</span>, como ilustrado na <a href="#fig-bragg" class="quarto-xref">Figure&nbsp;<span>9.14</span></a>.</p>
+<p>A onda espalhada pelo segundo plano percorre uma distância adicional em relação à onda espalhada pelo primeiro plano. A diferença de caminho óptico é</p>
+<p><span class="math display">\[
+\Delta L
+=
+2d_{hkl}\sin\theta,
+\]</span></p>
+<p>onde <span class="math inline">\(\theta\)</span> é o ângulo entre o feixe incidente e o plano cristalino.</p>
+<p>Para que as duas ondas interfiram construtivamente, essa diferença de caminho deve ser um múltiplo inteiro do comprimento de onda,</p>
+<p><span class="math display">\[
+\Delta L
+=
+n\lambda,
+\]</span></p>
+<p>com</p>
+<p><span class="math display">\[
+n=1,2,3,\ldots
+\]</span></p>
+<p>Assim, obtemos a <strong>lei de Bragg</strong>,</p>
+<p><span id="eq-bragg"><span class="math display">\[
+\boxed{
+2d_{hkl}\sin\theta
+=
+n\lambda
+}
+\tag{9.4}\]</span></span></p>
+<p>onde</p>
+<ul>
+<li><span class="math inline">\(d_{hkl}\)</span> é a distância entre planos cristalinos consecutivos da família <span class="math inline">\((hkl)\)</span>;</li>
+<li><span class="math inline">\(\theta\)</span> é o ângulo de Bragg;</li>
+<li><span class="math inline">\(\lambda\)</span> é o comprimento de onda da radiação incidente;</li>
+<li><span class="math inline">\(n\)</span> é a ordem da reflexão.</li>
+</ul>
+<p>A condição de Bragg determina os ângulos nos quais ocorre interferência construtiva entre as ondas espalhadas por diferentes planos do cristal.</p>
+</section>
+<section id="espaçamento-interplanar" class="level3" data-number="9.7.2">
+<h3 data-number="9.7.2" class="anchored" data-anchor-id="espaçamento-interplanar"><span class="header-section-number">9.7.2</span> Espaçamento interplanar</h3>
+<p>A distância <span class="math inline">\(d_{hkl}\)</span> depende da geometria da rede cristalina e dos índices de Miller do plano considerado.</p>
+<p>Para um sistema cúbico de parâmetro de rede <span class="math inline">\(a\)</span>, o espaçamento entre planos da família <span class="math inline">\((hkl)\)</span> é dado por</p>
+<p><span id="eq-dhkl-cubic"><span class="math display">\[
+\boxed{
+d_{hkl}
+=
+\frac{a}
+{\sqrt{h^2+k^2+l^2}}
+}
+\tag{9.5}\]</span></span></p>
+<p>Por exemplo,</p>
+<p><span class="math display">\[
+d_{100}=a,
+\]</span></p>
+<p><span class="math display">\[
+d_{110}
+=
+\frac{a}{\sqrt{2}},
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+d_{111}
+=
+\frac{a}{\sqrt{3}}.
+\]</span></p>
+<p>Substituindo essas distâncias na lei de Bragg, é possível determinar os ângulos de difração associados a diferentes famílias de planos cristalinos.</p>
+</section>
+<section id="padrão-de-difração" class="level3" data-number="9.7.3">
+<h3 data-number="9.7.3" class="anchored" data-anchor-id="padrão-de-difração"><span class="header-section-number">9.7.3</span> Padrão de difração</h3>
+<p>Experimentalmente, a intensidade da radiação difratada é medida em função do ângulo de espalhamento. Em experimentos convencionais de difração de raios X, é comum representar a intensidade em função de</p>
+<p><span class="math display">\[
+2\theta,
+\]</span></p>
+<p>onde <span class="math inline">\(\theta\)</span> é o ângulo que aparece na lei de Bragg.</p>
+<p>Cada pico observado no padrão de difração está associado a uma condição de interferência construtiva e pode ser relacionado a uma família de planos <span class="math inline">\((hkl)\)</span> do cristal.</p>
+<p>Assim, a posição dos picos fornece informações sobre as distâncias interplanares e, consequentemente, sobre os parâmetros da célula cristalina.</p>
+<p>A intensidade dos picos, por outro lado, depende da distribuição dos átomos dentro da célula unitária. Portanto, dois cristais que possuem a mesma rede de Bravais podem apresentar padrões de difração diferentes caso suas bases cristalinas sejam distintas.</p>
+<p>A análise de um padrão de difração permite, entre outras aplicações,</p>
+<ul>
+<li>identificar fases cristalinas;</li>
+<li>determinar parâmetros de rede;</li>
+<li>determinar simetrias cristalinas;</li>
+<li>identificar famílias de planos cristalinos;</li>
+<li>obter informações sobre a estrutura atômica do material.</li>
+</ul>
+<p>Uma descrição mais geral da difração cristalina será obtida posteriormente utilizando a rede recíproca.</p>
+
+
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Diferentes conjuntos de vetores primitivos podem gerar exatamente o mesmo conjunto de pontos da rede.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/elvissoares\.github\.io\/COQ875-QuimicaQuantica\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../capitulos/8-bases.html" class="pagination-link" aria-label="Conjuntos de bases">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../capitulos/10-bloch.html" class="pagination-link" aria-label="Teorema de Bloch">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teorema de Bloch</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Química Quântica © 2026 Elvis do Amaral Soares.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/9-solidos.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

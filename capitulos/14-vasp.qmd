@@ -1,0 +1,4 @@
+# VASP
+
+Nesse capítulo vamos apresentar o pacote VASP (Vienna Ab initio Simulation Package), que é um software comercial amplamente utilizado para cálculos de estrutura eletrônica e simulações de materiais. O VASP é baseado em métodos de DFT (Density Functional Theory) e oferece uma ampla gama de funcionalidades para cálculos de propriedades eletrônicas, estruturais e dinâmicas de materiais.
+

@@ -1,0 +1,132 @@
+# Teorema de Bloch
+
+Em sólidos, a energia potencial do sistema tem a propriedade de ser periódica com a periodicidade da rede cristalina em questão, isto é,
+\begin{align}
+    V(\boldsymbol{r}) = V(\boldsymbol{r}+\boldsymbol{R}_n)
+\end{align}
+com $\boldsymbol{R}_n$ dado pela @eq-rede-cristalina. Essa simetria de translação se traduz numa simetria para o hamiltoniano do sistema. 
+
+## Simetria de Translação
+
+Um operador de translação da rede pode ser definido por $\hat{T}_{\boldsymbol{R}_n}$ pela operação 
+\begin{align}
+    \hat{T}_{\boldsymbol{R}_n} f(\boldsymbol{r}) = f(\boldsymbol{r}+\boldsymbol{R}_n) 
+\end{align}
+que desloca todas as posições do sistema por uma quantidade $\boldsymbol{R}_n$. Partindo desse operador, podemos notar que o hamiltoniano $\hat{H}$ de um sistema constituído por um sólido agora comuta com o operador de translação da rede $\hat{T}_{\boldsymbol{R}_n}$, ou seja,
+\begin{align}
+    [\hat{H}_e,\hat{T}_{\boldsymbol{R}_n}]=0.
+\end{align}
+Desta forma, a função de onda do sistema deve ser escrita como um autoestado do operador de translação dada por 
+\begin{align}
+    \hat{T}_{\boldsymbol{R}_n} \psi(\boldsymbol{r}) = \psi(\boldsymbol{r}+\boldsymbol{R}_n) = \lambda_n \psi(\boldsymbol{r}),
+\end{align}
+com $\lambda_n$ sendo o autovalor do operador de translação. 
+
+Aplicar duas operações de translação sucessivas dadas por
+\begin{align}
+    \hat{T}_{\boldsymbol{R}_m}\left(\hat{T}_{\boldsymbol{R}_n} \psi(\boldsymbol{r})\right) = \hat{T}_{\boldsymbol{R}_m}\left(\lambda_n \psi(\boldsymbol{r}) \right)= \lambda_m\lambda_n \psi(\boldsymbol{r}) 
+\end{align}
+é equivalente a uma única translação dada por 
+\begin{align}
+    \hat{T}_{\boldsymbol{R}_m+\boldsymbol{R}_n}\psi(\boldsymbol{r})= \lambda_{m+n} \psi(\boldsymbol{r})
+\end{align}
+de modo que $\lambda_{m+n} = \lambda_m \lambda_n$.^[O produto dos autovalores de duas translações distintas é igual ao autovalor da translação combinada.] Como a distribuição de densidade eletrônica deve possuir a mesma simetria, temos que 
+\begin{align}
+    |\psi(\boldsymbol{r}+\boldsymbol{R}_n)|^2 = |\psi(\boldsymbol{r})|^2
+\end{align}
+o que se traduz em $|\lambda_n|^2 =1$, tal que
+\begin{align}
+    \lambda_n = e^{i \boldsymbol{k}\cdot \boldsymbol{R}_n}
+\end{align}
+sendo $\boldsymbol{k}$ um vetor de onda arbitrário.^[Note que os autovalores $e^{i \boldsymbol{k}\cdot \boldsymbol{R}_n}$ são semelhantes aos autovetores de momento linear $e^{i \boldsymbol{k}\cdot \boldsymbol{r}}$, exceto pelo valor do vetor posição.] Assim, concluímos que 
+\begin{align}
+    \psi(\boldsymbol{r}+\boldsymbol{R}_n) = e^{i \boldsymbol{k}\cdot \boldsymbol{R}_n}\psi(\boldsymbol{r}),
+\end{align}
+é a simetria de translação aplicada as funções de onda do sistema cristalino. 
+
+## Transformada de Fourier
+
+Seja $f(\boldsymbol{r})$ uma função contínua, podemos definir sua transformada de Fourier  por 
+$$
+\widetilde{f}(\boldsymbol{k}) = \mathscr{F}\{f(\boldsymbol{r})\} = \int_{\mathfrak{R}^3} f(\boldsymbol{r}) e^{-i \boldsymbol{k}\cdot \boldsymbol{r}} \text{d}\boldsymbol{r}
+$$ {#eq-ft}
+
+e sua transformada inversa por
+$$
+f(\boldsymbol{r}) = \mathscr{F}^{-1}\{\widetilde{f}(\boldsymbol{k})\} = \frac{1}{(2\pi)^3}\int_{\mathfrak{R}^3} \widetilde{f}(\boldsymbol{k}) e^{i \boldsymbol{k}\cdot \boldsymbol{r}} \text{d}\boldsymbol{k}.
+$$ {#eq-ift}
+
+A transformada de Fourier é útil para descrever funções com periodicidade bem definida.
+
+Alguns exemplos são 
+
+- se $f(\boldsymbol{r})=\delta(\boldsymbol{r}-\boldsymbol{r}_0)$ então $\widetilde{f}(\boldsymbol{k}) = e^{-i\boldsymbol{k}\cdot \boldsymbol{r}_0}$.
+
+- se $\widetilde{f}(\boldsymbol{k}) = \delta(\boldsymbol{k}-\boldsymbol{k}_0)$ então $f(\boldsymbol{r})= \frac{1}{(2\pi)^3}e^{i \boldsymbol{k}_0\cdot \boldsymbol{r}}$ (onda plana com vetor de onda $\boldsymbol{k}_0$);
+
+- se conhecemos $\mathscr{F}\{f(\boldsymbol{r})\}=\widetilde{f}(\boldsymbol{k})$ então sabemos que $\mathscr{F}\{f(\boldsymbol{r}+\boldsymbol{R})\} = e^{i \boldsymbol{k}\cdot \boldsymbol{R}}\widetilde{f}(\boldsymbol{k})$;
+
+- se conhecemos $\mathscr{F}\{f(\boldsymbol{r})\}=\widetilde{f}(\boldsymbol{k})$ então sabemos que $\mathscr{F}\{f(\lambda \boldsymbol{r})\} = \frac{1}{\lambda^3}\widetilde{f}(\boldsymbol{k}/\lambda)$ (transformada de escala).
+
+::: {.callout-tip}
+A transformada de Fourier é uma ferramenta poderosa para analisar funções periódicas e sinais, permitindo a decomposição de funções complexas em suas componentes de frequência. 
+
+Ela é amplamente utilizada em física, engenharia e matemática aplicada, sendo essencial para o estudo de fenômenos como difração, propagação de ondas e análise de sinais. 
+
+Além disso, a transformada de Fourier possui propriedades importantes, como linearidade, simetria e a relação entre convolução e multiplicação no domínio da frequência, que facilitam a resolução de problemas em diversas áreas da ciência e tecnologia.
+:::
+
+::: {.callout-important}
+
+## Convolução
+
+A convolução entre duas funções $h = (f * g)$ é definida como 
+\begin{align}
+    h(\boldsymbol{r})= \int f(\boldsymbol{r}')g(\boldsymbol{r}-\boldsymbol{r}')\text{d}\boldsymbol{r}'
+    \label{eq:convolution}
+\end{align}
+cuja transformada de Fourier é dada por 
+\begin{align}
+    \widetilde{h}(\boldsymbol{k}) = \iint f(\boldsymbol{r}')g(\boldsymbol{r}-\boldsymbol{r}')e^{-i \boldsymbol{k}\cdot \boldsymbol{r}}\text{d}\boldsymbol{r}'\text{d}\boldsymbol{r}
+\end{align}
+usando que $e^{i \boldsymbol{k}\cdot \boldsymbol{r}'}e^{-i \boldsymbol{k}\cdot \boldsymbol{r}'} = 1$ podemos separar em duas transformadas distintas 
+\begin{align}
+    \widetilde{h}(\boldsymbol{k}) = \int f(\boldsymbol{r}')e^{-i \boldsymbol{k}\cdot \boldsymbol{r}'} \text{d}\boldsymbol{r}' \int g(\boldsymbol{u})e^{-i \boldsymbol{k}\cdot\boldsymbol{u}}\text{d}\boldsymbol{u}
+\end{align}
+tal que 
+$$
+\widetilde{h}(\boldsymbol{k}) = \widetilde{f}(\boldsymbol{k}) \widetilde{g}(\boldsymbol{k})
+$$
+ou seja, a transformada de Fourier da convolução de duas funções é igual ao produto das transformadas de Fourier das funções individuais.
+
+:::
+
+## Rede recíproca
+
+A família de vetores $\boldsymbol{G}_m$ pode então ser escrita como 
+\begin{align}
+    \boldsymbol{G}_m = m_1 \boldsymbol{b}_1 + m_2 \boldsymbol{b}_2+ m_3 \boldsymbol{b}_3
+\end{align}
+e portanto define um conjunto de pontos infinito que define uma nova rede cristalina denominada **rede recíproca**. 
+
+Desta forma, o conjunto de planos perpendiculares a $\boldsymbol{G}$ podem ser definidos pela relação 
+\begin{align}
+    \boldsymbol{G}_m \cdot \boldsymbol{R}_n = 2\pi m 
+\end{align}
+com $m$ sendo um número inteiro. A distância entre os planos é dada por
+\begin{align}
+    d = \frac{2\pi}{|\boldsymbol{G}_m|}.
+\end{align}
+
+## Teorema de Bloch
+
+Baseado nessa simetria de translação, podemos escrever a função de onda do sistema cristalino como
+\begin{align}
+    \psi(\boldsymbol{r}) = e^{i \boldsymbol{k}\cdot \boldsymbol{r}} u_{\boldsymbol{k}}(\boldsymbol{r})
+\end{align}
+onde $u_{\boldsymbol{k}}(\boldsymbol{r})$ é uma função periódica com a mesma periodicidade da rede cristalina, ou seja, 
+\begin{align}
+    u_{\boldsymbol{k}}(\boldsymbol{r}+\boldsymbol{R}_n) = u_{\boldsymbol{k}}(\boldsymbol{r}).
+\end{align}
+
+Assim, um elétron em um sólido pode ser descrito por uma função de onda que é o produto de uma onda plana com vetor de onda $\boldsymbol{k}$ e uma função periódica com a mesma periodicidade da rede cristalina. Esse resultado é conhecido como o **teorema de Bloch**, que é fundamental para a compreensão do comportamento dos elétrons em sólidos e para a teoria das bandas de energia.

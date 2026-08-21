@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Prof.&nbsp;Elvis do A. Soares">
 
-<title>Química Quântica para Moléculas e Sólidos</title>
+<title>5&nbsp; Sistemas de 2 elétrons – Química Quântica para Moléculas e Sólidos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,26 +26,27 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./prefacio.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a86916a49c48730c794466cf646bb6fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-e96371329041a54aa97349587386818e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../capitulos/6-hartree_fock.html" rel="next">
+<link href="../capitulos/4-schroedinger.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a86916a49c48730c794466cf646bb6fc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-e96371329041a54aa97349587386818e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -86,6 +86,35 @@ MathJax = {
 };
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -267,7 +296,7 @@ MathJax = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Apresentação</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-sistemas_2eletrons.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/5-sistemas_2eletrons.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de 2 elétrons</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -282,20 +311,20 @@ MathJax = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Química Quântica para Moléculas e Sólidos</a> 
+      <a href="../">Química Quântica para Moléculas e Sólidos</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/elvissoares/COQ875-QuimicaQuantica" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Química-Quântica-para-Moléculas-e-Sólidos.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="../Química-Quântica-para-Moléculas-e-Sólidos.pdf">
               <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Química-Quântica-para-Moléculas-e-Sólidos.epub">
+            <a class="dropdown-item sidebar-tools-main-item" href="../Química-Quântica-para-Moléculas-e-Sólidos.epub">
               <i class="bi bi-journal pe-1"></i>
             Download ePub
             </a>
@@ -315,13 +344,13 @@ MathJax = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Apresentação</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prefacio.html" class="sidebar-item-text sidebar-link">
+  <a href="../prefacio.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefácio</span></a>
   </div>
 </li>
@@ -336,25 +365,25 @@ MathJax = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/1-bases_experimentais.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/1-bases_experimentais.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Bases experimentais e teóricas da Química Quântica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/2-postulados.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/2-postulados.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Postulados da mecânica quântica</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/3-matematica.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/3-matematica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Fundamentos Matemáticos da MQ</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/4-schroedinger.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/4-schroedinger.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Equação de Schroedinger e suas aplicações</span></span></a>
   </div>
 </li>
@@ -371,25 +400,25 @@ MathJax = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/5-sistemas_2eletrons.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/5-sistemas_2eletrons.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de 2 elétrons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/6-hartree_fock.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/6-hartree_fock.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/7-dft.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/7-dft.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/8-bases.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/8-bases.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
   </div>
 </li>
@@ -406,25 +435,25 @@ MathJax = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/9-solidos.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/9-solidos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sólidos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/10-bloch.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/10-bloch.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teorema de Bloch</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/11-dft_em_solidos.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/11-dft_em_solidos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">DFT em Sólidos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/12-densidade_de_estados_e_bandas.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/12-densidade_de_estados_e_bandas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></span></a>
   </div>
 </li>
@@ -441,43 +470,43 @@ MathJax = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/13-pyscf.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/13-pyscf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">PySCF</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/14-vasp.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/14-vasp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">VASP</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/15-otimizacao_de_geometrias.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/15-otimizacao_de_geometrias.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Otimização de Geometrias</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/16-adsorcao.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/16-adsorcao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Adsorção</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/17-reacao_quimica.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/17-reacao_quimica.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cálculos de Reações Químicas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/18-vibracoes.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/18-vibracoes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Cálculos de vibrações e espectros vibracionais</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./capitulos/19-calor_especifico.html" class="sidebar-item-text sidebar-link">
+  <a href="../capitulos/19-calor_especifico.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Cálculos termodinâmicos</span></span></a>
   </div>
 </li>
@@ -493,30 +522,30 @@ MathJax = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#apresentação" id="toc-apresentação" class="nav-link active" data-scroll-target="#apresentação">Apresentação</a></li>
+  <li><a href="#átomo-de-hélio" id="toc-átomo-de-hélio" class="nav-link active" data-scroll-target="#átomo-de-hélio"><span class="header-section-number">5.1</span> Átomo de Hélio</a></li>
+  <li><a href="#hamiltoniano-eletrônico" id="toc-hamiltoniano-eletrônico" class="nav-link" data-scroll-target="#hamiltoniano-eletrônico"><span class="header-section-number">5.2</span> Hamiltoniano eletrônico</a></li>
+  <li><a href="#aproximação-de-elétrons-independentes" id="toc-aproximação-de-elétrons-independentes" class="nav-link" data-scroll-target="#aproximação-de-elétrons-independentes"><span class="header-section-number">5.3</span> Aproximação de elétrons independentes</a>
+  <ul class="collapse">
+  <li><a href="#ª-tentativa-de-solução" id="toc-ª-tentativa-de-solução" class="nav-link" data-scroll-target="#ª-tentativa-de-solução"><span class="header-section-number">5.3.1</span> 1ª tentativa de solução</a></li>
+  <li><a href="#ª-tentativa-de-solução-1" id="toc-ª-tentativa-de-solução-1" class="nav-link" data-scroll-target="#ª-tentativa-de-solução-1"><span class="header-section-number">5.3.2</span> 2ª tentativa de solução:</a></li>
+  </ul></li>
+  <li><a href="#molécula-de-hidrogênio" id="toc-molécula-de-hidrogênio" class="nav-link" data-scroll-target="#molécula-de-hidrogênio"><span class="header-section-number">5.4</span> Molécula de Hidrogênio</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/5-sistemas_2eletrons.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-sistemas_2eletrons.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/5-sistemas_2eletrons.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de 2 elétrons</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Química Quântica para Moléculas e Sólidos</h1>
-<p class="subtitle lead">Notas de aula e aplicações computacionais</p>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de 2 elétrons</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Prof.&nbsp;Elvis do A. Soares </p>
-          </div>
-  </div>
     
   
     
@@ -527,10 +556,219 @@ MathJax = {
 </header>
 
 
-<section id="apresentação" class="level1 unnumbered">
-<h1 class="unnumbered">Apresentação</h1>
-<p>Este livro reúne notas de aula, exemplos computacionais e materiais de apoio para o curso de COQ875 - Química Quântica de Moléculas e Sólidos do PEQ/COPPE/UFRJ.</p>
-<p>O objetivo é apresentar os fundamentos da mecânica quântica aplicada a átomos, moléculas e sólidos, combinando teoria, exercícios e exemplos computacionais em Python.</p>
+<section id="átomo-de-hélio" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="átomo-de-hélio"><span class="header-section-number">5.1</span> Átomo de Hélio</h2>
+<p>O átomo de hélio é constituído por um núcleo de carga <span class="math inline">\(+2e\)</span> e dois elétrons. Considerando explicitamente o movimento do núcleo, as interações elétron–núcleo e a interação entre os dois elétrons, a equação de Schrödinger independente do tempo pode ser escrita como</p>
+<p><span class="math display">\[\begin{align}
+&amp;\left[ \frac{\hat{\boldsymbol{P}}^2}{2M} + \frac{\hat{\boldsymbol{p}}_1^2}{2m_e} +\frac{\hat{\boldsymbol{p}}_2^2}{2m_e} \right. \nonumber \\
+&amp;\left. - \frac{2e^2}{4\pi\epsilon_0|\boldsymbol{r}_1-\boldsymbol{R}|} - \frac{2e^2}{4\pi\epsilon_0|\boldsymbol{r}_2-\boldsymbol{R}|} + \frac{e^2}{4\pi\epsilon_0|\boldsymbol{r}_1-\boldsymbol{r}_2|}\right]\ket{\Psi} = E_T\ket{\Psi}.
+\end{align}\]</span></p>
+<p>Nessa expressão, <span class="math inline">\(\hat{\boldsymbol{R}}\)</span> e <span class="math inline">\(\hat{\boldsymbol{P}}\)</span> representam, respectivamente, a posição e o operador momento linear do núcleo. Analogamente, <span class="math inline">\(\hat{\boldsymbol{r}}_i\)</span> e <span class="math inline">\(\hat{\boldsymbol{p}}_i\)</span> representam a posição e o momento linear do elétron <span class="math inline">\(i\)</span>.</p>
+<p>O primeiro termo corresponde à energia cinética do núcleo, enquanto os dois termos seguintes representam as energias cinéticas dos elétrons. Os dois termos atrativos correspondem às interações eletrostáticas entre o núcleo e cada elétron, e o último termo descreve a repulsão eletrostática entre os elétrons.</p>
+<p>Para o átomo de hélio, o número atômico é <span class="math inline">\(Z=2\)</span>, e <span class="math inline">\(M\)</span> representa a massa do núcleo.</p>
+<p>O estado do sistema é descrito por uma função de onda <span class="math display">\[
+\begin{aligned}
+\Psi(\boldsymbol{r}_1,\boldsymbol{r}_2,\boldsymbol{R}) &amp;=
+\braket{\boldsymbol{r}_1,\boldsymbol{r}_2,\boldsymbol{R}|\Psi}
+\end{aligned}
+\]</span> que depende das coordenadas espaciais dos dois elétrons e do núcleo. A energia total do sistema é representada por <span class="math inline">\(E_T\)</span>.</p>
+</section>
+<section id="hamiltoniano-eletrônico" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="hamiltoniano-eletrônico"><span class="header-section-number">5.2</span> Hamiltoniano eletrônico</h2>
+<p>Podemos introduzir um sistema de coordenadas relativas ao núcleo por meio das transformações</p>
+<p><span class="math display">\[
+\begin{align}
+\boldsymbol{R}' &amp;= \boldsymbol{R}-\boldsymbol{R}=0,\\
+\boldsymbol{r}_i' &amp;= \boldsymbol{r}_i-\boldsymbol{R}.
+\end{align}
+\]</span></p>
+<p>Essa escolha corresponde a utilizar o núcleo como origem do sistema de coordenadas. Desprezando, por enquanto, as correções associadas à massa finita do núcleo, podemos separar o movimento translacional global do movimento eletrônico e escrever a função de onda total na forma</p>
+<p><span class="math display">\[
+\begin{aligned}
+\Psi(\boldsymbol{r}_1,\boldsymbol{r}_2,\boldsymbol{R}) &amp;=
+\braket{\boldsymbol{r}_1,\boldsymbol{r}_2,\boldsymbol{R}|\Psi}\\
+&amp;=
+C e^{i\boldsymbol{P}\cdot\boldsymbol{R}/\hbar}
+\Psi(\boldsymbol{r}_1',\boldsymbol{r}_2').
+\end{aligned}
+\]</span></p>
+<p>A partir deste ponto, omitiremos as linhas que identificam as coordenadas relativas. Nesse sistema de coordenadas, a equação de Schrödinger eletrônica assume a forma <span class="math display">\[\begin{align}
+&amp;\left[ -\frac{\hbar^2}{2m_e}\nabla_1^2 -\frac{\hbar^2}{2m_e}\nabla_2^2 -\frac{2e^2}{4\pi\epsilon_0r_1} -\frac{2e^2}{4\pi\epsilon_0r_2} \right.\\
+&amp;\left.+\frac{e^2}{4\pi\epsilon_0|\boldsymbol{r}_1-\boldsymbol{r}_2|} \right] \Psi(\boldsymbol{r}_1,\boldsymbol{r}_2) = E\Psi(\boldsymbol{r}_1,\boldsymbol{r}_2),
+\end{align}
+\]</span> onde <span class="math display">\[
+E=E_T-\frac{P^2}{2M}
+\]</span> é a energia interna do átomo, isto é, a energia total sem a contribuição associada à translação global.</p>
+<p>O raio de Bohr é definido por <span class="math display">\[
+a_0=\frac{4\pi\epsilon_0\hbar^2}{m_e e^2} \approx 0{,}5292\ \overset{\circ}{\text{A}},
+\]</span> enquanto a energia de Hartree é dada por <span class="math display">\[
+1\ \mathrm{Ha}=\frac{e^2}{4\pi\epsilon_0a_0} \approx 27{,}2114\ \mathrm{eV}.
+\]</span></p>
+<p>Nas chamadas <strong>unidades atômicas</strong>, adotamos <span class="math display">\[
+\hbar=m_e=e=4\pi\epsilon_0=1.
+\]</span></p>
+<p>Consequentemente, as distâncias são medidas em unidades de <span class="math inline">\(a_0\)</span>, e as energias são medidas em Hartree. O Hamiltoniano eletrônico do átomo de hélio pode, então, ser escrito como <span id="eq-hamiltoniano-helio"><span class="math display">\[
+\hat{H}=-\frac{1}{2}\nabla_1^2 -\frac{1}{2}\nabla_2^2 -\frac{2}{r_1} -\frac{2}{r_2}
++\frac{1}{|\boldsymbol{r}_1-\boldsymbol{r}_2|},
+\tag{5.1}\]</span></span> e pode ser decomposto na forma <span class="math display">\[
+\hat{H}=\hat{h}_1+\hat{h}_2+\hat{w}_{12},
+\]</span> onde <span id="eq-hamiltoniano-helio-um-eletron"><span class="math display">\[
+\hat{h}_i=-\frac{1}{2}\nabla_i^2-\frac{2}{r_i}
+\tag{5.2}\]</span></span> e <span id="eq-interacao-eletron-eletron"><span class="math display">\[
+\hat{w}_{12}= \frac{1}{|\boldsymbol{r}_1-\boldsymbol{r}_2|}.
+\tag{5.3}\]</span></span></p>
+<p>Os operadores <span class="math inline">\(\hat{h}_i\)</span> são Hamiltonianos de um elétron sujeito ao campo eletrostático do núcleo, enquanto <span class="math inline">\(\hat{w}_{12}\)</span> descreve a interação entre os dois elétrons.</p>
+<p>O termo de interação elétron–elétron depende simultaneamente das coordenadas <span class="math inline">\(\boldsymbol{r}_1\)</span> e <span class="math inline">\(\boldsymbol{r}_2\)</span>. Por esse motivo, a equação de Schrödinger do átomo de hélio não é separável em duas equações independentes de um elétron e não possui solução analítica exata simples.</p>
+</section>
+<section id="aproximação-de-elétrons-independentes" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="aproximação-de-elétrons-independentes"><span class="header-section-number">5.3</span> Aproximação de elétrons independentes</h2>
+<p>Uma primeira aproximação consiste em supor que a função de onda espacial dos dois elétrons possa ser escrita como um produto de funções de onda de um elétron:</p>
+<p><span id="eq-aproximacao-produto-helio"><span class="math display">\[
+\Psi(\boldsymbol{r}_1,\boldsymbol{r}_2)= \psi(\boldsymbol{r}_1)\psi(\boldsymbol{r}_2).
+\tag{5.4}\]</span></span></p>
+<p>Para um átomo hidrogenoide com carga nuclear <span class="math inline">\(Z\)</span>, a função de onda normalizada do orbital <span class="math inline">\(1s\)</span>, em unidades atômicas, é</p>
+<p><span id="eq-orbital-hidrogenoide-1s"><span class="math display">\[
+\psi_{1s}(\boldsymbol{r})= \left(\frac{Z^3}{\pi}\right)^{1/2}
+e^{-Zr}.
+\tag{5.5}\]</span></span></p>
+<p>Para <span class="math inline">\(Z=2\)</span>, essa seria a solução exata para cada elétron do átomo de hélio caso a interação <span class="math inline">\(\hat{w}_{12}\)</span> fosse desprezada. Entretanto, como os elétrons interagem entre si, o produto definido na <a href="#eq-aproximacao-produto-helio" class="quarto-xref">Equation&nbsp;<span>5.4</span></a> constitui apenas uma aproximação para a função de onda eletrônica.</p>
+<p>Como veremos adiante, os elétrons são férmions e, portanto, a função de onda eletrônica total deve ser antissimétrica com relação à troca das coordenadas completas dos dois elétrons. No estado fundamental do átomo de hélio, a função de onda de spin é um estado singleto antissimétrico. Consequentemente, a parte espacial da função de onda é simétrica e pode ser representada pelo produto da <a href="#eq-aproximacao-produto-helio" class="quarto-xref">Equation&nbsp;<span>5.4</span></a>.</p>
+<section id="ª-tentativa-de-solução" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="ª-tentativa-de-solução"><span class="header-section-number">5.3.1</span> 1ª tentativa de solução</h3>
+<p>Na primeira aproximação, empregamos diretamente orbitais hidrogenoides com carga nuclear <span class="math inline">\(Z=2\)</span>. A função de onda espacial tentativa é, portanto,</p>
+<p><span id="eq-funcao-tentativa-helio-primeira"><span class="math display">\[
+\Psi^{(1)}(\boldsymbol{r}_1,\boldsymbol{r}_2)= \frac{8}{\pi} e^{-2(r_1+r_2)}.
+\tag{5.6}\]</span></span></p>
+<p>Essa função está normalizada, pois é construída como o produto de dois orbitais <span class="math inline">\(1s\)</span> normalizados: <span class="math display">\[
+\braket{\Psi^{(1)}|\Psi^{(1)}}=1.
+\]</span></p>
+<p>Como cada orbital é um autoestado do Hamiltoniano hidrogenoide com <span class="math inline">\(Z=2\)</span>, o valor esperado de cada Hamiltoniano de um elétron é</p>
+<p><span class="math display">\[
+\begin{aligned}
+\braket{\hat{h}_i} &amp;= \braket{\Psi^{(1)}|\hat{h}_i|\Psi^{(1)}}\\
+&amp;= \iint \Psi^{(1)*}(\boldsymbol{r}_1,\boldsymbol{r}_2) \left( -\frac{1}{2}\nabla_i^2-\frac{2}{r_i} \right) \Psi^{(1)}(\boldsymbol{r}_1,\boldsymbol{r}_2) \mathrm{d}\boldsymbol{r}_1 \mathrm{d}\boldsymbol{r}_2\\
+&amp;= -2\ \mathrm{Ha}.
+\end{aligned}
+\]</span></p>
+<p>O valor esperado da interação entre os elétrons é <span class="math display">\[
+\begin{aligned}
+\braket{\hat{w}_{12}} &amp;= \braket{\Psi^{(1)}|\hat{w}_{12}|\Psi^{(1)}}\\
+&amp;= \iint \Psi^{(1)*}(\boldsymbol{r}_1,\boldsymbol{r}_2) \frac{1}{|\boldsymbol{r}_1-\boldsymbol{r}_2|}  \Psi^{(1)}(\boldsymbol{r}_1,\boldsymbol{r}_2)
+\mathrm{d}\boldsymbol{r}_1 \mathrm{d}\boldsymbol{r}_2\\
+&amp;=\frac{5}{4}\ \mathrm{Ha}.
+\end{aligned}
+\]</span></p>
+<p>Dessa forma, a energia eletrônica aproximada é</p>
+<p><span class="math display">\[
+\begin{aligned}
+E^{(1)} &amp;= \braket{\Psi^{(1)}|\hat{H}|\Psi^{(1)}}\\
+&amp;= \braket{\hat{h}_1} + \braket{\hat{h}_2} + \braket{\hat{w}_{12}}\\
+&amp;= -2-2+\frac{5}{4}\\
+&amp;= -\frac{11}{4}\ \mathrm{Ha}.
+\end{aligned}
+\]</span></p>
+<p>Em elétron-volts, <span class="math display">\[
+E^{(1)}=-2{,}75\ \mathrm{Ha}= -74{,}8314\ \mathrm{eV}.
+\]</span></p>
+<p>Esse resultado apresenta um erro de aproximadamente 5% em relação à energia experimental do estado fundamental. O resultado é menos negativo porque a função de onda tentativa não descreve adequadamente a reorganização da densidade eletrônica provocada pela repulsão entre os elétrons.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Princípio variacional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Seja <span class="math inline">\(\ket{\Psi_0}\)</span> o estado fundamental de um Hamiltoniano <span class="math inline">\(\hat{H}\)</span>, com energia <span class="math inline">\(E_0\)</span>, de modo que <span class="math display">\[
+\hat{H}\ket{\Psi_0} = E_0\ket{\Psi_0}.
+\]</span></p>
+<p>Para qualquer função de onda tentativa normalizável <span class="math inline">\(\ket{\psi}\)</span>, vale a desigualdade <span id="eq-principio-variacional"><span class="math display">\[
+\frac{\braket{\psi|\hat{H}|\psi}}{\braket{\psi|\psi}}\geq E_0.
+\tag{5.7}\]</span></span></p>
+<p>A igualdade é satisfeita quando <span class="math inline">\(\ket{\psi}\)</span> pertence ao subespaço associado ao estado fundamental. Para um estado fundamental não degenerado, isso significa que <span class="math inline">\(\ket{\psi}\)</span> deve ser proporcional a <span class="math inline">\(\ket{\Psi_0}\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Demonstração do princípio variacional
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Consideremos conhecido o conjunto completo de autoestados ortonormais de <span class="math inline">\(\hat{H}\)</span>, tal que <span class="math display">\[
+\hat{H}\ket{\Psi_n} = E_n\ket{\Psi_n},
+\]</span> com <span class="math display">\[
+\braket{\Psi_n|\Psi_m} = \delta_{nm},\quad \text{e}\quad \sum_{n=0}^{\infty} \ket{\Psi_n}\bra{\Psi_n} = \mathbb{I}.
+\]</span></p>
+<p>Podemos expandir uma função de onda tentativa arbitrária <span class="math inline">\(\ket{\psi}\)</span> nessa base como <span class="math display">\[
+s\ket{\psi}= \sum_{n=0}^{\infty} c_n\ket{\Psi_n},\quad \text{onde}\quad c_n=\braket{\Psi_n|\psi}.
+\]</span> são os coeficientes de expansão. O valor esperado da energia é, então, <span class="math display">\[ \frac{\braket{\psi|\hat{H}|\psi}}{\braket{\psi|\psi}} = \frac{ \displaystyle \sum_{n=0}^{\infty}|c_n|^2E_n}{\displaystyle\sum_{n=0}^{\infty}|c_n|^2}.
+\]</span></p>
+<p>Subtraindo <span class="math inline">\(E_0\)</span>, obtemos <span class="math display">\[
+\frac{\braket{\psi|\hat{H}|\psi}} {\braket{\psi|\psi}} - E_0 = \frac{\displaystyle \sum_{n=0}^{\infty} |c_n|^2(E_n-E_0)}{\displaystyle \sum_{n=0}^{\infty} |c_n|^2}.
+\]</span></p>
+<p>Como <span class="math inline">\(E_n-E_0\geq 0\)</span> para todo <span class="math inline">\(n\)</span>, o lado direito é não negativo. Logo,</p>
+<p><span class="math display">\[
+\frac{\braket{\psi|\hat{H}|\psi}}
+{\braket{\psi|\psi}}
+\geq E_0.
+\]</span></p>
+<p>Para um estado fundamental não degenerado, a igualdade <span class="math inline">\(\langle \hat{H} \rangle = E_0\)</span> somente ocorrerá quando <span class="math inline">\(c_n=0\)</span>, para todo <span class="math inline">\(n\neq 0\)</span>. Isto é, <span class="math inline">\(\ket{\psi} \propto \ket{\Psi_0}\)</span>, ou seja, a função de onda tentativa é proporcional ao estado fundamental exato.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Princípio variacional com parâmetros variacionais
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se a função de onda tentativa depender de um ou mais parâmetros variacionais, representados genericamente por <span class="math inline">\(\lambda\)</span>, podemos escrever <span class="math display">\[
+\ket{\psi}=\ket{\psi(\lambda)}.
+\]</span></p>
+<p>A energia variacional correspondente é <span class="math display">\[
+E(\lambda)=\frac{\braket{\psi(\lambda)|\hat{H}|\psi(\lambda)}}{\braket{\psi(\lambda)|\psi(\lambda)}}.
+\]</span></p>
+<p>O melhor valor do parâmetro dentro da família de funções considerada é obtido minimizando-se <span class="math inline">\(E(\lambda)\)</span>: <span class="math display">\[
+\left.\frac{\mathrm{d}E(\lambda)}{\mathrm{d}\lambda}\right|_{\lambda=\lambda_*}=
+0,
+\]</span> com a condição adicional <span class="math display">\[
+\left.\frac{\mathrm{d}^2E(\lambda)}{\mathrm{d}\lambda^2}\right|_{\lambda=\lambda_*}
+&gt;
+0.
+\]</span></p>
+<p>Mesmo após a otimização, o princípio variacional continua garantindo que <span class="math display">\[
+E(\lambda_*)\geq E_0.
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="ª-tentativa-de-solução-1" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="ª-tentativa-de-solução-1"><span class="header-section-number">5.3.2</span> 2ª tentativa de solução:</h3>
+<p>Desta forma, usando o teorema variacional podemos escrever uma função de onda tentativa baseada na <a href="#eq-orbital-hidrogenoide-1s" class="quarto-xref">Equation&nbsp;<span>5.5</span></a> mas usando uma função de 1 elétron generalizado da forma <span id="eq-variational-He"><span class="math display">\[
+\psi(\boldsymbol{r}) = \left(\frac{\lambda^3}{\pi}\right)^{1/2} e^{-\lambda r}.
+\tag{5.8}\]</span></span> sendo <span class="math inline">\(\lambda\)</span> o parâmetro variacional. Com essa função de onda temos que<br>
+<span class="math display">\[
+\braket{\hat{h}_i} = \frac{1}{2}( \lambda^2 - 4\lambda) \qquad \text{e} \qquad \braket{\hat{w}_{12}}= \frac{5}{8}\lambda,
+\]</span> e o valor esperado do Hamiltoniano total será <span class="math display">\[
+\braket{\hat{H}} = \braket{\hat{h}_1} + \braket{\hat{h}_2} + \braket{\hat{w}_{12}} = \lambda^2-\frac{27}{8}\lambda
+\]</span> cujo valor ótimo do parâmetro será <span class="math inline">\(\lambda_*=27/16=1.6875\)</span>. Lembrando que <span class="math inline">\(\lambda\)</span> tem caráter de carga do núcleo no caso de um átomo hidrogenóide, podemos dizer que esse valor de <span class="math inline">\(\lambda\)</span> representa uma carga blindada do núcleo do átomo de He que os elétrons interagem. Nesse caso temos como valor esperado da energia <span class="math inline">\(\braket{\hat{H}}_*=-2.84766\ \text{Ha}=-77.4887\)</span> eV, que agora nos fornece 1,8% de erro em relação ao valor experimental.</p>
+<p>Veremos mais adiante que uma escolha melhor para a função de onda do átomo de He pode ser uma combinação de diversas funções de onda de Slater com parâmetros <span class="math inline">\(\lambda_i\)</span> distintos.</p>
+</section>
+</section>
+<section id="molécula-de-hidrogênio" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="molécula-de-hidrogênio"><span class="header-section-number">5.4</span> Molécula de Hidrogênio</h2>
 
 
 </section>
@@ -951,10 +1189,13 @@ MathJax = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../capitulos/4-schroedinger.html" class="pagination-link" aria-label="Equação de Schroedinger e suas aplicações">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Equação de Schroedinger e suas aplicações</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prefacio.html" class="pagination-link" aria-label="Prefácio">
-        <span class="nav-page-text">Prefácio</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/6-hartree_fock.html" class="pagination-link" aria-label="Método de Hartree-Fock">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -966,7 +1207,7 @@ MathJax = {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/5-sistemas_2eletrons.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>

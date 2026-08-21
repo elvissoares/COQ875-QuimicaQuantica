@@ -31,13 +31,25 @@ book:
         - capitulos/4-schroedinger.qmd
     - part: "Estrutura Eletrônica de Átomos e Moléculas"
       chapters:
-        - capitulos/5-atomo_de_helio.qmd
-        - capitulos/6-molecula_de_hidrogenio.qmd
-        - capitulos/7-problema_de_muitos_eletrons.qmd
-        - capitulos/8-hartree_fock.qmd
-        - capitulos/9-bases.qmd
-        - capitulos/10-dft.qmd
-        - capitulos/11-pyscf.qmd
+        - capitulos/5-sistemas_2eletrons.qmd
+        - capitulos/6-hartree_fock.qmd
+        - capitulos/7-dft.qmd
+        - capitulos/8-bases.qmd
+    - part: "Estrutura Eletrônica de Sólidos"
+      chapters:
+        - capitulos/9-solidos.qmd
+        - capitulos/10-bloch.qmd
+        - capitulos/11-dft_em_solidos.qmd
+        - capitulos/12-densidade_de_estados_e_bandas.qmd
+    - part: "Aplicações Computacionais"
+      chapters:
+        - capitulos/13-pyscf.qmd
+        - capitulos/14-vasp.qmd
+        - capitulos/15-otimizacao_de_geometrias.qmd
+        - capitulos/16-adsorcao.qmd
+        - capitulos/17-reacao_quimica.qmd
+        - capitulos/18-vibracoes.qmd
+        - capitulos/19-calor_especifico.qmd
 
   downloads: [pdf, epub]
   repo-url: https://github.com/elvissoares/COQ875-QuimicaQuantica
@@ -76,7 +88,7 @@ format:
     pdf-engine: pdflatex
     include-in-header:
       text: |
-        \usepackage{amsmath}
+        \usepackage{amsmath,amssymb,mathrsfs}
         \newcommand{\ket}[1]{\left|#1\right\rangle}
         \newcommand{\bra}[1]{\left\langle#1\right|}
         \newcommand{\braket}[1]{\left\langle#1\right\rangle}

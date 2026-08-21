@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>8&nbsp; Método de Hartree-Fock – Química Quântica para Moléculas e Sólidos</title>
+<title>6&nbsp; Método de Hartree-Fock – Química Quântica para Moléculas e Sólidos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../capitulos/9-bases.html" rel="next">
-<link href="../capitulos/7-problema_de_muitos_eletrons.html" rel="prev">
+<link href="../capitulos/7-dft.html" rel="next">
+<link href="../capitulos/5-sistemas_2eletrons.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -296,7 +296,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/8-hartree_fock.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-sistemas_2eletrons.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/6-hartree_fock.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -400,44 +400,114 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/5-atomo_de_helio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Átomo de Hélio</span></span></a>
+  <a href="../capitulos/5-sistemas_2eletrons.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de 2 elétrons</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/6-molecula_de_hidrogenio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Molécula de Hidrogênio</span></span></a>
+  <a href="../capitulos/6-hartree_fock.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/7-problema_de_muitos_eletrons.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Problema Geral de Muitos Elétrons</span></span></a>
+  <a href="../capitulos/7-dft.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/8-hartree_fock.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></span></a>
+  <a href="../capitulos/8-bases.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Estrutura Eletrônica de Sólidos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/9-solidos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sólidos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/9-bases.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span></a>
+  <a href="../capitulos/10-bloch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teorema de Bloch</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/10-dft.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span></a>
+  <a href="../capitulos/11-dft_em_solidos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">DFT em Sólidos</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/11-pyscf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">PySCF</span></span></a>
+  <a href="../capitulos/12-densidade_de_estados_e_bandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Estrutura Eletrônica de Sólidos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Aplicações Computacionais</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/13-pyscf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">PySCF</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/14-vasp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">VASP</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/15-otimizacao_de_geometrias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Otimização de Geometrias</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/16-adsorcao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Adsorção</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/17-reacao_quimica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cálculos de Reações Químicas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/18-vibracoes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Cálculos de vibrações e espectros vibracionais</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../capitulos/19-calor_especifico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Cálculos termodinâmicos</span></span></a>
   </div>
 </li>
       </ul>
@@ -452,27 +522,29 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#determinante-de-slater" id="toc-determinante-de-slater" class="nav-link active" data-scroll-target="#determinante-de-slater"><span class="header-section-number">8.1</span> Determinante de Slater</a></li>
-  <li><a href="#regras-de-slater-condon" id="toc-regras-de-slater-condon" class="nav-link" data-scroll-target="#regras-de-slater-condon"><span class="header-section-number">8.2</span> Regras de Slater-Condon</a></li>
-  <li><a href="#equações-de-hartree-fock" id="toc-equações-de-hartree-fock" class="nav-link" data-scroll-target="#equações-de-hartree-fock"><span class="header-section-number">8.3</span> Equações de Hartree-Fock</a></li>
-  <li><a href="#método-auto-consistente" id="toc-método-auto-consistente" class="nav-link" data-scroll-target="#método-auto-consistente"><span class="header-section-number">8.4</span> Método auto-consistente</a></li>
-  <li><a href="#energia-total" id="toc-energia-total" class="nav-link" data-scroll-target="#energia-total"><span class="header-section-number">8.5</span> Energia Total</a></li>
-  <li><a href="#densidade-eletrônica" id="toc-densidade-eletrônica" class="nav-link" data-scroll-target="#densidade-eletrônica"><span class="header-section-number">8.6</span> Densidade Eletrônica</a></li>
-  <li><a href="#correlação-eletrônica" id="toc-correlação-eletrônica" class="nav-link" data-scroll-target="#correlação-eletrônica"><span class="header-section-number">8.7</span> Correlação Eletrônica</a>
+  <li><a href="#problema-geral-de-muitos-elétrons" id="toc-problema-geral-de-muitos-elétrons" class="nav-link active" data-scroll-target="#problema-geral-de-muitos-elétrons"><span class="header-section-number">6.1</span> Problema Geral de Muitos Elétrons</a></li>
+  <li><a href="#método-de-hartree-fock" id="toc-método-de-hartree-fock" class="nav-link" data-scroll-target="#método-de-hartree-fock"><span class="header-section-number">6.2</span> Método de Hartree-Fock</a></li>
+  <li><a href="#determinante-de-slater" id="toc-determinante-de-slater" class="nav-link" data-scroll-target="#determinante-de-slater"><span class="header-section-number">6.3</span> Determinante de Slater</a></li>
+  <li><a href="#regras-de-slater-condon" id="toc-regras-de-slater-condon" class="nav-link" data-scroll-target="#regras-de-slater-condon"><span class="header-section-number">6.4</span> Regras de Slater-Condon</a></li>
+  <li><a href="#equações-de-hartree-fock" id="toc-equações-de-hartree-fock" class="nav-link" data-scroll-target="#equações-de-hartree-fock"><span class="header-section-number">6.5</span> Equações de Hartree-Fock</a></li>
+  <li><a href="#método-auto-consistente" id="toc-método-auto-consistente" class="nav-link" data-scroll-target="#método-auto-consistente"><span class="header-section-number">6.6</span> Método auto-consistente</a></li>
+  <li><a href="#energia-total" id="toc-energia-total" class="nav-link" data-scroll-target="#energia-total"><span class="header-section-number">6.7</span> Energia Total</a></li>
+  <li><a href="#densidade-eletrônica" id="toc-densidade-eletrônica" class="nav-link" data-scroll-target="#densidade-eletrônica"><span class="header-section-number">6.8</span> Densidade Eletrônica</a></li>
+  <li><a href="#correlação-eletrônica" id="toc-correlação-eletrônica" class="nav-link" data-scroll-target="#correlação-eletrônica"><span class="header-section-number">6.9</span> Correlação Eletrônica</a>
   <ul class="collapse">
-  <li><a href="#correlação-dinâmica-e-estática" id="toc-correlação-dinâmica-e-estática" class="nav-link" data-scroll-target="#correlação-dinâmica-e-estática"><span class="header-section-number">8.7.1</span> Correlação dinâmica e estática</a></li>
-  <li><a href="#métodos-pós-hartree-fock" id="toc-métodos-pós-hartree-fock" class="nav-link" data-scroll-target="#métodos-pós-hartree-fock"><span class="header-section-number">8.7.2</span> Métodos pós-Hartree-Fock</a></li>
+  <li><a href="#correlação-dinâmica-e-estática" id="toc-correlação-dinâmica-e-estática" class="nav-link" data-scroll-target="#correlação-dinâmica-e-estática"><span class="header-section-number">6.9.1</span> Correlação dinâmica e estática</a></li>
+  <li><a href="#métodos-pós-hartree-fock" id="toc-métodos-pós-hartree-fock" class="nav-link" data-scroll-target="#métodos-pós-hartree-fock"><span class="header-section-number">6.9.2</span> Métodos pós-Hartree-Fock</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/8-hartree_fock.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/6-hartree_fock.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-atomo_de_helio.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/8-hartree_fock.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../capitulos/5-sistemas_2eletrons.html">Estrutura Eletrônica de Átomos e Moléculas</a></li><li class="breadcrumb-item"><a href="../capitulos/6-hartree_fock.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Método de Hartree-Fock</span></h1>
 </div>
 
 
@@ -489,9 +561,29 @@ window.Quarto = {
 </header>
 
 
-<p>Usando o <a href="5-atomo_de_helio.html#eq-principio-variacional" class="quarto-xref">Equation&nbsp;<span>5.7</span></a>, podemos escolher uma função de onda eletrônica tentativa <span class="math inline">\(\ket{\Psi_e}\)</span> tal que o valor esperado para o Hamiltoniano eletrônico molecular <span class="math inline">\(\hat{H}_e\)</span> possa ser calculado como <span class="math display">\[
+<section id="problema-geral-de-muitos-elétrons" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="problema-geral-de-muitos-elétrons"><span class="header-section-number">6.1</span> Problema Geral de Muitos Elétrons</h2>
+<p>O caso geral de um sistema de <span class="math inline">\(M\)</span> núcleos atômicos e <span class="math inline">\(N\)</span> elétrons interagindo entre si pode ser tratado através da Equação de Schrodinger escrita na forma <span class="math display">\[\begin{aligned}
+    &amp;\left[ \sum_{A=1}^M \frac{\hat{P}_A^2}{2 M_A} + \sum_{i=1}^N\frac{\hat{p}_\text{i}^2}{2 m_e} - \sum_{A=1}^M\sum_{i=1}^N \frac{Z_A e^2}{(4\pi \epsilon_0)|\boldsymbol{r}_i-\boldsymbol{R}_A|} \right. \nonumber \\
+    &amp; \left.+ \frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{e^2}{(4\pi \epsilon_0)|\boldsymbol{r}_i-\boldsymbol{r}_j|} + \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B e^2}{(4\pi \epsilon_0)|\boldsymbol{R}_A-\boldsymbol{R}_B|}\right]\ket{\Psi} = E_T \ket{\Psi}
+\end{aligned}\]</span> sendo <span class="math inline">\(Z_A\)</span> e <span class="math inline">\(M_A\)</span> o número atômico e a massa atômica do núcleo <span class="math inline">\(A\)</span>, respectivamente.</p>
+<p>Usando a <strong>aproximação de Born-Oppenheimer</strong>, podemos separar a dinâmica dos núcleos da dinâmica dos elétrons tal que <span class="math display">\[\begin{align}
+    \Psi(\{\boldsymbol{r}_i\},\{\boldsymbol{R}_A\}) = \sum_e \Psi_e(\{\boldsymbol{r}_i\}) \Psi_n(\{\boldsymbol{R}_A\})
+\end{align}\]</span> onde a função eletrônica <span class="math inline">\(\Psi_e(\{\boldsymbol{r}_i\})\)</span> depende parametricamente do conjunto de posições dos núcleos <span class="math inline">\(\{\boldsymbol{R}_A\}\)</span> e <span class="math inline">\(\Psi_n(\{\boldsymbol{R}_A\})\)</span> é a função de onda dos núcleos.</p>
+<p>A equação de Schrodinger para a parte eletrônica, <em>em unidades atômicas</em>, fica então na forma <span id="eq-problema_eletronico"><span class="math display">\[\begin{aligned}
+    &amp;\left[ -\frac{1}{2}\sum_{i=1}^N\nabla_i^2 - \sum_{A=1}^M\sum_{i=1}^N \frac{Z_A}{|\boldsymbol{r}_i-\boldsymbol{R}_A|} + \frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|} \right.\nonumber \\
+    &amp; \left.+ \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}\right]\Psi_e(\{\boldsymbol{r}_i\}) = E_\text{ele}(\{\boldsymbol{R}_A\}) \Psi_e(\{\boldsymbol{r}_i\})
+\end{aligned} \tag{6.1}\]</span></span> onde <span class="math inline">\(E_\text{ele}(\{\boldsymbol{R}_A\})\)</span> é a energia eletrônica que depende parametricamente da posição dos núcleos atômicos.</p>
+<p>A equação de Schrodinger que representa a dinâmica dos núcleos é escrita como <span id="eq-problema_nucleos"><span class="math display">\[\begin{aligned}
+    \left[ -\frac{1}{2}\sum_{A=1}^M\frac{\nabla_A^2}{M_A} + E_\text{ele}(\{\boldsymbol{R}_A\}) \right]\Psi_n(\{\boldsymbol{R}_A\}) = E_T \Psi_n(\{\boldsymbol{R}_A\})
+\end{aligned} \tag{6.2}\]</span></span> sendo <span class="math inline">\(E_T\)</span> a energia total do sistema.</p>
+<p>Nosso intuito é resolver a <a href="#eq-problema_eletronico" class="quarto-xref">Equation&nbsp;<span>6.1</span></a> que é o problema eletrônico de diversos sistemas em Química Quântica. Em seguida, voltaremos a <a href="#eq-problema_nucleos" class="quarto-xref">Equation&nbsp;<span>6.2</span></a> afim de analisar como as configurações eletrônicas das moléculas podem determinar seus estados de vibração e rotação.</p>
+</section>
+<section id="método-de-hartree-fock" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="método-de-hartree-fock"><span class="header-section-number">6.2</span> Método de Hartree-Fock</h2>
+<p>Usando o <a href="5-sistemas_2eletrons.html#eq-principio-variacional" class="quarto-xref">Equation&nbsp;<span>5.7</span></a>, podemos escolher uma função de onda eletrônica tentativa <span class="math inline">\(\ket{\Psi_e}\)</span> tal que o valor esperado para o Hamiltoniano eletrônico molecular <span class="math inline">\(\hat{H}_e\)</span> possa ser calculado como <span class="math display">\[
 E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
-\]</span> onde <span class="math inline">\(E_0\)</span> é a energia do estado fundamental eletrônico e <span class="math inline">\(\hat{H}_e\)</span> é o Hamiltoniano eletrônico molecular definido, a partir da <a href="7-problema_de_muitos_eletrons.html#eq-problema_eletronico" class="quarto-xref">Equation&nbsp;<span>7.1</span></a>, como <span class="math display">\[
+\]</span> onde <span class="math inline">\(E_0\)</span> é a energia do estado fundamental eletrônico e <span class="math inline">\(\hat{H}_e\)</span> é o Hamiltoniano eletrônico molecular definido, a partir da <a href="#eq-problema_eletronico" class="quarto-xref">Equation&nbsp;<span>6.1</span></a>, como <span class="math display">\[
 \hat{H}_e =  \sum_{i=1}^N \hat{h}_i + \frac{1}{2}\sum_{i=1}^N\sum_{j\neq i}^N \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|}
 \]</span> onde <span class="math inline">\(\hat{h}_i\)</span> é o operador de 1 elétron que inclui a energia cinética do elétron e a interação coulombiana elétron-núcleo, escrito na forma <span class="math display">\[
     \hat{h}_i=-\frac{1}{2}\nabla_i^2 - \sum_{A=1}^M \frac{Z_A}{|\boldsymbol{r}_i-\boldsymbol{R}_A|},
@@ -501,8 +593,9 @@ E_0 \leq \braket{\Psi_e|\hat{H}_e|\Psi_e}
 <p>O potencial de interação núcleo-núcleo <span class="math inline">\(V_{nn}\)</span> dado por <span class="math display">\[
 V_{nn} = \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}
 \]</span> não é incluído no Hamiltoniano eletrônico, pois ele não depende das coordenadas eletrônicas e portanto, não afeta a função de onda eletrônica. No entanto, o termo <span class="math inline">\(V_{nn}\)</span> deve ser adicionado à energia total da molécula, como veremos mais adiante.</p>
-<section id="determinante-de-slater" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="determinante-de-slater"><span class="header-section-number">8.1</span> Determinante de Slater</h2>
+</section>
+<section id="determinante-de-slater" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="determinante-de-slater"><span class="header-section-number">6.3</span> Determinante de Slater</h2>
 <p>A função de onda eletrônica de muitos elétrons <span class="math inline">\(\ket{\Psi_e}\)</span> na base de posições e spins deve ser escrita como <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N)\)</span> onde <span class="math inline">\(\boldsymbol{x}_i=(\boldsymbol{r}_i,\sigma_i)\)</span> é uma variável que representa conjuntamente a posição <span class="math inline">\(\boldsymbol{r}_i\)</span> e o spin <span class="math inline">\(\sigma_i\)</span> do elétron <span class="math inline">\(i\)</span>. Sabemos que tal função de onda pode ser escrita em termos do produto de funções de onda para 1 elétron, <span class="math inline">\(\psi_j(\boldsymbol{x}_i)\)</span>, onde <span class="math inline">\(i\)</span> representa o elétron e <span class="math inline">\(j\)</span> o estado de 1 elétron, e com a condição que <span class="math inline">\(\braket{\psi_i|\psi_j} = \delta_{ij}\)</span>. É comum denominarmos o conjunto <span class="math inline">\(\psi_j(\boldsymbol{x}_i)\)</span> como <strong>conjunto de spin-orbitais molecular</strong>.</p>
 <p>Para satisfazer o <strong>princípio de exclusão de Pauli</strong> devemos construir uma função de onda que seja totalmente anti-simétrica sobre permutações de 2 elétrons, tal que <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N) = - \Psi_e(\boldsymbol{x}_2,\boldsymbol{x}_1,\ldots,\boldsymbol{x}_N)\)</span>. Para resolver esse problema, Slater propôs que a função de onda de <span class="math inline">\(N\)</span> elétrons seja escrita na forma de um determinante de funções de onda de 1 elétrons. O <strong>determinante de Slater</strong> é escrito como <span id="eq-determinante_Slater"><span class="math display">\[\begin{aligned}
     \Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N) = \frac{1}{\sqrt{N!}} \begin{vmatrix}
@@ -511,22 +604,22 @@ V_{nn} = \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}
         \vdots &amp; \vdots &amp; &amp; \vdots \\
         \psi_1(\boldsymbol{x}_N) &amp; \psi_2(\boldsymbol{x}_N) &amp; \dots &amp; \psi_N(\boldsymbol{x}_N)
     \end{vmatrix}
-\end{aligned} \tag{8.1}\]</span></span> onde cada <strong>linha</strong> corresponde a uma coordenada eletrônica <span class="math inline">\(\boldsymbol{x}_i\)</span> e cada <strong>coluna</strong> corresponde a um spin-orbital ocupado <span class="math inline">\(\psi_j\)</span>. O termo <span class="math inline">\(\frac{1}{\sqrt{N!}}\)</span> vem da condição de normalização da função de onda <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N)\)</span> dos <span class="math inline">\(N\)</span> elétrons (<span class="math inline">\(N!\)</span> é o número de permutações possíveis de <span class="math inline">\(N\)</span> elétrons).</p>
+\end{aligned} \tag{6.3}\]</span></span> onde cada <strong>linha</strong> corresponde a uma coordenada eletrônica <span class="math inline">\(\boldsymbol{x}_i\)</span> e cada <strong>coluna</strong> corresponde a um spin-orbital ocupado <span class="math inline">\(\psi_j\)</span>. O termo <span class="math inline">\(\frac{1}{\sqrt{N!}}\)</span> vem da condição de normalização da função de onda <span class="math inline">\(\Psi_e(\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_N)\)</span> dos <span class="math inline">\(N\)</span> elétrons (<span class="math inline">\(N!\)</span> é o número de permutações possíveis de <span class="math inline">\(N\)</span> elétrons).</p>
 </section>
-<section id="regras-de-slater-condon" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="regras-de-slater-condon"><span class="header-section-number">8.2</span> Regras de Slater-Condon</h2>
+<section id="regras-de-slater-condon" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="regras-de-slater-condon"><span class="header-section-number">6.4</span> Regras de Slater-Condon</h2>
 <p>Usando o determinante de Slater, podemos mostrar as chamadas <strong>regras de Slater-Condon</strong> tal que para o operador de 1 elétron temos que <span class="math display">\[\begin{aligned}
 \left\langle \Psi_e \left| \sum_{i=1}^{N} \hat{h}_i \right| \Psi_e \right\rangle &amp;= \sum_{i=1}^{N} \langle \psi_i | \hat{h}_1 | \psi_i \rangle \\
 &amp;= \sum_{i=1}^{N}\int \psi_i^*(\boldsymbol{x}_1) \hat{h}_1 \psi_i (\boldsymbol{x}_1)\ \text{d}\boldsymbol{x}_1,
 \end{aligned}\]</span> enquanto que para o operador de interação elétron-elétron, que é um operador de 2 elétrons, temos que <span id="eq-eletron-eletron-HF"><span class="math display">\[\begin{aligned}
 \left\langle \Psi_e \left| \frac{1}{2} \sum_{i=1}^{N} \sum_{j \neq i}^{N} \frac{1}{|\boldsymbol{r}_i - \boldsymbol{r}_j|} \right| \Psi_e \right\rangle =\ &amp; \frac{1}{2} \sum_{i=1}^{N} \sum_{j \neq i}^{N} \left\langle \psi_i \psi_j \left| \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \right| \psi_i \psi_j \right\rangle \nonumber \\
 &amp; - \frac{1}{2} \sum_{i=1}^{N} \sum_{j \neq i}^{N} \left\langle \psi_i \psi_j \left| \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \right| \psi_j \psi_i \right\rangle
-\end{aligned} \tag{8.2}\]</span></span> onde, de forma geral, temos que <span class="math display">\[\begin{aligned}
+\end{aligned} \tag{6.4}\]</span></span> onde, de forma geral, temos que <span class="math display">\[\begin{aligned}
 \left\langle \psi_i \psi_j \left| \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \right| \psi_k \psi_l \right\rangle = \iint \psi_i^*(\boldsymbol{x}_1) \psi_j^*(\boldsymbol{x}_2) \frac{1}{|\boldsymbol{r}_1 - \boldsymbol{r}_2|} \psi_k(\boldsymbol{x}_1) \psi_l(\boldsymbol{x}_2) \ \text{d}\boldsymbol{x}_1 \text{d}\boldsymbol{x}_2,
-\end{aligned}\]</span> de modo que o primeiro termo da <a href="#eq-eletron-eletron-HF" class="quarto-xref">Equation&nbsp;<span>8.2</span></a> é a interação direta de Coulomb e o segundo termo é a interação de troca. Essa interação de troca não possui análogo na física clássica e tem sua origem na antissimetria da função de onda eletrônica exigida para férmions indistinguíveis</p>
+\end{aligned}\]</span> de modo que o primeiro termo da <a href="#eq-eletron-eletron-HF" class="quarto-xref">Equation&nbsp;<span>6.4</span></a> é a interação direta de Coulomb e o segundo termo é a interação de troca. Essa interação de troca não possui análogo na física clássica e tem sua origem na antissimetria da função de onda eletrônica exigida para férmions indistinguíveis</p>
 </section>
-<section id="equações-de-hartree-fock" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="equações-de-hartree-fock"><span class="header-section-number">8.3</span> Equações de Hartree-Fock</h2>
+<section id="equações-de-hartree-fock" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="equações-de-hartree-fock"><span class="header-section-number">6.5</span> Equações de Hartree-Fock</h2>
 <p>Afim de encontrar os melhores spin-orbitais para determinar a energia do estado fundamental do nosso sistema, devemos utilizar o teorema variacional novamente. Como os spin-orbitais devem satisfazer a condição de ortonormalidade</p>
 <p><span class="math display">\[
 \braket{\psi_i|\psi_j}=\delta_{ij},
@@ -721,7 +814,7 @@ U
 \epsilon_k
 \ket{\psi_k'}
 }
-\tag{8.3}\]</span></span></p>
+\tag{6.5}\]</span></span></p>
 <p>Os spin-orbitais <span class="math inline">\(\ket{\psi_k'}\)</span> obtidos dessa forma são denominados <strong>spin-orbitais canônicos de Hartree-Fock</strong>, enquanto <span class="math inline">\(\epsilon_k\)</span> são suas respectivas energias orbitais.</p>
 <p>Embora as equações de Hartree-Fock apareçam agora na forma de um problema de autovalores, devemos notar que o operador de Fock depende dos próprios spin-orbitais ocupados usados para construí-lo. Dessa forma, as equações devem ser resolvidas de maneira auto-consistente.</p>
 <p>Quando os orbitais moleculares são expandidos em um conjunto finito de funções de base, como funções gaussianas,</p>
@@ -740,10 +833,10 @@ c_{\mu i}
 \mathbf{S}\mathbf{C}\boldsymbol{\epsilon}
 }
 \]</span></p>
-<p>onde <span class="math inline">\(\mathbf{F}\)</span> é a matriz de Fock, <span class="math inline">\(\mathbf{C}\)</span> contém os coeficientes <span class="math inline">\(c_{\mu i}\)</span> da expansão dos orbitais moleculares, <span class="math inline">\(\mathbf{S}\)</span> é a matriz de sobreposição entre as funções de base e <span class="math inline">\(\boldsymbol{\epsilon}\)</span> é a matriz diagonal das energias orbitais. A presença da matriz <span class="math inline">\(\mathbf{S}\)</span> ocorre porque, em geral, as funções gaussianas utilizadas como base não são ortogonais entre si. Assim, o problema de Hartree-Fock passa a ser resolvido como um problema de autovalores generalizado. Os detalhes sobre a construção, propriedades e escolha dessas funções de base serão discutidos no <a href="9-bases.html" class="quarto-xref"><span>Chapter 9</span></a>.</p>
+<p>onde <span class="math inline">\(\mathbf{F}\)</span> é a matriz de Fock, <span class="math inline">\(\mathbf{C}\)</span> contém os coeficientes <span class="math inline">\(c_{\mu i}\)</span> da expansão dos orbitais moleculares, <span class="math inline">\(\mathbf{S}\)</span> é a matriz de sobreposição entre as funções de base e <span class="math inline">\(\boldsymbol{\epsilon}\)</span> é a matriz diagonal das energias orbitais. A presença da matriz <span class="math inline">\(\mathbf{S}\)</span> ocorre porque, em geral, as funções gaussianas utilizadas como base não são ortogonais entre si. Assim, o problema de Hartree-Fock passa a ser resolvido como um problema de autovalores generalizado. Os detalhes sobre a construção, propriedades e escolha dessas funções de base serão discutidos no <a href="8-bases.html" class="quarto-xref"><span>Chapter 8</span></a>.</p>
 </section>
-<section id="método-auto-consistente" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="método-auto-consistente"><span class="header-section-number">8.4</span> Método auto-consistente</h2>
+<section id="método-auto-consistente" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="método-auto-consistente"><span class="header-section-number">6.6</span> Método auto-consistente</h2>
 <p>No procedimento auto-consistente (SCF, do inglês <strong>S</strong>elf <strong>C</strong>onsistent <strong>F</strong>ield) é necessário decidir a forma dos orbitais e inseri-los.</p>
 <p>Para uma molécula de camada fechada, utiliza-se normalmente o método <strong>RHF</strong> (<em>Restricted Hartree-Fock</em>). Nesse caso, dois elétrons de spins opostos ocupam o mesmo orbital espacial <span class="math inline">\(\varphi_i(\boldsymbol{r})\)</span>, de modo que os spin-orbitais são escritos como</p>
 <p><span class="math display">\[
@@ -766,11 +859,11 @@ c_{\mu i}
 <img src="../figuras/beryllium.png" class="img-fluid figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Be-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.1: Átomo de Berílio (Be) com <span class="math inline">\(Z=4\)</span>.
+Figure&nbsp;6.1: Átomo de Berílio (Be) com <span class="math inline">\(Z=4\)</span>.
 </figcaption>
 </figure>
 </div>
-<p>Por exemplo, no caso do átomo de Be (berílio com <span class="math inline">\(Z=4\)</span>, representado na <a href="#fig-Be" class="quarto-xref">Figure&nbsp;<span>8.1</span></a>), a função de onda no RHF é escrita da seguinte forma <span class="math display">\[\begin{aligned}
+<p>Por exemplo, no caso do átomo de Be (berílio com <span class="math inline">\(Z=4\)</span>, representado na <a href="#fig-Be" class="quarto-xref">Figure&nbsp;<span>6.1</span></a>), a função de onda no RHF é escrita da seguinte forma <span class="math display">\[\begin{aligned}
     \Psi_\text{RHF}^{(\text{Be})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3,\boldsymbol{x}_4) = \frac{1}{\sqrt{4!}} \begin{vmatrix}
         \varphi_{1s}(\boldsymbol{r}_1)\ket{\uparrow} &amp; \varphi_{1s}(\boldsymbol{r}_1)\ket{\downarrow} &amp; \varphi_{2s}(\boldsymbol{r}_1)\ket{\uparrow} &amp; \varphi_{2s}(\boldsymbol{r}_1)\ket{\downarrow} \\
          \varphi_{1s}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \varphi_{1s}(\boldsymbol{r}_2)\ket{\downarrow}  &amp; \varphi_{2s}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \varphi_{2s}(\boldsymbol{r}_2)\ket{\downarrow}  \\
@@ -786,11 +879,11 @@ Figure&nbsp;8.1: Átomo de Berílio (Be) com <span class="math inline">\(Z=4\)</
 <img src="../figuras/lithium.png" class="img-fluid figure-img" style="width:50.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Li-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.2: Átomo de Lítio (Li) com <span class="math inline">\(Z=3\)</span>.
+Figure&nbsp;6.2: Átomo de Lítio (Li) com <span class="math inline">\(Z=3\)</span>.
 </figcaption>
 </figure>
 </div>
-<p>Tomando o átomo de Li (lítio com <span class="math inline">\(Z=3\)</span>, conforme <a href="#fig-Li" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>) como exemplo podemos escrever <span class="math display">\[\begin{aligned}
+<p>Tomando o átomo de Li (lítio com <span class="math inline">\(Z=3\)</span>, conforme <a href="#fig-Li" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>) como exemplo podemos escrever <span class="math display">\[\begin{aligned}
     \Psi_\text{ROHF}^{(\text{Li})}(\boldsymbol{x}_1,\boldsymbol{x}_2,\boldsymbol{x}_3) = \frac{1}{\sqrt{3!}} \begin{vmatrix}
         \varphi_{1s}(\boldsymbol{r}_1)\ket{\uparrow} &amp; \varphi_{1s}(\boldsymbol{r}_1)\ket{\downarrow} &amp; \varphi_{2s}(\boldsymbol{r}_1)\ket{\uparrow} \\
          \varphi_{1s}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \varphi_{1s}(\boldsymbol{r}_2)\ket{\downarrow}  &amp; \varphi_{2s}(\boldsymbol{r}_2)\ket{\uparrow}  \\
@@ -804,14 +897,14 @@ Figure&nbsp;8.2: Átomo de Lítio (Li) com <span class="math inline">\(Z=3\)</sp
          \varphi_{a}(\boldsymbol{r}_2)\ket{\uparrow} &amp; \varphi_{b}(\boldsymbol{r}_2)\ket{\downarrow}  &amp; \varphi_{c}(\boldsymbol{r}_2)\ket{\uparrow}  \\
          \varphi_{a}(\boldsymbol{r}_3)\ket{\uparrow} &amp; \varphi_{b}(\boldsymbol{r}_3)\ket{\downarrow}  &amp; \varphi_{c}(\boldsymbol{r}_3)\ket{\uparrow}
     \end{vmatrix},
-\end{aligned}\]</span> onde cada orbital molecular <span class="math inline">\(\varphi_{i}(\boldsymbol{r})\)</span> pode ter uma energia distinta. A figura <a href="#fig-RHF" class="quarto-xref">Figure&nbsp;<span>8.3</span></a> representa graficamente os três métodos descritos acima.</p>
+\end{aligned}\]</span> onde cada orbital molecular <span class="math inline">\(\varphi_{i}(\boldsymbol{r})\)</span> pode ter uma energia distinta. A figura <a href="#fig-RHF" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> representa graficamente os três métodos descritos acima.</p>
 <div id="fig-RHF" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-RHF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figuras/RHF.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-RHF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.3: Diferença entre os métodos RHF, ROHF e UHF..
+Figure&nbsp;6.3: Diferença entre os métodos RHF, ROHF e UHF..
 </figcaption>
 </figure>
 </div>
@@ -857,7 +950,7 @@ S=\frac{1}{2},
 <p>O procedimento auto-consistente é descrito como:</p>
 <ol type="1">
 <li><p>Decida a geometria do sistema que deseja resolver: <span class="math inline">\(\{R_A\}, \{Z_A\}, N\)</span> e defina o tipo de conjunto de base;</p></li>
-<li><p>Defina o conjunto de base <span class="math inline">\(\phi_\mu\)</span> (confome <a href="9-bases.html#eq-conjunto_de_base" class="quarto-xref">Equation&nbsp;<span>9.1</span></a>) a ser utilizado;</p></li>
+<li><p>Defina o conjunto de base <span class="math inline">\(\phi_\mu\)</span> (confome <a href="8-bases.html#eq-conjunto_de_base" class="quarto-xref">Equation&nbsp;<span>8.1</span></a>) a ser utilizado;</p></li>
 <li><p>Calcule as integrais <span class="math inline">\(S_{\mu\nu}, h_{\mu\nu}, J_{\mu\nu}\)</span> e <span class="math inline">\(K_{\mu\nu}\)</span> usando o cojunto de base <span class="math inline">\(\phi_\mu\)</span>;</p></li>
 <li><p>Inicialize o método com um chute inicial para a matriz densidade <span class="math inline">\(P_{\mu\nu}^{(0)}\)</span>;</p></li>
 <li><p>Construa a matriz de Fock <span class="math inline">\(F_{\mu\nu}^{(n)}\)</span> a partir da matriz densidade <span class="math inline">\(P_{\mu\nu}^{(n)}\)</span>;</p></li>
@@ -904,14 +997,14 @@ E^{(n+1)}-E^{(n)}
 <ol start="9" type="1">
 <li>Após a convergência, obtenha os orbitais moleculares a partir dos coeficientes <span class="math inline">\(c_{\mu i}\)</span> e suas respectivas energias orbitais a partir de <span class="math inline">\(\epsilon_i\)</span>.</li>
 </ol>
-<p>Isso pode ser representado graficamente por um fluxograma como na <a href="#fig-SCF-HF" class="quarto-xref">Figure&nbsp;<span>8.4</span></a>.</p>
+<p>Isso pode ser representado graficamente por um fluxograma como na <a href="#fig-SCF-HF" class="quarto-xref">Figure&nbsp;<span>6.4</span></a>.</p>
 <div id="fig-SCF-HF" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-SCF-HF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figuras/SCF-HF.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SCF-HF-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.4: Método auto-consistente (SCF) para resolução das equações de Roothan-Hartree-Fock.
+Figure&nbsp;6.4: Método auto-consistente (SCF) para resolução das equações de Roothan-Hartree-Fock.
 </figcaption>
 </figure>
 </div>
@@ -919,11 +1012,11 @@ Figure&nbsp;8.4: Método auto-consistente (SCF) para resolução das equações 
 </div>
 </div>
 </section>
-<section id="energia-total" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="energia-total"><span class="header-section-number">8.5</span> Energia Total</h2>
+<section id="energia-total" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="energia-total"><span class="header-section-number">6.7</span> Energia Total</h2>
 <p>A energia eletrônica da molécula <span class="math inline">\(E_0\)</span> não é igual a soma dos autovalores das equações de HF, <span class="math inline">\(E_0 \neq \sum_{i=1}^N \epsilon_i\)</span>. De fato, podemos notar que <span class="math display">\[
 E_0 = \sum_{i=1}^N \braket{\psi_i|\hat{h}+ \tfrac{1}{2}\sum_{j=1}^N(\hat{J}_j-\hat{K}_j)|\psi_i}
-\]</span> enquanto que os autovalores de HF são obtidos da <a href="#eq-HF" class="quarto-xref">Equation&nbsp;<span>8.3</span></a> como sendo <span class="math display">\[\epsilon_i = \braket{\psi_i|\hat{h}+\sum_{j=1}^N(\hat{J}_j-\hat{K}_j)|\psi_i}\]</span> de tal modo que podemos escrever <span class="math display">\[
+\]</span> enquanto que os autovalores de HF são obtidos da <a href="#eq-HF" class="quarto-xref">Equation&nbsp;<span>6.5</span></a> como sendo <span class="math display">\[\epsilon_i = \braket{\psi_i|\hat{h}+\sum_{j=1}^N(\hat{J}_j-\hat{K}_j)|\psi_i}\]</span> de tal modo que podemos escrever <span class="math display">\[
 E_0 = \sum_{i=1}^N \epsilon_i - \frac{1}{2} \sum_{i=1}^N \braket{\psi_i |\sum_{j=1}^N(\hat{J}_j-\hat{K}_j)|\psi_i}
 \]</span></p>
 <p>A energia total da molécula deve levar em conta a repulsão eletrostática entre os núcleos tal que <span class="math display">\[\begin{align}
@@ -932,11 +1025,11 @@ E_0 = \sum_{i=1}^N \epsilon_i - \frac{1}{2} \sum_{i=1}^N \braket{\psi_i |\sum_{j
     V_{nn} = \frac{1}{2}\sum_{A=1}^M\sum_{B \neq A}^M \frac{Z_A Z_B}{|\boldsymbol{R}_A-\boldsymbol{R}_B|}.
 \end{align}\]</span></p>
 </section>
-<section id="densidade-eletrônica" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="densidade-eletrônica"><span class="header-section-number">8.6</span> Densidade Eletrônica</h2>
+<section id="densidade-eletrônica" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="densidade-eletrônica"><span class="header-section-number">6.8</span> Densidade Eletrônica</h2>
 <p>Vamos definir o operador de densidade de 1 corpo como sendo dado por <span id="eq-operador_densidade"><span class="math display">\[
 \hat{\rho}(\boldsymbol{r}) = \sum_{i=1}^N \delta(\boldsymbol{r}-\boldsymbol{r}_i)
-\tag{8.4}\]</span></span> de modo que o valor esperado desse operador seja calculado como <span class="math display">\[\begin{aligned}
+\tag{6.6}\]</span></span> de modo que o valor esperado desse operador seja calculado como <span class="math display">\[\begin{aligned}
     \rho(\boldsymbol{r}) &amp;= \braket{\Psi| \hat{\rho}(\boldsymbol{r}) |\Psi} \nonumber \\
     &amp;=\int \Psi^*(\boldsymbol{x}^N)\left[\sum_{i=1}^N \delta(\boldsymbol{r}-\boldsymbol{r}_i) \right]\Psi(\boldsymbol{x}^N)\ \text{d}\boldsymbol{x}^N
 \end{aligned}\]</span> que pode ser resolvida usando as regras de Slater-Condon. De fato, chegamos a seguinte relação <span class="math display">\[\begin{aligned}
@@ -951,8 +1044,8 @@ N = \int \rho(\boldsymbol{r})\ \text{d}\boldsymbol{r}
     \rho(\boldsymbol{r}) = 2 \sum_{i=1}^{N/2} |\varphi_i(\boldsymbol{r})|^2,
 \]</span> de modo que há apenas <span class="math inline">\(N/2\)</span> orbitais moleculares como solução das equações de HF.</p>
 </section>
-<section id="correlação-eletrônica" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="correlação-eletrônica"><span class="header-section-number">8.7</span> Correlação Eletrônica</h2>
+<section id="correlação-eletrônica" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="correlação-eletrônica"><span class="header-section-number">6.9</span> Correlação Eletrônica</h2>
 <p>O método de Hartree-Fock aproxima a função de onda eletrônica por um único determinante de Slater,</p>
 <p><span class="math display">\[
 \Psi_\text{HF}
@@ -995,8 +1088,8 @@ E_\text{corr}
 \]</span></p>
 <p>É importante distinguir <strong>troca</strong> de <strong>correlação eletrônica</strong>. A troca é consequência direta da antissimetria da função de onda de férmions e já está incluída no método de Hartree-Fock através do operador de troca <span class="math inline">\(\hat{K}\)</span>. A correlação eletrônica, por outro lado, está associada aos efeitos da interação entre os elétrons que não podem ser descritos por um único determinante.</p>
 <p>Uma forma intuitiva de entender essa limitação é considerar dois elétrons de spins opostos. Como o termo de troca atua apenas entre elétrons de mesmo spin, dois elétrons de spins opostos não apresentam interação de troca entre si no método de Hartree-Fock. Ainda assim, devido à repulsão coulombiana, seus movimentos reais são correlacionados: quando um elétron se encontra em determinada região do espaço, o outro tende a evitar essa região. Esse movimento correlacionado não é descrito adequadamente pela aproximação de campo médio de Hartree-Fock.</p>
-<section id="correlação-dinâmica-e-estática" class="level3" data-number="8.7.1">
-<h3 data-number="8.7.1" class="anchored" data-anchor-id="correlação-dinâmica-e-estática"><span class="header-section-number">8.7.1</span> Correlação dinâmica e estática</h3>
+<section id="correlação-dinâmica-e-estática" class="level3" data-number="6.9.1">
+<h3 data-number="6.9.1" class="anchored" data-anchor-id="correlação-dinâmica-e-estática"><span class="header-section-number">6.9.1</span> Correlação dinâmica e estática</h3>
 <p>É comum separar qualitativamente a correlação eletrônica em duas contribuições: <strong>correlação dinâmica</strong> e <strong>correlação estática</strong>, também denominada correlação não dinâmica.</p>
 <p>A correlação dinâmica está associada ao movimento correlacionado dos elétrons em pequenas escalas de distância devido à repulsão coulombiana instantânea. Mesmo quando um único determinante fornece uma boa descrição qualitativa do estado eletrônico, pequenas correções na distribuição relativa dos elétrons são necessárias para reduzir a energia do sistema.</p>
 <p>A correlação estática torna-se importante quando mais de uma configuração eletrônica possui energia semelhante. Nesse caso, um único determinante de Slater deixa de fornecer uma descrição adequada da função de onda. Um exemplo típico ocorre durante a dissociação de uma ligação química, quando diferentes configurações eletrônicas podem se tornar quase degeneradas.</p>
@@ -1010,8 +1103,8 @@ E_\text{corr}^\text{est},
 \]</span></p>
 <p>embora essa separação não seja, em geral, rigorosamente única.</p>
 </section>
-<section id="métodos-pós-hartree-fock" class="level3" data-number="8.7.2">
-<h3 data-number="8.7.2" class="anchored" data-anchor-id="métodos-pós-hartree-fock"><span class="header-section-number">8.7.2</span> Métodos pós-Hartree-Fock</h3>
+<section id="métodos-pós-hartree-fock" class="level3" data-number="6.9.2">
+<h3 data-number="6.9.2" class="anchored" data-anchor-id="métodos-pós-hartree-fock"><span class="header-section-number">6.9.2</span> Métodos pós-Hartree-Fock</h3>
 <p>Para recuperar a correlação eletrônica que não está presente na aproximação de Hartree-Fock, foram desenvolvidos diversos métodos denominados <strong>pós-Hartree-Fock</strong>. Em geral, esses métodos utilizam os orbitais obtidos em um cálculo Hartree-Fock como ponto de partida e introduzem configurações eletrônicas adicionais ou correções perturbativas.</p>
 <p>Entre os métodos mais comuns estão:</p>
 <ul>
@@ -1020,14 +1113,14 @@ E_\text{corr}^\text{est},
 <li>métodos <em>Coupled Cluster</em>, como CCSD e CCSD(T);</li>
 <li>métodos multiconfiguracionais, como CASSCF, utilizados principalmente quando a correlação estática é importante.</li>
 </ul>
-<p>Esses métodos diferem na forma como a correlação eletrônica é incorporada e no custo computacional associado. Em geral, uma descrição mais completa da correlação eletrônica exige um custo computacional significativamente maior que o método de Hartree-Fock. A <a href="#fig-correlation" class="quarto-xref">Figure&nbsp;<span>8.5</span></a> ilustra qualitativamente a relação entre o custo computacional e a precisão dos métodos pós-Hartree-Fock.</p>
+<p>Esses métodos diferem na forma como a correlação eletrônica é incorporada e no custo computacional associado. Em geral, uma descrição mais completa da correlação eletrônica exige um custo computacional significativamente maior que o método de Hartree-Fock. A <a href="#fig-correlation" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> ilustra qualitativamente a relação entre o custo computacional e a precisão dos métodos pós-Hartree-Fock.</p>
 <div id="fig-correlation" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="../figuras/correlation_HF.jpg" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-correlation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8.5: Comparação entre esforços computacionais dos métodos pós-Hartree-Fock.
+Figure&nbsp;6.5: Comparação entre esforços computacionais dos métodos pós-Hartree-Fock.
 </figcaption>
 </figure>
 </div>
@@ -1453,13 +1546,13 @@ Figure&nbsp;8.5: Comparação entre esforços computacionais dos métodos pós-H
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../capitulos/7-problema_de_muitos_eletrons.html" class="pagination-link" aria-label="Problema Geral de Muitos Elétrons">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Problema Geral de Muitos Elétrons</span></span>
+      <a href="../capitulos/5-sistemas_2eletrons.html" class="pagination-link" aria-label="Sistemas de 2 elétrons">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Sistemas de 2 elétrons</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../capitulos/9-bases.html" class="pagination-link" aria-label="Conjuntos de bases">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conjuntos de bases</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../capitulos/7-dft.html" class="pagination-link" aria-label="Teoria do funcional da densidade">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Teoria do funcional da densidade</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1471,7 +1564,7 @@ Figure&nbsp;8.5: Comparação entre esforços computacionais dos métodos pós-H
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/8-hartree_fock.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/6-hartree_fock.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>

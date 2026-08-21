@@ -1,0 +1,7 @@
+# Cálculos termodinâmicos
+
+## Calor específico
+
+## Energia livre de Helmholtz
+
+## Energia livre de Gibbs
