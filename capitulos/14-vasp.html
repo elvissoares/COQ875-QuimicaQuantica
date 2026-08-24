@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -462,14 +497,14 @@ MathJax = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/16-adsorcao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Adsorção</span></span></a>
+  <a href="../capitulos/16-interacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Interações entre Mléculas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/17-reacao_quimica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cálculos de Reações Químicas</span></span></a>
+  <a href="../capitulos/17-adsorcao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cálculos de Adsorção</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -491,8 +526,17 @@ MathJax = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#instalação-no-ubuntu-24" id="toc-instalação-no-ubuntu-24" class="nav-link active" data-scroll-target="#instalação-no-ubuntu-24"><span class="header-section-number">14.1</span> Instalação no Ubuntu 24</a></li>
+  <li><a href="#instalação-no-windows-11" id="toc-instalação-no-windows-11" class="nav-link" data-scroll-target="#instalação-no-windows-11"><span class="header-section-number">14.2</span> Instalação no Windows 11</a></li>
+  <li><a href="#instalação-do-ase" id="toc-instalação-do-ase" class="nav-link" data-scroll-target="#instalação-do-ase"><span class="header-section-number">14.3</span> Instalação do ASE</a></li>
+  <li><a href="#configuração-do-ase-com-o-vasp" id="toc-configuração-do-ase-com-o-vasp" class="nav-link" data-scroll-target="#configuração-do-ase-com-o-vasp"><span class="header-section-number">14.4</span> Configuração do ASE com o VASP</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/14-vasp.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -518,8 +562,46 @@ MathJax = {
 
 
 <p>Nesse capítulo vamos apresentar o pacote VASP (Vienna Ab initio Simulation Package), que é um software comercial amplamente utilizado para cálculos de estrutura eletrônica e simulações de materiais. O VASP é baseado em métodos de DFT (Density Functional Theory) e oferece uma ampla gama de funcionalidades para cálculos de propriedades eletrônicas, estruturais e dinâmicas de materiais.</p>
+<section id="instalação-no-ubuntu-24" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="instalação-no-ubuntu-24"><span class="header-section-number">14.1</span> Instalação no Ubuntu 24</h2>
+<p>Para instalar o VASP no Ubuntu 24, siga os passos abaixo: 1. <strong>Obtenha uma licença do VASP</strong>: O VASP é um software comercial, portanto, você precisará adquirir uma licença para usá-lo. Visite o site oficial do VASP (<a href="https://www.vasp.at/">https://www.vasp.at/</a>) para obter informações sobre como adquirir uma licença.</p>
+<ol start="2" type="1">
+<li><p><strong>Baixe o código-fonte do VASP</strong>: Após obter a licença, você poderá baixar o código-fonte do VASP a partir do site oficial. Certifique-se de baixar a versão compatível com o seu sistema operacional.</p></li>
+<li><p><strong>Instale as dependências necessárias</strong>: Antes de compilar o VASP, você precisará instalar algumas dependências, como compiladores Fortran e C, bibliotecas MPI e BLAS/LAPACK. Você pode instalar essas dependências usando o gerenciador de pacotes do Ubuntu:</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install rsync make build-essential g++ gfortran libopenblas-dev libopenmpi-dev libscalapack-openmpi-dev libfftw3-dev libhdf5-openmpi-dev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="4" type="1">
+<li><p><strong>Compile o VASP</strong>: Navegue até o diretório onde você baixou o código-fonte do VASP e siga as instruções de compilação fornecidas no arquivo README ou INSTALL. Normalmente, você precisará configurar o ambiente de compilação e executar os comandos de compilação apropriados.</p></li>
+<li><p><strong>Configure o ambiente</strong>: Após a compilação bem-sucedida, você precisará configurar o ambiente para usar o VASP. Isso pode incluir a definição de variáveis de ambiente e a adição do diretório do VASP ao seu PATH.</p></li>
+<li><p><strong>Teste a instalação</strong>: Para verificar se o VASP foi instalado corretamente, você pode executar um teste simples fornecido com o pacote ou criar um arquivo de entrada de teste e executar o VASP para garantir que ele funcione conforme esperado.</p></li>
+</ol>
+</section>
+<section id="instalação-no-windows-11" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="instalação-no-windows-11"><span class="header-section-number">14.2</span> Instalação no Windows 11</h2>
+<p>Para instalar o VASP no Windows 11, você pode usar o Windows Subsystem for Linux (WSL) para criar um ambiente Linux dentro do Windows. Siga os passos abaixo: 1. <strong>Habilite o WSL</strong>: Abra o PowerShell como administrador e execute o seguinte comando para habilitar o WSL:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="op">--</span>install</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li><p><strong>Instale uma distribuição Linux</strong>: Após habilitar o WSL, você precisará instalar uma distribuição Linux, como Ubuntu 24, a partir da Microsoft Store.</p></li>
+<li><p><strong>Siga os passos de instalação no Ubuntu 24</strong>: Após instalar a distribuição Linux, abra o terminal do WSL e siga os mesmos passos de instalação descritos na seção “Instalação no Ubuntu 24” para instalar o VASP dentro do ambiente Linux.</p></li>
+</ol>
+</section>
+<section id="instalação-do-ase" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="instalação-do-ase"><span class="header-section-number">14.3</span> Instalação do ASE</h2>
+<p>O ASE (Atomic Simulation Environment) é uma biblioteca Python que facilita a configuração, execução e análise de simulações de materiais. Ele pode ser usado em conjunto com o VASP para automatizar tarefas e simplificar o fluxo de trabalho.</p>
+<p>Para instalar o ASE (Atomic Simulation Environment), você pode usar o gerenciador de pacotes <code>pip</code>. Execute o seguinte comando no terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ase</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="configuração-do-ase-com-o-vasp" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="configuração-do-ase-com-o-vasp"><span class="header-section-number">14.4</span> Configuração do ASE com o VASP</h2>
+<p>Para configurar o ASE para trabalhar com o VASP, siga os passos abaixo: 1. <strong>Verifique a instalação do ASE</strong>: Certifique-se de que o ASE foi instalado corretamente executando o seguinte comando no terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import ase; print(ase.__version__)"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li><strong>Configure o caminho do VASP</strong>: O ASE precisa saber onde o executável do VASP está localizado. Você pode definir a variável de ambiente <code>VASP_COMMAND</code> para apontar para o executável do VASP. Por exemplo, se o executável do VASP estiver localizado em <code>/path/to/vasp</code>, você pode adicionar a seguinte linha ao seu arquivo de configuração do shell (como <code>.bashrc</code> ou <code>.zshrc</code>): ```bash export VASP_COMMAND=“/path/to/vasp”</li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -955,7 +1037,7 @@ MathJax = {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/14-vasp.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/14-vasp.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>Licenciado sob <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>
 </div>
