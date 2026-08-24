@@ -523,14 +523,14 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/16-adsorcao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Adsorção</span></span></a>
+  <a href="../capitulos/16-interacao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Interações entre Mléculas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../capitulos/17-reacao_quimica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cálculos de Reações Químicas</span></span></a>
+  <a href="../capitulos/17-adsorcao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Cálculos de Adsorção</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -602,20 +602,22 @@ window.Quarto = {
 <h2 data-number="13.1" class="anchored" data-anchor-id="instalação"><span class="header-section-number">13.1</span> Instalação</h2>
 <p>A instalação do PySCF pode ser feita facilmente usando o gerenciador de pacotes <code>pip</code>. Para instalar o PySCF, você pode executar o seguinte comando no terminal:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pyscf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Você pode verificar se a instalação foi bem-sucedida executando o seguinte comando no terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import pyscf; print(pyscf.__version__)"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="criando-uma-molécula" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="criando-uma-molécula"><span class="header-section-number">13.2</span> Criando uma molécula</h2>
 <p>No PySCF, você pode criar uma molécula usando a classe <code>Mole</code> do módulo <code>gto</code>.</p>
 <p>A seguir, apresentamos um exemplo de como criar uma molécula de hidrogênio (H2) com a base <code>sto-3g</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> gto</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mol_h2 <span class="op">=</span> gto.M(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    atom <span class="op">=</span> [[<span class="st">'H'</span>,(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)], [<span class="st">'H'</span>,(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)]],</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    basis <span class="op">=</span> <span class="st">'sto-3g'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> gto</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mol_h2 <span class="op">=</span> gto.M(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    atom <span class="op">=</span> [[<span class="st">'H'</span>,(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)], [<span class="st">'H'</span>,(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>)]],</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    basis <span class="op">=</span> <span class="st">'sto-3g'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Outro exemplo é a criação de uma molécula de água (H2O) com a base <code>6-31g</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mol_h2o <span class="op">=</span> gto.M(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    atom <span class="op">=</span> [[<span class="st">'O'</span>,(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)], [<span class="st">'H'</span>,(<span class="fl">0.7586</span>, <span class="fl">0.5043</span>, <span class="dv">0</span>)], [<span class="st">'H'</span>,(<span class="op">-</span><span class="fl">0.7586</span>, <span class="fl">0.5043</span>, <span class="dv">0</span>)]],</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    basis <span class="op">=</span> <span class="st">'6-31g'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mol_h2o <span class="op">=</span> gto.M(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    atom <span class="op">=</span> [[<span class="st">'O'</span>,(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)], [<span class="st">'H'</span>,(<span class="fl">0.7586</span>, <span class="fl">0.5043</span>, <span class="dv">0</span>)], [<span class="st">'H'</span>,(<span class="op">-</span><span class="fl">0.7586</span>, <span class="fl">0.5043</span>, <span class="dv">0</span>)]],</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    basis <span class="op">=</span> <span class="st">'6-31g'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>As unidades de distância são em Angstroms, e a base especificada é usada para os cálculos eletrônicos.</p>
 </section>
 <section id="cálculos-auto-consistentes-de-energia" class="level2" data-number="13.3">
@@ -637,15 +639,15 @@ Tip
 <h3 data-number="13.3.1" class="anchored" data-anchor-id="cálculos-de-hartree-fock"><span class="header-section-number">13.3.1</span> Cálculos de Hartree-Fock</h3>
 <p>No PySCF, você pode realizar um cálculo de Hartree-Fock usando a classe <code>RHF</code> (Restricted Hartree-Fock) do módulo <code>scf</code>.</p>
 <p>A seguir, apresentamos um exemplo de como realizar um cálculo de Hartree-Fock para a molécula de hidrogênio (H2):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> scf</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>rhf_h2 <span class="op">=</span> scf.RHF(mol_h2)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>e_h2 <span class="op">=</span> rhf_h2.kernel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> scf</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>rhf_h2 <span class="op">=</span> scf.RHF(mol_h2)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>e_h2 <span class="op">=</span> rhf_h2.kernel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>com <code>e_h2</code> contendo o valor da energia de Hartree-Fock para a molécula de hidrogênio (em unidades atômicas de energia, Hartree) e o output do cálculo será algo como:</p>
 <pre><code>converged SCF energy = -1.06610864931794</code></pre>
 <p>Para a molécula de água (H2O), o cálculo de Hartree-Fock seria realizado da seguinte forma:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rhf_h2o <span class="op">=</span> scf.RHF(mol_h2o)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>e_h2o <span class="op">=</span> rhf_h2o.kernel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rhf_h2o <span class="op">=</span> scf.RHF(mol_h2o)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>e_h2o <span class="op">=</span> rhf_h2o.kernel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>cujo output será algo como:</p>
 <pre><code>converged SCF energy = -75.982010306225</code></pre>
 </section>
@@ -653,11 +655,11 @@ Tip
 <h3 data-number="13.3.2" class="anchored" data-anchor-id="cálculos-de-dft"><span class="header-section-number">13.3.2</span> Cálculos de DFT</h3>
 <p>No PySCF, você pode realizar um cálculo de DFT usando a classe <code>RKS</code> (Restricted Kohn-Sham) do módulo <code>scf</code>.</p>
 <p>A seguir, apresentamos um exemplo de como realizar um cálculo de DFT para a molécula de água (H2O) usando o funcional B3LYP:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> scf</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>rks_h2o <span class="op">=</span> scf.RKS(mol_h2o)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>rks_h2o.xc <span class="op">=</span> <span class="st">'b3lyp'</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>e_h2o_dft <span class="op">=</span> rks_h2o.kernel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf <span class="im">import</span> scf</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>rks_h2o <span class="op">=</span> scf.RKS(mol_h2o)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>rks_h2o.xc <span class="op">=</span> <span class="st">'b3lyp'</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>e_h2o_dft <span class="op">=</span> rks_h2o.kernel()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>cujo output será algo como:</p>
 <pre><code>converged SCF energy = -76.3780493873302</code></pre>
 </section>
@@ -680,14 +682,14 @@ Tip
 <section id="orbitais-moleculares" class="level3" data-number="13.4.1">
 <h3 data-number="13.4.1" class="anchored" data-anchor-id="orbitais-moleculares"><span class="header-section-number">13.4.1</span> Orbitais Moleculares</h3>
 <p>No PySCF, você pode acessar os orbitais moleculares (MOs) e suas energias após a convergência do cálculo de Hartree-Fock ou DFT.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf.tools <span class="im">import</span> cubegen <span class="co"># para exportar aquivos cube</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>hartree_to_ev <span class="op">=</span> <span class="fl">27.2114</span> <span class="co"># Conversão de Hartree para eV</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportanto os 8 primeiros orbitais moleculares</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>):</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    cubegen.orbital(mol_h2o, <span class="ss">f'h2o_mo_id</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">.cube'</span>, rhf_h2o.mo_coeff[:,i])</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"MO </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> energy: </span><span class="sc">{</span>rhf_h2o<span class="sc">.</span>mo_energy[i]<span class="op">*</span>hartree_to_ev<span class="sc">}</span><span class="ss"> eV"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyscf.tools <span class="im">import</span> cubegen <span class="co"># para exportar aquivos cube</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>hartree_to_ev <span class="op">=</span> <span class="fl">27.2114</span> <span class="co"># Conversão de Hartree para eV</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportanto os 8 primeiros orbitais moleculares</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>):</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    cubegen.orbital(mol_h2o, <span class="ss">f'h2o_mo_id</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">.cube'</span>, rhf_h2o.mo_coeff[:,i])</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"MO </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> energy: </span><span class="sc">{</span>rhf_h2o<span class="sc">.</span>mo_energy[i]<span class="op">*</span>hartree_to_ev<span class="sc">}</span><span class="ss"> eV"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>cujo output será algo como:</p>
 <pre><code>MO 1 energy: -559.0648505073075 eV
 MO 2 energy: -37.35824208425234 eV
@@ -719,7 +721,7 @@ Figure&nbsp;13.2: Orbital LUMO da água calculado usando o PySCF e visualizado n
 </figure>
 </div>
 <p>Outro comando útil é o método <code>analyze()</code> que fornece informações detalhadas sobre a densidade eletrônica, populações de Mulliken, energias dos orbitais moleculares, entre outros dados:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rhf_h2o.analyze()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rhf_h2o.analyze()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>cujo output será algo como:</p>
 <pre><code>**** MO energy ****
 MO #1   energy= -20.5452439237712  occ= 2
@@ -750,7 +752,7 @@ Dipole moment(X, Y, Z, Debye):  0.00000,  2.45844, -0.00000
 <section id="densidade-eletrônica" class="level3" data-number="13.4.2">
 <h3 data-number="13.4.2" class="anchored" data-anchor-id="densidade-eletrônica"><span class="header-section-number">13.4.2</span> Densidade eletrônica</h3>
 <p>No PySCF, você pode calcular a densidade eletrônica usando o método <code>get_density()</code> do objeto de cálculo SCF. A densidade eletrônica é uma função que descreve a distribuição de elétrons na molécula.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cubegen.density(mol_h2o, <span class="st">'h2o_den.cube'</span>, rhf_h2o.make_rdm1())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>cubegen.density(mol_h2o, <span class="st">'h2o_den.cube'</span>, rhf_h2o.make_rdm1())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>cujo output será um arquivo <code>h2o_den.cube</code> que pode ser visualizado em softwares de visualização molecular, como o VESTA.</p>
 <div id="fig-water-den" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -766,7 +768,7 @@ Figure&nbsp;13.3: Superfície de isodensidade eletrônica da água (<span class=
 <section id="potencial-eletrostático-molecular" class="level3" data-number="13.4.3">
 <h3 data-number="13.4.3" class="anchored" data-anchor-id="potencial-eletrostático-molecular"><span class="header-section-number">13.4.3</span> Potencial eletrostático molecular</h3>
 <p>No PySCF, você pode calcular o potencial eletrostático molecular (MEP) usando o método <code>get_mep()</code> do objeto de cálculo SCF. O MEP é uma função que descreve a distribuição do potencial elétrico gerado pelos elétrons e núcleos da molécula.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>cubegen.mep(mol_h2o, <span class="st">'h2o_pot.cube'</span>, rhf_h2o.make_rdm1())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>cubegen.mep(mol_h2o, <span class="st">'h2o_pot.cube'</span>, rhf_h2o.make_rdm1())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>cujo output será um arquivo <code>h2o_pot.cube</code> que pode ser visualizado em softwares de visualização molecular, como o VESTA.</p>
 
 

@@ -1,0 +1,10 @@
+# Cálculos de Interações entre Mléculas
+
+
+## Cálculos de Interações Moleculares usando PySCF
+
+::: {.callout-tip}
+Para executar este notebook no Google Colab, você pode clicar no link:
+<a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/6-interacao_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+:::

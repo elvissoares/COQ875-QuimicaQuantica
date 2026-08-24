@@ -13,6 +13,11 @@ A instalação do PySCF pode ser feita facilmente usando o gerenciador de pacote
 pip install pyscf
 ```
 
+Você pode verificar se a instalação foi bem-sucedida executando o seguinte comando no terminal:
+```bash
+python -c "import pyscf; print(pyscf.__version__)"
+```
+
 ## Criando uma molécula
 
 No PySCF, você pode criar uma molécula usando a classe `Mole` do módulo `gto`. 

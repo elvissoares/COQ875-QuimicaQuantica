@@ -2,3 +2,56 @@
 
 Nesse capítulo vamos apresentar o pacote VASP (Vienna Ab initio Simulation Package), que é um software comercial amplamente utilizado para cálculos de estrutura eletrônica e simulações de materiais. O VASP é baseado em métodos de DFT (Density Functional Theory) e oferece uma ampla gama de funcionalidades para cálculos de propriedades eletrônicas, estruturais e dinâmicas de materiais.
 
+## Instalação no Ubuntu 24
+
+Para instalar o VASP no Ubuntu 24, siga os passos abaixo:
+1. **Obtenha uma licença do VASP**: O VASP é um software comercial, portanto, você precisará adquirir uma licença para usá-lo. Visite o site oficial do VASP ([https://www.vasp.at/](https://www.vasp.at/)) para obter informações sobre como adquirir uma licença.
+
+2. **Baixe o código-fonte do VASP**: Após obter a licença, você poderá baixar o código-fonte do VASP a partir do site oficial. Certifique-se de baixar a versão compatível com o seu sistema operacional.
+
+3. **Instale as dependências necessárias**: Antes de compilar o VASP, você precisará instalar algumas dependências, como compiladores Fortran e C, bibliotecas MPI e BLAS/LAPACK. Você pode instalar essas dependências usando o gerenciador de pacotes do Ubuntu:
+```bash
+sudo apt update
+sudo apt install rsync make build-essential g++ gfortran libopenblas-dev libopenmpi-dev libscalapack-openmpi-dev libfftw3-dev libhdf5-openmpi-dev
+```
+
+4. **Compile o VASP**: Navegue até o diretório onde você baixou o código-fonte do VASP e siga as instruções de compilação fornecidas no arquivo README ou INSTALL. Normalmente, você precisará configurar o ambiente de compilação e executar os comandos de compilação apropriados.
+
+5. **Configure o ambiente**: Após a compilação bem-sucedida, você precisará configurar o ambiente para usar o VASP. Isso pode incluir a definição de variáveis de ambiente e a adição do diretório do VASP ao seu PATH.
+
+6. **Teste a instalação**: Para verificar se o VASP foi instalado corretamente, você pode executar um teste simples fornecido com o pacote ou criar um arquivo de entrada de teste e executar o VASP para garantir que ele funcione conforme esperado.
+
+## Instalação no Windows 11
+
+Para instalar o VASP no Windows 11, você pode usar o Windows Subsystem for Linux (WSL) para criar um ambiente Linux dentro do Windows. Siga os passos abaixo:
+1. **Habilite o WSL**: Abra o PowerShell como administrador e execute o seguinte comando para habilitar o WSL:
+```powershell
+wsl --install
+```
+
+2. **Instale uma distribuição Linux**: Após habilitar o WSL, você precisará instalar uma distribuição Linux, como Ubuntu 24, a partir da Microsoft Store. 
+
+3. **Siga os passos de instalação no Ubuntu 24**: Após instalar a distribuição Linux, abra o terminal do WSL e siga os mesmos passos de instalação descritos na seção "Instalação no Ubuntu 24" para instalar o VASP dentro do ambiente Linux.
+
+
+## Instalação do ASE
+
+O ASE (Atomic Simulation Environment) é uma biblioteca Python que facilita a configuração, execução e análise de simulações de materiais. Ele pode ser usado em conjunto com o VASP para automatizar tarefas e simplificar o fluxo de trabalho.
+
+Para instalar o ASE (Atomic Simulation Environment), você pode usar o gerenciador de pacotes `pip`. Execute o seguinte comando no terminal:
+```bash
+pip install ase
+```
+
+## Configuração do ASE com o VASP
+
+Para configurar o ASE para trabalhar com o VASP, siga os passos abaixo:
+1. **Verifique a instalação do ASE**: Certifique-se de que o ASE foi instalado corretamente executando o seguinte comando no terminal:
+```bash
+python -c "import ase; print(ase.__version__)"
+```
+
+2. **Configure o caminho do VASP**: O ASE precisa saber onde o executável do VASP está localizado. Você pode definir a variável de ambiente `VASP_COMMAND` para apontar para o executável do VASP. Por exemplo, se o executável do VASP estiver localizado em `/path/to/vasp`, você pode adicionar a seguinte linha ao seu arquivo de configuração do shell (como `.bashrc` ou `.zshrc`):
+```bash
+export VASP_COMMAND="/path/to/vasp"
+

@@ -46,8 +46,8 @@ book:
         - capitulos/13-pyscf.qmd
         - capitulos/14-vasp.qmd
         - capitulos/15-otimizacao_de_geometrias.qmd
-        - capitulos/16-adsorcao.qmd
-        - capitulos/17-reacao_quimica.qmd
+        - capitulos/16-interacao.qmd
+        - capitulos/17-adsorcao.qmd
         - capitulos/18-vibracoes.qmd
         - capitulos/19-calor_especifico.qmd
 
