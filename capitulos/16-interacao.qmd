@@ -8,7 +8,7 @@ Essas interações podem ser computadas pelas correções DFT-D, conforme @sec-D
 ## Cálculos de Interações Moleculares usando PySCF
 
 ::: {.callout-tip}
-Para executar este notebook no Google Colab, você pode clicar no link: [![Abrir no Google Colab](../figuras/colab-badge.svg)](https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/6-interacao_pyscf.ipynb)
+Para executar este notebook no Google Colab, você pode clicar no link: [![Abrir no Google Colab](../figuras/colab-badge.png)](https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/6-interacao_pyscf.ipynb)
 
 :::
 
