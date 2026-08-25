@@ -511,7 +511,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../capitulos/16-interacao.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Interações entre Mléculas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Cálculos de Interações entre Moléculas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -564,7 +564,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#funcionais-híbridos-com-separação-de-alcance" id="toc-funcionais-híbridos-com-separação-de-alcance" class="nav-link" data-scroll-target="#funcionais-híbridos-com-separação-de-alcance"><span class="header-section-number">7.6.1</span> Funcionais híbridos com separação de alcance</a></li>
   <li><a href="#interações-de-dispersão" id="toc-interações-de-dispersão" class="nav-link" data-scroll-target="#interações-de-dispersão"><span class="header-section-number">7.6.2</span> Interações de dispersão</a></li>
-  <li><a href="#correções-dft-d" id="toc-correções-dft-d" class="nav-link" data-scroll-target="#correções-dft-d"><span class="header-section-number">7.6.3</span> Correções DFT-D</a></li>
+  <li><a href="#sec-DFT-D" id="toc-sec-DFT-D" class="nav-link" data-scroll-target="#sec-DFT-D"><span class="header-section-number">7.6.3</span> Correções DFT-D</a></li>
   <li><a href="#funcionais-de-correlação-não-local" id="toc-funcionais-de-correlação-não-local" class="nav-link" data-scroll-target="#funcionais-de-correlação-não-local"><span class="header-section-number">7.6.4</span> Funcionais de correlação não local</a></li>
   <li><a href="#funcionais-duplos-híbridos" id="toc-funcionais-duplos-híbridos" class="nav-link" data-scroll-target="#funcionais-duplos-híbridos"><span class="header-section-number">7.6.5</span> Funcionais duplos híbridos</a></li>
   </ul></li>
@@ -1224,17 +1224,9 @@ V_\text{ext}(\boldsymbol{r})
 \epsilon_{ij}
 \psi_j(\boldsymbol{r}).
 \]</span></p>
-<p>Definindo o operador de Kohn-Sham como</p>
+<p>Definindo um potencial efetivo de Kohn-Sham como</p>
 <p><span class="math display">\[
-\hat{h}_\text{KS}
-=
--\frac{1}{2}\nabla^2
-+
-V_\text{eff}(\boldsymbol{r}),
-\]</span></p>
-<p>com</p>
-<p><span class="math display">\[
-V_\text{eff}(\boldsymbol{r})
+V_\text{KS}(\boldsymbol{r})
 =
 V_H(\boldsymbol{r})
 +
@@ -1244,7 +1236,7 @@ V_\text{ext}(\boldsymbol{r}),
 \]</span></p>
 <p>podemos escrever</p>
 <p><span class="math display">\[
-\hat{h}_\text{KS}\psi_i
+\left[-\frac{1}{2}\nabla^2 + V_\text{KS}(\boldsymbol{r}) \right]\psi_i
 =
 \sum_{j=1}^N
 \epsilon_{ij}\psi_j.
@@ -1268,7 +1260,7 @@ U
 <p>as equações passam a ter a forma diagonal</p>
 <p><span id="eq-KS"><span class="math display">\[
 \boxed{
-\hat{h}_\text{KS}
+\left[-\frac{1}{2}\nabla^2 + V_\text{KS}(\boldsymbol{r}) \right]
 \phi_i(\boldsymbol{r})
 =
 \epsilon_i
@@ -1276,7 +1268,7 @@ U
 }
 \tag{7.2}\]</span></span></p>
 <p>que corresponde à forma canônica das equações de Kohn-Sham.</p>
-<p>Desta forma, o método de Kohn-Sham consiste em resolver o problema eletrônico a partir de um sistema auxiliar constituído de elétrons não-interagentes mas sujeitos a um potencial efetivo dado por <span class="math inline">\(V_\text{eff}(\boldsymbol{r}) = V_\text{H}(\boldsymbol{r})  + V_\text{XC}(\boldsymbol{r}) + V_\text{ext}(\boldsymbol{r})\)</span> onde o potencial de Hartree é calculado por</p>
+<p>Desta forma, o método de Kohn-Sham consiste em resolver o problema eletrônico a partir de um sistema auxiliar constituído de elétrons não-interagentes mas sujeitos a um potencial efetivo dado por <span class="math inline">\(V_\text{KS}(\boldsymbol{r}) = V_\text{H}(\boldsymbol{r})  + V_\text{XC}(\boldsymbol{r}) + V_\text{ext}(\boldsymbol{r})\)</span> onde o potencial de Hartree é calculado por</p>
 <p><span class="math display">\[
     V_\text{H}(\boldsymbol{r}) = \frac{\delta E_\text{H}[\rho]}{\delta \rho(\boldsymbol{r}) } = \int \frac{\rho(\boldsymbol{r}')}{|\boldsymbol{r}-\boldsymbol{r}'|}\text{d}\boldsymbol{r}',
 \]</span></p>
@@ -1293,8 +1285,8 @@ U
 <li><p>Decida a geometria do sistema que deseja resolver: <span class="math inline">\(\{R_A\}, \{Z_A\}, N\)</span> e defina o tipo de conjunto de base;</p></li>
 <li><p>Calcule o potencial externo <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span>;</p></li>
 <li><p>Inicialize o método com um chute inicial para a densidade <span class="math inline">\(\rho^{n=0}(\boldsymbol{r})\)</span>;</p></li>
-<li><p>Calcule o potencial efetivo <span class="math inline">\(V_\text{eff}(\boldsymbol{r})\)</span>;</p></li>
-<li><p>Resolve as Eq de Kohn-Sham para nova densidade <span class="math inline">\(\rho^{n+1}(\boldsymbol{r}) = \sum_i |\psi_i(\boldsymbol{r})|^2\)</span>;</p></li>
+<li><p>Calcule o potencial efetivo de Kohn-Sham <span class="math inline">\(V_\text{KS}(\boldsymbol{r})\)</span>;</p></li>
+<li><p>Resolva as equações de Kohn-Sham para a nova densidade <span class="math inline">\(\rho^{n+1}(\boldsymbol{r}) = \sum_i |\psi_i(\boldsymbol{r})|^2\)</span>;</p></li>
 <li><p>Verifique a convergência <span class="math inline">\(\rho^{n+1}=\rho^{n}\)</span>. Se for verdadeiro, pare o cálculo e siga para o item 7. Caso contrário volte ao item 4.</p></li>
 <li><p>Por fim, obtenha a forma dos orbitais moleculares (MO) a partir de <span class="math inline">\(\psi_i(\boldsymbol{r})\)</span> e as energias dos MOs a partir de <span class="math inline">\(\epsilon_i\)</span>.</p></li>
 </ol>
@@ -1332,11 +1324,7 @@ V_\text{ext}(\boldsymbol{r})
 \left[
 -\frac{1}{2}\nabla^2
 +
-V_\text{ext}(\boldsymbol{r})
-+
-V_H(\boldsymbol{r})
-+
-V_\text{XC}(\boldsymbol{r})
+V_\text{KS}(\boldsymbol{r})
 \right]
 \psi_i(\boldsymbol{r})
 =
@@ -1349,17 +1337,7 @@ V_\text{XC}(\boldsymbol{r})
 E_\text{S}[\rho]
 +
 \int
-V_\text{ext}(\boldsymbol{r})
-\rho(\boldsymbol{r})
-\text{d}\boldsymbol{r}
-+
-\int
-V_H(\boldsymbol{r})
-\rho(\boldsymbol{r})
-\text{d}\boldsymbol{r}
-+
-\int
-V_\text{XC}(\boldsymbol{r})
+V_\text{KS}(\boldsymbol{r})
 \rho(\boldsymbol{r})
 \text{d}\boldsymbol{r}.
 \]</span></p>
@@ -1691,8 +1669,8 @@ E_\text{disp}
 <p>onde <span class="math inline">\(R\)</span> é a distância entre os fragmentos e <span class="math inline">\(C_6\)</span> é o coeficiente de dispersão.</p>
 <p>Funcionais locais e semilocais convencionais não descrevem corretamente essa contribuição de correlação de longo alcance. Diferentes estratégias foram desenvolvidas para incorporar essas interações em cálculos DFT.</p>
 </section>
-<section id="correções-dft-d" class="level3" data-number="7.6.3">
-<h3 data-number="7.6.3" class="anchored" data-anchor-id="correções-dft-d"><span class="header-section-number">7.6.3</span> Correções DFT-D</h3>
+<section id="sec-DFT-D" class="level3" data-number="7.6.3">
+<h3 data-number="7.6.3" class="anchored" data-anchor-id="sec-DFT-D"><span class="header-section-number">7.6.3</span> Correções DFT-D</h3>
 <p>Uma estratégia consiste em adicionar à energia obtida por DFT uma contribuição de dispersão calculada separadamente,</p>
 <p><span class="math display">\[
 E_\text{DFT-D}
