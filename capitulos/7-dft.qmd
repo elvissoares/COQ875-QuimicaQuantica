@@ -729,20 +729,10 @@ V_\text{ext}(\boldsymbol{r})
 \psi_j(\boldsymbol{r}).
 $$
 
-Definindo o operador de Kohn-Sham como
+Definindo um potencial efetivo de Kohn-Sham como
 
 $$
-\hat{h}_\text{KS}
-=
--\frac{1}{2}\nabla^2
-+
-V_\text{eff}(\boldsymbol{r}),
-$$
-
-com
-
-$$
-V_\text{eff}(\boldsymbol{r})
+V_\text{KS}(\boldsymbol{r})
 =
 V_H(\boldsymbol{r})
 +
@@ -754,7 +744,7 @@ $$
 podemos escrever
 
 $$
-\hat{h}_\text{KS}\psi_i
+\left[-\frac{1}{2}\nabla^2 + V_\text{KS}(\boldsymbol{r}) \right]\psi_i
 =
 \sum_{j=1}^N
 \epsilon_{ij}\psi_j.
@@ -784,7 +774,7 @@ as equações passam a ter a forma diagonal
 
 $$
 \boxed{
-\hat{h}_\text{KS}
+\left[-\frac{1}{2}\nabla^2 + V_\text{KS}(\boldsymbol{r}) \right]
 \phi_i(\boldsymbol{r})
 =
 \epsilon_i
@@ -794,7 +784,7 @@ $$ {#eq-KS}
 
 que corresponde à forma canônica das equações de Kohn-Sham. 
 
-Desta forma, o método de Kohn-Sham consiste em resolver o problema eletrônico a partir de um sistema auxiliar constituído de elétrons não-interagentes mas sujeitos a um potencial efetivo dado por $V_\text{eff}(\boldsymbol{r}) = V_\text{H}(\boldsymbol{r})  + V_\text{XC}(\boldsymbol{r}) + V_\text{ext}(\boldsymbol{r})$ onde o potencial de Hartree é calculado por 
+Desta forma, o método de Kohn-Sham consiste em resolver o problema eletrônico a partir de um sistema auxiliar constituído de elétrons não-interagentes mas sujeitos a um potencial efetivo dado por $V_\text{KS}(\boldsymbol{r}) = V_\text{H}(\boldsymbol{r})  + V_\text{XC}(\boldsymbol{r}) + V_\text{ext}(\boldsymbol{r})$ onde o potencial de Hartree é calculado por 
 
 $$
     V_\text{H}(\boldsymbol{r}) = \frac{\delta E_\text{H}[\rho]}{\delta \rho(\boldsymbol{r}) } = \int \frac{\rho(\boldsymbol{r}')}{|\boldsymbol{r}-\boldsymbol{r}'|}\text{d}\boldsymbol{r}',
@@ -820,9 +810,9 @@ O procedimento auto-consistente é descrito como
 
 3. Inicialize o método com um chute inicial para a densidade $\rho^{n=0}(\boldsymbol{r})$;
 
-4. Calcule o potencial efetivo $V_\text{eff}(\boldsymbol{r})$;
+4. Calcule o potencial efetivo de Kohn-Sham $V_\text{KS}(\boldsymbol{r})$;
 
-5. Resolve as Eq de Kohn-Sham para nova densidade $\rho^{n+1}(\boldsymbol{r}) = \sum_i |\psi_i(\boldsymbol{r})|^2$;
+5. Resolva as equações de Kohn-Sham para a nova densidade $\rho^{n+1}(\boldsymbol{r}) = \sum_i |\psi_i(\boldsymbol{r})|^2$;
 
 6. Verifique a convergência $\rho^{n+1}=\rho^{n}$. Se for verdadeiro, pare o cálculo e siga para o item 7. Caso contrário volte ao item 4. 
 
@@ -858,11 +848,7 @@ $$
 \left[
 -\frac{1}{2}\nabla^2
 +
-V_\text{ext}(\boldsymbol{r})
-+
-V_H(\boldsymbol{r})
-+
-V_\text{XC}(\boldsymbol{r})
+V_\text{KS}(\boldsymbol{r})
 \right]
 \psi_i(\boldsymbol{r})
 =
@@ -877,17 +863,7 @@ $$
 E_\text{S}[\rho]
 +
 \int
-V_\text{ext}(\boldsymbol{r})
-\rho(\boldsymbol{r})
-\text{d}\boldsymbol{r}
-+
-\int
-V_H(\boldsymbol{r})
-\rho(\boldsymbol{r})
-\text{d}\boldsymbol{r}
-+
-\int
-V_\text{XC}(\boldsymbol{r})
+V_\text{KS}(\boldsymbol{r})
 \rho(\boldsymbol{r})
 \text{d}\boldsymbol{r}.
 $$

@@ -1221,17 +1221,9 @@ V_\text{ext}(\boldsymbol{r})
 \epsilon_{ij}
 \psi_j(\boldsymbol{r}).
 \]</span></p>
-<p>Definindo o operador de Kohn-Sham como</p>
+<p>Definindo um potencial efetivo de Kohn-Sham como</p>
 <p><span class="math display">\[
-\hat{h}_\text{KS}
-=
--\frac{1}{2}\nabla^2
-+
-V_\text{eff}(\boldsymbol{r}),
-\]</span></p>
-<p>com</p>
-<p><span class="math display">\[
-V_\text{eff}(\boldsymbol{r})
+V_\text{KS}(\boldsymbol{r})
 =
 V_H(\boldsymbol{r})
 +
@@ -1241,7 +1233,7 @@ V_\text{ext}(\boldsymbol{r}),
 \]</span></p>
 <p>podemos escrever</p>
 <p><span class="math display">\[
-\hat{h}_\text{KS}\psi_i
+\left[-\frac{1}{2}\nabla^2 + V_\text{KS}(\boldsymbol{r}) \right]\psi_i
 =
 \sum_{j=1}^N
 \epsilon_{ij}\psi_j.
@@ -1265,7 +1257,7 @@ U
 <p>as equações passam a ter a forma diagonal</p>
 <p><span id="eq-KS"><span class="math display">\[
 \boxed{
-\hat{h}_\text{KS}
+\left[-\frac{1}{2}\nabla^2 + V_\text{KS}(\boldsymbol{r}) \right]
 \phi_i(\boldsymbol{r})
 =
 \epsilon_i
@@ -1273,7 +1265,7 @@ U
 }
 \tag{7.2}\]</span></span></p>
 <p>que corresponde à forma canônica das equações de Kohn-Sham.</p>
-<p>Desta forma, o método de Kohn-Sham consiste em resolver o problema eletrônico a partir de um sistema auxiliar constituído de elétrons não-interagentes mas sujeitos a um potencial efetivo dado por <span class="math inline">\(V_\text{eff}(\boldsymbol{r}) = V_\text{H}(\boldsymbol{r})  + V_\text{XC}(\boldsymbol{r}) + V_\text{ext}(\boldsymbol{r})\)</span> onde o potencial de Hartree é calculado por</p>
+<p>Desta forma, o método de Kohn-Sham consiste em resolver o problema eletrônico a partir de um sistema auxiliar constituído de elétrons não-interagentes mas sujeitos a um potencial efetivo dado por <span class="math inline">\(V_\text{KS}(\boldsymbol{r}) = V_\text{H}(\boldsymbol{r})  + V_\text{XC}(\boldsymbol{r}) + V_\text{ext}(\boldsymbol{r})\)</span> onde o potencial de Hartree é calculado por</p>
 <p><span class="math display">\[
     V_\text{H}(\boldsymbol{r}) = \frac{\delta E_\text{H}[\rho]}{\delta \rho(\boldsymbol{r}) } = \int \frac{\rho(\boldsymbol{r}')}{|\boldsymbol{r}-\boldsymbol{r}'|}\text{d}\boldsymbol{r}',
 \]</span></p>
@@ -1290,8 +1282,8 @@ U
 <li><p>Decida a geometria do sistema que deseja resolver: <span class="math inline">\(\{R_A\}, \{Z_A\}, N\)</span> e defina o tipo de conjunto de base;</p></li>
 <li><p>Calcule o potencial externo <span class="math inline">\(V_\text{ext}(\boldsymbol{r})\)</span>;</p></li>
 <li><p>Inicialize o método com um chute inicial para a densidade <span class="math inline">\(\rho^{n=0}(\boldsymbol{r})\)</span>;</p></li>
-<li><p>Calcule o potencial efetivo <span class="math inline">\(V_\text{eff}(\boldsymbol{r})\)</span>;</p></li>
-<li><p>Resolve as Eq de Kohn-Sham para nova densidade <span class="math inline">\(\rho^{n+1}(\boldsymbol{r}) = \sum_i |\psi_i(\boldsymbol{r})|^2\)</span>;</p></li>
+<li><p>Calcule o potencial efetivo de Kohn-Sham <span class="math inline">\(V_\text{KS}(\boldsymbol{r})\)</span>;</p></li>
+<li><p>Resolva as equações de Kohn-Sham para a nova densidade <span class="math inline">\(\rho^{n+1}(\boldsymbol{r}) = \sum_i |\psi_i(\boldsymbol{r})|^2\)</span>;</p></li>
 <li><p>Verifique a convergência <span class="math inline">\(\rho^{n+1}=\rho^{n}\)</span>. Se for verdadeiro, pare o cálculo e siga para o item 7. Caso contrário volte ao item 4.</p></li>
 <li><p>Por fim, obtenha a forma dos orbitais moleculares (MO) a partir de <span class="math inline">\(\psi_i(\boldsymbol{r})\)</span> e as energias dos MOs a partir de <span class="math inline">\(\epsilon_i\)</span>.</p></li>
 </ol>
@@ -1329,11 +1321,7 @@ V_\text{ext}(\boldsymbol{r})
 \left[
 -\frac{1}{2}\nabla^2
 +
-V_\text{ext}(\boldsymbol{r})
-+
-V_H(\boldsymbol{r})
-+
-V_\text{XC}(\boldsymbol{r})
+V_\text{KS}(\boldsymbol{r})
 \right]
 \psi_i(\boldsymbol{r})
 =
@@ -1346,17 +1334,7 @@ V_\text{XC}(\boldsymbol{r})
 E_\text{S}[\rho]
 +
 \int
-V_\text{ext}(\boldsymbol{r})
-\rho(\boldsymbol{r})
-\text{d}\boldsymbol{r}
-+
-\int
-V_H(\boldsymbol{r})
-\rho(\boldsymbol{r})
-\text{d}\boldsymbol{r}
-+
-\int
-V_\text{XC}(\boldsymbol{r})
+V_\text{KS}(\boldsymbol{r})
 \rho(\boldsymbol{r})
 \text{d}\boldsymbol{r}.
 \]</span></p>

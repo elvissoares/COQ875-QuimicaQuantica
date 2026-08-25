@@ -86,6 +86,35 @@ MathJax = {
 };
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -495,10 +524,22 @@ MathJax = {
   <ul>
   <li><a href="#base-de-ondas-planas" id="toc-base-de-ondas-planas" class="nav-link active" data-scroll-target="#base-de-ondas-planas"><span class="header-section-number">11.1</span> Base de ondas planas</a></li>
   <li><a href="#energia-de-corte" id="toc-energia-de-corte" class="nav-link" data-scroll-target="#energia-de-corte"><span class="header-section-number">11.2</span> Energia de corte</a></li>
-  <li><a href="#pseudopotenciais" id="toc-pseudopotenciais" class="nav-link" data-scroll-target="#pseudopotenciais"><span class="header-section-number">11.3</span> Pseudopotenciais</a></li>
+  <li><a href="#pseudopotenciais" id="toc-pseudopotenciais" class="nav-link" data-scroll-target="#pseudopotenciais"><span class="header-section-number">11.3</span> Pseudopotenciais</a>
+  <ul class="collapse">
+  <li><a href="#pseudopotenciais-de-conservação-de-norma" id="toc-pseudopotenciais-de-conservação-de-norma" class="nav-link" data-scroll-target="#pseudopotenciais-de-conservação-de-norma"><span class="header-section-number">11.3.1</span> Pseudopotenciais de conservação de norma</a></li>
+  <li><a href="#pseudopotenciais-ultrasoft" id="toc-pseudopotenciais-ultrasoft" class="nav-link" data-scroll-target="#pseudopotenciais-ultrasoft"><span class="header-section-number">11.3.2</span> Pseudopotenciais ultrasoft</a></li>
+  </ul></li>
   <li><a href="#projetor-de-onda-aumentada-paw" id="toc-projetor-de-onda-aumentada-paw" class="nav-link" data-scroll-target="#projetor-de-onda-aumentada-paw"><span class="header-section-number">11.4</span> Projetor de Onda Aumentada (PAW)</a></li>
-  <li><a href="#malhas-monkhorstpack" id="toc-malhas-monkhorstpack" class="nav-link" data-scroll-target="#malhas-monkhorstpack"><span class="header-section-number">11.5</span> Malhas Monkhorst–Pack</a></li>
-  <li><a href="#cálculo-scf-em-sólidos" id="toc-cálculo-scf-em-sólidos" class="nav-link" data-scroll-target="#cálculo-scf-em-sólidos"><span class="header-section-number">11.6</span> Cálculo SCF em sólidos</a></li>
+  <li><a href="#malhas-monkhorstpack" id="toc-malhas-monkhorstpack" class="nav-link" data-scroll-target="#malhas-monkhorstpack"><span class="header-section-number">11.5</span> Malhas Monkhorst–Pack</a>
+  <ul class="collapse">
+  <li><a href="#relação-entre-a-célula-real-e-a-malha-de-pontos-boldsymbolk" id="toc-relação-entre-a-célula-real-e-a-malha-de-pontos-boldsymbolk" class="nav-link" data-scroll-target="#relação-entre-a-célula-real-e-a-malha-de-pontos-boldsymbolk"><span class="header-section-number">11.5.1</span> Relação entre a célula real e a malha de pontos <span class="math inline">\(\boldsymbol{k}\)</span></a></li>
+  <li><a href="#convergência-com-relação-à-malha-de-pontos-boldsymbolk" id="toc-convergência-com-relação-à-malha-de-pontos-boldsymbolk" class="nav-link" data-scroll-target="#convergência-com-relação-à-malha-de-pontos-boldsymbolk"><span class="header-section-number">11.5.2</span> Convergência com relação à malha de pontos <span class="math inline">\(\boldsymbol{k}\)</span></a></li>
+  </ul></li>
+  <li><a href="#cálculo-scf-em-sólidos" id="toc-cálculo-scf-em-sólidos" class="nav-link" data-scroll-target="#cálculo-scf-em-sólidos"><span class="header-section-number">11.6</span> Cálculo SCF em sólidos</a>
+  <ul class="collapse">
+  <li><a href="#ocupação-dos-estados" id="toc-ocupação-dos-estados" class="nav-link" data-scroll-target="#ocupação-dos-estados"><span class="header-section-number">11.6.1</span> Ocupação dos estados</a></li>
+  <li><a href="#convergência-dos-cálculos" id="toc-convergência-dos-cálculos" class="nav-link" data-scroll-target="#convergência-dos-cálculos"><span class="header-section-number">11.6.2</span> Convergência dos cálculos</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/11-dft_em_solidos.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -525,25 +566,470 @@ MathJax = {
 </header>
 
 
+<p>A Teoria do Funcional da Densidade é um dos métodos mais utilizados para o cálculo da estrutura eletrônica de sólidos cristalinos. A formulação das equações de Kohn–Sham permanece essencialmente a mesma apresentada para sistemas moleculares, mas a periodicidade do cristal permite explorar a simetria translacional do sistema e utilizar representações particularmente convenientes para cálculos numéricos.</p>
+<p>Para um sólido cristalino, o potencial externo produzido pelos núcleos satisfaz</p>
+<p><span class="math display">\[
+V_{\mathrm{ext}}
+(\boldsymbol{r}+\boldsymbol{R})
+=
+V_{\mathrm{ext}}
+(\boldsymbol{r}),
+\]</span></p>
+<p>onde <span class="math inline">\(\boldsymbol{R}\)</span> é um vetor da rede de Bravais. Consequentemente, a densidade eletrônica e o potencial efetivo de Kohn–Sham também apresentam a periodicidade da rede,</p>
+<p><span class="math display">\[
+\rho(\boldsymbol{r}+\boldsymbol{R})
+=
+\rho(\boldsymbol{r})
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+V_{\mathrm{KS}}
+(\boldsymbol{r}+\boldsymbol{R})
+=
+V_{\mathrm{KS}}
+(\boldsymbol{r}).
+\]</span></p>
+<p>As equações de Kohn–Sham podem então ser escritas como</p>
+<p><span class="math display">\[
+\left[
+-\frac{1}{2}\nabla^2
++
+V_{\mathrm{KS}}(\boldsymbol{r})
+\right]
+\psi_{n\boldsymbol{k}}(\boldsymbol{r})
+=
+\varepsilon_{n\boldsymbol{k}}
+\psi_{n\boldsymbol{k}}(\boldsymbol{r}),
+\]</span></p>
+<p>em unidades atômicas, onde <span class="math inline">\(n\)</span> representa o índice da banda e <span class="math inline">\(\boldsymbol{k}\)</span> é um vetor pertencente à primeira zona de Brillouin.</p>
+<p>De acordo com o teorema de Bloch, os orbitais de Kohn–Sham podem ser escritos como</p>
+<p><span class="math display">\[
+\psi_{n\boldsymbol{k}}(\boldsymbol{r})
+=
+e^{i\boldsymbol{k}\cdot\boldsymbol{r}}
+u_{n\boldsymbol{k}}(\boldsymbol{r}),
+\]</span></p>
+<p>onde a função <span class="math inline">\(u_{n\boldsymbol{k}}(\boldsymbol{r})\)</span> possui a periodicidade da rede,</p>
+<p><span class="math display">\[
+u_{n\boldsymbol{k}}
+(\boldsymbol{r}+\boldsymbol{R})
+=
+u_{n\boldsymbol{k}}(\boldsymbol{r}).
+\]</span></p>
+<p>Essa propriedade constitui a base para a representação dos orbitais eletrônicos em termos de ondas planas.</p>
 <section id="base-de-ondas-planas" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="base-de-ondas-planas"><span class="header-section-number">11.1</span> Base de ondas planas</h2>
+<p>Como a função periódica <span class="math inline">\(u_{n\boldsymbol{k}}(\boldsymbol{r})\)</span> possui a periodicidade da rede cristalina, ela pode ser expandida em uma série de Fourier formada por vetores <span class="math inline">\(\boldsymbol{G}\)</span> da rede recíproca,</p>
+<p><span class="math display">\[
+u_{n\boldsymbol{k}}(\boldsymbol{r})
+=
+\sum_{\boldsymbol{G}}
+c_{n\boldsymbol{k}}(\boldsymbol{G})
+e^{i\boldsymbol{G}\cdot\boldsymbol{r}}.
+\]</span></p>
+<p>Substituindo essa expansão na forma de Bloch, obtemos</p>
+<p><span id="eq-plane-wave-expansion"><span class="math display">\[
+\boxed{
+\psi_{n\boldsymbol{k}}(\boldsymbol{r})
+=
+\sum_{\boldsymbol{G}}
+c_{n\boldsymbol{k}}(\boldsymbol{G})
+e^{i(\boldsymbol{k}+\boldsymbol{G})\cdot\boldsymbol{r}}
+}
+\tag{11.1}\]</span></span></p>
+<p>Assim, para cada valor de <span class="math inline">\(\boldsymbol{k}\)</span>, o orbital de Kohn–Sham é representado por uma combinação linear de ondas planas com vetores de onda</p>
+<p><span class="math display">\[
+\boldsymbol{k}+\boldsymbol{G}.
+\]</span></p>
+<p>As ondas planas constituem uma base particularmente conveniente para sistemas periódicos porque são naturalmente compatíveis com as condições periódicas de contorno e não estão associadas a posições atômicas específicas.</p>
+<p>Além disso, a ação do operador de energia cinética sobre uma onda plana é simples,</p>
+<p><span class="math display">\[
+-\frac{1}{2}\nabla^2
+e^{i(\boldsymbol{k}+\boldsymbol{G})\cdot\boldsymbol{r}}
+=
+\frac{1}{2}
+|\boldsymbol{k}+\boldsymbol{G}|^2
+e^{i(\boldsymbol{k}+\boldsymbol{G})\cdot\boldsymbol{r}}.
+\]</span></p>
+<p>Portanto, o operador de energia cinética é diagonal na representação de ondas planas.</p>
+<p>Em contrapartida, funções de onda eletrônicas reais podem apresentar variações muito rápidas próximas aos núcleos. A descrição dessas oscilações utilizando ondas planas exigiria um número muito grande de funções de base. Essa dificuldade motiva o uso de pseudopotenciais ou do método PAW, que serão discutidos posteriormente.</p>
 </section>
 <section id="energia-de-corte" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="energia-de-corte"><span class="header-section-number">11.2</span> Energia de corte</h2>
+<p>A expansão da <a href="#eq-plane-wave-expansion" class="quarto-xref">Equation&nbsp;<span>11.1</span></a> contém, formalmente, um número infinito de vetores da rede recíproca. Em um cálculo computacional, essa expansão deve ser truncada.</p>
+<p>A energia cinética associada a uma onda plana é</p>
+<p><span class="math display">\[
+E_{\mathrm{kin}}
+=
+\frac{1}{2}
+|\boldsymbol{k}+\boldsymbol{G}|^2
+\]</span></p>
+<p>em unidades atômicas.</p>
+<p>Define-se então uma <strong>energia de corte</strong>, <span class="math inline">\(E_{\mathrm{cut}}\)</span>, de modo que apenas ondas planas que satisfaçam</p>
+<p><span id="eq-energy-cutoff"><span class="math display">\[
+\boxed{
+\frac{1}{2}
+|\boldsymbol{k}+\boldsymbol{G}|^2
+\leq
+E_{\mathrm{cut}}
+}
+\tag{11.2}\]</span></span></p>
+<p>sejam incluídas na expansão.</p>
+<p>Geometricamente, essa condição corresponde à inclusão dos vetores <span class="math inline">\(\boldsymbol{k}+\boldsymbol{G}\)</span> localizados dentro de uma esfera no espaço recíproco de raio</p>
+<p><span class="math display">\[
+G_{\mathrm{max}}
+\simeq
+\sqrt{2E_{\mathrm{cut}}}.
+\]</span></p>
+<p>Quanto maior a energia de corte, maior o número de ondas planas utilizadas na expansão e, consequentemente, maior o custo computacional do cálculo.</p>
+<p>Por outro lado, uma energia de corte muito baixa resulta em uma base insuficiente para representar adequadamente os orbitais eletrônicos.</p>
+<p>Assim, <span class="math inline">\(E_{\mathrm{cut}}\)</span> constitui um dos principais parâmetros de convergência em cálculos utilizando ondas planas.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O valor adequado de <span class="math inline">\(E_{\mathrm{cut}}\)</span> não é universal. Ele depende principalmente do pseudopotencial ou do conjunto PAW utilizado e dos elementos químicos presentes no sistema. Dessa forma, a energia de corte deve ser submetida a testes de convergência.</p>
+</div>
+</div>
+<p>Um teste de convergência pode ser realizado calculando, por exemplo, a energia total para valores crescentes de <span class="math inline">\(E_{\mathrm{cut}}\)</span> até que a variação da propriedade de interesse se torne menor que uma tolerância previamente estabelecida.</p>
 </section>
 <section id="pseudopotenciais" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="pseudopotenciais"><span class="header-section-number">11.3</span> Pseudopotenciais</h2>
+<p>Os elétrons de um átomo podem ser separados, de maneira aproximada, entre <strong>elétrons de caroço</strong> e <strong>elétrons de valência</strong>.</p>
+<p>Os elétrons de caroço estão fortemente ligados ao núcleo e geralmente apresentam pouca participação direta nas ligações químicas. Já os elétrons de valência são responsáveis pela maior parte das propriedades químicas e eletrônicas do material.</p>
+<p>Próximo ao núcleo, o forte potencial coulombiano produz funções de onda que apresentam variações espaciais rápidas. Além disso, as funções de onda dos elétrons de valência devem permanecer ortogonais aos estados eletrônicos de caroço, introduzindo oscilações adicionais nessa região.</p>
+<p>Uma representação direta dessas funções por ondas planas exigiria energias de corte muito elevadas.</p>
+<p>A ideia central de um <strong>pseudopotencial</strong> é substituir o potencial produzido pelo núcleo e pelos elétrons de caroço por um potencial efetivo mais suave que atua apenas sobre os elétrons de valência.</p>
+<div id="fig-pseudo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pseudo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/solidos/pseudopotentials.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pseudo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11.1: Comparação entre função de onda all-electron e pseudofunção de onda. <em>Fonte: wikipedia</em>
+</figcaption>
+</figure>
+</div>
+<p>Esquematicamente,</p>
+<p><span class="math display">\[
+V_{\mathrm{núcleo}}
++
+V_{\mathrm{caroço}}
+\longrightarrow
+V_{\mathrm{pseudo}}.
+\]</span></p>
+<p>A função de onda de valência verdadeira é então substituída por uma pseudofunção de onda que reproduz seu comportamento fora de uma determinada região próxima ao núcleo, mas apresenta uma forma mais suave no interior dessa região, como ilustrado na <a href="#fig-pseudo" class="quarto-xref">Figure&nbsp;<span>11.1</span></a>.</p>
+<p>Como consequência, a pseudofunção de onda pode ser representada utilizando um número significativamente menor de ondas planas.</p>
+<p>Uma característica importante dos pseudopotenciais é a <strong>transferibilidade</strong>, isto é, sua capacidade de reproduzir adequadamente as propriedades do átomo em diferentes ambientes químicos.</p>
+<p>Entre as classes de pseudopotenciais utilizadas em cálculos de estrutura eletrônica encontram-se os pseudopotenciais de conservação de norma e os pseudopotenciais ultrasoft.</p>
+<section id="pseudopotenciais-de-conservação-de-norma" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="pseudopotenciais-de-conservação-de-norma"><span class="header-section-number">11.3.1</span> Pseudopotenciais de conservação de norma</h3>
+<p>Nos pseudopotenciais de conservação de norma, a pseudofunção de onda é construída de forma que coincida com a função de onda <em>all-electron</em> fora de um raio de corte <span class="math inline">\(r_c\)</span>.</p>
+<p>Além disso, a carga integrada dentro da região do caroço é preservada,</p>
+<p><span class="math display">\[
+\int_0^{r_c}
+|\psi_{\mathrm{pseudo}}(r)|^2
+r^2\,dr
+=
+\int_0^{r_c}
+|\psi_{\mathrm{AE}}(r)|^2
+r^2\,dr,
+\]</span></p>
+<p>onde <span class="math inline">\(\psi_{\mathrm{AE}}\)</span> representa a função de onda <em>all-electron</em>.</p>
+<p>Essa condição contribui para a transferibilidade do pseudopotencial entre diferentes ambientes químicos.</p>
+</section>
+<section id="pseudopotenciais-ultrasoft" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="pseudopotenciais-ultrasoft"><span class="header-section-number">11.3.2</span> Pseudopotenciais ultrasoft</h3>
+<p>Nos pseudopotenciais <strong>ultrasoft</strong>, a condição de conservação de norma é relaxada. Isso permite construir pseudofunções ainda mais suaves e, consequentemente, utilizar energias de corte menores.</p>
+<p>A redução no tamanho da base de ondas planas pode produzir uma economia computacional significativa, especialmente para elementos cujos orbitais de valência apresentam forte localização espacial.</p>
+<p>Em contrapartida, a formulação passa a exigir termos adicionais relacionados à reconstrução da densidade eletrônica.</p>
+</section>
 </section>
 <section id="projetor-de-onda-aumentada-paw" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="projetor-de-onda-aumentada-paw"><span class="header-section-number">11.4</span> Projetor de Onda Aumentada (PAW)</h2>
+<p>O método <strong>Projector Augmented-Wave</strong> (PAW) fornece uma abordagem que combina características dos métodos <em>all-electron</em> com a eficiência computacional das representações suaves utilizadas em métodos de pseudopotencial.</p>
+<p>A ideia central do PAW consiste em relacionar uma função de onda auxiliar suave,</p>
+<p><span class="math display">\[
+|\tilde{\psi}\rangle,
+\]</span></p>
+<p>à função de onda <em>all-electron</em>,</p>
+<p><span class="math display">\[
+|\psi\rangle,
+\]</span></p>
+<p>através de uma transformação linear,</p>
+<p><span class="math display">\[
+\boxed{
+|\psi\rangle
+=
+\hat{\mathcal{T}}
+|\tilde{\psi}\rangle
+}
+\]</span></p>
+<p>A função auxiliar <span class="math inline">\(\tilde{\psi}\)</span> é suficientemente suave para ser representada eficientemente por uma base de ondas planas.</p>
+<p>Nas regiões próximas aos núcleos, denominadas <strong>regiões de aumento</strong>, a função <em>all-electron</em> é reconstruída a partir de funções parciais atômicas.</p>
+<p>A transformação PAW pode ser escrita de forma esquemática como</p>
+<p><span class="math display">\[
+|\psi\rangle
+=
+|\tilde{\psi}\rangle
++
+\sum_i
+\left(
+|\phi_i\rangle
+-
+|\tilde{\phi}_i\rangle
+\right)
+\langle
+\tilde{p}_i
+|
+\tilde{\psi}
+\rangle,
+\]</span></p>
+<p>onde</p>
+<ul>
+<li><span class="math inline">\(|\phi_i\rangle\)</span> são funções parciais <em>all-electron</em>;</li>
+<li><span class="math inline">\(|\tilde{\phi}_i\rangle\)</span> são funções parciais auxiliares suaves;</li>
+<li><span class="math inline">\(|\tilde{p}_i\rangle\)</span> são funções projetoras.</li>
+</ul>
+<p>Fora das regiões próximas aos núcleos,</p>
+<p><span class="math display">\[
+\phi_i(\boldsymbol{r})
+=
+\tilde{\phi}_i(\boldsymbol{r}),
+\]</span></p>
+<p>de modo que a correção é necessária apenas dentro das regiões de aumento.</p>
+<p>O método PAW permite, portanto, trabalhar numericamente com funções suaves enquanto mantém a possibilidade de reconstruir informações associadas ao comportamento <em>all-electron</em>.</p>
+<p>Por apresentar boa precisão e custo computacional relativamente baixo, o método PAW é amplamente empregado em cálculos de DFT para sólidos.</p>
 </section>
 <section id="malhas-monkhorstpack" class="level2" data-number="11.5">
 <h2 data-number="11.5" class="anchored" data-anchor-id="malhas-monkhorstpack"><span class="header-section-number">11.5</span> Malhas Monkhorst–Pack</h2>
+<p>As propriedades eletrônicas de um sólido dependem dos estados associados aos diferentes vetores <span class="math inline">\(\boldsymbol{k}\)</span> da primeira zona de Brillouin.</p>
+<p>Grandezas físicas frequentemente envolvem integrais da forma</p>
+<p><span class="math display">\[
+\frac{1}{\Omega_{\mathrm{BZ}}}
+\int_{\mathrm{BZ}}
+f(\boldsymbol{k})
+\,d\boldsymbol{k},
+\]</span></p>
+<p>onde <span class="math inline">\(\Omega_{\mathrm{BZ}}\)</span> representa o volume da primeira zona de Brillouin.</p>
+<p>Em um cálculo computacional, essa integral é aproximada por uma soma sobre um conjunto finito de pontos,</p>
+<p><span id="eq-kpoint-integration"><span class="math display">\[
+\boxed{
+\frac{1}{\Omega_{\mathrm{BZ}}}
+\int_{\mathrm{BZ}}
+f(\boldsymbol{k})
+\,d\boldsymbol{k}
+\approx
+\sum_{\boldsymbol{k}}
+w_{\boldsymbol{k}}
+f(\boldsymbol{k})
+}
+\tag{11.3}\]</span></span></p>
+<p>onde <span class="math inline">\(w_{\boldsymbol{k}}\)</span> representa o peso associado a cada ponto <span class="math inline">\(\boldsymbol{k}\)</span>.</p>
+<p>Uma das estratégias mais utilizadas para realizar essa amostragem consiste nas <strong>malhas Monkhorst–Pack</strong>, que distribuem os pontos <span class="math inline">\(\boldsymbol{k}\)</span> de maneira regular na zona de Brillouin.</p>
+<p>Uma malha pode ser especificada por</p>
+<p><span class="math display">\[
+N_1\times N_2\times N_3,
+\]</span></p>
+<p>onde <span class="math inline">\(N_i\)</span> corresponde ao número de divisões ao longo de cada direção da rede recíproca.</p>
+<p>Por exemplo,</p>
+<p><span class="math display">\[
+4\times4\times4
+\]</span></p>
+<p>representa uma malha tridimensional com quatro divisões em cada direção.</p>
+<p>O número efetivo de pontos utilizados no cálculo pode ser reduzido utilizando as simetrias do cristal, pois diferentes pontos da zona de Brillouin podem ser equivalentes por operações de simetria.</p>
+<section id="relação-entre-a-célula-real-e-a-malha-de-pontos-boldsymbolk" class="level3" data-number="11.5.1">
+<h3 data-number="11.5.1" class="anchored" data-anchor-id="relação-entre-a-célula-real-e-a-malha-de-pontos-boldsymbolk"><span class="header-section-number">11.5.1</span> Relação entre a célula real e a malha de pontos <span class="math inline">\(\boldsymbol{k}\)</span></h3>
+<p>Existe uma relação inversa entre o tamanho da célula no espaço real e o tamanho da zona de Brillouin.</p>
+<p>De forma qualitativa,</p>
+<p><span class="math display">\[
+\boxed{
+\text{célula real maior}
+\quad\Longleftrightarrow\quad
+\text{zona de Brillouin menor}
+}
+\]</span></p>
+<p>Consequentemente, sistemas descritos por células primitivas pequenas geralmente requerem malhas de pontos <span class="math inline">\(\boldsymbol{k}\)</span> relativamente densas.</p>
+<p>Por outro lado, supercélulas grandes possuem zonas de Brillouin menores e podem frequentemente ser descritas utilizando malhas menos densas.</p>
+<p>No limite de células muito grandes, pode ser suficiente utilizar apenas o ponto</p>
+<p><span class="math display">\[
+\boldsymbol{k}=\boldsymbol{0},
+\]</span></p>
+<p>denominado <strong>ponto <span class="math inline">\(\Gamma\)</span></strong>.</p>
+</section>
+<section id="convergência-com-relação-à-malha-de-pontos-boldsymbolk" class="level3" data-number="11.5.2">
+<h3 data-number="11.5.2" class="anchored" data-anchor-id="convergência-com-relação-à-malha-de-pontos-boldsymbolk"><span class="header-section-number">11.5.2</span> Convergência com relação à malha de pontos <span class="math inline">\(\boldsymbol{k}\)</span></h3>
+<p>Assim como ocorre com a energia de corte, a densidade da malha de pontos <span class="math inline">\(\boldsymbol{k}\)</span> deve ser determinada através de testes de convergência.</p>
+<p>Por exemplo, pode-se comparar uma sequência de cálculos utilizando</p>
+<p><span class="math display">\[
+2\times2\times2,
+\]</span></p>
+<p><span class="math display">\[
+4\times4\times4,
+\]</span></p>
+<p><span class="math display">\[
+6\times6\times6,
+\]</span></p>
+<p><span class="math display">\[
+8\times8\times8,
+\]</span></p>
+<p>até que a energia total ou outra propriedade de interesse apresente variações suficientemente pequenas.</p>
+<p>Materiais metálicos geralmente exigem uma amostragem mais densa da zona de Brillouin devido à presença de estados eletrônicos próximos ao nível de Fermi.</p>
+</section>
 </section>
 <section id="cálculo-scf-em-sólidos" class="level2" data-number="11.6">
 <h2 data-number="11.6" class="anchored" data-anchor-id="cálculo-scf-em-sólidos"><span class="header-section-number">11.6</span> Cálculo SCF em sólidos</h2>
+<p>As equações de Kohn–Sham dependem da própria densidade eletrônica através dos potenciais de Hartree e de troca e correlação. Por esse motivo, devem ser resolvidas de maneira autoconsistente.</p>
+<p>O procedimento é semelhante ao ciclo SCF utilizado em sistemas moleculares, mas, em sólidos, as equações devem ser resolvidas para um conjunto de pontos <span class="math inline">\(\boldsymbol{k}\)</span> da zona de Brillouin.</p>
+<p>Partimos de uma estimativa inicial para a densidade,</p>
+<p><span class="math display">\[
+\rho^{(0)}(\boldsymbol{r}).
+\]</span></p>
+<p>A partir dessa densidade, construímos o potencial efetivo de Kohn–Sham,</p>
+<p><span class="math display">\[
+V_{\mathrm{KS}}^{(0)}(\boldsymbol{r})
+=
+V_{\mathrm{ext}}(\boldsymbol{r})
++
+V_{\mathrm{H}}[\rho^{(0)}](\boldsymbol{r})
++
+V_{\mathrm{XC}}[\rho^{(0)}](\boldsymbol{r}).
+\]</span></p>
+<p>Em seguida, resolvemos as equações</p>
+<p><span class="math display">\[
+\hat{H}_{\mathrm{KS}}^{(0)}
+\psi_{n\boldsymbol{k}}^{(0)}
+=
+\varepsilon_{n\boldsymbol{k}}^{(0)}
+\psi_{n\boldsymbol{k}}^{(0)}
+\]</span></p>
+<p>para os diferentes pontos <span class="math inline">\(\boldsymbol{k}\)</span> utilizados na amostragem da zona de Brillouin.</p>
+<p>A partir dos orbitais obtidos, uma nova densidade é construída,</p>
+<p><span id="eq-density-periodic"><span class="math display">\[
+\boxed{
+\rho^{(1)}(\boldsymbol{r})
+=
+\sum_{\boldsymbol{k}}
+w_{\boldsymbol{k}}
+\sum_n
+f_{n\boldsymbol{k}}
+\left|
+\psi_{n\boldsymbol{k}}(\boldsymbol{r})
+\right|^2
+}
+\tag{11.4}\]</span></span></p>
+<p>onde <span class="math inline">\(f_{n\boldsymbol{k}}\)</span> representa a ocupação do estado eletrônico <span class="math inline">\((n,\boldsymbol{k})\)</span>.</p>
+<p>A nova densidade pode então ser combinada com a densidade da iteração anterior,</p>
+<p><span class="math display">\[
+\rho_{\mathrm{in}}^{(n+1)}
+=
+(1-\alpha)
+\rho_{\mathrm{in}}^{(n)}
++
+\alpha
+\rho_{\mathrm{out}}^{(n)},
+\]</span></p>
+<p>onde <span class="math inline">\(\alpha\)</span> é um parâmetro de mistura.</p>
+<p>O processo é repetido até que uma condição de convergência seja satisfeita, por exemplo,</p>
+<p><span class="math display">\[
+|E^{(n+1)}-E^{(n)}|
+&lt;
+\varepsilon_E,
+\]</span></p>
+<p>e/ou</p>
+<p><span class="math display">\[
+\left\|
+\rho^{(n+1)}
+-
+\rho^{(n)}
+\right\|
+&lt;
+\varepsilon_\rho.
+\]</span></p>
+<p>O ciclo autoconsistente pode ser representado esquematicamente por</p>
+<p><span class="math display">\[
+\rho^{(0)}
+\longrightarrow
+V_{\mathrm{KS}}
+\longrightarrow
+\psi_{n\boldsymbol{k}}
+\longrightarrow
+\rho^{(1)}
+\longrightarrow
+V_{\mathrm{KS}}
+\longrightarrow
+\cdots
+\]</span></p>
+<p>até que a densidade eletrônica e a energia total estejam convergidas.</p>
+<section id="ocupação-dos-estados" class="level3" data-number="11.6.1">
+<h3 data-number="11.6.1" class="anchored" data-anchor-id="ocupação-dos-estados"><span class="header-section-number">11.6.1</span> Ocupação dos estados</h3>
+<p>Em isolantes e semicondutores a separação entre bandas ocupadas e desocupadas é normalmente bem definida.</p>
+<p>Em metais, entretanto, existem estados próximos ao nível de Fermi cuja ocupação varia rapidamente com a energia. Isso pode dificultar a integração numérica sobre a zona de Brillouin e a convergência do ciclo SCF.</p>
+<p>Uma estratégia comum consiste em utilizar ocupações suavizadas, ou <em>smearing</em>, em torno do nível de Fermi.</p>
+<p>Por exemplo, utilizando a distribuição de Fermi–Dirac,</p>
+<p><span class="math display">\[
+f(\varepsilon)
+=
+\frac{1}
+{
+e^{(\varepsilon-\mu)/(k_BT)}
++
+1
+},
+\]</span></p>
+<p>onde <span class="math inline">\(\mu\)</span> representa o potencial químico eletrônico.</p>
+<p>O parâmetro utilizado para controlar o <em>smearing</em> deve ser escolhido cuidadosamente, pois valores excessivamente elevados podem modificar artificialmente as propriedades eletrônicas do sistema.</p>
+</section>
+<section id="convergência-dos-cálculos" class="level3" data-number="11.6.2">
+<h3 data-number="11.6.2" class="anchored" data-anchor-id="convergência-dos-cálculos"><span class="header-section-number">11.6.2</span> Convergência dos cálculos</h3>
+<p>Um cálculo de DFT em sólidos deve ser acompanhado de testes sistemáticos de convergência numérica.</p>
+<p>Entre os principais parâmetros encontram-se:</p>
+<ul>
+<li>a energia de corte <span class="math inline">\(E_{\mathrm{cut}}\)</span>;</li>
+<li>a densidade da malha de pontos <span class="math inline">\(\boldsymbol{k}\)</span>;</li>
+<li>o tamanho da célula ou supercélula;</li>
+<li>o número de bandas incluídas no cálculo;</li>
+<li>os parâmetros utilizados na ocupação dos estados eletrônicos.</li>
+</ul>
+<p>O objetivo de um teste de convergência não é obter parâmetros numericamente infinitos, mas identificar valores para os quais a propriedade física de interesse apresenta variações menores que a precisão desejada.</p>
+<p>Por exemplo, para a energia de corte podemos avaliar</p>
+<p><span class="math display">\[
+\Delta E(E_{\mathrm{cut}})
+=
+E(E_{\mathrm{cut}})
+-
+E(E_{\mathrm{cut}}^{\mathrm{ref}}),
+\]</span></p>
+<p>e aumentar progressivamente <span class="math inline">\(E_{\mathrm{cut}}\)</span> até que</p>
+<p><span class="math display">\[
+|\Delta E|
+&lt;
+\varepsilon,
+\]</span></p>
+<p>onde <span class="math inline">\(\varepsilon\)</span> representa a tolerância escolhida.</p>
+<p>O mesmo princípio deve ser utilizado para determinar uma malha adequada de pontos <span class="math inline">\(\boldsymbol{k}\)</span>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Os parâmetros de convergência devem ser avaliados para a propriedade que será estudada. Um valor de <span class="math inline">\(E_{\mathrm{cut}}\)</span> ou uma malha de pontos <span class="math inline">\(\boldsymbol{k}\)</span> suficiente para convergir a energia total pode não ser necessariamente suficiente para convergir forças, tensões, diferenças de energia ou outras propriedades.</p>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -522,10 +522,22 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#simetria-de-translação" id="toc-simetria-de-translação" class="nav-link active" data-scroll-target="#simetria-de-translação"><span class="header-section-number">10.1</span> Simetria de Translação</a></li>
-  <li><a href="#transformada-de-fourier" id="toc-transformada-de-fourier" class="nav-link" data-scroll-target="#transformada-de-fourier"><span class="header-section-number">10.2</span> Transformada de Fourier</a></li>
-  <li><a href="#rede-recíproca" id="toc-rede-recíproca" class="nav-link" data-scroll-target="#rede-recíproca"><span class="header-section-number">10.3</span> Rede recíproca</a></li>
-  <li><a href="#teorema-de-bloch" id="toc-teorema-de-bloch" class="nav-link" data-scroll-target="#teorema-de-bloch"><span class="header-section-number">10.4</span> Teorema de Bloch</a></li>
+  <li><a href="#simetria-de-translação" id="toc-simetria-de-translação" class="nav-link active" data-scroll-target="#simetria-de-translação"><span class="header-section-number">10.1</span> Simetria de translação</a>
+  <ul class="collapse">
+  <li><a href="#operadores-de-translação" id="toc-operadores-de-translação" class="nav-link" data-scroll-target="#operadores-de-translação"><span class="header-section-number">10.1.1</span> Operadores de translação</a></li>
+  <li><a href="#autovalores-dos-operadores-de-translação" id="toc-autovalores-dos-operadores-de-translação" class="nav-link" data-scroll-target="#autovalores-dos-operadores-de-translação"><span class="header-section-number">10.1.2</span> Autovalores dos operadores de translação</a></li>
+  </ul></li>
+  <li><a href="#transformada-de-fourier-e-funções-periódicas" id="toc-transformada-de-fourier-e-funções-periódicas" class="nav-link" data-scroll-target="#transformada-de-fourier-e-funções-periódicas"><span class="header-section-number">10.2</span> Transformada de Fourier e funções periódicas</a>
+  <ul class="collapse">
+  <li><a href="#funções-periódicas" id="toc-funções-periódicas" class="nav-link" data-scroll-target="#funções-periódicas"><span class="header-section-number">10.2.1</span> Funções periódicas</a></li>
+  </ul></li>
+  <li><a href="#rede-recíproca" id="toc-rede-recíproca" class="nav-link" data-scroll-target="#rede-recíproca"><span class="header-section-number">10.3</span> Rede recíproca</a>
+  <ul class="collapse">
+  <li><a href="#volume-da-célula-recíproca" id="toc-volume-da-célula-recíproca" class="nav-link" data-scroll-target="#volume-da-célula-recíproca"><span class="header-section-number">10.3.1</span> Volume da célula recíproca</a></li>
+  <li><a href="#planos-cristalinos-e-rede-recíproca" id="toc-planos-cristalinos-e-rede-recíproca" class="nav-link" data-scroll-target="#planos-cristalinos-e-rede-recíproca"><span class="header-section-number">10.3.2</span> Planos cristalinos e rede recíproca</a></li>
+  </ul></li>
+  <li><a href="#zona-de-brillouin" id="toc-zona-de-brillouin" class="nav-link" data-scroll-target="#zona-de-brillouin"><span class="header-section-number">10.4</span> Zona de Brillouin</a></li>
+  <li><a href="#teorema-de-bloch" id="toc-teorema-de-bloch" class="nav-link" data-scroll-target="#teorema-de-bloch"><span class="header-section-number">10.5</span> Teorema de Bloch</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/10-bloch.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -552,112 +564,654 @@ window.Quarto = {
 </header>
 
 
-<p>Em sólidos, a energia potencial do sistema tem a propriedade de ser periódica com a periodicidade da rede cristalina em questão, isto é, <span class="math display">\[\begin{align}
-    V(\boldsymbol{r}) = V(\boldsymbol{r}+\boldsymbol{R}_n)
-\end{align}\]</span> com <span class="math inline">\(\boldsymbol{R}_n\)</span> dado pela <a href="9-solidos.html#eq-rede-cristalina" class="quarto-xref">Equation&nbsp;<span>9.1</span></a>. Essa simetria de translação se traduz numa simetria para o hamiltoniano do sistema.</p>
+<p>Em um cristal ideal, o potencial eletrônico possui a periodicidade da rede de Bravais,</p>
+<p><span class="math display">\[
+V(\boldsymbol{r}+\boldsymbol{R})
+=
+V(\boldsymbol{r}),
+\]</span></p>
+<p>onde</p>
+<p><span class="math display">\[
+\boldsymbol{R}
+=
+n_1\boldsymbol{a}_1
++
+n_2\boldsymbol{a}_2
++
+n_3\boldsymbol{a}_3,
+\]</span></p>
+<p>com</p>
+<p><span class="math display">\[
+n_1,n_2,n_3\in\mathbb{Z}.
+\]</span></p>
+<p>Essa periodicidade constitui uma simetria de translação do Hamiltoniano e impõe condições específicas sobre os estados eletrônicos do cristal.</p>
 <section id="simetria-de-translação" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="simetria-de-translação"><span class="header-section-number">10.1</span> Simetria de Translação</h2>
-<p>Um operador de translação da rede pode ser definido por <span class="math inline">\(\hat{T}_{\boldsymbol{R}_n}\)</span> pela operação <span class="math display">\[\begin{align}
-    \hat{T}_{\boldsymbol{R}_n} f(\boldsymbol{r}) = f(\boldsymbol{r}+\boldsymbol{R}_n)
-\end{align}\]</span> que desloca todas as posições do sistema por uma quantidade <span class="math inline">\(\boldsymbol{R}_n\)</span>. Partindo desse operador, podemos notar que o hamiltoniano <span class="math inline">\(\hat{H}\)</span> de um sistema constituído por um sólido agora comuta com o operador de translação da rede <span class="math inline">\(\hat{T}_{\boldsymbol{R}_n}\)</span>, ou seja, <span class="math display">\[\begin{align}
-    [\hat{H}_e,\hat{T}_{\boldsymbol{R}_n}]=0.
-\end{align}\]</span> Desta forma, a função de onda do sistema deve ser escrita como um autoestado do operador de translação dada por <span class="math display">\[\begin{align}
-    \hat{T}_{\boldsymbol{R}_n} \psi(\boldsymbol{r}) = \psi(\boldsymbol{r}+\boldsymbol{R}_n) = \lambda_n \psi(\boldsymbol{r}),
-\end{align}\]</span> com <span class="math inline">\(\lambda_n\)</span> sendo o autovalor do operador de translação.</p>
-<p>Aplicar duas operações de translação sucessivas dadas por <span class="math display">\[\begin{align}
-    \hat{T}_{\boldsymbol{R}_m}\left(\hat{T}_{\boldsymbol{R}_n} \psi(\boldsymbol{r})\right) = \hat{T}_{\boldsymbol{R}_m}\left(\lambda_n \psi(\boldsymbol{r}) \right)= \lambda_m\lambda_n \psi(\boldsymbol{r})
-\end{align}\]</span> é equivalente a uma única translação dada por <span class="math display">\[\begin{align}
-    \hat{T}_{\boldsymbol{R}_m+\boldsymbol{R}_n}\psi(\boldsymbol{r})= \lambda_{m+n} \psi(\boldsymbol{r})
-\end{align}\]</span> de modo que <span class="math inline">\(\lambda_{m+n} = \lambda_m \lambda_n\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Como a distribuição de densidade eletrônica deve possuir a mesma simetria, temos que <span class="math display">\[\begin{align}
-    |\psi(\boldsymbol{r}+\boldsymbol{R}_n)|^2 = |\psi(\boldsymbol{r})|^2
-\end{align}\]</span> o que se traduz em <span class="math inline">\(|\lambda_n|^2 =1\)</span>, tal que <span class="math display">\[\begin{align}
-    \lambda_n = e^{i \boldsymbol{k}\cdot \boldsymbol{R}_n}
-\end{align}\]</span> sendo <span class="math inline">\(\boldsymbol{k}\)</span> um vetor de onda arbitrário.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Assim, concluímos que <span class="math display">\[\begin{align}
-    \psi(\boldsymbol{r}+\boldsymbol{R}_n) = e^{i \boldsymbol{k}\cdot \boldsymbol{R}_n}\psi(\boldsymbol{r}),
-\end{align}\]</span> é a simetria de translação aplicada as funções de onda do sistema cristalino.</p>
-</section>
-<section id="transformada-de-fourier" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="transformada-de-fourier"><span class="header-section-number">10.2</span> Transformada de Fourier</h2>
-<p>Seja <span class="math inline">\(f(\boldsymbol{r})\)</span> uma função contínua, podemos definir sua transformada de Fourier por <span id="eq-ft"><span class="math display">\[
-\widetilde{f}(\boldsymbol{k}) = \mathscr{F}\{f(\boldsymbol{r})\} = \int_{\mathfrak{R}^3} f(\boldsymbol{r}) e^{-i \boldsymbol{k}\cdot \boldsymbol{r}} \text{d}\boldsymbol{r}
+<h2 data-number="10.1" class="anchored" data-anchor-id="simetria-de-translação"><span class="header-section-number">10.1</span> Simetria de translação</h2>
+<section id="operadores-de-translação" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="operadores-de-translação"><span class="header-section-number">10.1.1</span> Operadores de translação</h3>
+<p>Definimos o operador de translação <span class="math inline">\(\hat{T}_{\boldsymbol{R}}\)</span> pela sua ação sobre uma função <span class="math inline">\(f(\boldsymbol{r})\)</span>,</p>
+<p><span id="eq-translation-operator"><span class="math display">\[
+\boxed{
+\hat{T}_{\boldsymbol{R}}
+f(\boldsymbol{r})
+=
+f(\boldsymbol{r}+\boldsymbol{R})
+}
 \tag{10.1}\]</span></span></p>
-<p>e sua transformada inversa por <span id="eq-ift"><span class="math display">\[
-f(\boldsymbol{r}) = \mathscr{F}^{-1}\{\widetilde{f}(\boldsymbol{k})\} = \frac{1}{(2\pi)^3}\int_{\mathfrak{R}^3} \widetilde{f}(\boldsymbol{k}) e^{i \boldsymbol{k}\cdot \boldsymbol{r}} \text{d}\boldsymbol{k}.
+<p>onde <span class="math inline">\(\boldsymbol{R}\)</span> é um vetor da rede de Bravais.</p>
+<p>Como o potencial satisfaz</p>
+<p><span class="math display">\[
+V(\boldsymbol{r}+\boldsymbol{R})
+=
+V(\boldsymbol{r}),
+\]</span></p>
+<p>o Hamiltoniano permanece invariante sob uma translação da rede. Portanto,</p>
+<p><span id="eq-translation-commutator"><span class="math display">\[
+\boxed{
+[\hat{H},\hat{T}_{\boldsymbol{R}}]
+=
+0
+}
 \tag{10.2}\]</span></span></p>
-<p>A transformada de Fourier é útil para descrever funções com periodicidade bem definida.</p>
-<p>Alguns exemplos são</p>
-<ul>
-<li><p>se <span class="math inline">\(f(\boldsymbol{r})=\delta(\boldsymbol{r}-\boldsymbol{r}_0)\)</span> então <span class="math inline">\(\widetilde{f}(\boldsymbol{k}) = e^{-i\boldsymbol{k}\cdot \boldsymbol{r}_0}\)</span>.</p></li>
-<li><p>se <span class="math inline">\(\widetilde{f}(\boldsymbol{k}) = \delta(\boldsymbol{k}-\boldsymbol{k}_0)\)</span> então <span class="math inline">\(f(\boldsymbol{r})= \frac{1}{(2\pi)^3}e^{i \boldsymbol{k}_0\cdot \boldsymbol{r}}\)</span> (onda plana com vetor de onda <span class="math inline">\(\boldsymbol{k}_0\)</span>);</p></li>
-<li><p>se conhecemos <span class="math inline">\(\mathscr{F}\{f(\boldsymbol{r})\}=\widetilde{f}(\boldsymbol{k})\)</span> então sabemos que <span class="math inline">\(\mathscr{F}\{f(\boldsymbol{r}+\boldsymbol{R})\} = e^{i \boldsymbol{k}\cdot \boldsymbol{R}}\widetilde{f}(\boldsymbol{k})\)</span>;</p></li>
-<li><p>se conhecemos <span class="math inline">\(\mathscr{F}\{f(\boldsymbol{r})\}=\widetilde{f}(\boldsymbol{k})\)</span> então sabemos que <span class="math inline">\(\mathscr{F}\{f(\lambda \boldsymbol{r})\} = \frac{1}{\lambda^3}\widetilde{f}(\boldsymbol{k}/\lambda)\)</span> (transformada de escala).</p></li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A transformada de Fourier é uma ferramenta poderosa para analisar funções periódicas e sinais, permitindo a decomposição de funções complexas em suas componentes de frequência.</p>
-<p>Ela é amplamente utilizada em física, engenharia e matemática aplicada, sendo essencial para o estudo de fenômenos como difração, propagação de ondas e análise de sinais.</p>
-<p>Além disso, a transformada de Fourier possui propriedades importantes, como linearidade, simetria e a relação entre convolução e multiplicação no domínio da frequência, que facilitam a resolução de problemas em diversas áreas da ciência e tecnologia.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Convolução
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A convolução entre duas funções <span class="math inline">\(h = (f * g)\)</span> é definida como <span class="math display">\[\begin{align}
-    h(\boldsymbol{r})= \int f(\boldsymbol{r}')g(\boldsymbol{r}-\boldsymbol{r}')\text{d}\boldsymbol{r}'
-    \label{eq:convolution}
-\end{align}\]</span> cuja transformada de Fourier é dada por <span class="math display">\[\begin{align}
-    \widetilde{h}(\boldsymbol{k}) = \iint f(\boldsymbol{r}')g(\boldsymbol{r}-\boldsymbol{r}')e^{-i \boldsymbol{k}\cdot \boldsymbol{r}}\text{d}\boldsymbol{r}'\text{d}\boldsymbol{r}
-\end{align}\]</span> usando que <span class="math inline">\(e^{i \boldsymbol{k}\cdot \boldsymbol{r}'}e^{-i \boldsymbol{k}\cdot \boldsymbol{r}'} = 1\)</span> podemos separar em duas transformadas distintas <span class="math display">\[\begin{align}
-    \widetilde{h}(\boldsymbol{k}) = \int f(\boldsymbol{r}')e^{-i \boldsymbol{k}\cdot \boldsymbol{r}'} \text{d}\boldsymbol{r}' \int g(\boldsymbol{u})e^{-i \boldsymbol{k}\cdot\boldsymbol{u}}\text{d}\boldsymbol{u}
-\end{align}\]</span> tal que <span class="math display">\[
-\widetilde{h}(\boldsymbol{k}) = \widetilde{f}(\boldsymbol{k}) \widetilde{g}(\boldsymbol{k})
-\]</span> ou seja, a transformada de Fourier da convolução de duas funções é igual ao produto das transformadas de Fourier das funções individuais.</p>
-</div>
-</div>
+<p>para qualquer vetor <span class="math inline">\(\boldsymbol{R}\)</span> da rede.</p>
+<p>Como os operadores <span class="math inline">\(\hat{H}\)</span> e <span class="math inline">\(\hat{T}_{\boldsymbol{R}}\)</span> comutam, os autoestados do Hamiltoniano podem ser escolhidos simultaneamente como autoestados dos operadores de translação. Assim,</p>
+<p><span class="math display">\[
+\hat{H}\psi(\boldsymbol{r})
+=
+E\psi(\boldsymbol{r})
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\hat{T}_{\boldsymbol{R}}
+\psi(\boldsymbol{r})
+=
+\lambda(\boldsymbol{R})
+\psi(\boldsymbol{r}).
+\]</span></p>
+<p>Utilizando a definição do operador de translação,</p>
+<p><span id="eq-translation-eigenvalue"><span class="math display">\[
+\boxed{
+\psi(\boldsymbol{r}+\boldsymbol{R})
+=
+\lambda(\boldsymbol{R})
+\psi(\boldsymbol{r})
+}
+\tag{10.3}\]</span></span></p>
+</section>
+<section id="autovalores-dos-operadores-de-translação" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="autovalores-dos-operadores-de-translação"><span class="header-section-number">10.1.2</span> Autovalores dos operadores de translação</h3>
+<p>Os operadores de translação satisfazem a propriedade</p>
+<p><span class="math display">\[
+\hat{T}_{\boldsymbol{R}}
+\hat{T}_{\boldsymbol{R}'}
+=
+\hat{T}_{\boldsymbol{R}+\boldsymbol{R}'}.
+\]</span></p>
+<p>Aplicando duas translações sucessivas a um autoestado comum,</p>
+<p><span class="math display">\[
+\hat{T}_{\boldsymbol{R}}
+\hat{T}_{\boldsymbol{R}'}
+\psi
+=
+\lambda(\boldsymbol{R})
+\lambda(\boldsymbol{R}')
+\psi.
+\]</span></p>
+<p>Por outro lado,</p>
+<p><span class="math display">\[
+\hat{T}_{\boldsymbol{R}+\boldsymbol{R}'}
+\psi
+=
+\lambda(\boldsymbol{R}+\boldsymbol{R}')
+\psi.
+\]</span></p>
+<p>Portanto,</p>
+<p><span id="eq-translation-eigenvalue-product"><span class="math display">\[
+\boxed{
+\lambda(\boldsymbol{R}+\boldsymbol{R}')
+=
+\lambda(\boldsymbol{R})
+\lambda(\boldsymbol{R}')
+}
+\tag{10.4}\]</span></span></p>
+<p>O operador de translação é unitário e, portanto, preserva a norma da função de onda,</p>
+<p><span class="math display">\[
+\langle
+\hat{T}_{\boldsymbol{R}}\psi
+|
+\hat{T}_{\boldsymbol{R}}\psi
+\rangle
+=
+\langle\psi|\psi\rangle.
+\]</span></p>
+<p>Como</p>
+<p><span class="math display">\[
+\hat{T}_{\boldsymbol{R}}\psi
+=
+\lambda(\boldsymbol{R})\psi,
+\]</span></p>
+<p>segue que</p>
+<p><span class="math display">\[
+|\lambda(\boldsymbol{R})|^2
+=
+1.
+\]</span></p>
+<p>Assim, os autovalores dos operadores de translação possuem módulo unitário e podem ser escritos na forma</p>
+<p><span id="eq-translation-phase"><span class="math display">\[
+\boxed{
+\lambda(\boldsymbol{R})
+=
+e^{i\boldsymbol{k}\cdot\boldsymbol{R}}
+}
+\tag{10.5}\]</span></span></p>
+<p>onde <span class="math inline">\(\boldsymbol{k}\)</span> é um vetor de onda.</p>
+<p>Dessa forma,</p>
+<p><span id="eq-bloch-translation"><span class="math display">\[
+\boxed{
+\psi_{\boldsymbol{k}}
+(\boldsymbol{r}+\boldsymbol{R})
+=
+e^{i\boldsymbol{k}\cdot\boldsymbol{R}}
+\psi_{\boldsymbol{k}}(\boldsymbol{r})
+}
+\tag{10.6}\]</span></span></p>
+<p>O fator <span class="math inline">\(e^{i\boldsymbol{k}\cdot\boldsymbol{R}}\)</span> representa a fase adquirida pela função de onda após uma translação por um vetor da rede.</p>
+</section>
+</section>
+<section id="transformada-de-fourier-e-funções-periódicas" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="transformada-de-fourier-e-funções-periódicas"><span class="header-section-number">10.2</span> Transformada de Fourier e funções periódicas</h2>
+<p>Considere uma função contínua <span class="math inline">\(f(\boldsymbol{r})\)</span>. Sua transformada de Fourier pode ser definida por</p>
+<p><span id="eq-ft"><span class="math display">\[
+\widetilde{f}(\boldsymbol{k})
+=
+\mathscr{F}
+\left\{
+f(\boldsymbol{r})
+\right\}
+=
+\int_{\mathbb{R}^3}
+f(\boldsymbol{r})
+e^{-i\boldsymbol{k}\cdot\boldsymbol{r}}
+\,d\boldsymbol{r},
+\tag{10.7}\]</span></span></p>
+<p>e sua transformada inversa por</p>
+<p><span id="eq-ift"><span class="math display">\[
+f(\boldsymbol{r})
+=
+\mathscr{F}^{-1}
+\left\{
+\widetilde{f}(\boldsymbol{k})
+\right\}
+=
+\frac{1}{(2\pi)^3}
+\int_{\mathbb{R}^3}
+\widetilde{f}(\boldsymbol{k})
+e^{i\boldsymbol{k}\cdot\boldsymbol{r}}
+\,d\boldsymbol{k}.
+\tag{10.8}\]</span></span></p>
+<p>A transformada de Fourier permite representar uma função em termos de suas componentes de onda plana.</p>
+<p>Por exemplo,</p>
+<p><span class="math display">\[
+f(\boldsymbol{r})
+=
+\delta(\boldsymbol{r}-\boldsymbol{r}_0)
+\]</span></p>
+<p>possui transformada</p>
+<p><span class="math display">\[
+\widetilde{f}(\boldsymbol{k})
+=
+e^{-i\boldsymbol{k}\cdot\boldsymbol{r}_0}.
+\]</span></p>
+<p>Por outro lado,</p>
+<p><span class="math display">\[
+\widetilde{f}(\boldsymbol{k})
+=
+\delta(\boldsymbol{k}-\boldsymbol{k}_0)
+\]</span></p>
+<p>corresponde à função</p>
+<p><span class="math display">\[
+f(\boldsymbol{r})
+=
+\frac{1}{(2\pi)^3}
+e^{i\boldsymbol{k}_0\cdot\boldsymbol{r}}.
+\]</span></p>
+<section id="funções-periódicas" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="funções-periódicas"><span class="header-section-number">10.2.1</span> Funções periódicas</h3>
+<p>Para um cristal, estamos particularmente interessados em funções que apresentam a periodicidade da rede,</p>
+<p><span class="math display">\[
+f(\boldsymbol{r}+\boldsymbol{R})
+=
+f(\boldsymbol{r}).
+\]</span></p>
+<p>Uma função periódica pode ser expandida em uma série de Fourier,</p>
+<p><span id="eq-fourier-periodic"><span class="math display">\[
+\boxed{
+f(\boldsymbol{r})
+=
+\sum_{\boldsymbol{G}}
+f_{\boldsymbol{G}}
+e^{i\boldsymbol{G}\cdot\boldsymbol{r}}
+}
+\tag{10.9}\]</span></span></p>
+<p>onde os vetores <span class="math inline">\(\boldsymbol{G}\)</span> devem ser compatíveis com a periodicidade da rede.</p>
+<p>Aplicando uma translação,</p>
+<p><span class="math display">\[
+f(\boldsymbol{r}+\boldsymbol{R})
+=
+\sum_{\boldsymbol{G}}
+f_{\boldsymbol{G}}
+e^{i\boldsymbol{G}\cdot(\boldsymbol{r}+\boldsymbol{R})}.
+\]</span></p>
+<p>Assim,</p>
+<p><span class="math display">\[
+f(\boldsymbol{r}+\boldsymbol{R})
+=
+\sum_{\boldsymbol{G}}
+f_{\boldsymbol{G}}
+e^{i\boldsymbol{G}\cdot\boldsymbol{r}}
+e^{i\boldsymbol{G}\cdot\boldsymbol{R}}.
+\]</span></p>
+<p>Para que</p>
+<p><span class="math display">\[
+f(\boldsymbol{r}+\boldsymbol{R})
+=
+f(\boldsymbol{r}),
+\]</span></p>
+<p>devemos ter</p>
+<p><span class="math display">\[
+\boxed{
+e^{i\boldsymbol{G}\cdot\boldsymbol{R}}
+=
+1
+}
+\]</span></p>
+<p>para qualquer vetor <span class="math inline">\(\boldsymbol{R}\)</span> da rede direta.</p>
+<p>Isso implica</p>
+<p><span id="eq-reciprocal-condition"><span class="math display">\[
+\boxed{
+\boldsymbol{G}\cdot\boldsymbol{R}
+=
+2\pi m,
+\qquad
+m\in\mathbb{Z}.
+}
+\tag{10.10}\]</span></span></p>
+<p>Os vetores <span class="math inline">\(\boldsymbol{G}\)</span> que satisfazem essa relação formam a chamada <strong>rede recíproca</strong>.</p>
+</section>
 </section>
 <section id="rede-recíproca" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="rede-recíproca"><span class="header-section-number">10.3</span> Rede recíproca</h2>
-<p>A família de vetores <span class="math inline">\(\boldsymbol{G}_m\)</span> pode então ser escrita como <span class="math display">\[\begin{align}
-    \boldsymbol{G}_m = m_1 \boldsymbol{b}_1 + m_2 \boldsymbol{b}_2+ m_3 \boldsymbol{b}_3
-\end{align}\]</span> e portanto define um conjunto de pontos infinito que define uma nova rede cristalina denominada <strong>rede recíproca</strong>.</p>
-<p>Desta forma, o conjunto de planos perpendiculares a <span class="math inline">\(\boldsymbol{G}\)</span> podem ser definidos pela relação <span class="math display">\[\begin{align}
-    \boldsymbol{G}_m \cdot \boldsymbol{R}_n = 2\pi m
-\end{align}\]</span> com <span class="math inline">\(m\)</span> sendo um número inteiro. A distância entre os planos é dada por <span class="math display">\[\begin{align}
-    d = \frac{2\pi}{|\boldsymbol{G}_m|}.
-\end{align}\]</span></p>
+<p>Considere uma rede direta definida pelos vetores primitivos</p>
+<p><span class="math display">\[
+\boldsymbol{a}_1,
+\qquad
+\boldsymbol{a}_2,
+\qquad
+\boldsymbol{a}_3.
+\]</span></p>
+<p>A rede recíproca é definida por três vetores primitivos</p>
+<p><span class="math display">\[
+\boldsymbol{b}_1,
+\qquad
+\boldsymbol{b}_2,
+\qquad
+\boldsymbol{b}_3,
+\]</span></p>
+<p>que satisfazem</p>
+<p><span id="eq-direct-reciprocal"><span class="math display">\[
+\boxed{
+\boldsymbol{a}_i
+\cdot
+\boldsymbol{b}_j
+=
+2\pi\delta_{ij}
+}
+\tag{10.11}\]</span></span></p>
+<p>Uma escolha explícita para esses vetores é</p>
+<p><span class="math display">\[
+\boxed{
+\boldsymbol{b}_1
+=
+2\pi
+\frac{
+\boldsymbol{a}_2\times\boldsymbol{a}_3
+}{
+\boldsymbol{a}_1\cdot
+(\boldsymbol{a}_2\times\boldsymbol{a}_3)
+}
+}
+\]</span></p>
+<p><span class="math display">\[
+\boxed{
+\boldsymbol{b}_2
+=
+2\pi
+\frac{
+\boldsymbol{a}_3\times\boldsymbol{a}_1
+}{
+\boldsymbol{a}_1\cdot
+(\boldsymbol{a}_2\times\boldsymbol{a}_3)
+}
+}
+\]</span></p>
+<p>e</p>
+<p><span class="math display">\[
+\boxed{
+\boldsymbol{b}_3
+=
+2\pi
+\frac{
+\boldsymbol{a}_1\times\boldsymbol{a}_2
+}{
+\boldsymbol{a}_1\cdot
+(\boldsymbol{a}_2\times\boldsymbol{a}_3)
+}
+}
+\]</span></p>
+<p>Qualquer vetor da rede recíproca pode então ser escrito como</p>
+<p><span id="eq-reciprocal-vector"><span class="math display">\[
+\boxed{
+\boldsymbol{G}
+=
+m_1\boldsymbol{b}_1
++
+m_2\boldsymbol{b}_2
++
+m_3\boldsymbol{b}_3
+}
+\tag{10.12}\]</span></span></p>
+<p>com</p>
+<p><span class="math display">\[
+m_1,m_2,m_3\in\mathbb{Z}.
+\]</span></p>
+<p>Para um vetor da rede direta,</p>
+<p><span class="math display">\[
+\boldsymbol{R}
+=
+n_1\boldsymbol{a}_1
++
+n_2\boldsymbol{a}_2
++
+n_3\boldsymbol{a}_3,
+\]</span></p>
+<p>temos</p>
+<p><span class="math display">\[
+\boldsymbol{G}\cdot\boldsymbol{R}
+=
+2\pi
+\left(
+m_1n_1+
+m_2n_2+
+m_3n_3
+\right).
+\]</span></p>
+<p>Portanto,</p>
+<p><span class="math display">\[
+e^{i\boldsymbol{G}\cdot\boldsymbol{R}}
+=
+1,
+\]</span></p>
+<p>como exigido pela periodicidade da rede.</p>
+<section id="volume-da-célula-recíproca" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="volume-da-célula-recíproca"><span class="header-section-number">10.3.1</span> Volume da célula recíproca</h3>
+<p>O volume da célula primitiva da rede direta é</p>
+<p><span class="math display">\[
+\Omega
+=
+\left|
+\boldsymbol{a}_1
+\cdot
+(
+\boldsymbol{a}_2
+\times
+\boldsymbol{a}_3
+)
+\right|.
+\]</span></p>
+<p>Analogamente, o volume da célula primitiva da rede recíproca é</p>
+<p><span class="math display">\[
+\Omega^*
+=
+\left|
+\boldsymbol{b}_1
+\cdot
+(
+\boldsymbol{b}_2
+\times
+\boldsymbol{b}_3
+)
+\right|.
+\]</span></p>
+<p>Utilizando as definições dos vetores recíprocos, obtemos</p>
+<p><span id="eq-reciprocal-volume"><span class="math display">\[
+\boxed{
+\Omega^*
+=
+\frac{(2\pi)^3}{\Omega}
+}
+\tag{10.13}\]</span></span></p>
+<p>Essa relação mostra a natureza inversa entre os espaços direto e recíproco: quanto maior a célula primitiva no espaço real, menor será a célula correspondente no espaço recíproco.</p>
 </section>
-<section id="teorema-de-bloch" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="teorema-de-bloch"><span class="header-section-number">10.4</span> Teorema de Bloch</h2>
-<p>Baseado nessa simetria de translação, podemos escrever a função de onda do sistema cristalino como <span class="math display">\[\begin{align}
-    \psi(\boldsymbol{r}) = e^{i \boldsymbol{k}\cdot \boldsymbol{r}} u_{\boldsymbol{k}}(\boldsymbol{r})
-\end{align}\]</span> onde <span class="math inline">\(u_{\boldsymbol{k}}(\boldsymbol{r})\)</span> é uma função periódica com a mesma periodicidade da rede cristalina, ou seja, <span class="math display">\[\begin{align}
-    u_{\boldsymbol{k}}(\boldsymbol{r}+\boldsymbol{R}_n) = u_{\boldsymbol{k}}(\boldsymbol{r}).
-\end{align}\]</span></p>
-<p>Assim, um elétron em um sólido pode ser descrito por uma função de onda que é o produto de uma onda plana com vetor de onda <span class="math inline">\(\boldsymbol{k}\)</span> e uma função periódica com a mesma periodicidade da rede cristalina. Esse resultado é conhecido como o <strong>teorema de Bloch</strong>, que é fundamental para a compreensão do comportamento dos elétrons em sólidos e para a teoria das bandas de energia.</p>
+<section id="planos-cristalinos-e-rede-recíproca" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="planos-cristalinos-e-rede-recíproca"><span class="header-section-number">10.3.2</span> Planos cristalinos e rede recíproca</h3>
+<p>A rede recíproca também fornece uma descrição natural das famílias de planos cristalinos.</p>
+<p>Para uma família de planos com índices de Miller <span class="math inline">\((hkl)\)</span>, definimos</p>
+<p><span id="eq-Ghkl"><span class="math display">\[
+\boxed{
+\boldsymbol{G}_{hkl}
+=
+h\boldsymbol{b}_1
++
+k\boldsymbol{b}_2
++
+l\boldsymbol{b}_3
+}
+\tag{10.14}\]</span></span></p>
+<p>Os planos dessa família podem ser representados pela condição</p>
+<p><span id="eq-plane-reciprocal"><span class="math display">\[
+\boxed{
+\boldsymbol{G}_{hkl}
+\cdot
+\boldsymbol{r}
+=
+2\pi m,
+\qquad
+m\in\mathbb{Z}.
+}
+\tag{10.15}\]</span></span></p>
+<p>O vetor <span class="math inline">\(\boldsymbol{G}_{hkl}\)</span> é perpendicular aos planos da família <span class="math inline">\((hkl)\)</span>.</p>
+<p>A distância entre dois planos consecutivos é dada por</p>
+<p><span id="eq-interplanar-distance"><span class="math display">\[
+\boxed{
+d_{hkl}
+=
+\frac{2\pi}
+{
+|\boldsymbol{G}_{hkl}|
+}
+}
+\tag{10.16}\]</span></span></p>
+<p>Essa relação fornece a conexão entre a geometria dos planos cristalinos no espaço real e os vetores da rede recíproca.</p>
+</section>
+</section>
+<section id="zona-de-brillouin" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="zona-de-brillouin"><span class="header-section-number">10.4</span> Zona de Brillouin</h2>
+<p>A rede recíproca possui uma construção análoga à célula de Wigner–Seitz definida para a rede direta.</p>
+<p>A <strong>primeira zona de Brillouin</strong> é a célula de Wigner–Seitz da rede recíproca. Ela corresponde à região do espaço recíproco formada pelos pontos que estão mais próximos da origem</p>
+<p><span class="math display">\[
+\boldsymbol{G}
+=
+\boldsymbol{0}
+\]</span></p>
+<p>do que de qualquer outro ponto da rede recíproca.</p>
+<p>A primeira zona de Brillouin desempenha um papel central na descrição dos estados eletrônicos de sólidos, pois vetores de onda que diferem por um vetor da rede recíproca possuem o mesmo comportamento sob translações da rede.</p>
+<p>Considere</p>
+<p><span class="math display">\[
+\boldsymbol{k}'
+=
+\boldsymbol{k}
++
+\boldsymbol{G}.
+\]</span></p>
+<p>Para uma translação <span class="math inline">\(\boldsymbol{R}\)</span>,</p>
+<p><span class="math display">\[
+e^{i\boldsymbol{k}'\cdot\boldsymbol{R}}
+=
+e^{i(\boldsymbol{k}+\boldsymbol{G})\cdot\boldsymbol{R}}.
+\]</span></p>
+<p>Assim,</p>
+<p><span class="math display">\[
+e^{i\boldsymbol{k}'\cdot\boldsymbol{R}}
+=
+e^{i\boldsymbol{k}\cdot\boldsymbol{R}}
+e^{i\boldsymbol{G}\cdot\boldsymbol{R}}.
+\]</span></p>
+<p>Como</p>
+<p><span class="math display">\[
+e^{i\boldsymbol{G}\cdot\boldsymbol{R}}
+=
+1,
+\]</span></p>
+<p>temos</p>
+<p><span class="math display">\[
+e^{i\boldsymbol{k}'\cdot\boldsymbol{R}}
+=
+e^{i\boldsymbol{k}\cdot\boldsymbol{R}}.
+\]</span></p>
+<p>Portanto,</p>
+<p><span id="eq-k-equivalence"><span class="math display">\[
+\boxed{
+\boldsymbol{k}
+\equiv
+\boldsymbol{k}
++
+\boldsymbol{G}
+}
+\tag{10.17}\]</span></span></p>
+<p>em relação à simetria translacional do cristal.</p>
+<p>Por essa razão, é suficiente considerar valores de <span class="math inline">\(\boldsymbol{k}\)</span> pertencentes à primeira zona de Brillouin.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Os pontos de alta simetria da primeira zona de Brillouin são frequentemente identificados por símbolos como <span class="math inline">\(\Gamma\)</span>, <span class="math inline">\(X\)</span>, <span class="math inline">\(L\)</span>, <span class="math inline">\(K\)</span> e <span class="math inline">\(M\)</span>. Esses pontos terão um papel importante posteriormente na representação da estrutura de bandas eletrônicas.</p>
+</div>
+</div>
+</section>
+<section id="teorema-de-bloch" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="teorema-de-bloch"><span class="header-section-number">10.5</span> Teorema de Bloch</h2>
+<p>A relação obtida anteriormente para um autoestado do operador de translação é</p>
+<p><span class="math display">\[
+\psi_{\boldsymbol{k}}
+(\boldsymbol{r}+\boldsymbol{R})
+=
+e^{i\boldsymbol{k}\cdot\boldsymbol{R}}
+\psi_{\boldsymbol{k}}(\boldsymbol{r}).
+\]</span></p>
+<p>Definimos agora a função</p>
+<p><span class="math display">\[
+u_{\boldsymbol{k}}(\boldsymbol{r})
+=
+e^{-i\boldsymbol{k}\cdot\boldsymbol{r}}
+\psi_{\boldsymbol{k}}(\boldsymbol{r}).
+\]</span></p>
+<p>Aplicando uma translação da rede,</p>
+<p><span class="math display">\[
+u_{\boldsymbol{k}}
+(\boldsymbol{r}+\boldsymbol{R})
+=
+e^{-i\boldsymbol{k}\cdot(\boldsymbol{r}+\boldsymbol{R})}
+\psi_{\boldsymbol{k}}
+(\boldsymbol{r}+\boldsymbol{R}).
+\]</span></p>
+<p>Utilizando a propriedade de translação da função de onda,</p>
+<p><span class="math display">\[
+\psi_{\boldsymbol{k}}
+(\boldsymbol{r}+\boldsymbol{R})
+=
+e^{i\boldsymbol{k}\cdot\boldsymbol{R}}
+\psi_{\boldsymbol{k}}(\boldsymbol{r}),
+\]</span></p>
+<p>obtemos</p>
+<p><span class="math display">\[
+\begin{aligned}
+u_{\boldsymbol{k}}
+(\boldsymbol{r}+\boldsymbol{R})
+&amp;=
+e^{-i\boldsymbol{k}\cdot(\boldsymbol{r}+\boldsymbol{R})}
+e^{i\boldsymbol{k}\cdot\boldsymbol{R}}
+\psi_{\boldsymbol{k}}(\boldsymbol{r})
+\\
+&amp;=
+e^{-i\boldsymbol{k}\cdot\boldsymbol{r}}
+\psi_{\boldsymbol{k}}(\boldsymbol{r})
+\\
+&amp;=
+u_{\boldsymbol{k}}(\boldsymbol{r}).
+\end{aligned}
+\]</span></p>
+<p>Portanto,</p>
+<p><span class="math display">\[
+\boxed{
+u_{\boldsymbol{k}}
+(\boldsymbol{r}+\boldsymbol{R})
+=
+u_{\boldsymbol{k}}(\boldsymbol{r})
+}
+\]</span></p>
+<p>isto é, <span class="math inline">\(u_{\boldsymbol{k}}(\boldsymbol{r})\)</span> apresenta a mesma periodicidade da rede cristalina.</p>
+<p>Consequentemente, os autoestados de um Hamiltoniano periódico podem ser escritos como</p>
+<p><span id="eq-bloch-theorem"><span class="math display">\[
+\boxed{
+\psi_{\boldsymbol{k}}(\boldsymbol{r})
+=
+e^{i\boldsymbol{k}\cdot\boldsymbol{r}}
+u_{\boldsymbol{k}}(\boldsymbol{r})
+}
+\tag{10.18}\]</span></span></p>
+<p>Esse resultado é conhecido como <strong>teorema de Bloch</strong>.</p>
+<p>Em um sólido, existem diferentes estados eletrônicos associados a um mesmo vetor <span class="math inline">\(\boldsymbol{k}\)</span>. Introduzindo o índice de banda <span class="math inline">\(n\)</span>, a forma geral de um estado de Bloch é</p>
+<p><span id="eq-bloch-band"><span class="math display">\[
+\boxed{
+\psi_{n\boldsymbol{k}}(\boldsymbol{r})
+=
+e^{i\boldsymbol{k}\cdot\boldsymbol{r}}
+u_{n\boldsymbol{k}}(\boldsymbol{r})
+}
+\tag{10.19}\]</span></span></p>
+<p>onde</p>
+<p><span class="math display">\[
+u_{n\boldsymbol{k}}
+(\boldsymbol{r}+\boldsymbol{R})
+=
+u_{n\boldsymbol{k}}(\boldsymbol{r}).
+\]</span></p>
+<p>O índice <span class="math inline">\(n\)</span> identifica a banda eletrônica, enquanto <span class="math inline">\(\boldsymbol{k}\)</span> caracteriza o estado dentro dessa banda.</p>
+<p>Os autovalores associados a esses estados podem ser escritos como</p>
+<p><span class="math display">\[
+E_n(\boldsymbol{k}),
+\]</span></p>
+<p>formando conjuntos contínuos de energias ao longo da zona de Brillouin.</p>
+<p>No contexto da Teoria do Funcional da Densidade, os estados de Kohn–Sham de um sólido também possuem a forma de Bloch,</p>
+<p><span class="math display">\[
+\psi_{n\boldsymbol{k}}(\boldsymbol{r})
+=
+e^{i\boldsymbol{k}\cdot\boldsymbol{r}}
+u_{n\boldsymbol{k}}(\boldsymbol{r}),
+\]</span></p>
+<p>e seus autovalores serão representados por</p>
+<p><span class="math display">\[
+\varepsilon_{n\boldsymbol{k}}.
+\]</span></p>
+<p>Essa propriedade será utilizada no próximo capítulo para formular as equações de Kohn–Sham em sistemas periódicos utilizando bases de ondas planas e amostragem da zona de Brillouin.</p>
 
 
-</section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>O produto dos autovalores de duas translações distintas é igual ao autovalor da translação combinada.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Note que os autovalores <span class="math inline">\(e^{i \boldsymbol{k}\cdot \boldsymbol{R}_n}\)</span> são semelhantes aos autovetores de momento linear <span class="math inline">\(e^{i \boldsymbol{k}\cdot \boldsymbol{r}}\)</span>, exceto pelo valor do vetor posição.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
