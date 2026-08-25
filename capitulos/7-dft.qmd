@@ -1288,7 +1288,7 @@ onde $R$ é a distância entre os fragmentos e $C_6$ é o coeficiente de dispers
 Funcionais locais e semilocais convencionais não descrevem corretamente essa contribuição de correlação de longo alcance. Diferentes estratégias foram desenvolvidas para incorporar essas interações em cálculos DFT.
 
 
-### Correções DFT-D
+### Correções DFT-D {#sec-DFT-D}
 
 Uma estratégia consiste em adicionar à energia obtida por DFT uma contribuição de dispersão calculada separadamente,
 

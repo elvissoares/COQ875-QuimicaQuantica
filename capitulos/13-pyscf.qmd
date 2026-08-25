@@ -46,8 +46,7 @@ As unidades de distância são em Angstroms, e a base especificada é usada para
 
 ::: {.callout-tip}
 
-Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link:
-<a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/1-intro_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: [![Abrir no Google Colab](../figuras/colab-badge.svg)](https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/1-intro_pyscf.ipynb)
 
 :::
 
@@ -101,8 +100,7 @@ converged SCF energy = -76.3780493873302
 
 ::: {.callout-tip}
 
-Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link:
-<a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/2-orbitais_pyscf.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+Para executar este notebook no Google Colab, você pode clicar no link: [![Abrir no Google Colab](../figuras/colab-badge.svg)](https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/2-orbitais_pyscf.ipynb)
 
 :::
 
