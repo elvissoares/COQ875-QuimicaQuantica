@@ -2,24 +2,120 @@
 
 Nesse capítulo vamos apresentar o pacote VASP (Vienna Ab initio Simulation Package), que é um software comercial amplamente utilizado para cálculos de estrutura eletrônica e simulações de materiais. O VASP é baseado em métodos de DFT (Density Functional Theory) e oferece uma ampla gama de funcionalidades para cálculos de propriedades eletrônicas, estruturais e dinâmicas de materiais.
 
-## Instalação no Ubuntu 24
+## Instalação no Linux
 
-Para instalar o VASP no Ubuntu 24, siga os passos abaixo:
+Para instalar o VASP no Linux, siga os passos abaixo:
+
 1. **Obtenha uma licença do VASP**: O VASP é um software comercial, portanto, você precisará adquirir uma licença para usá-lo. Visite o site oficial do VASP ([https://www.vasp.at/](https://www.vasp.at/)) para obter informações sobre como adquirir uma licença.
 
 2. **Baixe o código-fonte do VASP**: Após obter a licença, você poderá baixar o código-fonte do VASP a partir do site oficial. Certifique-se de baixar a versão compatível com o seu sistema operacional.
 
-3. **Instale as dependências necessárias**: Antes de compilar o VASP, você precisará instalar algumas dependências, como compiladores Fortran e C, bibliotecas MPI e BLAS/LAPACK. Você pode instalar essas dependências usando o gerenciador de pacotes do Ubuntu:
+3. **Instale as dependências necessárias**: Antes de compilar o VASP, você precisará instalar algumas dependências, como compiladores Fortran e C, bibliotecas MPI e BLAS/LAPACK. 
+
+Você pode instalar essas dependências usando o gerenciador de pacotes do Ubuntu:
 ```bash
 sudo apt update
 sudo apt install rsync make build-essential g++ gfortran libopenblas-dev libopenmpi-dev libscalapack-openmpi-dev libfftw3-dev libhdf5-openmpi-dev
 ```
 
-4. **Compile o VASP**: Navegue até o diretório onde você baixou o código-fonte do VASP e siga as instruções de compilação fornecidas no arquivo README ou INSTALL. Normalmente, você precisará configurar o ambiente de compilação e executar os comandos de compilação apropriados.
+ou no caso do Fedora:
+```bash
+sudo dnf install rsync gcc gcc-c++ gcc-gfortran openblas-devel openmpi-devel scalapack-openmpi-devel fftw-devel hdf5-openmpi-devel
+```
+e modifique o arquivo `~/.bashrc` para incluir as variáveis de ambiente do OpenMPI:
+```bash
+export PATH=/usr/lib64/openmpi/bin:$PATH
+export LD_LIBRARY_PATH=/usr/lib64/openmpi/lib:$LD_LIBRARY_PATH
+```
+e recarregue o arquivo `~/.bashrc`:
+```bash
+source ~/.bashrc
+```
 
-5. **Configure o ambiente**: Após a compilação bem-sucedida, você precisará configurar o ambiente para usar o VASP. Isso pode incluir a definição de variáveis de ambiente e a adição do diretório do VASP ao seu PATH.
+4. **Compile o VASP**: Navegue até o diretório onde você decompactou o código-fonte do VASP e siga as seguintes instruções de compilação.
 
-6. **Teste a instalação**: Para verificar se o VASP foi instalado corretamente, você pode executar um teste simples fornecido com o pacote ou criar um arquivo de entrada de teste e executar o VASP para garantir que ele funcione conforme esperado.
+4.1. Crie um arquivo de configuração `makefile.include` com as opções de compilação apropriadas para o seu sistema. Você pode encontrar exemplos de arquivos de configuração no diretório `arch` do código-fonte do VASP.
+```bash
+cp arch/makefile.include.gnu_omp makefile.include
+```
+
+4.2. Dentro do arquivo `makefile.include`, você pode ajustar as opções de compilação, como o compilador Fortran, flags de otimização e bibliotecas a serem usadas.
+
+- Comente a linha `OPENBLAS_ROOT` e adicione a linha `BLASPACK` como abaixo:
+```makefile
+# BLAS and LAPACK (mandatory)
+#OPENBLAS_ROOT ?= /path/to/your/openblas/installation
+BLASPACK    = -lopenblas
+```
+
+- Comente a linha `SCALAPACK_ROOT` e adicione a linha `SCALAPACK` como abaixo:
+```makefile
+# scaLAPACK (mandatory)
+#SCALAPACK_ROOT ?= /path/to/your/scalapack/installation
+SCALAPACK   = -lscalapack
+```
+
+- Comente a linha `FFTW_ROOT` e adicione a linha `LLIBS` e `INCS` como abaixo:
+```makefile
+# FFTW (mandatory)
+#FFTW_ROOT  ?= /path/to/your/fftw/installation
+LLIBS      += -lfftw3 -lfftw3_omp
+INCS       += -I/usr/include
+```
+
+- Adicione as seguintes linhas para habilitar o suporte ao HDF5 (opcional, mas fortemente recomendado):
+```makefile
+# HDF5-support (optional but strongly recommended)
+CPP_OPTIONS+= -DVASP_HDF5
+#HDF5_ROOT  ?= /path/to/your/hdf5/installation
+LLIBS      += -lhdf5_fortran
+INCS       += -I/usr/lib64/gfortran/modules/openmpi/
+```
+
+Salve o arquivo `makefile.include` após fazer as alterações e compile o VASP executando o comando 
+```bash
+make DEPS=1 -j
+```
+
+5. **Conferindo versão**: Após a compilação bem-sucedida, você pode conferir se o executável do VASP foi gerado corretamente no diretório `bin` do código-fonte. Você pode executar o comando abaixo para verificar a versão do VASP:
+```bash
+./vasp_std -h
+```
+
+6. **Configure o ambiente**: Para facilitar a execução do VASP, você pode adicionar o diretório `bin` do código-fonte do VASP ao seu PATH. Adicione a seguinte linha ao seu arquivo `~/.bashrc`:
+```bash
+export PATH=/path/to/vasp/bin:$PATH
+```
+
+7. **Instalando pseudopotenciais**: O VASP utiliza pseudopotenciais para representar os núcleos dos átomos. Você precisará baixar os pseudopotenciais apropriados para os elementos que deseja simular. Os pseudopotenciais podem ser encontrados no site oficial do VASP ou em repositórios de terceiros. 
+
+- Crie uma pasta `pp` dentro da pasta `/path/to/vasp`
+```bash
+mkdir -p pp
+```
+
+- Copie os arquivos de pseudopotenciais para essa pasta
+```bash
+cp ~/Downloads/potpaw_LDA.64.tgz pp/. && cp ~/Downloads/potpaw_PBE.64.tgz pp/.
+```
+
+
+- Entre na pasta `pp` e crie as seguintes pastas
+```bash
+cd pp && mkdir potpaw potpaw_PBE
+```
+
+- Descompacte o arquivo `potpaw_LDA.64.tgz` para dentro da pasta `potpaw`
+```bash
+tar -xvzf potpaw_LDA.64.tgz -C potpaw
+```
+
+- Descompacte o arquivo `potpaw_PBE.64.tgz` para dentro da pasta `potpaw_PBE`
+```bash
+tar -xvzf potpaw_PBE.64.tgz -C potpaw_PBE
+```
+
+Agora você possui os arquivos de pseudopotenciais instalados nessas pastas.
 
 ## Instalação no Windows 11
 
@@ -51,7 +147,41 @@ Para configurar o ASE para trabalhar com o VASP, siga os passos abaixo:
 python -c "import ase; print(ase.__version__)"
 ```
 
-2. **Configure o caminho do VASP**: O ASE precisa saber onde o executável do VASP está localizado. Você pode definir a variável de ambiente `VASP_COMMAND` para apontar para o executável do VASP. Por exemplo, se o executável do VASP estiver localizado em `/path/to/vasp`, você pode adicionar a seguinte linha ao seu arquivo de configuração do shell (como `.bashrc` ou `.zshrc`):
+2. **Configure o caminho do VASP**: O ASE precisa saber onde o executável do VASP está localizado. Você pode definir a variável de ambiente `ASE_VASP_COMMAND` para apontar para o executável do VASP. No Linux, você pode adicionar a seguinte linha ao seu arquivo `~/.bashrc`:
 ```bash
-export VASP_COMMAND="/path/to/vasp"
+export ASE_VASP_COMMAND="mpirun -np 1 vasp_std"
+```
 
+3. **Especificando pasta com pseudopotenciais**: O ASE precisa saber onde os arquivos de pseudopotenciais do VASP estão localizados. Você pode definir a variável de ambiente `VASP_PP_PATH` para apontar para o diretório que contém os pseudopotenciais. No Linux, você pode adicionar a seguinte linha ao seu arquivo `~/.bashrc`:
+```bash
+export VASP_PP_PATH =/path/to/vasp/pp
+```
+
+## Criando uma molécula com o ASE
+
+::: {.callout-tip}
+
+Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: [![Abrir no Google Colab](../figuras/colab-badge.png)](https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/3-intro_vasp.ipynb)
+
+:::
+
+No ASE, você pode criar uma molécula usando a classe `Atoms`. A seguir, apresentamos um exemplo de como criar uma molécula de água (H2O):
+```python
+from ase import Atoms, Atom
+
+h2omol = Atoms([Atom('O', [0, 0, 0]),
+                Atom('H', [0.0, -0.760265, 0.588373]),
+                Atom('H', [0.0, 0.760265, 0.588373])])
+```
+
+que pode ser visualizada usando o método `view` do ASE:
+```python
+from ase.visualize import view
+view(h2omol)
+```
+cujo output será uma janela interativa mostrando a molécula de água em 3D, permitindo que você gire, amplie e explore a estrutura da molécula.
+
+Outra opção é usar o visualizador `x3d` do ASE, que permite visualizar a molécula em um navegador web. Para isso, você pode executar o seguinte comando:
+```python
+view(h2omol, viewer='x3d')
+```
