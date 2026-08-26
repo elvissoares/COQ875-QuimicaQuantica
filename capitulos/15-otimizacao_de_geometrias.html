@@ -561,12 +561,14 @@ window.Quarto = {
    
   <ul>
   <li><a href="#cálculo-de-forças-e-gradientes" id="toc-cálculo-de-forças-e-gradientes" class="nav-link active" data-scroll-target="#cálculo-de-forças-e-gradientes"><span class="header-section-number">15.1</span> Cálculo de forças e gradientes</a></li>
-  <li><a href="#otimização-de-geometrias-de-moléculas-usando-pyscf" id="toc-otimização-de-geometrias-de-moléculas-usando-pyscf" class="nav-link" data-scroll-target="#otimização-de-geometrias-de-moléculas-usando-pyscf"><span class="header-section-number">15.2</span> Otimização de geometrias de moléculas usando PySCF</a>
+  <li><a href="#otimização-de-geometria-de-moléculas-usando-pyscf" id="toc-otimização-de-geometria-de-moléculas-usando-pyscf" class="nav-link" data-scroll-target="#otimização-de-geometria-de-moléculas-usando-pyscf"><span class="header-section-number">15.2</span> Otimização de geometria de moléculas usando PySCF</a>
   <ul class="collapse">
   <li><a href="#modificando-a-geometria-de-uma-molécula-manualmente" id="toc-modificando-a-geometria-de-uma-molécula-manualmente" class="nav-link" data-scroll-target="#modificando-a-geometria-de-uma-molécula-manualmente"><span class="header-section-number">15.2.1</span> Modificando a geometria de uma molécula manualmente</a></li>
   <li><a href="#otimizando-com-o-módulo-geometric-do-pyscf" id="toc-otimizando-com-o-módulo-geometric-do-pyscf" class="nav-link" data-scroll-target="#otimizando-com-o-módulo-geometric-do-pyscf"><span class="header-section-number">15.2.2</span> Otimizando com o módulo <em>geometric</em> do PySCF</a></li>
   </ul></li>
-  <li><a href="#cálculo-de-tensões" id="toc-cálculo-de-tensões" class="nav-link" data-scroll-target="#cálculo-de-tensões"><span class="header-section-number">15.3</span> Cálculo de tensões</a></li>
+  <li><a href="#otimização-de-geometria-de-moléculas-usando-vasp-e-ase" id="toc-otimização-de-geometria-de-moléculas-usando-vasp-e-ase" class="nav-link" data-scroll-target="#otimização-de-geometria-de-moléculas-usando-vasp-e-ase"><span class="header-section-number">15.3</span> Otimização de geometria de moléculas usando VASP e ASE</a></li>
+  <li><a href="#cálculo-de-tensões" id="toc-cálculo-de-tensões" class="nav-link" data-scroll-target="#cálculo-de-tensões"><span class="header-section-number">15.4</span> Cálculo de tensões</a></li>
+  <li><a href="#otimização-de-geometria-de-sólidos-usando-vasp-e-ase" id="toc-otimização-de-geometria-de-sólidos-usando-vasp-e-ase" class="nav-link" data-scroll-target="#otimização-de-geometria-de-sólidos-usando-vasp-e-ase"><span class="header-section-number">15.5</span> Otimização de geometria de sólidos usando VASP e ASE</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/15-otimizacao_de_geometrias.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -629,8 +631,8 @@ E_\text{elec}(\{\mathbf{R}_A\}) = \min_{\Psi} \langle \Psi | \hat{H}_\text{elec}
 </div>
 </div>
 </section>
-<section id="otimização-de-geometrias-de-moléculas-usando-pyscf" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="otimização-de-geometrias-de-moléculas-usando-pyscf"><span class="header-section-number">15.2</span> Otimização de geometrias de moléculas usando PySCF</h2>
+<section id="otimização-de-geometria-de-moléculas-usando-pyscf" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="otimização-de-geometria-de-moléculas-usando-pyscf"><span class="header-section-number">15.2</span> Otimização de geometria de moléculas usando PySCF</h2>
 <section id="modificando-a-geometria-de-uma-molécula-manualmente" class="level3" data-number="15.2.1">
 <h3 data-number="15.2.1" class="anchored" data-anchor-id="modificando-a-geometria-de-uma-molécula-manualmente"><span class="header-section-number">15.2.1</span> Modificando a geometria de uma molécula manualmente</h3>
 </section>
@@ -735,11 +737,162 @@ O-H2 bond length (Ang): 0.965 Ang
 H-O-H bond angle (deg): 105.752 deg</code></pre>
 </section>
 </section>
-<section id="cálculo-de-tensões" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="cálculo-de-tensões"><span class="header-section-number">15.3</span> Cálculo de tensões</h2>
+<section id="otimização-de-geometria-de-moléculas-usando-vasp-e-ase" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="otimização-de-geometria-de-moléculas-usando-vasp-e-ase"><span class="header-section-number">15.3</span> Otimização de geometria de moléculas usando VASP e ASE</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para executar este notebook no seu computador, você pode clicar no link: <a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/5-otimizacao_vasp.ipynb">Abrir no GitHub</a></p>
+</div>
+</div>
+<p>Usando o ASE vimos que podemos criar a geometria de uma molécula e calcular a energia total usando o VASP.</p>
+<p>Criando uma molécula de água (H2O) usando o ASE:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ase <span class="im">import</span> Atoms, Atom</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>h2omol <span class="op">=</span> Atoms([Atom(<span class="st">'O'</span>, [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                Atom(<span class="st">'H'</span>, [<span class="fl">0.0</span>, <span class="op">-</span><span class="fl">0.760265</span>, <span class="fl">0.588373</span>]),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                Atom(<span class="st">'H'</span>, [<span class="fl">0.0</span>, <span class="fl">0.760265</span>, <span class="fl">0.588373</span>])])</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>h2omol.center(vacuum<span class="op">=</span><span class="fl">4.0</span>) <span class="co"># caixa com 4 Angstroms de vácuo </span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>h2omol.pbc <span class="op">=</span> <span class="va">True</span> <span class="co"># condição de contorno periódica</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Em seguida podemos criar a calculadora do VASP para otimização da geometria usando <code>ibrion=2</code> (conjugate gradient), <code>isif=0</code> (relaxa somente os átomos, mantendo a célula fixa), <code>nsw=50</code> (número máximo de passos de otimização) e <code>ediffg=-1e-3</code> (tolerância para convergência das forças):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ase.calculators.vasp <span class="im">import</span> Vasp</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>calc <span class="op">=</span> Vasp(directory<span class="op">=</span><span class="st">'H2O_relaxed'</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            xc<span class="op">=</span><span class="st">'PBE'</span>,   <span class="co"># funcional GGA</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            encut<span class="op">=</span><span class="dv">350</span>,  <span class="co"># safe default for PAW-PBE sets</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            kpts<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],gamma<span class="op">=</span><span class="va">True</span>,                  <span class="co"># k-points</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            ibrion<span class="op">=</span><span class="dv">2</span>, <span class="co"># CG ionic relax</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            isif<span class="op">=</span><span class="dv">0</span>, <span class="co"># relaxa somente os átomos, mantendo a célula fixa</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            nsw<span class="op">=</span><span class="dv">50</span>, <span class="co"># número máximo de passos de relaxação</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>            lreal<span class="op">=</span><span class="st">'Auto'</span>, <span class="co"># projeção de orbitais no espaço real</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>            lwave<span class="op">=</span><span class="va">True</span>, lcharg<span class="op">=</span><span class="va">True</span>,lvtot<span class="op">=</span><span class="va">True</span>,  <span class="co"># mantem WAVECAR/CHGCAR/LOCPOT para post-processing</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>h2omol.calc <span class="op">=</span> calc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ao calcular a energia total da molécula de água, o VASP irá otimizar a geometria da molécula:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>E_h2o <span class="op">=</span> h2omol.get_potential_energy()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Energia total da molécula de água: </span><span class="sc">{</span>E_h2o<span class="sc">:.3f}</span><span class="ss"> eV'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>Energia total da molécula de água: -14.221 eV</code></pre>
+<p>O número de passos iônicos executados durante a otimização da geometria pode ser obtido usando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Número de passos iônicos executados:"</span>, calc.get_number_of_iterations())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output nesse caso foi:</p>
+<pre><code>Número de passos iônicos executados: 2</code></pre>
+<p>E as forças sobre os átomos da molécula de água podem ser obtidas usando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>forces <span class="op">=</span> h2omol.get_forces()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Forças sobre os átomos (eV/Ang):"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(forces)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>Forças sobre os átomos (eV/Ang):
+[[ 0.          0.          0.00071941]
+ [-0.          0.00046482 -0.0003597 ]
+ [-0.         -0.00046482 -0.0003597 ]]</code></pre>
+<p>A nova geometria da molécula de água pode ser obtida usando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Nova geometria da molécula de água (Ang):"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(h2omol.get_positions())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>Nova geometria da molécula de água (Ang):
+[[4.         4.760265   3.99497349]
+ [4.         3.99123747 4.59088625]
+ [4.         5.52929253 4.59088625]]</code></pre>
+<p>Os comprimentos das ligações O-H e o ângulo H-O-H podem ser calculados usando as coordenadas atômicas otimizadas:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lOH1 <span class="op">=</span> h2omol.get_distance(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>lOH2 <span class="op">=</span> h2omol.get_distance(<span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>thetaOH1H2 <span class="op">=</span> h2omol.get_angle(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">2</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"O comprimento da ligação O-H1 é </span><span class="sc">{</span>lOH1<span class="sc">:.3f}</span><span class="ss"> Å"</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"O comprimento da ligação O-H2 é </span><span class="sc">{</span>lOH2<span class="sc">:.3f}</span><span class="ss"> Å"</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"O ângulo H1-O-H2 é </span><span class="sc">{</span>thetaOH1H2<span class="sc">:.2f}</span><span class="ss">°"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>O comprimento da ligação O-H1 é 0.973 Å
+O comprimento da ligação O-H2 é 0.973 Å
+O ângulo H1-O-H2 é 104.46°</code></pre>
+</section>
+<section id="cálculo-de-tensões" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="cálculo-de-tensões"><span class="header-section-number">15.4</span> Cálculo de tensões</h2>
 <p>Para um sólido, a energia total depende do vetor de rede <span class="math inline">\(\mathbf{a}, \mathbf{b}, \mathbf{c}\)</span>, e o gradiente da energia em relação aos vetores de rede é chamado de tensão. A tensão é uma matriz 3x3, e é dada por: <span class="math display">\[
 \sigma_{ij} = \frac{1}{V} \frac{\partial E}{\partial \epsilon_{ij}}
 \]</span> onde <span class="math inline">\(V\)</span> é o volume da célula unitária, e <span class="math inline">\(\epsilon_{ij}\)</span> é a deformação aplicada à célula unitária. A tensão pode ser calculada usando métodos de química quântica, como DFT, e é usada para otimizar a geometria de sólidos.</p>
+</section>
+<section id="otimização-de-geometria-de-sólidos-usando-vasp-e-ase" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="otimização-de-geometria-de-sólidos-usando-vasp-e-ase"><span class="header-section-number">15.5</span> Otimização de geometria de sólidos usando VASP e ASE</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para executar este notebook no seu computador, você pode clicar no link: <a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/5-otimizacao_vasp.ipynb">Abrir no GitHub</a></p>
+</div>
+</div>
+<p>Criando um cristal de NaCl usando o ASE:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ase.build <span class="im">import</span> bulk</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>Nacl_crystal <span class="op">=</span> bulk(<span class="st">"NaCl"</span>, crystalstructure<span class="op">=</span><span class="st">"rocksalt"</span>, a<span class="op">=</span><span class="fl">5.64</span>, cubic<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Nacl_crystal)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Cell:"</span>, Nacl_crystal.get_cell())</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Positions:</span><span class="ch">\n</span><span class="st">"</span>, Nacl_crystal.get_positions())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>Atoms(symbols='NaClNaClNaClNaCl', pbc=True, cell=[5.64, 5.64, 5.64])
+Cell: Cell([5.64, 5.64, 5.64])
+Positions:
+ [[0.   0.   0.  ]
+ [2.82 0.   0.  ]
+ [0.   2.82 2.82]
+ [2.82 2.82 2.82]
+ [2.82 0.   2.82]
+ [0.   0.   2.82]
+ [2.82 2.82 0.  ]
+ [0.   2.82 0.  ]]</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../figuras/nacl.png" class="img-fluid figure-img"></p>
+<figcaption>Cristal de NaCl criado usando o ASE.</figcaption>
+</figure>
+</div>
+<p>Em seguida podemos criar a calculadora do VASP para otimização da geometria usando <code>ibrion=2</code> (conjugate gradient), <code>isif=7</code> (relaxa somente a célula), <code>nsw=50</code> (número máximo de passos de otimização) e <code>ediffg=-1e-3</code> (tolerância para convergência das forças):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>calc <span class="op">=</span> Vasp(directory<span class="op">=</span><span class="st">'NaCl_relaxed'</span>,</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>            xc<span class="op">=</span><span class="st">'PBE'</span>,   <span class="co"># funcional GGA</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>            encut<span class="op">=</span><span class="dv">350</span>,  <span class="co"># safe default for PAW-PBE sets</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>            kpts<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],gamma<span class="op">=</span><span class="va">True</span>,                  <span class="co"># k-points</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>            ibrion<span class="op">=</span><span class="dv">2</span>, <span class="co"># CG ionic relax</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>            isif<span class="op">=</span><span class="dv">7</span>, <span class="co"># relaxa somente a célula</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>            nsw<span class="op">=</span><span class="dv">50</span>, <span class="co"># número máximo de passos de relaxação</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>            ediffg<span class="op">=-</span><span class="fl">1e-3</span>, <span class="co"># critério de convergência para relaxação (forças)</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>            lreal<span class="op">=</span><span class="st">'Auto'</span>, <span class="co"># projeção de orbitais no espaço real</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>            lwave<span class="op">=</span><span class="va">True</span>, lcharg<span class="op">=</span><span class="va">True</span>,lvtot<span class="op">=</span><span class="va">True</span>,  <span class="co"># mantem WAVECAR/CHGCAR/LOCPOT para post-processing</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>Nacl_crystal.calc <span class="op">=</span> calc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A otimização da geometria do cristal de NaCl pode ser realizada usando o método <code>get_potential_energy()</code> do objeto <code>Nacl_crystal</code>, que irá calcular a energia total e otimizar a geometria do cristal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>E_nacl <span class="op">=</span> Nacl_crystal.get_potential_energy()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Energia total do cristal de NaCl: </span><span class="sc">{</span>E_nacl<span class="sc">:.3f}</span><span class="ss"> eV'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>Energia total do cristal de NaCl: -25.451 eV</code></pre>
+<p>O número de passos de otimização da célula executados durante a otimização da geometria do cristal de NaCl pode ser obtido usando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Número de passos de otimização da célula executados:"</span>, calc.get_number_of_iterations())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output nesse caso foi:</p>
+<pre><code>Número de passos de otimização da célula executados: 4</code></pre>
+<p>A nova estrutura do cristal de NaCl pode ser obtida usando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Nova estrutura do cristal de NaCl (Ang):"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Nacl_crystal.get_cell())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será algo como:</p>
+<pre><code>Nova estrutura do cristal de NaCl (Ang):
+Cell([5.911942143216201, 5.911942143216201, 5.911942143216201])</code></pre>
 
 
 </section>
