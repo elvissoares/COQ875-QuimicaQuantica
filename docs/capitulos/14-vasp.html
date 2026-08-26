@@ -528,10 +528,11 @@ MathJax = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#instalação-no-ubuntu-24" id="toc-instalação-no-ubuntu-24" class="nav-link active" data-scroll-target="#instalação-no-ubuntu-24"><span class="header-section-number">14.1</span> Instalação no Ubuntu 24</a></li>
+  <li><a href="#instalação-no-linux" id="toc-instalação-no-linux" class="nav-link active" data-scroll-target="#instalação-no-linux"><span class="header-section-number">14.1</span> Instalação no Linux</a></li>
   <li><a href="#instalação-no-windows-11" id="toc-instalação-no-windows-11" class="nav-link" data-scroll-target="#instalação-no-windows-11"><span class="header-section-number">14.2</span> Instalação no Windows 11</a></li>
   <li><a href="#instalação-do-ase" id="toc-instalação-do-ase" class="nav-link" data-scroll-target="#instalação-do-ase"><span class="header-section-number">14.3</span> Instalação do ASE</a></li>
   <li><a href="#configuração-do-ase-com-o-vasp" id="toc-configuração-do-ase-com-o-vasp" class="nav-link" data-scroll-target="#configuração-do-ase-com-o-vasp"><span class="header-section-number">14.4</span> Configuração do ASE com o VASP</a></li>
+  <li><a href="#criando-uma-molécula-com-o-ase" id="toc-criando-uma-molécula-com-o-ase" class="nav-link" data-scroll-target="#criando-uma-molécula-com-o-ase"><span class="header-section-number">14.5</span> Criando uma molécula com o ASE</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/14-vasp.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -559,25 +560,96 @@ MathJax = {
 
 
 <p>Nesse capítulo vamos apresentar o pacote VASP (Vienna Ab initio Simulation Package), que é um software comercial amplamente utilizado para cálculos de estrutura eletrônica e simulações de materiais. O VASP é baseado em métodos de DFT (Density Functional Theory) e oferece uma ampla gama de funcionalidades para cálculos de propriedades eletrônicas, estruturais e dinâmicas de materiais.</p>
-<section id="instalação-no-ubuntu-24" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="instalação-no-ubuntu-24"><span class="header-section-number">14.1</span> Instalação no Ubuntu 24</h2>
-<p>Para instalar o VASP no Ubuntu 24, siga os passos abaixo: 1. <strong>Obtenha uma licença do VASP</strong>: O VASP é um software comercial, portanto, você precisará adquirir uma licença para usá-lo. Visite o site oficial do VASP (<a href="https://www.vasp.at/">https://www.vasp.at/</a>) para obter informações sobre como adquirir uma licença.</p>
-<ol start="2" type="1">
+<section id="instalação-no-linux" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="instalação-no-linux"><span class="header-section-number">14.1</span> Instalação no Linux</h2>
+<p>Para instalar o VASP no Linux, siga os passos abaixo:</p>
+<ol type="1">
+<li><p><strong>Obtenha uma licença do VASP</strong>: O VASP é um software comercial, portanto, você precisará adquirir uma licença para usá-lo. Visite o site oficial do VASP (<a href="https://www.vasp.at/">https://www.vasp.at/</a>) para obter informações sobre como adquirir uma licença.</p></li>
 <li><p><strong>Baixe o código-fonte do VASP</strong>: Após obter a licença, você poderá baixar o código-fonte do VASP a partir do site oficial. Certifique-se de baixar a versão compatível com o seu sistema operacional.</p></li>
-<li><p><strong>Instale as dependências necessárias</strong>: Antes de compilar o VASP, você precisará instalar algumas dependências, como compiladores Fortran e C, bibliotecas MPI e BLAS/LAPACK. Você pode instalar essas dependências usando o gerenciador de pacotes do Ubuntu:</p></li>
+<li><p><strong>Instale as dependências necessárias</strong>: Antes de compilar o VASP, você precisará instalar algumas dependências, como compiladores Fortran e C, bibliotecas MPI e BLAS/LAPACK.</p></li>
 </ol>
+<p>Você pode instalar essas dependências usando o gerenciador de pacotes do Ubuntu:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install rsync make build-essential g++ gfortran libopenblas-dev libopenmpi-dev libscalapack-openmpi-dev libfftw3-dev libhdf5-openmpi-dev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>ou no caso do Fedora:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dnf install rsync gcc gcc-c++ gcc-gfortran openblas-devel openmpi-devel scalapack-openmpi-devel fftw-devel hdf5-openmpi-devel</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>e modifique o arquivo <code>~/.bashrc</code> para incluir as variáveis de ambiente do OpenMPI:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/usr/lib64/openmpi/bin:<span class="va">$PATH</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">LD_LIBRARY_PATH</span><span class="op">=</span>/usr/lib64/openmpi/lib:<span class="va">$LD_LIBRARY_PATH</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>e recarregue o arquivo <code>~/.bashrc</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="4" type="1">
-<li><p><strong>Compile o VASP</strong>: Navegue até o diretório onde você baixou o código-fonte do VASP e siga as instruções de compilação fornecidas no arquivo README ou INSTALL. Normalmente, você precisará configurar o ambiente de compilação e executar os comandos de compilação apropriados.</p></li>
-<li><p><strong>Configure o ambiente</strong>: Após a compilação bem-sucedida, você precisará configurar o ambiente para usar o VASP. Isso pode incluir a definição de variáveis de ambiente e a adição do diretório do VASP ao seu PATH.</p></li>
-<li><p><strong>Teste a instalação</strong>: Para verificar se o VASP foi instalado corretamente, você pode executar um teste simples fornecido com o pacote ou criar um arquivo de entrada de teste e executar o VASP para garantir que ele funcione conforme esperado.</p></li>
+<li><strong>Compile o VASP</strong>: Navegue até o diretório onde você decompactou o código-fonte do VASP e siga as seguintes instruções de compilação.</li>
 </ol>
+<p>4.1. Crie um arquivo de configuração <code>makefile.include</code> com as opções de compilação apropriadas para o seu sistema. Você pode encontrar exemplos de arquivos de configuração no diretório <code>arch</code> do código-fonte do VASP.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> arch/makefile.include.gnu_omp makefile.include</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>4.2. Dentro do arquivo <code>makefile.include</code>, você pode ajustar as opções de compilação, como o compilador Fortran, flags de otimização e bibliotecas a serem usadas.</p>
+<ul>
+<li>Comente a linha <code>OPENBLAS_ROOT</code> e adicione a linha <code>BLASPACK</code> como abaixo:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BLAS and LAPACK (mandatory)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#OPENBLAS_ROOT ?= /path/to/your/openblas/installation</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dt">BLASPACK</span>    <span class="ch">=</span><span class="st"> -lopenblas</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Comente a linha <code>SCALAPACK_ROOT</code> e adicione a linha <code>SCALAPACK</code> como abaixo:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scaLAPACK (mandatory)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SCALAPACK_ROOT ?= /path/to/your/scalapack/installation</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">SCALAPACK</span>   <span class="ch">=</span><span class="st"> -lscalapack</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Comente a linha <code>FFTW_ROOT</code> e adicione a linha <code>LLIBS</code> e <code>INCS</code> como abaixo:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FFTW (mandatory)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#FFTW_ROOT  ?= /path/to/your/fftw/installation</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="dt">LLIBS</span>      <span class="ch">+=</span><span class="st"> -lfftw3 -lfftw3_omp</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="dt">INCS</span>       <span class="ch">+=</span><span class="st"> -I/usr/include</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Adicione as seguintes linhas para habilitar o suporte ao HDF5 (opcional, mas fortemente recomendado):</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HDF5-support (optional but strongly recommended)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">CPP_OPTIONS</span><span class="ch">+=</span><span class="st"> -DVASP_HDF5</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#HDF5_ROOT  ?= /path/to/your/hdf5/installation</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="dt">LLIBS</span>      <span class="ch">+=</span><span class="st"> -lhdf5_fortran</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="dt">INCS</span>       <span class="ch">+=</span><span class="st"> -I/usr/lib64/gfortran/modules/openmpi/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Salve o arquivo <code>makefile.include</code> após fazer as alterações e compile o VASP executando o comando</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> DEPS=1 <span class="at">-j</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="5" type="1">
+<li><strong>Conferindo versão</strong>: Após a compilação bem-sucedida, você pode conferir se o executável do VASP foi gerado corretamente no diretório <code>bin</code> do código-fonte. Você pode executar o comando abaixo para verificar a versão do VASP:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./vasp_std</span> <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="6" type="1">
+<li><strong>Configure o ambiente</strong>: Para facilitar a execução do VASP, você pode adicionar o diretório <code>bin</code> do código-fonte do VASP ao seu PATH. Adicione a seguinte linha ao seu arquivo <code>~/.bashrc</code>:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/path/to/vasp/bin:<span class="va">$PATH</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="7" type="1">
+<li><strong>Instalando pseudopotenciais</strong>: O VASP utiliza pseudopotenciais para representar os núcleos dos átomos. Você precisará baixar os pseudopotenciais apropriados para os elementos que deseja simular. Os pseudopotenciais podem ser encontrados no site oficial do VASP ou em repositórios de terceiros.</li>
+</ol>
+<ul>
+<li>Crie uma pasta <code>pp</code> dentro da pasta <code>/path/to/vasp</code></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> pp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Copie os arquivos de pseudopotenciais para essa pasta</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> ~/Downloads/potpaw_LDA.64.tgz pp/. <span class="kw">&amp;&amp;</span> <span class="fu">cp</span> ~/Downloads/potpaw_PBE.64.tgz pp/.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Entre na pasta <code>pp</code> e crie as seguintes pastas</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pp <span class="kw">&amp;&amp;</span> <span class="fu">mkdir</span> potpaw potpaw_PBE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Descompacte o arquivo <code>potpaw_LDA.64.tgz</code> para dentro da pasta <code>potpaw</code></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xvzf</span> potpaw_LDA.64.tgz <span class="at">-C</span> potpaw</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Descompacte o arquivo <code>potpaw_PBE.64.tgz</code> para dentro da pasta <code>potpaw_PBE</code></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xvzf</span> potpaw_PBE.64.tgz <span class="at">-C</span> potpaw_PBE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Agora você possui os arquivos de pseudopotenciais instalados nessas pastas.</p>
 </section>
 <section id="instalação-no-windows-11" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="instalação-no-windows-11"><span class="header-section-number">14.2</span> Instalação no Windows 11</h2>
 <p>Para instalar o VASP no Windows 11, você pode usar o Windows Subsystem for Linux (WSL) para criar um ambiente Linux dentro do Windows. Siga os passos abaixo: 1. <strong>Habilite o WSL</strong>: Abra o PowerShell como administrador e execute o seguinte comando para habilitar o WSL:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="op">--</span>install</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>wsl <span class="op">--</span>install</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
 <li><p><strong>Instale uma distribuição Linux</strong>: Após habilitar o WSL, você precisará instalar uma distribuição Linux, como Ubuntu 24, a partir da Microsoft Store.</p></li>
 <li><p><strong>Siga os passos de instalação no Ubuntu 24</strong>: Após instalar a distribuição Linux, abra o terminal do WSL e siga os mesmos passos de instalação descritos na seção “Instalação no Ubuntu 24” para instalar o VASP dentro do ambiente Linux.</p></li>
@@ -587,15 +659,48 @@ MathJax = {
 <h2 data-number="14.3" class="anchored" data-anchor-id="instalação-do-ase"><span class="header-section-number">14.3</span> Instalação do ASE</h2>
 <p>O ASE (Atomic Simulation Environment) é uma biblioteca Python que facilita a configuração, execução e análise de simulações de materiais. Ele pode ser usado em conjunto com o VASP para automatizar tarefas e simplificar o fluxo de trabalho.</p>
 <p>Para instalar o ASE (Atomic Simulation Environment), você pode usar o gerenciador de pacotes <code>pip</code>. Execute o seguinte comando no terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ase</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ase</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="configuração-do-ase-com-o-vasp" class="level2" data-number="14.4">
 <h2 data-number="14.4" class="anchored" data-anchor-id="configuração-do-ase-com-o-vasp"><span class="header-section-number">14.4</span> Configuração do ASE com o VASP</h2>
 <p>Para configurar o ASE para trabalhar com o VASP, siga os passos abaixo: 1. <strong>Verifique a instalação do ASE</strong>: Certifique-se de que o ASE foi instalado corretamente executando o seguinte comando no terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import ase; print(ase.__version__)"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-c</span> <span class="st">"import ase; print(ase.__version__)"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
-<li><strong>Configure o caminho do VASP</strong>: O ASE precisa saber onde o executável do VASP está localizado. Você pode definir a variável de ambiente <code>VASP_COMMAND</code> para apontar para o executável do VASP. Por exemplo, se o executável do VASP estiver localizado em <code>/path/to/vasp</code>, você pode adicionar a seguinte linha ao seu arquivo de configuração do shell (como <code>.bashrc</code> ou <code>.zshrc</code>): ```bash export VASP_COMMAND=“/path/to/vasp”</li>
+<li><strong>Configure o caminho do VASP</strong>: O ASE precisa saber onde o executável do VASP está localizado. Você pode definir a variável de ambiente <code>ASE_VASP_COMMAND</code> para apontar para o executável do VASP. No Linux, você pode adicionar a seguinte linha ao seu arquivo <code>~/.bashrc</code>:</li>
 </ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">ASE_VASP_COMMAND</span><span class="op">=</span><span class="st">"mpirun -np 1 vasp_std"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="3" type="1">
+<li><strong>Especificando pasta com pseudopotenciais</strong>: O ASE precisa saber onde os arquivos de pseudopotenciais do VASP estão localizados. Você pode definir a variável de ambiente <code>VASP_PP_PATH</code> para apontar para o diretório que contém os pseudopotenciais. No Linux, você pode adicionar a seguinte linha ao seu arquivo <code>~/.bashrc</code>:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">VASP_PP_PATH</span> <span class="op">=</span>/path/to/vasp/pp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="criando-uma-molécula-com-o-ase" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="criando-uma-molécula-com-o-ase"><span class="header-section-number">14.5</span> Criando uma molécula com o ASE</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: <a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/3-intro_vasp.ipynb"><img src="../figuras/colab-badge.png" class="img-fluid" alt="Abrir no Google Colab"></a></p>
+</div>
+</div>
+<p>No ASE, você pode criar uma molécula usando a classe <code>Atoms</code>. A seguir, apresentamos um exemplo de como criar uma molécula de água (H2O):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ase <span class="im">import</span> Atoms, Atom</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>h2omol <span class="op">=</span> Atoms([Atom(<span class="st">'O'</span>, [<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                Atom(<span class="st">'H'</span>, [<span class="fl">0.0</span>, <span class="op">-</span><span class="fl">0.760265</span>, <span class="fl">0.588373</span>]),</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                Atom(<span class="st">'H'</span>, [<span class="fl">0.0</span>, <span class="fl">0.760265</span>, <span class="fl">0.588373</span>])])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>que pode ser visualizada usando o método <code>view</code> do ASE:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ase.visualize <span class="im">import</span> view</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>view(h2omol)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será uma janela interativa mostrando a molécula de água em 3D, permitindo que você gire, amplie e explore a estrutura da molécula.</p>
+<p>Outra opção é usar o visualizador <code>x3d</code> do ASE, que permite visualizar a molécula em um navegador web. Para isso, você pode executar o seguinte comando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>view(h2omol, viewer<span class="op">=</span><span class="st">'x3d'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
