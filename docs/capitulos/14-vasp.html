@@ -533,6 +533,15 @@ MathJax = {
   <li><a href="#instalação-do-ase" id="toc-instalação-do-ase" class="nav-link" data-scroll-target="#instalação-do-ase"><span class="header-section-number">14.3</span> Instalação do ASE</a></li>
   <li><a href="#configuração-do-ase-com-o-vasp" id="toc-configuração-do-ase-com-o-vasp" class="nav-link" data-scroll-target="#configuração-do-ase-com-o-vasp"><span class="header-section-number">14.4</span> Configuração do ASE com o VASP</a></li>
   <li><a href="#criando-uma-molécula-com-o-ase" id="toc-criando-uma-molécula-com-o-ase" class="nav-link" data-scroll-target="#criando-uma-molécula-com-o-ase"><span class="header-section-number">14.5</span> Criando uma molécula com o ASE</a></li>
+  <li><a href="#cálculos-auto-consistentes-de-energia-no-vasp-com-o-ase" id="toc-cálculos-auto-consistentes-de-energia-no-vasp-com-o-ase" class="nav-link" data-scroll-target="#cálculos-auto-consistentes-de-energia-no-vasp-com-o-ase"><span class="header-section-number">14.6</span> Cálculos Auto-Consistentes de Energia no VASP com o ASE</a></li>
+  <li><a href="#orbitais-moleculares-e-densidade-eletrônica" id="toc-orbitais-moleculares-e-densidade-eletrônica" class="nav-link" data-scroll-target="#orbitais-moleculares-e-densidade-eletrônica"><span class="header-section-number">14.7</span> Orbitais moleculares e Densidade Eletrônica</a>
+  <ul class="collapse">
+  <li><a href="#orbitais-moleculares" id="toc-orbitais-moleculares" class="nav-link" data-scroll-target="#orbitais-moleculares"><span class="header-section-number">14.7.1</span> Orbitais moleculares</a></li>
+  <li><a href="#densidade-eletrônica" id="toc-densidade-eletrônica" class="nav-link" data-scroll-target="#densidade-eletrônica"><span class="header-section-number">14.7.2</span> Densidade eletrônica</a></li>
+  </ul></li>
+  <li><a href="#criando-um-sólido-cristalino-com-ase" id="toc-criando-um-sólido-cristalino-com-ase" class="nav-link" data-scroll-target="#criando-um-sólido-cristalino-com-ase"><span class="header-section-number">14.8</span> Criando um Sólido cristalino com ASE</a></li>
+  <li><a href="#calculando-a-energia-total-de-um-sólido-cristalino-com-o-vasp-e-o-ase" id="toc-calculando-a-energia-total-de-um-sólido-cristalino-com-o-vasp-e-o-ase" class="nav-link" data-scroll-target="#calculando-a-energia-total-de-um-sólido-cristalino-com-o-vasp-e-o-ase"><span class="header-section-number">14.9</span> Calculando a energia total de um sólido cristalino com o VASP e o ASE</a></li>
+  <li><a href="#densidade-eletrônica-de-um-sólido-cristalino" id="toc-densidade-eletrônica-de-um-sólido-cristalino" class="nav-link" data-scroll-target="#densidade-eletrônica-de-um-sólido-cristalino"><span class="header-section-number">14.10</span> Densidade eletrônica de um sólido cristalino</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/capitulos/14-vasp.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -585,40 +594,41 @@ MathJax = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> arch/makefile.include.gnu_omp makefile.include</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>4.2. Dentro do arquivo <code>makefile.include</code>, você pode ajustar as opções de compilação, como o compilador Fortran, flags de otimização e bibliotecas a serem usadas.</p>
 <ul>
+<li>Modifique a versão do compilador GCC que você deve usar para compilar o VASP. Nesse caso iremos modificar a linha <code>CFLAGS_LIB</code> para usar a versão <code>gnu17</code> do compilador GCC:</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CFLAGS_LIB</span>  <span class="ch">=</span><span class="st"> -O -std=gnu17</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
 <li>Comente a linha <code>OPENBLAS_ROOT</code> e adicione a linha <code>BLASPACK</code> como abaixo:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BLAS and LAPACK (mandatory)</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#OPENBLAS_ROOT ?= /path/to/your/openblas/installation</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="dt">BLASPACK</span>    <span class="ch">=</span><span class="st"> -lopenblas</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># BLAS and LAPACK (mandatory)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#OPENBLAS_ROOT ?= /path/to/your/openblas/installation</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">BLASPACK</span>    <span class="ch">=</span><span class="st"> -lopenblas</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Comente a linha <code>SCALAPACK_ROOT</code> e adicione a linha <code>SCALAPACK</code> como abaixo:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scaLAPACK (mandatory)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SCALAPACK_ROOT ?= /path/to/your/scalapack/installation</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">SCALAPACK</span>   <span class="ch">=</span><span class="st"> -lscalapack</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># scaLAPACK (mandatory)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SCALAPACK_ROOT ?= /path/to/your/scalapack/installation</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="dt">SCALAPACK</span>   <span class="ch">=</span><span class="st"> -lscalapack</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Comente a linha <code>FFTW_ROOT</code> e adicione a linha <code>LLIBS</code> e <code>INCS</code> como abaixo:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FFTW (mandatory)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#FFTW_ROOT  ?= /path/to/your/fftw/installation</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="dt">LLIBS</span>      <span class="ch">+=</span><span class="st"> -lfftw3 -lfftw3_omp</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="dt">INCS</span>       <span class="ch">+=</span><span class="st"> -I/usr/include</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FFTW (mandatory)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#FFTW_ROOT  ?= /path/to/your/fftw/installation</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="dt">LLIBS</span>      <span class="ch">+=</span><span class="st"> -lfftw3 -lfftw3_omp</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="dt">INCS</span>       <span class="ch">+=</span><span class="st"> -I/usr/include</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Adicione as seguintes linhas para habilitar o suporte ao HDF5 (opcional, mas fortemente recomendado):</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HDF5-support (optional but strongly recommended)</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="dt">CPP_OPTIONS</span><span class="ch">+=</span><span class="st"> -DVASP_HDF5</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#HDF5_ROOT  ?= /path/to/your/hdf5/installation</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="dt">LLIBS</span>      <span class="ch">+=</span><span class="st"> -lhdf5_fortran</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="dt">INCS</span>       <span class="ch">+=</span><span class="st"> -I/usr/lib64/gfortran/modules/openmpi/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode makefile code-with-copy"><code class="sourceCode makefile"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HDF5-support (optional but strongly recommended)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="dt">CPP_OPTIONS</span><span class="ch">+=</span><span class="st"> -DVASP_HDF5</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#HDF5_ROOT  ?= /path/to/your/hdf5/installation</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">LLIBS</span>      <span class="ch">+=</span><span class="st"> -lhdf5_fortran</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="dt">INCS</span>       <span class="ch">+=</span><span class="st"> -I/usr/lib64/gfortran/modules/openmpi/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Salve o arquivo <code>makefile.include</code> após fazer as alterações e compile o VASP executando o comando</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> DEPS=1 <span class="at">-j</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> DEPS=1 <span class="at">-j</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="5" type="1">
-<li><strong>Conferindo versão</strong>: Após a compilação bem-sucedida, você pode conferir se o executável do VASP foi gerado corretamente no diretório <code>bin</code> do código-fonte. Você pode executar o comando abaixo para verificar a versão do VASP:</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./vasp_std</span> <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="6" type="1">
-<li><strong>Configure o ambiente</strong>: Para facilitar a execução do VASP, você pode adicionar o diretório <code>bin</code> do código-fonte do VASP ao seu PATH. Adicione a seguinte linha ao seu arquivo <code>~/.bashrc</code>:</li>
+<li><p><strong>Conferindo instalação</strong>: Após a compilação bem-sucedida, você pode conferir se o executável do VASP foi gerado corretamente no diretório <code>bin</code> do código-fonte.</p></li>
+<li><p><strong>Configure o ambiente</strong>: Para facilitar a execução do VASP, você pode adicionar o diretório <code>bin</code> do código-fonte do VASP ao seu PATH. Adicione a seguinte linha ao seu arquivo <code>~/.bashrc</code>:</p></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span>/path/to/vasp/bin:<span class="va">$PATH</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="7" type="1">
@@ -686,7 +696,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: <a href="https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/3-intro_vasp.ipynb"><img src="../figuras/colab-badge.png" class="img-fluid" alt="Abrir no Google Colab"></a></p>
+<p>Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook. Para executar este notebook no seu computador, você pode clicar no link: <a href="https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/3-intro_vasp.ipynb">Abrir no GitHub</a></p>
 </div>
 </div>
 <p>No ASE, você pode criar uma molécula usando a classe <code>Atoms</code>. A seguir, apresentamos um exemplo de como criar uma molécula de água (H2O):</p>
@@ -701,6 +711,206 @@ Tip
 <p>cujo output será uma janela interativa mostrando a molécula de água em 3D, permitindo que você gire, amplie e explore a estrutura da molécula.</p>
 <p>Outra opção é usar o visualizador <code>x3d</code> do ASE, que permite visualizar a molécula em um navegador web. Para isso, você pode executar o seguinte comando:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>view(h2omol, viewer<span class="op">=</span><span class="st">'x3d'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="cálculos-auto-consistentes-de-energia-no-vasp-com-o-ase" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="cálculos-auto-consistentes-de-energia-no-vasp-com-o-ase"><span class="header-section-number">14.6</span> Cálculos Auto-Consistentes de Energia no VASP com o ASE</h2>
+<p>No caso de moléculas devemos definir a célula de simulação para evitar interações entre imagens periódicas da molécula. Por exemplo, podemos definir uma célula cúbica que tenha um vácuo de 4 Å em torno da molécula de água com condição de contorno periódico:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>h2omol.center(vacuum<span class="op">=</span><span class="fl">4.0</span>) <span class="co"># caixa com 4 Angstroms de vácuo </span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>h2omol.pbc <span class="op">=</span> <span class="va">True</span> <span class="co"># condição de contorno periódica</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>E podemos importar a calculadora do VASP do ASE e definir os parâmetros de cálculo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ase.calculators.vasp <span class="im">import</span> Vasp</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>calc <span class="op">=</span> Vasp(xc<span class="op">=</span><span class="st">'PBE'</span>,                                   <span class="co"># funcional</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>            encut<span class="op">=</span><span class="dv">350</span>,     <span class="co"># safe default for PAW-PBE sets</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>            kpts<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>],gamma<span class="op">=</span><span class="va">True</span>,  <span class="co"># Somente pontos Gamma em Fourier</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>            ibrion<span class="op">=-</span><span class="dv">1</span>,       <span class="co"># Calcula SCF </span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>            directory<span class="op">=</span><span class="st">'water'</span> <span class="co"># pasta em que os cálculos serão armazenados</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>E devemos anexar a calculadora à molécula de água:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>h2omol.calc <span class="op">=</span> calc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A energia total da molécula de água pode ser obtida com o método <code>get_potential_energy()</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>E_h2o <span class="op">=</span> h2omol.get_potential_energy()</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Energia total da molécula de água: </span><span class="sc">{</span>E_h2o<span class="sc">:.3f}</span><span class="ss"> eV'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo o output será</p>
+<pre><code>Energia total da molécula de água: -14.215 eV</code></pre>
+</section>
+<section id="orbitais-moleculares-e-densidade-eletrônica" class="level2" data-number="14.7">
+<h2 data-number="14.7" class="anchored" data-anchor-id="orbitais-moleculares-e-densidade-eletrônica"><span class="header-section-number">14.7</span> Orbitais moleculares e Densidade Eletrônica</h2>
+<section id="orbitais-moleculares" class="level3" data-number="14.7.1">
+<h3 data-number="14.7.1" class="anchored" data-anchor-id="orbitais-moleculares"><span class="header-section-number">14.7.1</span> Orbitais moleculares</h3>
+<p>Podemos determinar os orbitais moleculares da molécula de água usando o VASP e o ASE. Para isso, podemos usar a função <code>calc.get_eigenvalues()</code> para obter os valores próprios (energias) dos orbitais moleculares. Por exemplo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>eigenvalues <span class="op">=</span> h2omol.calc.get_eigenvalues()</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Valores próprios (energias) dos orbitais moleculares:"</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, energy <span class="kw">in</span> <span class="bu">enumerate</span>(eigenvalues):</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Orbital </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>energy<span class="sc">:.3f}</span><span class="ss"> eV'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo o output será</p>
+<pre><code>Valores próprios (energias) dos orbitais moleculares:
+Orbital 1: -25.308 eV
+Orbital 2: -13.063 eV
+Orbital 3: -9.152 eV
+Orbital 4: -7.093 eV
+Orbital 5: -0.989 eV
+Orbital 6: 0.791 eV
+Orbital 7: 0.824 eV
+Orbital 8: 1.509 eV</code></pre>
+<p>Usando a função <code>calc.get_occupation_numbers()</code>, podemos obter os números de ocupação dos orbitais moleculares:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>occupations <span class="op">=</span> h2omol.calc.get_occupation_numbers()</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Números de ocupação dos orbitais moleculares:"</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, occ <span class="kw">in</span> <span class="bu">enumerate</span>(occupations):</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Orbital </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>occ<span class="sc">:.0f}</span><span class="ss">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo o output será</p>
+<pre><code>Números de ocupação dos orbitais moleculares:
+Orbital 1: 2
+Orbital 2: 2
+Orbital 3: 2
+Orbital 4: 2
+Orbital 5: 0
+Orbital 6: 0
+Orbital 7: 0
+Orbital 8: 0</code></pre>
+<p>A função <code>calc.get_homo_lumo()</code> permite que determinemos as energias dos orbitais HOMO (Highest Occupied Molecular Orbital) e LUMO (Lowest Unoccupied Molecular Orbital):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>homo, lumo <span class="op">=</span> h2omol.calc.get_homo_lumo()</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>gap <span class="op">=</span> (lumo <span class="op">-</span> homo)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'HOMO: </span><span class="sc">{</span>homo<span class="sc">:.3f}</span><span class="ss"> eV'</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'LUMO: </span><span class="sc">{</span>lumo<span class="sc">:.3f}</span><span class="ss"> eV'</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Diferença: </span><span class="sc">{</span>gap<span class="sc">:.3f}</span><span class="ss"> eV"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo o output será</p>
+<pre><code>HOMO: -7.093 eV
+LUMO: -0.989 eV
+Diferença: 6.104 eV</code></pre>
+<p>De forma mais elegante podemos visualizar</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>eigenvalues <span class="op">=</span> h2omol.calc.get_eigenvalues()</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>occupations <span class="op">=</span> h2omol.calc.get_occupation_numbers()</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>homo, lumo <span class="op">=</span> h2omol.calc.get_homo_lumo()</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>gap <span class="op">=</span> (lumo <span class="op">-</span> homo)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort for a clean plot</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> np.argsort(eigenvalues)</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>eigenvalues, occupations <span class="op">=</span> eigenvalues[order], occupations[order]</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Split occupied / unoccupied</span></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>occ_mask <span class="op">=</span> occupations <span class="op">&gt;</span> <span class="fl">0.5</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>E_occ <span class="op">=</span> eigenvalues[occ_mask]</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>E_unocc <span class="op">=</span> eigenvalues[<span class="op">~</span>occ_mask]</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="co"># --- plotting ---</span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">3</span>, <span class="fl">3.2</span>), dpi<span class="op">=</span><span class="dv">140</span>)</span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Sticks for occupied and unoccupied states</span></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> E <span class="kw">in</span> E_occ:</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>    plt.plot([<span class="dv">0</span>, <span class="fl">0.6</span>], [E, E],color<span class="op">=</span><span class="st">'C0'</span>)</span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> E <span class="kw">in</span> E_unocc:</span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>    plt.plot([<span class="fl">0.7</span>, <span class="fl">1.3</span>], [E, E],color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight HOMO / LUMO</span></span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="fl">1.3</span>],[homo, homo],color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>, <span class="fl">1.3</span>],[lumo, lumo],color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Annotate</span></span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="fl">1.6</span>,homo<span class="op">-</span><span class="dv">1</span>, <span class="st">'HOMO'</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'bottom'</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="fl">1.6</span>, lumo<span class="op">-</span><span class="dv">1</span>, <span class="st">'LUMO'</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'bottom'</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
+<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f'HOMO-LUMO gap = </span><span class="sc">{</span>gap<span class="sc">:.3f}</span><span class="ss"> eV'</span>)</span>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Energia (eV)'</span>)</span>
+<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a>plt.xticks([])          <span class="co"># hide y-axis (pure spectrum)</span></span>
+<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="bu">min</span>(eigenvalues)<span class="op">-</span><span class="dv">1</span>, <span class="bu">max</span>(eigenvalues)<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, axis<span class="op">=</span><span class="st">'y'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, linewidth<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será uma figura do tipo <img src="../figuras/homolumo_h2o.png" id="fig-homolumo-h2o" class="img-fluid" alt="Níveis de energias dos orbitais moleculares de Kohn-Sham para a água"></p>
+</section>
+<section id="densidade-eletrônica" class="level3" data-number="14.7.2">
+<h3 data-number="14.7.2" class="anchored" data-anchor-id="densidade-eletrônica"><span class="header-section-number">14.7.2</span> Densidade eletrônica</h3>
+<p>A densidade eletrônica calculada pelo VASP está contida em um arquivo denominado <code>CHGCAR</code>. Esse arquivo está entre os arquivos na pasta especificada no <code>calc</code> que denominamos <code>water</code>. Ele pode ser visualizado com programas de visualização de densidade eletrônica, como VESTA.</p>
+<div id="fig-densidade-h2o" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-densidade-h2o-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/agua_den_vasp.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-densidade-h2o-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.1: Superfície de isodensidade eletrônica da água calculada pelo VASP
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="criando-um-sólido-cristalino-com-ase" class="level2" data-number="14.8">
+<h2 data-number="14.8" class="anchored" data-anchor-id="criando-um-sólido-cristalino-com-ase"><span class="header-section-number">14.8</span> Criando um Sólido cristalino com ASE</h2>
+<p>Criando um cristal de cobre (Cu) usando o modulo <code>bulk</code> do ASE na forma</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ase.build <span class="im">import</span> bulk</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">3.5</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>Cu_crystal <span class="op">=</span> bulk(<span class="st">"Cu"</span>, crystalstructure<span class="op">=</span><span class="st">"fcc"</span>, a<span class="op">=</span>a, cubic<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(Cu_crystal)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Cell:"</span>, Cu_crystal.get_cell())</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Positions:</span><span class="ch">\n</span><span class="st">"</span>, Cu_crystal.get_positions())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será</p>
+<pre><code>Atoms(symbols='Cu4', pbc=True, cell=[3.5, 3.5, 3.5])
+Cell: Cell([3.5, 3.5, 3.5])
+Positions:
+ [[0.   0.   0.  ]
+ [0.   1.75 1.75]
+ [1.75 0.   1.75]
+ [1.75 1.75 0.  ]]</code></pre>
+<p>e visualizando com o método <code>view</code> do ASE:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ase.visualize <span class="im">import</span> view</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>view(Cu_crystal)    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>temos</p>
+<div id="fig-cu-crystal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cu-crystal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/Cu_fcc.png" class="img-fluid figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cu-crystal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.2: Estrutura cristalina cúbica de cobre (Cu) visualizada com o ASE
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="calculando-a-energia-total-de-um-sólido-cristalino-com-o-vasp-e-o-ase" class="level2" data-number="14.9">
+<h2 data-number="14.9" class="anchored" data-anchor-id="calculando-a-energia-total-de-um-sólido-cristalino-com-o-vasp-e-o-ase"><span class="header-section-number">14.9</span> Calculando a energia total de um sólido cristalino com o VASP e o ASE</h2>
+<p>Criando a calculadora do VASP com o ASE:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>calc <span class="op">=</span> Vasp(directory<span class="op">=</span><span class="st">'Cu'</span>,</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                xc<span class="op">=</span><span class="st">'PBE'</span>,</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>                kpts<span class="op">=</span>[<span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">6</span>],  <span class="co"># specifies k-points</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>                encut<span class="op">=</span><span class="dv">350</span>,</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>            )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>e anexando a calculadora ao cristal de cobre:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>Cu_crystal.calc <span class="op">=</span> calc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>podemos calcular a energia total do cristal de cobre com o método <code>get_potential_energy()</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>E_Cu <span class="op">=</span> Cu_crystal.get_potential_energy()</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Energia total do cristal de cobre: </span><span class="sc">{</span>E_Cu<span class="sc">:.3f}</span><span class="ss"> eV'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será</p>
+<pre><code>Energia total do cristal de cobre: -14.603 eV</code></pre>
+<p>A energia por átomo do cristal de cobre pode ser obtida dividindo a energia total pelo número de átomos no cristal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>E_per_atom <span class="op">=</span> E_Cu <span class="op">/</span> <span class="bu">len</span>(Cu_crystal)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Energia por átomo do cristal de cobre: </span><span class="sc">{</span>E_per_atom<span class="sc">:.3f}</span><span class="ss"> eV'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cujo output será</p>
+<pre><code>Energia por átomo do cristal de cobre: -3.651 eV</code></pre>
+</section>
+<section id="densidade-eletrônica-de-um-sólido-cristalino" class="level2" data-number="14.10">
+<h2 data-number="14.10" class="anchored" data-anchor-id="densidade-eletrônica-de-um-sólido-cristalino"><span class="header-section-number">14.10</span> Densidade eletrônica de um sólido cristalino</h2>
+<p>Podemos visualizar a densidade eletrônica do cristal de cobre usando o arquivo <code>CHGCAR</code> gerado pelo VASP. Para isso, podemos usar o programa VESTA para abrir o arquivo <code>CHGCAR</code> e visualizar a densidade eletrônica em 3D.</p>
+<div id="fig-densidade-cu" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-densidade-cu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../figuras/cu_den_vasp.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-densidade-cu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14.3: Superfície de isodensidade eletrônica do cristal de cobre (Cu) calculada pelo VASP e visualizada com VESTA
+</figcaption>
+</figure>
+</div>
 
 
 </section>

@@ -41,6 +41,11 @@ cp arch/makefile.include.gnu_omp makefile.include
 
 4.2. Dentro do arquivo `makefile.include`, você pode ajustar as opções de compilação, como o compilador Fortran, flags de otimização e bibliotecas a serem usadas.
 
+- Modifique a versão do compilador GCC que você deve usar para compilar o VASP. Nesse caso iremos modificar a linha `CFLAGS_LIB` para usar a versão `gnu17` do compilador GCC:
+```makefile
+CFLAGS_LIB  = -O -std=gnu17
+```
+
 - Comente a linha `OPENBLAS_ROOT` e adicione a linha `BLASPACK` como abaixo:
 ```makefile
 # BLAS and LAPACK (mandatory)
@@ -77,10 +82,7 @@ Salve o arquivo `makefile.include` após fazer as alterações e compile o VASP 
 make DEPS=1 -j
 ```
 
-5. **Conferindo versão**: Após a compilação bem-sucedida, você pode conferir se o executável do VASP foi gerado corretamente no diretório `bin` do código-fonte. Você pode executar o comando abaixo para verificar a versão do VASP:
-```bash
-./vasp_std -h
-```
+5. **Conferindo instalação**: Após a compilação bem-sucedida, você pode conferir se o executável do VASP foi gerado corretamente no diretório `bin` do código-fonte. 
 
 6. **Configure o ambiente**: Para facilitar a execução do VASP, você pode adicionar o diretório `bin` do código-fonte do VASP ao seu PATH. Adicione a seguinte linha ao seu arquivo `~/.bashrc`:
 ```bash
@@ -161,7 +163,7 @@ export VASP_PP_PATH =/path/to/vasp/pp
 
 ::: {.callout-tip}
 
-Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook ou Google Colab. Para executar este notebook no Google Colab, você pode clicar no link: [![Abrir no Google Colab](../figuras/colab-badge.png)](https://colab.research.google.com/github/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/3-intro_vasp.ipynb)
+Os exemplos contidos nesta seção podem ser executados em um ambiente de notebook, como o Jupyter Notebook. Para executar este notebook no seu computador, você pode clicar no link: [Abrir no GitHub](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/3-intro_vasp.ipynb)
 
 :::
 
@@ -185,3 +187,231 @@ Outra opção é usar o visualizador `x3d` do ASE, que permite visualizar a mol�
 ```python
 view(h2omol, viewer='x3d')
 ```
+
+## Cálculos Auto-Consistentes de Energia no VASP com o ASE
+
+No caso de moléculas devemos definir a célula de simulação para evitar interações entre imagens periódicas da molécula. Por exemplo, podemos definir uma célula cúbica que tenha um vácuo de 4 Å em torno da molécula de água com condição de contorno periódico:
+```python
+h2omol.center(vacuum=4.0) # caixa com 4 Angstroms de vácuo 
+h2omol.pbc = True # condição de contorno periódica
+```
+
+E podemos importar a calculadora do VASP do ASE e definir os parâmetros de cálculo:
+```python
+from ase.calculators.vasp import Vasp
+
+calc = Vasp(xc='PBE',                                   # funcional
+            encut=350,     # safe default for PAW-PBE sets
+            kpts=[1, 1, 1],gamma=True,  # Somente pontos Gamma em Fourier
+            ibrion=-1,       # Calcula SCF 
+            directory='water' # pasta em que os cálculos serão armazenados
+        )
+```
+
+E devemos anexar a calculadora à molécula de água:
+```python
+h2omol.calc = calc
+```
+
+A energia total da molécula de água pode ser obtida com o método `get_potential_energy()`:
+```python
+E_h2o = h2omol.get_potential_energy()
+print(f'Energia total da molécula de água: {E_h2o:.3f} eV')
+```
+cujo o output será
+```
+Energia total da molécula de água: -14.215 eV
+```
+
+## Orbitais moleculares e Densidade Eletrônica
+
+### Orbitais moleculares
+
+Podemos determinar os orbitais moleculares da molécula de água usando o VASP e o ASE. Para isso, podemos usar a função `calc.get_eigenvalues()` para obter os valores próprios (energias) dos orbitais moleculares. Por exemplo:
+```python
+eigenvalues = h2omol.calc.get_eigenvalues()
+
+print("Valores próprios (energias) dos orbitais moleculares:")
+for i, energy in enumerate(eigenvalues):
+    print(f'Orbital {i+1}: {energy:.3f} eV')
+```
+
+cujo o output será 
+```
+Valores próprios (energias) dos orbitais moleculares:
+Orbital 1: -25.308 eV
+Orbital 2: -13.063 eV
+Orbital 3: -9.152 eV
+Orbital 4: -7.093 eV
+Orbital 5: -0.989 eV
+Orbital 6: 0.791 eV
+Orbital 7: 0.824 eV
+Orbital 8: 1.509 eV
+```
+
+Usando a função `calc.get_occupation_numbers()`, podemos obter os números de ocupação dos orbitais moleculares:
+```python
+occupations = h2omol.calc.get_occupation_numbers()
+
+print("Números de ocupação dos orbitais moleculares:")
+for i, occ in enumerate(occupations):
+    print(f'Orbital {i+1}: {occ:.0f}')
+```
+cujo o output será
+```
+Números de ocupação dos orbitais moleculares:
+Orbital 1: 2
+Orbital 2: 2
+Orbital 3: 2
+Orbital 4: 2
+Orbital 5: 0
+Orbital 6: 0
+Orbital 7: 0
+Orbital 8: 0
+```
+
+A função `calc.get_homo_lumo()` permite que determinemos as energias dos orbitais HOMO (Highest Occupied Molecular Orbital) e LUMO (Lowest Unoccupied Molecular Orbital):
+```python
+homo, lumo = h2omol.calc.get_homo_lumo()
+gap = (lumo - homo)
+
+print(f'HOMO: {homo:.3f} eV')
+print(f'LUMO: {lumo:.3f} eV')
+print(f"Diferença: {gap:.3f} eV")
+```
+cujo o output será
+```
+HOMO: -7.093 eV
+LUMO: -0.989 eV
+Diferença: 6.104 eV
+```
+
+De forma mais elegante podemos visualizar
+```python
+import numpy as np 
+import matplotlib.pyplot as plt
+
+eigenvalues = h2omol.calc.get_eigenvalues()
+occupations = h2omol.calc.get_occupation_numbers()
+
+homo, lumo = h2omol.calc.get_homo_lumo()
+gap = (lumo - homo)
+
+# Sort for a clean plot
+order = np.argsort(eigenvalues)
+eigenvalues, occupations = eigenvalues[order], occupations[order]
+
+# Split occupied / unoccupied
+occ_mask = occupations > 0.5
+E_occ = eigenvalues[occ_mask]
+E_unocc = eigenvalues[~occ_mask]
+
+# --- plotting ---
+plt.figure(figsize=(3, 3.2), dpi=140)
+
+# Sticks for occupied and unoccupied states
+for E in E_occ:
+    plt.plot([0, 0.6], [E, E],color='C0')
+for E in E_unocc:
+    plt.plot([0.7, 1.3], [E, E],color='grey')
+
+# Highlight HOMO / LUMO
+plt.plot([0, 1.3],[homo, homo],color='red', linewidth=2)
+plt.plot([0, 1.3],[lumo, lumo],color='red', linewidth=2)
+
+# Annotate
+plt.text(1.6,homo-1, 'HOMO', ha='center', va='bottom', fontsize=9)
+plt.text(1.6, lumo-1, 'LUMO', ha='center', va='bottom', fontsize=9)
+plt.title(f'HOMO-LUMO gap = {gap:.3f} eV')
+
+plt.ylabel('Energia (eV)')
+plt.xticks([])          # hide y-axis (pure spectrum)
+plt.ylim(min(eigenvalues)-1, max(eigenvalues)+1)
+plt.grid(True, axis='y', linestyle=':', linewidth=0.7)
+plt.tight_layout()
+```
+
+cujo output será uma figura do tipo
+![Níveis de energias dos orbitais moleculares de Kohn-Sham para a água](../figuras/homolumo_h2o.png){#fig-homolumo-h2o}
+
+### Densidade eletrônica
+
+A densidade eletrônica calculada pelo VASP está contida em um arquivo denominado `CHGCAR`. Esse arquivo está entre os arquivos na pasta especificada no `calc` que denominamos `water`. Ele pode ser visualizado com programas de visualização de densidade eletrônica, como VESTA.
+
+![Superfície de isodensidade eletrônica da água calculada pelo VASP](../figuras/agua_den_vasp.png){#fig-densidade-h2o width="80%"}
+
+## Criando um Sólido cristalino com ASE
+
+Criando um cristal de cobre (Cu) usando o modulo `bulk` do ASE na forma 
+```python
+from ase.build import bulk
+
+a = 3.5
+Cu_crystal = bulk("Cu", crystalstructure="fcc", a=a, cubic=True)
+
+print(Cu_crystal)
+print("Cell:", Cu_crystal.get_cell())
+print("Positions:\n", Cu_crystal.get_positions())
+```
+cujo output será
+```
+Atoms(symbols='Cu4', pbc=True, cell=[3.5, 3.5, 3.5])
+Cell: Cell([3.5, 3.5, 3.5])
+Positions:
+ [[0.   0.   0.  ]
+ [0.   1.75 1.75]
+ [1.75 0.   1.75]
+ [1.75 1.75 0.  ]]
+```
+
+e visualizando com o método `view` do ASE:
+```python
+from ase.visualize import view
+
+view(Cu_crystal)    
+```
+temos
+
+![Estrutura cristalina cúbica de cobre (Cu) visualizada com o ASE](../figuras/Cu_fcc.png){#fig-cu-crystal width="60%"}
+
+## Calculando a energia total de um sólido cristalino com o VASP e o ASE
+
+Criando a calculadora do VASP com o ASE:
+```python
+calc = Vasp(directory='Cu',
+                xc='PBE',
+                kpts=[6, 6, 6],  # specifies k-points
+                encut=350,
+            )
+```
+e anexando a calculadora ao cristal de cobre:
+```python
+Cu_crystal.calc = calc
+```
+podemos calcular a energia total do cristal de cobre com o método `get_potential_energy()`:
+```python
+E_Cu = Cu_crystal.get_potential_energy()
+
+print(f'Energia total do cristal de cobre: {E_Cu:.3f} eV')
+```
+cujo output será
+```
+Energia total do cristal de cobre: -14.603 eV
+```
+
+A energia por átomo do cristal de cobre pode ser obtida dividindo a energia total pelo número de átomos no cristal:
+```python
+E_per_atom = E_Cu / len(Cu_crystal)
+
+print(f'Energia por átomo do cristal de cobre: {E_per_atom:.3f} eV')
+```
+cujo output será
+```
+Energia por átomo do cristal de cobre: -3.651 eV
+```
+
+## Densidade eletrônica de um sólido cristalino
+
+Podemos visualizar a densidade eletrônica do cristal de cobre usando o arquivo `CHGCAR` gerado pelo VASP. Para isso, podemos usar o programa VESTA para abrir o arquivo `CHGCAR` e visualizar a densidade eletrônica em 3D.
+
+![Superfície de isodensidade eletrônica do cristal de cobre (Cu) calculada pelo VASP e visualizada com VESTA](../figuras/cu_den_vasp.png){#fig-densidade-cu width="80%"}
