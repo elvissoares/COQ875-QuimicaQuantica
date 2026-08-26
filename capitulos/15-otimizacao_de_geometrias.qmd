@@ -46,7 +46,7 @@ no equilíbrio, a energia total é mínima em relação às coordenadas nucleare
 
 :::
 
-## Otimização de geometrias de moléculas usando PySCF
+## Otimização de geometria de moléculas usando PySCF
 
 ### Modificando a geometria de uma molécula manualmente
 
@@ -166,6 +166,110 @@ O-H2 bond length (Ang): 0.965 Ang
 H-O-H bond angle (deg): 105.752 deg
 ```
 
+## Otimização de geometria de moléculas usando VASP e ASE
+
+::: {.callout-tip}
+
+Para executar este notebook no seu computador, você pode clicar no link: [Abrir no GitHub](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/5-otimizacao_vasp.ipynb)
+
+:::
+
+Usando o ASE vimos que podemos criar a geometria de uma molécula e calcular a energia total usando o VASP. 
+
+Criando uma molécula de água (H2O) usando o ASE:
+```python
+from ase import Atoms, Atom
+
+h2omol = Atoms([Atom('O', [0, 0, 0]),
+                Atom('H', [0.0, -0.760265, 0.588373]),
+                Atom('H', [0.0, 0.760265, 0.588373])])
+
+h2omol.center(vacuum=4.0) # caixa com 4 Angstroms de vácuo 
+h2omol.pbc = True # condição de contorno periódica
+```
+
+Em seguida podemos criar a calculadora do VASP para otimização da geometria usando `ibrion=2` (conjugate gradient), `isif=0` (relaxa somente os átomos, mantendo a célula fixa), `nsw=50` (número máximo de passos de otimização) e `ediffg=-1e-3` (tolerância para convergência das forças):
+```python
+from ase.calculators.vasp import Vasp
+
+calc = Vasp(directory='H2O_relaxed',
+            xc='PBE',   # funcional GGA
+            encut=350,  # safe default for PAW-PBE sets
+            kpts=[1, 1, 1],gamma=True,                  # k-points
+            ibrion=2, # CG ionic relax
+            isif=0, # relaxa somente os átomos, mantendo a célula fixa
+            nsw=50, # número máximo de passos de relaxação
+            lreal='Auto', # projeção de orbitais no espaço real
+            lwave=True, lcharg=True,lvtot=True,  # mantem WAVECAR/CHGCAR/LOCPOT para post-processing
+            )
+
+h2omol.calc = calc
+```
+
+Ao calcular a energia total da molécula de água, o VASP irá otimizar a geometria da molécula:
+```python
+E_h2o = h2omol.get_potential_energy()
+
+print(f'Energia total da molécula de água: {E_h2o:.3f} eV')
+```
+cujo output será algo como:
+```
+Energia total da molécula de água: -14.221 eV
+```
+
+O número de passos iônicos executados durante a otimização da geometria pode ser obtido usando:
+```python
+print("Número de passos iônicos executados:", calc.get_number_of_iterations())
+```
+cujo output nesse caso foi:
+```
+Número de passos iônicos executados: 2
+```
+
+E as forças sobre os átomos da molécula de água podem ser obtidas usando:
+```python
+forces = h2omol.get_forces()
+print("Forças sobre os átomos (eV/Ang):")
+print(forces)
+```
+cujo output será algo como:
+```
+Forças sobre os átomos (eV/Ang):
+[[ 0.          0.          0.00071941]
+ [-0.          0.00046482 -0.0003597 ]
+ [-0.         -0.00046482 -0.0003597 ]]
+```
+
+A nova geometria da molécula de água pode ser obtida usando:
+```python
+print("Nova geometria da molécula de água (Ang):")
+print(h2omol.get_positions())
+```
+cujo output será algo como:
+```
+Nova geometria da molécula de água (Ang):
+[[4.         4.760265   3.99497349]
+ [4.         3.99123747 4.59088625]
+ [4.         5.52929253 4.59088625]]
+```
+
+Os comprimentos das ligações O-H e o ângulo H-O-H podem ser calculados usando as coordenadas atômicas otimizadas:
+```python
+lOH1 = h2omol.get_distance(0, 1)
+lOH2 = h2omol.get_distance(0, 2)
+thetaOH1H2 = h2omol.get_angle(1, 0, 2)
+
+print(f"O comprimento da ligação O-H1 é {lOH1:.3f} Å")
+print(f"O comprimento da ligação O-H2 é {lOH2:.3f} Å")
+print(f"O ângulo H1-O-H2 é {thetaOH1H2:.2f}°")
+```
+cujo output será algo como:
+```
+O comprimento da ligação O-H1 é 0.973 Å
+O comprimento da ligação O-H2 é 0.973 Å
+O ângulo H1-O-H2 é 104.46°
+```
+
 
 ## Cálculo de tensões 
 
@@ -174,3 +278,85 @@ $$
 \sigma_{ij} = \frac{1}{V} \frac{\partial E}{\partial \epsilon_{ij}}
 $$
 onde $V$ é o volume da célula unitária, e $\epsilon_{ij}$ é a deformação aplicada à célula unitária. A tensão pode ser calculada usando métodos de química quântica, como DFT, e é usada para otimizar a geometria de sólidos. 
+
+## Otimização de geometria de sólidos usando VASP e ASE
+
+::: {.callout-tip}
+
+Para executar este notebook no seu computador, você pode clicar no link: [Abrir no GitHub](https://github.com/elvissoares/COQ875-QuimicaQuantica/blob/2026_2/notebooks/5-otimizacao_vasp.ipynb)
+
+:::
+
+Criando um cristal de NaCl usando o ASE:
+```python
+from ase.build import bulk
+
+Nacl_crystal = bulk("NaCl", crystalstructure="rocksalt", a=5.64, cubic=True)
+
+print(Nacl_crystal)
+print("Cell:", Nacl_crystal.get_cell())
+print("Positions:\n", Nacl_crystal.get_positions())
+```
+cujo output será algo como:
+```
+Atoms(symbols='NaClNaClNaClNaCl', pbc=True, cell=[5.64, 5.64, 5.64])
+Cell: Cell([5.64, 5.64, 5.64])
+Positions:
+ [[0.   0.   0.  ]
+ [2.82 0.   0.  ]
+ [0.   2.82 2.82]
+ [2.82 2.82 2.82]
+ [2.82 0.   2.82]
+ [0.   0.   2.82]
+ [2.82 2.82 0.  ]
+ [0.   2.82 0.  ]]
+```
+
+![Cristal de NaCl criado usando o ASE.](../figuras/nacl.png)
+
+Em seguida podemos criar a calculadora do VASP para otimização da geometria usando `ibrion=2` (conjugate gradient), `isif=7` (relaxa somente a célula), `nsw=50` (número máximo de passos de otimização) e `ediffg=-1e-3` (tolerância para convergência das forças):
+```python
+calc = Vasp(directory='NaCl_relaxed',
+            xc='PBE',   # funcional GGA
+            encut=350,  # safe default for PAW-PBE sets
+            kpts=[1, 1, 1],gamma=True,                  # k-points
+            ibrion=2, # CG ionic relax
+            isif=7, # relaxa somente a célula
+            nsw=50, # número máximo de passos de relaxação
+            ediffg=-1e-3, # critério de convergência para relaxação (forças)
+            lreal='Auto', # projeção de orbitais no espaço real
+            lwave=True, lcharg=True,lvtot=True,  # mantem WAVECAR/CHGCAR/LOCPOT para post-processing
+)
+
+Nacl_crystal.calc = calc
+```
+
+A otimização da geometria do cristal de NaCl pode ser realizada usando o método `get_potential_energy()` do objeto `Nacl_crystal`, que irá calcular a energia total e otimizar a geometria do cristal:
+```python
+E_nacl = Nacl_crystal.get_potential_energy()
+print(f'Energia total do cristal de NaCl: {E_nacl:.3f} eV')
+``` 
+cujo output será algo como:
+```
+Energia total do cristal de NaCl: -25.451 eV
+```
+
+O número de passos de otimização da célula executados durante a otimização da geometria do cristal de NaCl pode ser obtido usando:
+```python
+print("Número de passos de otimização da célula executados:", calc.get_number_of_iterations())
+```
+cujo output nesse caso foi:
+```
+Número de passos de otimização da célula executados: 4
+```
+
+A nova estrutura do cristal de NaCl pode ser obtida usando:
+```python
+print("Nova estrutura do cristal de NaCl (Ang):")
+print(Nacl_crystal.get_cell())
+```
+cujo output será algo como:
+```
+Nova estrutura do cristal de NaCl (Ang):
+Cell([5.911942143216201, 5.911942143216201, 5.911942143216201])
+```

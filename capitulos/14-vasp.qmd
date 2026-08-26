@@ -332,6 +332,7 @@ plt.tight_layout()
 ```
 
 cujo output será uma figura do tipo
+
 ![Níveis de energias dos orbitais moleculares de Kohn-Sham para a água](../figuras/homolumo_h2o.png){#fig-homolumo-h2o}
 
 ### Densidade eletrônica
