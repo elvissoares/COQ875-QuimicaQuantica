@@ -66,3 +66,5 @@ Correção dispersiva da energia: -0.002149 Hartree
 ```
 
 Podemos comparar esse resultado com o valor reportado por @Temelso2011, que obtiveram uma energia de $-152.779123$ Ha empregando o método RI-MP2 com correção CCSD(T). A boa concordância entre os resultados indica que o cálculo DFT-D reproduz adequadamente a energia do dímero de água, sugerindo também que a contribuição da correção de dispersão para essa interação é relativamente pequena.
+
+## Cálculos de Interações Moleculares usando VASP
